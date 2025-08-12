@@ -28,5 +28,9 @@ export class UsersService {
   async remove(id: string) {
     return this.usersRepository.deleteUser(id);
   }
+
+  async findUserByEmail(email: string) {
+    return this.usersRepository.findUserByEmail(email);
+  }
 }
 

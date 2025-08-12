@@ -1,9 +1,9 @@
 import { Product } from "src/products/entities/product.entity";
+import { ProdForOrder } from "../entities/productForOrder.entity";
 
 export class CreateOrderDto {
         id: string;
         userId: string;
-        quantity: number;
         createdAt: Date;
-        productsID: string[] 
+        productsID: ProdForOrder[] 
 }

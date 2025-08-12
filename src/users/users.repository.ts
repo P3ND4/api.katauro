@@ -10,6 +10,11 @@ import { Injectable } from "@nestjs/common";
 export class UsersRepository implements IUserRepository {
     constructor(private prismaService: PrismaService) {
      }
+    findUserByEmail(email: string): Promise<User | null> {
+        return this.prismaService.user.findUniqueOrThrow({
+            where: { email: email }
+        });
+    }
     findAllUsers(): Promise<User[]> {
         return this.prismaService.user.findMany();
     }

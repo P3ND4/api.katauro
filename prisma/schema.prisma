@@ -31,24 +31,22 @@ model Product {
   image       String?
   price       Float
   stock       Int
-  order       ProductForOrder[]
+  order       ProductForOrder[] @relation()
 }
 
 model Order {
   id        String   @id @default(cuid())
   userId    String
-  quantity  Int
   createdAt DateTime @default(now())
-
   user     User      @relation(fields: [userId], references: [id], "UserOrders")
-  products ProductForOrder[] 
+  products ProductForOrder[] @relation("OrderProducts")
 }
 
 model ProductForOrder {
   orderId   String
   productId String 
   count     Int     @default(1)
-  order Order       @relation(fields: [orderId], references: [id])
+  order Order       @relation(fields: [orderId], references: [id], "OrderProducts")
   product Product   @relation(fields: [productId], references: [id])
   @@id([orderId, productId])
 
