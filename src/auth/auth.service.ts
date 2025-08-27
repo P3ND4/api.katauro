@@ -10,7 +10,7 @@ export class AuthService {
     constructor(private readonly userService: UsersService, private readonly jwtService: JwtService) { }
     async register(createUserDto: CreateUserDto): Promise<any> {
 
-        const userExists = await this.userService.findUserByEmail(createUserDto.email);
+        const userExists = await this.userService.findUserByEmail(createUserDto.email).catch(()=>null);
         if (userExists) throw new BadRequestException('User already exists');
         const hashedPassword = await bcrypt.hash(createUserDto.password, 10);
         createUserDto.password = hashedPassword
