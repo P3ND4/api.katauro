@@ -8,4 +8,5 @@ export interface ISpecificProductRepository {
     findProductById(id: string): Promise<SpecificProduct | null>;
     updateProduct(id: string, data: UpdateSpecProductDto): Promise<SpecificProduct>;
     deleteProduct(id: string): Promise<SpecificProduct>;
+    findByGeneric(genId: string): Promise<SpecificProduct[]>
 }

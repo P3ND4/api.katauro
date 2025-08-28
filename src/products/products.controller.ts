@@ -2,10 +2,12 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { ProductsService } from './products.service';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
+import { CreateSpecProductDTO } from './dto/create-sproduct.dto';
+import { SpecProductService } from './spec-product/spec-product.service';
 
 @Controller('products')
 export class ProductsController {
-  constructor(private readonly productsService: ProductsService) {}
+  constructor(private readonly productsService: ProductsService, private readonly specProdService: SpecProductService) { }
 
   @Post()
   create(@Body() createProductDto: CreateProductDto) {
@@ -15,6 +17,12 @@ export class ProductsController {
   @Get()
   findAll() {
     return this.productsService.findAll();
+  }
+
+
+  @Post('addVariant')
+  createVariant(@Body() createSpecProductDTO: CreateSpecProductDTO) {
+    return this.specProdService.create(createSpecProductDTO);
   }
 
   @Get(':id')

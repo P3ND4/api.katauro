@@ -1,7 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { ISpecificProductRepository } from "../repositorys/ISpecificProductRepository";
 import { PrismaService } from "src/prisma/prisma.service";
-import { Product } from "../entities/product.entity";
 import { SpecificProduct } from "generated/prisma";
 import { CreateSpecProductDTO } from "../dto/create-sproduct.dto";
 import { UpdateSpecProductDto } from "../dto/update-sproduct.dto";
@@ -10,6 +9,9 @@ import { UpdateSpecProductDto } from "../dto/update-sproduct.dto";
 export class SpecProductRepository implements ISpecificProductRepository{
 
     constructor(private prismaService: PrismaService){}
+    findByGeneric(genId: string): Promise<SpecificProduct[]> {
+        return this.prismaService.specificProduct.findMany({where: {genericId: genId}})
+    }
 
     findAllProducts(): Promise<SpecificProduct[]> {
         return this.prismaService.specificProduct.findMany();

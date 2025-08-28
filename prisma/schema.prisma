@@ -54,7 +54,7 @@ model SpecificProduct {
   id          String  @id @default(cuid())
   image       String?
   price       Float
-  color       String
+  color       String  @default("none")
   variantName String
   stock       Int
   order       ProductForOrder[] @relation()

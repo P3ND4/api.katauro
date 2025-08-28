@@ -1,0 +1,106 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id       String  @id @default(cuid())
+  email    String  @unique
+  name     String
+  password String
+  image    String?
+
+  orders Order[] @relation("UserOrders")
+}
+
+model GenericProduct {
+  id          String            @id @default(cuid())
+  name        String
+  description String
+  subtitle    String
+  categorieId String
+  variants    SpecificProduct[] @relation()
+  details     Details[]         @relation()
+  categorie   Categorie         @relation(fields: [categorieId], references: [id], onDelete: Cascade)
+}
+
+model Categorie {
+  id        String           @id @default(cuid())
+  nombre    String
+  productos GenericProduct[] @relation()
+}
+
+model Details {
+  id     String         @id @default(cuid())
+  idProd String
+  text   String
+  prod   GenericProduct @relation(fields: [idProd], references: [id], onDelete: Cascade)
+}
+
+model SpecificProduct {
+  genericId   String
+  id          String                @id @default(cuid())
+  image       String?
+  price       Float
+  color       String                @default("none")
+  variantName String
+  stock       Int
+  order       ProductForOrder[]     @relation()
+  promotions  ProductForPromotion[] @relation()
+  genericProd GenericProduct        @relation(fields: [genericId], references: [id], onDelete: Cascade)
+  images      Images[]              @relation()
+}
+
+model Images {
+  id      String          @id @default(ulid())
+  link    String
+  prodId  String
+  product SpecificProduct @relation(fields: [prodId], references: [id], onDelete: Cascade)
+}
+
+model Order {
+  id        String            @id @default(cuid())
+  userId    String
+  createdAt DateTime          @default(now())
+  user      User              @relation(fields: [userId], references: [id], "UserOrders", onDelete: Cascade)
+  products  ProductForOrder[] @relation("OrderProducts")
+}
+
+model ProductForOrder {
+  orderId   String
+  productId String
+  count     Int             @default(1)
+  order     Order           @relation(fields: [orderId], references: [id], "OrderProducts", onDelete: Cascade)
+  product   SpecificProduct @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@id([orderId, productId])
+}
+
+model Promotion {
+  promo_id  String                @id @default(cuid())
+  code      String                @unique
+  startDate DateTime
+  endDate   DateTime
+  isActive  Boolean               @default(true)
+  products  ProductForPromotion[]
+}
+
+model ProductForPromotion {
+  productId   String
+  promotionId String
+  product     SpecificProduct @relation(fields: [productId], references: [id], onDelete: Cascade)
+  promotion   Promotion       @relation(fields: [promotionId], references: [promo_id], onDelete: Cascade)
+
+  @@id([productId, promotionId])
+}
