@@ -15,7 +15,7 @@ datasource db {
 }
 
 model User {
-  id       String  @id @default(cuid())
+  id       String  @id @default(uuid())
   email    String  @unique
   name     String
   password String
@@ -25,7 +25,7 @@ model User {
 }
 
 model GenericProduct {
-  id          String            @id @default(cuid())
+  id          String            @id @default(uuid())
   name        String
   description String
   subtitle    String
@@ -36,13 +36,13 @@ model GenericProduct {
 }
 
 model Categorie {
-  id        String           @id @default(cuid())
+  id        String           @id @default(uuid())
   nombre    String
   productos GenericProduct[] @relation()
 }
 
 model Details {
-  id     String         @id @default(cuid())
+  id     String         @id @default(uuid())
   idProd String
   text   String
   prod   GenericProduct @relation(fields: [idProd], references: [id], onDelete: Cascade)
@@ -50,7 +50,7 @@ model Details {
 
 model SpecificProduct {
   genericId   String
-  id          String                @id @default(cuid())
+  id          String                @id @default(uuid())
   image       String?
   price       Float
   color       String                @default("none")
@@ -70,7 +70,7 @@ model Images {
 }
 
 model Order {
-  id        String            @id @default(cuid())
+  id        String            @id @default(uuid())
   userId    String
   createdAt DateTime          @default(now())
   user      User              @relation(fields: [userId], references: [id], "UserOrders", onDelete: Cascade)
@@ -88,7 +88,7 @@ model ProductForOrder {
 }
 
 model Promotion {
-  promo_id  String                @id @default(cuid())
+  promo_id  String                @id @default(uuid())
   code      String                @unique
   startDate DateTime
   endDate   DateTime
