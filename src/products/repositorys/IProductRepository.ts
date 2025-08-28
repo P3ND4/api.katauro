@@ -1,11 +1,11 @@
-import { Product } from "generated/prisma";
+import { GenericProduct } from "generated/prisma";
 import { CreateProductDto } from "../dto/create-product.dto";
 import { UpdateProductDto } from "../dto/update-product.dto";
 
 export interface IProductRepository {
-    findAllProducts(): Promise<Product[]>;
-    createProduct(data: CreateProductDto): Promise<Product>;
-    findProductById(id: string): Promise<Product | null>;
-    updateProduct(id: string, data: UpdateProductDto): Promise<Product>;
-    deleteProduct(id: string): Promise<Product>;
+    findAllProducts(): Promise<GenericProduct[]>;
+    createProduct(data: CreateProductDto): Promise<GenericProduct>;
+    findProductById(id: string): Promise<GenericProduct | null>;
+    updateProduct(id: string, data: UpdateProductDto): Promise<GenericProduct>;
+    deleteProduct(id: string): Promise<GenericProduct>;
 }
