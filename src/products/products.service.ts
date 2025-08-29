@@ -26,4 +26,5 @@ export class ProductsService {
   remove(id: string) {
     return this.productRepository.deleteProduct(id);
   }
+  
 }
