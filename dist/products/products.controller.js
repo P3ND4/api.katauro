@@ -19,6 +19,7 @@ const create_product_dto_1 = require("./dto/create-product.dto");
 const update_product_dto_1 = require("./dto/update-product.dto");
 const create_sproduct_dto_1 = require("./dto/create-sproduct.dto");
 const spec_product_service_1 = require("./spec-product/spec-product.service");
+const update_sproduct_dto_1 = require("./dto/update-sproduct.dto");
 let ProductsController = class ProductsController {
     productsService;
     specProdService;
@@ -34,6 +35,18 @@ let ProductsController = class ProductsController {
     }
     createVariant(createSpecProductDTO) {
         return this.specProdService.create(createSpecProductDTO);
+    }
+    getVatiansForProduct(id) {
+        return this.specProdService.findByGeneric(id);
+    }
+    getVariant(id) {
+        return this.specProdService.findById(id);
+    }
+    deleteVaiant(id) {
+        return this.specProdService.delete(id);
+    }
+    updateVariant(id, data) {
+        return this.specProdService.update(id, data);
     }
     findOne(id) {
         return this.productsService.findOne(id);
@@ -60,12 +73,41 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], ProductsController.prototype, "findAll", null);
 __decorate([
-    (0, common_1.Post)('addVariant'),
+    (0, common_1.Post)('add-variant'),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [create_sproduct_dto_1.CreateSpecProductDTO]),
     __metadata("design:returntype", void 0)
 ], ProductsController.prototype, "createVariant", null);
+__decorate([
+    (0, common_1.Get)('variants/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], ProductsController.prototype, "getVatiansForProduct", null);
+__decorate([
+    (0, common_1.Get)('variant/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], ProductsController.prototype, "getVariant", null);
+__decorate([
+    (0, common_1.Get)('delete-variant/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], ProductsController.prototype, "deleteVaiant", null);
+__decorate([
+    (0, common_1.Patch)('update-variant/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, update_sproduct_dto_1.UpdateSpecProductDto]),
+    __metadata("design:returntype", void 0)
+], ProductsController.prototype, "updateVariant", null);
 __decorate([
     (0, common_1.Get)(':id'),
     __param(0, (0, common_1.Param)('id')),

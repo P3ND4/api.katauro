@@ -18,13 +18,13 @@ let ProductRepository = class ProductRepository {
         this.prismaService = prismaService;
     }
     findAllProducts() {
-        return this.prismaService.genericProduct.findMany();
+        return this.prismaService.genericProduct.findMany({ include: { variants: true, details: true, categorie: true } });
     }
     createProduct(data) {
         return this.prismaService.genericProduct.create({ data: data });
     }
     findProductById(id) {
-        return this.prismaService.genericProduct.findUnique({ where: { id } });
+        return this.prismaService.genericProduct.findUnique({ where: { id }, include: { variants: true, details: true, categorie: true } });
     }
     updateProduct(id, data) {
         return this.prismaService.genericProduct.update({ where: { id }, data });

@@ -3,6 +3,7 @@ import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { CreateSpecProductDTO } from './dto/create-sproduct.dto';
 import { SpecProductService } from './spec-product/spec-product.service';
+import { UpdateSpecProductDto } from './dto/update-sproduct.dto';
 export declare class ProductsController {
     private readonly productsService;
     private readonly specProdService;
@@ -22,6 +23,42 @@ export declare class ProductsController {
         categorieId: string;
     }[]>;
     createVariant(createSpecProductDTO: CreateSpecProductDTO): Promise<{
+        image: string | null;
+        id: string;
+        genericId: string;
+        variantName: string;
+        price: number;
+        stock: number;
+        color: string;
+    }>;
+    getVatiansForProduct(id: string): Promise<{
+        image: string | null;
+        id: string;
+        genericId: string;
+        variantName: string;
+        price: number;
+        stock: number;
+        color: string;
+    }[]>;
+    getVariant(id: string): Promise<{
+        image: string | null;
+        id: string;
+        genericId: string;
+        variantName: string;
+        price: number;
+        stock: number;
+        color: string;
+    } | null>;
+    deleteVaiant(id: string): Promise<{
+        image: string | null;
+        id: string;
+        genericId: string;
+        variantName: string;
+        price: number;
+        stock: number;
+        color: string;
+    }>;
+    updateVariant(id: string, data: UpdateSpecProductDto): Promise<{
         image: string | null;
         id: string;
         genericId: string;

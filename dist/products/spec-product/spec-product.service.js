@@ -27,9 +27,10 @@ let SpecProductService = class SpecProductService {
         return this.variantRep.deleteProduct(id);
     }
     findById(id) {
-        this.variantRep.findProductById(id);
+        return this.variantRep.findProductById(id);
     }
-    findByGeneric() {
+    findByGeneric(id) {
+        return this.variantRep.findByGeneric(id);
     }
 };
 exports.SpecProductService = SpecProductService;

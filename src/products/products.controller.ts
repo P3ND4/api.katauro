@@ -4,6 +4,7 @@ import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { CreateSpecProductDTO } from './dto/create-sproduct.dto';
 import { SpecProductService } from './spec-product/spec-product.service';
+import { UpdateSpecProductDto } from './dto/update-sproduct.dto';
 
 @Controller('products')
 export class ProductsController {
@@ -20,9 +21,29 @@ export class ProductsController {
   }
 
 
-  @Post('addVariant')
+  @Post('add-variant')
   createVariant(@Body() createSpecProductDTO: CreateSpecProductDTO) {
     return this.specProdService.create(createSpecProductDTO);
+  }
+
+
+  @Get('variants/:id')
+  getVatiansForProduct(@Param('id') id: string) {
+    return this.specProdService.findByGeneric(id);
+  }
+
+  @Get('variant/:id')
+  getVariant(@Param('id') id: string) {
+    return this.specProdService.findById(id);
+  }
+
+  @Get('delete-variant/:id')
+  deleteVaiant(@Param('id') id: string) {
+    return this.specProdService.delete(id);
+  }
+  @Patch('update-variant/:id')
+  updateVariant(@Param('id') id: string, @Body() data: UpdateSpecProductDto) {
+    return this.specProdService.update(id, data);
   }
 
   @Get(':id')

@@ -23,11 +23,12 @@ export class SpecProductService {
     }
 
     findById(id: string){
-        this.variantRep.findProductById(id)
+       return this.variantRep.findProductById(id);
     }
 
-    findByGeneric(){
-        
+    findByGeneric(id: string){
+        return this.variantRep.findByGeneric(id);
+
     }
 
     

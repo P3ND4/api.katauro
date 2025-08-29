@@ -31,6 +31,22 @@ export declare class SpecProductService {
         stock: number;
         color: string;
     }>;
-    findById(id: string): void;
-    findByGeneric(): void;
+    findById(id: string): Promise<{
+        image: string | null;
+        id: string;
+        genericId: string;
+        variantName: string;
+        price: number;
+        stock: number;
+        color: string;
+    } | null>;
+    findByGeneric(id: string): Promise<{
+        image: string | null;
+        id: string;
+        genericId: string;
+        variantName: string;
+        price: number;
+        stock: number;
+        color: string;
+    }[]>;
 }

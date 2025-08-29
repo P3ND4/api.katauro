@@ -11,13 +11,13 @@ export class ProductRepository implements IProductRepository{
     constructor(private prismaService: PrismaService){}
 
     findAllProducts(): Promise<GenericProduct[]> {
-        return this.prismaService.genericProduct.findMany();
+        return this.prismaService.genericProduct.findMany({include: {variants: true, details: true, categorie: true}});
     }
     createProduct(data: CreateProductDto): Promise<GenericProduct> {
         return this.prismaService.genericProduct.create({data: data});
     }
     findProductById(id: string): Promise<GenericProduct | null> {
-        return this.prismaService.genericProduct.findUnique({where: {id}})
+        return this.prismaService.genericProduct.findUnique({where: {id}, include: {variants: true, details: true, categorie: true}})
     }
     updateProduct(id: string, data: UpdateProductDto): Promise<GenericProduct> {
         return this.prismaService.genericProduct.update({where: {id}, data})
