@@ -6,6 +6,7 @@ class CreateProductDto {
     description;
     subtitle;
     categorieId;
+    vector;
 }
 exports.CreateProductDto = CreateProductDto;
 //# sourceMappingURL=create-product.dto.js.map

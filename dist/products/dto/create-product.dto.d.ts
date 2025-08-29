@@ -3,4 +3,5 @@ export declare class CreateProductDto {
     description: string;
     subtitle: string;
     categorieId: string;
+    vector?: string;
 }

@@ -30,6 +30,7 @@ model GenericProduct {
   name        String
   description String
   subtitle    String
+  vector      String            @default("")
   categorieId String
   variants    SpecificProduct[] @relation()
   details     Details[]         @relation()

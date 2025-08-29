@@ -133,6 +133,7 @@ exports.Prisma.GenericProductScalarFieldEnum = {
   name: 'name',
   description: 'description',
   subtitle: 'subtitle',
+  vector: 'vector',
   categorieId: 'categorieId'
 };
 
@@ -211,6 +212,7 @@ exports.Prisma.GenericProductOrderByRelevanceFieldEnum = {
   name: 'name',
   description: 'description',
   subtitle: 'subtitle',
+  vector: 'vector',
   categorieId: 'categorieId'
 };
 

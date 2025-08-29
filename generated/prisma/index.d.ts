@@ -2803,6 +2803,7 @@ export namespace Prisma {
     name: string | null
     description: string | null
     subtitle: string | null
+    vector: string | null
     categorieId: string | null
   }
 
@@ -2811,6 +2812,7 @@ export namespace Prisma {
     name: string | null
     description: string | null
     subtitle: string | null
+    vector: string | null
     categorieId: string | null
   }
 
@@ -2819,6 +2821,7 @@ export namespace Prisma {
     name: number
     description: number
     subtitle: number
+    vector: number
     categorieId: number
     _all: number
   }
@@ -2829,6 +2832,7 @@ export namespace Prisma {
     name?: true
     description?: true
     subtitle?: true
+    vector?: true
     categorieId?: true
   }
 
@@ -2837,6 +2841,7 @@ export namespace Prisma {
     name?: true
     description?: true
     subtitle?: true
+    vector?: true
     categorieId?: true
   }
 
@@ -2845,6 +2850,7 @@ export namespace Prisma {
     name?: true
     description?: true
     subtitle?: true
+    vector?: true
     categorieId?: true
     _all?: true
   }
@@ -2926,6 +2932,7 @@ export namespace Prisma {
     name: string
     description: string
     subtitle: string
+    vector: string
     categorieId: string
     _count: GenericProductCountAggregateOutputType | null
     _min: GenericProductMinAggregateOutputType | null
@@ -2951,6 +2958,7 @@ export namespace Prisma {
     name?: boolean
     description?: boolean
     subtitle?: boolean
+    vector?: boolean
     categorieId?: boolean
     variants?: boolean | GenericProduct$variantsArgs<ExtArgs>
     details?: boolean | GenericProduct$detailsArgs<ExtArgs>
@@ -2965,10 +2973,11 @@ export namespace Prisma {
     name?: boolean
     description?: boolean
     subtitle?: boolean
+    vector?: boolean
     categorieId?: boolean
   }
 
-  export type GenericProductOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "subtitle" | "categorieId", ExtArgs["result"]["genericProduct"]>
+  export type GenericProductOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "subtitle" | "vector" | "categorieId", ExtArgs["result"]["genericProduct"]>
   export type GenericProductInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     variants?: boolean | GenericProduct$variantsArgs<ExtArgs>
     details?: boolean | GenericProduct$detailsArgs<ExtArgs>
@@ -2988,6 +2997,7 @@ export namespace Prisma {
       name: string
       description: string
       subtitle: string
+      vector: string
       categorieId: string
     }, ExtArgs["result"]["genericProduct"]>
     composites: {}
@@ -3365,6 +3375,7 @@ export namespace Prisma {
     readonly name: FieldRef<"GenericProduct", 'String'>
     readonly description: FieldRef<"GenericProduct", 'String'>
     readonly subtitle: FieldRef<"GenericProduct", 'String'>
+    readonly vector: FieldRef<"GenericProduct", 'String'>
     readonly categorieId: FieldRef<"GenericProduct", 'String'>
   }
     
@@ -11353,6 +11364,7 @@ export namespace Prisma {
     name: 'name',
     description: 'description',
     subtitle: 'subtitle',
+    vector: 'vector',
     categorieId: 'categorieId'
   };
 
@@ -11467,6 +11479,7 @@ export namespace Prisma {
     name: 'name',
     description: 'description',
     subtitle: 'subtitle',
+    vector: 'vector',
     categorieId: 'categorieId'
   };
 
@@ -11649,6 +11662,7 @@ export namespace Prisma {
     name?: StringFilter<"GenericProduct"> | string
     description?: StringFilter<"GenericProduct"> | string
     subtitle?: StringFilter<"GenericProduct"> | string
+    vector?: StringFilter<"GenericProduct"> | string
     categorieId?: StringFilter<"GenericProduct"> | string
     variants?: SpecificProductListRelationFilter
     details?: DetailsListRelationFilter
@@ -11660,6 +11674,7 @@ export namespace Prisma {
     name?: SortOrder
     description?: SortOrder
     subtitle?: SortOrder
+    vector?: SortOrder
     categorieId?: SortOrder
     variants?: SpecificProductOrderByRelationAggregateInput
     details?: DetailsOrderByRelationAggregateInput
@@ -11675,6 +11690,7 @@ export namespace Prisma {
     name?: StringFilter<"GenericProduct"> | string
     description?: StringFilter<"GenericProduct"> | string
     subtitle?: StringFilter<"GenericProduct"> | string
+    vector?: StringFilter<"GenericProduct"> | string
     categorieId?: StringFilter<"GenericProduct"> | string
     variants?: SpecificProductListRelationFilter
     details?: DetailsListRelationFilter
@@ -11686,6 +11702,7 @@ export namespace Prisma {
     name?: SortOrder
     description?: SortOrder
     subtitle?: SortOrder
+    vector?: SortOrder
     categorieId?: SortOrder
     _count?: GenericProductCountOrderByAggregateInput
     _max?: GenericProductMaxOrderByAggregateInput
@@ -11700,6 +11717,7 @@ export namespace Prisma {
     name?: StringWithAggregatesFilter<"GenericProduct"> | string
     description?: StringWithAggregatesFilter<"GenericProduct"> | string
     subtitle?: StringWithAggregatesFilter<"GenericProduct"> | string
+    vector?: StringWithAggregatesFilter<"GenericProduct"> | string
     categorieId?: StringWithAggregatesFilter<"GenericProduct"> | string
   }
 
@@ -12180,6 +12198,7 @@ export namespace Prisma {
     name: string
     description: string
     subtitle: string
+    vector?: string
     variants?: SpecificProductCreateNestedManyWithoutGenericProdInput
     details?: DetailsCreateNestedManyWithoutProdInput
     categorie: CategorieCreateNestedOneWithoutProductosInput
@@ -12190,6 +12209,7 @@ export namespace Prisma {
     name: string
     description: string
     subtitle: string
+    vector?: string
     categorieId: string
     variants?: SpecificProductUncheckedCreateNestedManyWithoutGenericProdInput
     details?: DetailsUncheckedCreateNestedManyWithoutProdInput
@@ -12200,6 +12220,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     subtitle?: StringFieldUpdateOperationsInput | string
+    vector?: StringFieldUpdateOperationsInput | string
     variants?: SpecificProductUpdateManyWithoutGenericProdNestedInput
     details?: DetailsUpdateManyWithoutProdNestedInput
     categorie?: CategorieUpdateOneRequiredWithoutProductosNestedInput
@@ -12210,6 +12231,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     subtitle?: StringFieldUpdateOperationsInput | string
+    vector?: StringFieldUpdateOperationsInput | string
     categorieId?: StringFieldUpdateOperationsInput | string
     variants?: SpecificProductUncheckedUpdateManyWithoutGenericProdNestedInput
     details?: DetailsUncheckedUpdateManyWithoutProdNestedInput
@@ -12220,6 +12242,7 @@ export namespace Prisma {
     name: string
     description: string
     subtitle: string
+    vector?: string
     categorieId: string
   }
 
@@ -12228,6 +12251,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     subtitle?: StringFieldUpdateOperationsInput | string
+    vector?: StringFieldUpdateOperationsInput | string
   }
 
   export type GenericProductUncheckedUpdateManyInput = {
@@ -12235,6 +12259,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     subtitle?: StringFieldUpdateOperationsInput | string
+    vector?: StringFieldUpdateOperationsInput | string
     categorieId?: StringFieldUpdateOperationsInput | string
   }
 
@@ -12766,6 +12791,7 @@ export namespace Prisma {
     name?: SortOrder
     description?: SortOrder
     subtitle?: SortOrder
+    vector?: SortOrder
     categorieId?: SortOrder
   }
 
@@ -12774,6 +12800,7 @@ export namespace Prisma {
     name?: SortOrder
     description?: SortOrder
     subtitle?: SortOrder
+    vector?: SortOrder
     categorieId?: SortOrder
   }
 
@@ -12782,6 +12809,7 @@ export namespace Prisma {
     name?: SortOrder
     description?: SortOrder
     subtitle?: SortOrder
+    vector?: SortOrder
     categorieId?: SortOrder
   }
 
@@ -14075,6 +14103,7 @@ export namespace Prisma {
     name: string
     description: string
     subtitle: string
+    vector?: string
     variants?: SpecificProductCreateNestedManyWithoutGenericProdInput
     details?: DetailsCreateNestedManyWithoutProdInput
   }
@@ -14084,6 +14113,7 @@ export namespace Prisma {
     name: string
     description: string
     subtitle: string
+    vector?: string
     variants?: SpecificProductUncheckedCreateNestedManyWithoutGenericProdInput
     details?: DetailsUncheckedCreateNestedManyWithoutProdInput
   }
@@ -14122,6 +14152,7 @@ export namespace Prisma {
     name?: StringFilter<"GenericProduct"> | string
     description?: StringFilter<"GenericProduct"> | string
     subtitle?: StringFilter<"GenericProduct"> | string
+    vector?: StringFilter<"GenericProduct"> | string
     categorieId?: StringFilter<"GenericProduct"> | string
   }
 
@@ -14130,6 +14161,7 @@ export namespace Prisma {
     name: string
     description: string
     subtitle: string
+    vector?: string
     variants?: SpecificProductCreateNestedManyWithoutGenericProdInput
     categorie: CategorieCreateNestedOneWithoutProductosInput
   }
@@ -14139,6 +14171,7 @@ export namespace Prisma {
     name: string
     description: string
     subtitle: string
+    vector?: string
     categorieId: string
     variants?: SpecificProductUncheckedCreateNestedManyWithoutGenericProdInput
   }
@@ -14164,6 +14197,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     subtitle?: StringFieldUpdateOperationsInput | string
+    vector?: StringFieldUpdateOperationsInput | string
     variants?: SpecificProductUpdateManyWithoutGenericProdNestedInput
     categorie?: CategorieUpdateOneRequiredWithoutProductosNestedInput
   }
@@ -14173,6 +14207,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     subtitle?: StringFieldUpdateOperationsInput | string
+    vector?: StringFieldUpdateOperationsInput | string
     categorieId?: StringFieldUpdateOperationsInput | string
     variants?: SpecificProductUncheckedUpdateManyWithoutGenericProdNestedInput
   }
@@ -14220,6 +14255,7 @@ export namespace Prisma {
     name: string
     description: string
     subtitle: string
+    vector?: string
     details?: DetailsCreateNestedManyWithoutProdInput
     categorie: CategorieCreateNestedOneWithoutProductosInput
   }
@@ -14229,6 +14265,7 @@ export namespace Prisma {
     name: string
     description: string
     subtitle: string
+    vector?: string
     categorieId: string
     details?: DetailsUncheckedCreateNestedManyWithoutProdInput
   }
@@ -14323,6 +14360,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     subtitle?: StringFieldUpdateOperationsInput | string
+    vector?: StringFieldUpdateOperationsInput | string
     details?: DetailsUpdateManyWithoutProdNestedInput
     categorie?: CategorieUpdateOneRequiredWithoutProductosNestedInput
   }
@@ -14332,6 +14370,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     subtitle?: StringFieldUpdateOperationsInput | string
+    vector?: StringFieldUpdateOperationsInput | string
     categorieId?: StringFieldUpdateOperationsInput | string
     details?: DetailsUncheckedUpdateManyWithoutProdNestedInput
   }
@@ -14848,6 +14887,7 @@ export namespace Prisma {
     name: string
     description: string
     subtitle: string
+    vector?: string
   }
 
   export type GenericProductUpdateWithoutCategorieInput = {
@@ -14855,6 +14895,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     subtitle?: StringFieldUpdateOperationsInput | string
+    vector?: StringFieldUpdateOperationsInput | string
     variants?: SpecificProductUpdateManyWithoutGenericProdNestedInput
     details?: DetailsUpdateManyWithoutProdNestedInput
   }
@@ -14864,6 +14905,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     subtitle?: StringFieldUpdateOperationsInput | string
+    vector?: StringFieldUpdateOperationsInput | string
     variants?: SpecificProductUncheckedUpdateManyWithoutGenericProdNestedInput
     details?: DetailsUncheckedUpdateManyWithoutProdNestedInput
   }
@@ -14873,6 +14915,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     subtitle?: StringFieldUpdateOperationsInput | string
+    vector?: StringFieldUpdateOperationsInput | string
   }
 
   export type ProductForOrderCreateManyProductInput = {

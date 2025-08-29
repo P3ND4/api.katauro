@@ -14,6 +14,7 @@ export declare class ProductsController {
         description: string;
         subtitle: string;
         categorieId: string;
+        vector: string;
     }>;
     findAll(): Promise<{
         name: string;
@@ -21,6 +22,7 @@ export declare class ProductsController {
         description: string;
         subtitle: string;
         categorieId: string;
+        vector: string;
     }[]>;
     createVariant(createSpecProductDTO: CreateSpecProductDTO): Promise<{
         image: string | null;
@@ -73,6 +75,7 @@ export declare class ProductsController {
         description: string;
         subtitle: string;
         categorieId: string;
+        vector: string;
     } | null>;
     update(id: string, updateProductDto: UpdateProductDto): Promise<{
         name: string;
@@ -80,6 +83,7 @@ export declare class ProductsController {
         description: string;
         subtitle: string;
         categorieId: string;
+        vector: string;
     }>;
     remove(id: string): Promise<{
         name: string;
@@ -87,5 +91,6 @@ export declare class ProductsController {
         description: string;
         subtitle: string;
         categorieId: string;
+        vector: string;
     }>;
 }
