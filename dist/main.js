@@ -40,15 +40,29 @@ const core_1 = require("@nestjs/core");
 const app_module_1 = require("./app.module");
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const dotenv = __importStar(require("dotenv"));
+const fs = __importStar(require("fs"));
+const common_1 = require("@nestjs/common");
 async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
+    const logStream = fs.createWriteStream(__dirname + '/startup.log', { flags: 'a' });
+    const logger = new common_1.Logger('Bootstrap');
     app.enableCors({
         origin: '*',
         methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
         credentials: true,
     });
-    app.use((0, cookie_parser_1.default)());
-    await app.listen(process.env.PORT ?? 3000);
+    try {
+        app.use((0, cookie_parser_1.default)());
+        await app.listen(process.env.PORT ?? 3000);
+        const msg = `App listening on port ${process.env.PORT ?? 3000}`;
+        logger.log(msg);
+        logStream.write(`[OK] ${msg}\n`);
+    }
+    catch (error) {
+        const msg = `Error starting app: ${error.message}`;
+        logger.error(msg);
+        logStream.write(`[ERROR] ${msg}\n`);
+    }
 }
 dotenv.config();
 bootstrap();
