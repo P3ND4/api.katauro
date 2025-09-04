@@ -26,8 +26,7 @@ let UsersController = class UsersController {
         return await this.usersService.create(createUserDto);
     }
     findAll() {
-        const users = this.usersService.findAll();
-        return 'No hay usuarios';
+        return this.usersService.findAll();
     }
     findOne(id) {
         return this.usersService.findOne(id);
