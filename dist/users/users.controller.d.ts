@@ -11,13 +11,7 @@ export declare class UsersController {
         image: string | null;
         id: string;
     }>;
-    findAll(): Promise<{
-        email: string;
-        name: string;
-        password: string;
-        image: string | null;
-        id: string;
-    }[]>;
+    findAll(): string;
     findOne(id: string): Promise<{
         email: string;
         name: string;
