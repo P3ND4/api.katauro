@@ -5,6 +5,7 @@ import { UpdateProductDto } from './dto/update-product.dto';
 import { CreateSpecProductDTO } from './dto/create-sproduct.dto';
 import { SpecProductService } from './spec-product/spec-product.service';
 import { UpdateSpecProductDto } from './dto/update-sproduct.dto';
+import { error } from 'console';
 
 @Controller('products')
 export class ProductsController {
@@ -17,7 +18,12 @@ export class ProductsController {
 
   @Get()
   findAll() {
-    return this.productsService.findAll();
+    try{
+      return this.productsService.findAll();
+    }
+    catch(err){
+      return error;
+    }
   }
 
 

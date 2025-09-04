@@ -23,7 +23,10 @@ export declare class ProductsController {
         subtitle: string;
         categoryId: string;
         vector: string;
-    }[]>;
+    }[]> | {
+        (...data: any[]): void;
+        (message?: any, ...optionalParams: any[]): void;
+    };
     createVariant(createSpecProductDTO: CreateSpecProductDTO): Promise<{
         image: string | null;
         id: string;

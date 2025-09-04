@@ -20,6 +20,7 @@ const update_product_dto_1 = require("./dto/update-product.dto");
 const create_sproduct_dto_1 = require("./dto/create-sproduct.dto");
 const spec_product_service_1 = require("./spec-product/spec-product.service");
 const update_sproduct_dto_1 = require("./dto/update-sproduct.dto");
+const console_1 = require("console");
 let ProductsController = class ProductsController {
     productsService;
     specProdService;
@@ -31,7 +32,12 @@ let ProductsController = class ProductsController {
         return this.productsService.create(createProductDto);
     }
     findAll() {
-        return this.productsService.findAll();
+        try {
+            return this.productsService.findAll();
+        }
+        catch (err) {
+            return console_1.error;
+        }
     }
     createVariant(createSpecProductDTO) {
         return this.specProdService.create(createSpecProductDTO);
