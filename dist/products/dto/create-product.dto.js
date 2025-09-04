@@ -5,7 +5,7 @@ class CreateProductDto {
     name;
     description;
     subtitle;
-    categorieId;
+    categoryId;
     vector;
 }
 exports.CreateProductDto = CreateProductDto;

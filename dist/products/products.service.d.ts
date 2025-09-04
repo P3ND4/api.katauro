@@ -9,7 +9,7 @@ export declare class ProductsService {
         id: string;
         description: string;
         subtitle: string;
-        categorieId: string;
+        categoryId: string;
         vector: string;
     }>;
     findAll(): Promise<{
@@ -17,7 +17,7 @@ export declare class ProductsService {
         id: string;
         description: string;
         subtitle: string;
-        categorieId: string;
+        categoryId: string;
         vector: string;
     }[]>;
     findOne(id: string): Promise<{
@@ -25,7 +25,7 @@ export declare class ProductsService {
         id: string;
         description: string;
         subtitle: string;
-        categorieId: string;
+        categoryId: string;
         vector: string;
     } | null>;
     update(id: string, updateProductDto: UpdateProductDto): Promise<{
@@ -33,7 +33,7 @@ export declare class ProductsService {
         id: string;
         description: string;
         subtitle: string;
-        categorieId: string;
+        categoryId: string;
         vector: string;
     }>;
     remove(id: string): Promise<{
@@ -41,7 +41,7 @@ export declare class ProductsService {
         id: string;
         description: string;
         subtitle: string;
-        categorieId: string;
+        categoryId: string;
         vector: string;
     }>;
 }

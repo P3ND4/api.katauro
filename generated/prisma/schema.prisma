@@ -31,13 +31,13 @@ model GenericProduct {
   description String
   subtitle    String
   vector      String            @default("")
-  categorieId String
+  categoryId  String            @default("2b11c629-841f-11f0-8f51-02006ca180b4")
   variants    SpecificProduct[] @relation()
   details     Details[]         @relation()
-  categorie   Categorie         @relation(fields: [categorieId], references: [id], onDelete: Cascade)
+  category    Category          @relation(fields: [categoryId], references: [id], onDelete: Cascade)
 }
 
-model Categorie {
+model Category {
   id        String           @id @default(uuid())
   nombre    String
   productos GenericProduct[] @relation()

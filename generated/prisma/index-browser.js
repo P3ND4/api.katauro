@@ -134,10 +134,10 @@ exports.Prisma.GenericProductScalarFieldEnum = {
   description: 'description',
   subtitle: 'subtitle',
   vector: 'vector',
-  categorieId: 'categorieId'
+  categoryId: 'categoryId'
 };
 
-exports.Prisma.CategorieScalarFieldEnum = {
+exports.Prisma.CategoryScalarFieldEnum = {
   id: 'id',
   nombre: 'nombre'
 };
@@ -213,10 +213,10 @@ exports.Prisma.GenericProductOrderByRelevanceFieldEnum = {
   description: 'description',
   subtitle: 'subtitle',
   vector: 'vector',
-  categorieId: 'categorieId'
+  categoryId: 'categoryId'
 };
 
-exports.Prisma.CategorieOrderByRelevanceFieldEnum = {
+exports.Prisma.CategoryOrderByRelevanceFieldEnum = {
   id: 'id',
   nombre: 'nombre'
 };
@@ -265,7 +265,7 @@ exports.Prisma.ProductForPromotionOrderByRelevanceFieldEnum = {
 exports.Prisma.ModelName = {
   User: 'User',
   GenericProduct: 'GenericProduct',
-  Categorie: 'Categorie',
+  Category: 'Category',
   Details: 'Details',
   SpecificProduct: 'SpecificProduct',
   Images: 'Images',
