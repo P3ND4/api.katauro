@@ -5,7 +5,7 @@ class Product {
     id;
     name;
     description;
-    categorie;
+    category;
     price;
     stock;
     image;
