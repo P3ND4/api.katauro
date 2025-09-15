@@ -124,8 +124,14 @@ exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   email: 'email',
   name: 'name',
+  lastName: 'lastName',
   password: 'password',
   image: 'image'
+};
+
+exports.Prisma.ProductForCartScalarFieldEnum = {
+  productId: 'productId',
+  userId: 'userId'
 };
 
 exports.Prisma.GenericProductScalarFieldEnum = {
@@ -203,8 +209,14 @@ exports.Prisma.UserOrderByRelevanceFieldEnum = {
   id: 'id',
   email: 'email',
   name: 'name',
+  lastName: 'lastName',
   password: 'password',
   image: 'image'
+};
+
+exports.Prisma.ProductForCartOrderByRelevanceFieldEnum = {
+  productId: 'productId',
+  userId: 'userId'
 };
 
 exports.Prisma.GenericProductOrderByRelevanceFieldEnum = {
@@ -264,6 +276,7 @@ exports.Prisma.ProductForPromotionOrderByRelevanceFieldEnum = {
 
 exports.Prisma.ModelName = {
   User: 'User',
+  ProductForCart: 'ProductForCart',
   GenericProduct: 'GenericProduct',
   Category: 'Category',
   Details: 'Details',

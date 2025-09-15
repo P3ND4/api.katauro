@@ -12,11 +12,12 @@ export class UsersRepository implements IUserRepository {
      }
     findUserByEmail(email: string): Promise<User | null> {
         return this.prismaService.user.findUniqueOrThrow({
-            where: { email: email }
+            where: { email: email },
+            include: {cart: true}
         });
     }
     findAllUsers(): Promise<User[]> {
-        return this.prismaService.user.findMany();
+        return this.prismaService.user.findMany({include:{cart: true}});
     }
 
     async createUser(data: CreateUserDto): Promise<User> {
@@ -26,6 +27,7 @@ export class UsersRepository implements IUserRepository {
     findUserById(id: string): Promise<User | null> {
         return this.prismaService.user.findUnique({
             where: { id },
+            include: {cart: true}
         });
     }
 

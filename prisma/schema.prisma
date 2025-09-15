@@ -5,10 +5,9 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client-js"
-  output   = "../generated/prisma"
+  provider      = "prisma-client-js"
+  output        = "../generated/prisma"
   binaryTargets = ["native", "debian-openssl-1.1.x"] // Añade "debian-openssl-1.1.x" aquí
-
 }
 
 datasource db {
@@ -17,97 +16,104 @@ datasource db {
 }
 
 model User {
-  id       String  @id @default(uuid())
-  email    String  @unique
+  id       String           @id @default(uuid())
+  email    String           @unique
   name     String
+  lastName String
   password String
   image    String?
+  cart     ProductForCart[] @relation()
 
   orders Order[] @relation("UserOrders")
 }
 
+model ProductForCart {
+  productId String
+  userId    String
+  User      User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  product   SpecificProduct @relation(fields: [productId], references: [id], onDelete: Cascade)
+  @@id([userId, productId])
+}
 
-
-model GenericProduct{
-  id          String @id @default(uuid())
+model GenericProduct {
+  id          String            @id @default(uuid())
   name        String
   description String
   subtitle    String
-  vector      String @default("")
-  categoryId String  @default("2b11c629-841f-11f0-8f51-02006ca180b4")
+  vector      String            @default("")
+  categoryId  String            @default("2b11c629-841f-11f0-8f51-02006ca180b4")
   variants    SpecificProduct[] @relation()
-  details     Details[] @relation()
-  category   Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  details     Details[]         @relation()
+  category    Category          @relation(fields: [categoryId], references: [id], onDelete: Cascade)
 }
 
-model Category{
-  id        String       @id @default(uuid())
+model Category {
+  id        String           @id @default(uuid())
   nombre    String
   productos GenericProduct[] @relation()
 }
 
-model Details{
-  id      String @id @default(uuid())
-  idProd  String
-  text    String
-  prod    GenericProduct @relation(fields: [idProd], references: [id], onDelete: Cascade)
+model Details {
+  id     String         @id @default(uuid())
+  idProd String
+  text   String
+  prod   GenericProduct @relation(fields: [idProd], references: [id], onDelete: Cascade)
 }
+
 model SpecificProduct {
-  genericId   String
-  id          String  @id @default(uuid())
-  image       String?
-  price       Float
-  color       String  @default("none")
-  variantName String  
-  stock       Int
-  order       ProductForOrder[] @relation()
-  promotions  ProductForPromotion[] @relation()
-  genericProd GenericProduct @relation(fields: [genericId], references: [id], onDelete: Cascade)
-  images      Images[] @relation()
+  genericId      String
+  id             String                @id @default(uuid())
+  image          String?
+  price          Float
+  color          String                @default("none")
+  variantName    String
+  stock          Int
+  order          ProductForOrder[]     @relation()
+  promotions     ProductForPromotion[] @relation()
+  genericProd    GenericProduct        @relation(fields: [genericId], references: [id], onDelete: Cascade)
+  images         Images[]              @relation()
+  ProductForCart ProductForCart[]
 }
 
-
-model Images{
-  id        String  @id @default(ulid())
-  link      String
-  prodId    String
-  product  SpecificProduct @relation(fields: [prodId], references: [id], onDelete: Cascade)
+model Images {
+  id      String          @id @default(ulid())
+  link    String
+  prodId  String
+  product SpecificProduct @relation(fields: [prodId], references: [id], onDelete: Cascade)
 }
 
 model Order {
-  id        String   @id @default(uuid())
+  id        String            @id @default(uuid())
   userId    String
-  createdAt DateTime @default(now())
-  user     User      @relation(fields: [userId], references: [id], "UserOrders", onDelete: Cascade)
-  products ProductForOrder[] @relation("OrderProducts")
+  createdAt DateTime          @default(now())
+  user      User              @relation(fields: [userId], references: [id], "UserOrders", onDelete: Cascade)
+  products  ProductForOrder[] @relation("OrderProducts")
 }
 
 model ProductForOrder {
   orderId   String
-  productId String 
-  count     Int     @default(1)
-  order Order       @relation(fields: [orderId], references: [id], "OrderProducts", onDelete: Cascade)
-  product SpecificProduct   @relation(fields: [productId], references: [id], onDelete: Cascade)
-  @@id([orderId, productId])
+  productId String
+  count     Int             @default(1)
+  order     Order           @relation(fields: [orderId], references: [id], "OrderProducts", onDelete: Cascade)
+  product   SpecificProduct @relation(fields: [productId], references: [id], onDelete: Cascade)
 
+  @@id([orderId, productId])
 }
 
 model Promotion {
-  promo_id String @id @default(uuid())
-  code     String @unique
+  promo_id  String                @id @default(uuid())
+  code      String                @unique
   startDate DateTime
   endDate   DateTime
-  isActive  Boolean @default(true)
+  isActive  Boolean               @default(true)
   products  ProductForPromotion[]
 }
 
-model ProductForPromotion{
-  productId String
+model ProductForPromotion {
+  productId   String
   promotionId String
+  product     SpecificProduct @relation(fields: [productId], references: [id], onDelete: Cascade)
+  promotion   Promotion       @relation(fields: [promotionId], references: [promo_id], onDelete: Cascade)
 
   @@id([productId, promotionId])
-  product SpecificProduct @relation(fields: [productId], references: [id], onDelete: Cascade)
-  promotion Promotion @relation(fields: [promotionId], references: [promo_id], onDelete: Cascade)
 }
-
-
