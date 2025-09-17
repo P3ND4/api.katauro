@@ -13,7 +13,7 @@ export class UsersRepository implements IUserRepository {
     findUserByEmail(email: string): Promise<User | null> {
         return this.prismaService.user.findUniqueOrThrow({
             where: { email: email },
-            include: {cart: true}
+            include: {cart: {include: {product: true}}}
         });
     }
     findAllUsers(): Promise<User[]> {

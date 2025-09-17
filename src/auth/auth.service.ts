@@ -4,13 +4,14 @@ import { CreateUserDto } from 'src/users/dto/create-user.dto';
 import { UsersService } from 'src/users/users.service';
 import * as bcrypt from 'bcrypt';
 import { LoginDto } from './dto/loginDto';
+import { error } from 'console';
 
 @Injectable()
 export class AuthService {
     constructor(private readonly userService: UsersService, private readonly jwtService: JwtService) { }
     async register(createUserDto: CreateUserDto): Promise<any> {
 
-        const userExists = await this.userService.findUserByEmail(createUserDto.email).catch(()=>null);
+        const userExists = await this.userService.findUserByEmail(createUserDto.email).catch(() => null);
         if (userExists) throw new BadRequestException('User already exists');
         const hashedPassword = await bcrypt.hash(createUserDto.password, 10);
         createUserDto.password = hashedPassword
@@ -27,7 +28,7 @@ export class AuthService {
             throw new UnauthorizedException('Invalid credentials');
         }
         const payload = { email: user.email, sub: user.id };
-        const accessToken = this.jwtService.sign(payload);
+        const accessToken = this.jwtService.sign(payload, {expiresIn: '72h'});
         return { access_token: accessToken };
     }
 
@@ -40,4 +41,20 @@ export class AuthService {
         if (!passwordValid) return null;
         return user;
     }
+    // auth.service.ts
+    async getLoggedUser(token: string) {
+        if (!token) throw new UnauthorizedException('Not logged in');
+
+        try {
+            const payload = this.jwtService.verify(token, { secret: process.env.JWT_SECRET });
+            const user = await this.userService.findOne(payload.sub);
+            if (!user) throw new UnauthorizedException();
+
+            const { password, ...userSafe } = user;
+            return userSafe;
+        } catch (err) {
+            throw err;
+        }
+    }
+
 }

@@ -7,6 +7,7 @@ export declare class UsersController {
     create(createUserDto: CreateUserDto): Promise<{
         email: string;
         name: string;
+        lastName: string;
         password: string;
         image: string | null;
         id: string;
@@ -14,6 +15,7 @@ export declare class UsersController {
     findAll(): Promise<{
         email: string;
         name: string;
+        lastName: string;
         password: string;
         image: string | null;
         id: string;
@@ -21,6 +23,7 @@ export declare class UsersController {
     findOne(id: string): Promise<{
         email: string;
         name: string;
+        lastName: string;
         password: string;
         image: string | null;
         id: string;
@@ -28,6 +31,7 @@ export declare class UsersController {
     update(id: string, updateUserDto: UpdateUserDto): Promise<{
         email: string;
         name: string;
+        lastName: string;
         password: string;
         image: string | null;
         id: string;
@@ -35,6 +39,7 @@ export declare class UsersController {
     remove(id: string): Promise<{
         email: string;
         name: string;
+        lastName: string;
         password: string;
         image: string | null;
         id: string;

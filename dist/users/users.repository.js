@@ -19,11 +19,12 @@ let UsersRepository = class UsersRepository {
     }
     findUserByEmail(email) {
         return this.prismaService.user.findUniqueOrThrow({
-            where: { email: email }
+            where: { email: email },
+            include: { cart: { include: { product: true } } }
         });
     }
     findAllUsers() {
-        return this.prismaService.user.findMany();
+        return this.prismaService.user.findMany({ include: { cart: true } });
     }
     async createUser(data) {
         return await this.prismaService.user.create({ data: data });
@@ -31,6 +32,7 @@ let UsersRepository = class UsersRepository {
     findUserById(id) {
         return this.prismaService.user.findUnique({
             where: { id },
+            include: { cart: true }
         });
     }
     updateUser(id, data) {

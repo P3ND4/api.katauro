@@ -72,7 +72,7 @@ let AuthService = class AuthService {
             throw new common_1.UnauthorizedException('Invalid credentials');
         }
         const payload = { email: user.email, sub: user.id };
-        const accessToken = this.jwtService.sign(payload);
+        const accessToken = this.jwtService.sign(payload, { expiresIn: '72h' });
         return { access_token: accessToken };
     }
     async validateUser(email, password) {
@@ -83,6 +83,21 @@ let AuthService = class AuthService {
         if (!passwordValid)
             return null;
         return user;
+    }
+    async getLoggedUser(token) {
+        if (!token)
+            throw new common_1.UnauthorizedException('Not logged in');
+        try {
+            const payload = this.jwtService.verify(token, { secret: process.env.JWT_SECRET });
+            const user = await this.userService.findOne(payload.sub);
+            if (!user)
+                throw new common_1.UnauthorizedException();
+            const { password, ...userSafe } = user;
+            return userSafe;
+        }
+        catch (err) {
+            throw err;
+        }
     }
 };
 exports.AuthService = AuthService;

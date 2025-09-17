@@ -10,4 +10,11 @@ export declare class AuthController {
     logout(res: Response): {
         message: string;
     };
+    getMe(req: any): Promise<{
+        email: string;
+        name: string;
+        lastName: string;
+        image: string | null;
+        id: string;
+    }>;
 }

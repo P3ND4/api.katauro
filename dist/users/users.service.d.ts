@@ -9,6 +9,7 @@ export declare class UsersService {
     create(createUserDto: CreateUserDto): Promise<{
         email: string;
         name: string;
+        lastName: string;
         password: string;
         image: string | null;
         id: string;
@@ -16,6 +17,7 @@ export declare class UsersService {
     findAll(): Promise<{
         email: string;
         name: string;
+        lastName: string;
         password: string;
         image: string | null;
         id: string;
@@ -23,6 +25,7 @@ export declare class UsersService {
     findOne(id: string): Promise<{
         email: string;
         name: string;
+        lastName: string;
         password: string;
         image: string | null;
         id: string;
@@ -30,6 +33,7 @@ export declare class UsersService {
     update(id: string, updateUserDto: UpdateUserDto): Promise<{
         email: string;
         name: string;
+        lastName: string;
         password: string;
         image: string | null;
         id: string;
@@ -37,6 +41,7 @@ export declare class UsersService {
     remove(id: string): Promise<{
         email: string;
         name: string;
+        lastName: string;
         password: string;
         image: string | null;
         id: string;
@@ -44,6 +49,7 @@ export declare class UsersService {
     findUserByEmail(email: string): Promise<{
         email: string;
         name: string;
+        lastName: string;
         password: string;
         image: string | null;
         id: string;

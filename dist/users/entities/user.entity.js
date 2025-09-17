@@ -5,6 +5,7 @@ class User {
     id;
     email;
     name;
+    lastName;
     password;
     image;
 }

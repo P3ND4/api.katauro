@@ -39,6 +39,10 @@ let AuthController = class AuthController {
         res.clearCookie('jwt');
         return { message: 'Logout successful' };
     }
+    async getMe(req) {
+        const token = req.cookies['jwt'];
+        return this.authService.getLoggedUser(token);
+    }
 };
 exports.AuthController = AuthController;
 __decorate([
@@ -64,6 +68,13 @@ __decorate([
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
 ], AuthController.prototype, "logout", null);
+__decorate([
+    (0, common_1.Get)('me'),
+    __param(0, (0, common_1.Req)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], AuthController.prototype, "getMe", null);
 exports.AuthController = AuthController = __decorate([
     (0, common_1.Controller)('auth'),
     __metadata("design:paramtypes", [auth_service_1.AuthService])
