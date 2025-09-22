@@ -1,11 +1,23 @@
+import { Images } from "generated/prisma";
+
 export class Product {
     id: string;
     name: string;
+    categoryId: string
     description?: string;
-    category: Categories;
+    subtitle: string
+    vector?: string
+    category: CatEntity;
+    variants: Variant[];
+}
+
+export class Variant{
+    id: string;
+    name: string;
     price: number;
     stock: number;
-    image?: string
+    image?: string;
+    images: Images[]
 }
 
 export enum Categories{
@@ -15,4 +27,9 @@ export enum Categories{
     roofLumin = "Luminarias de techo",
     lightBulb = "Bombillo",
     other = "Otras"
+}
+
+export class CatEntity{
+    nombre: string
+    id: string
 }

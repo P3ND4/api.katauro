@@ -67,5 +67,9 @@ export class ProductsController {
     return this.productsService.remove(id);
   }
 
+  @Get('productcat/:name')
+  productByCategoryName(@Param('name') name: string){
+    return this.productsService.getProductByCategory(name)
+  }
   
 }

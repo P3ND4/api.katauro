@@ -2,10 +2,12 @@ import { Injectable } from '@nestjs/common';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { ProductRepository } from './products.repository';
+import { Product } from './entities/product.entity';
+import { catRepository } from './CatRepository';
 
 @Injectable()
 export class ProductsService {
-  constructor(private productRepository: ProductRepository){}
+  constructor(private productRepository: ProductRepository, private catRep: catRepository){}
 
   create(createProductDto: CreateProductDto) {
     return this.productRepository.createProduct(createProductDto);
@@ -27,4 +29,17 @@ export class ProductsService {
     return this.productRepository.deleteProduct(id);
   }
   
+  async getProductByCategory(name: string){
+    var products = await this.productRepository.findAllProducts() as Product[]
+    return products.filter((prod)=> prod.category.nombre === name)
+  }
+
+  async getCatByName(name:string){
+    return (await this.catRep.findCategories()).filter((cat)=> cat.nombre ===name);
+  }
+
+  async getCats(){
+    return this.catRep.findCategories();
+  }
+
 }
