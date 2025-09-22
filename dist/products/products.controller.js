@@ -31,13 +31,19 @@ let ProductsController = class ProductsController {
     create(createProductDto) {
         return this.productsService.create(createProductDto);
     }
-    findAll() {
+    findAll(page) {
         try {
+            if (page) {
+                return this.productsService.findPage(+page);
+            }
             return this.productsService.findAll();
         }
         catch (err) {
             return console_1.error;
         }
+    }
+    findPage() {
+        return this.productsService.getPages();
     }
     createVariant(createSpecProductDTO) {
         return this.specProdService.create(createSpecProductDTO);
@@ -63,6 +69,9 @@ let ProductsController = class ProductsController {
     remove(id) {
         return this.productsService.remove(id);
     }
+    productByCategoryName(name) {
+        return this.productsService.getProductByCategory(name);
+    }
 };
 exports.ProductsController = ProductsController;
 __decorate([
@@ -74,10 +83,17 @@ __decorate([
 ], ProductsController.prototype, "create", null);
 __decorate([
     (0, common_1.Get)(),
+    __param(0, (0, common_1.Query)('page')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], ProductsController.prototype, "findAll", null);
+__decorate([
+    (0, common_1.Get)('pages'),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", void 0)
-], ProductsController.prototype, "findAll", null);
+], ProductsController.prototype, "findPage", null);
 __decorate([
     (0, common_1.Post)('add-variant'),
     __param(0, (0, common_1.Body)()),
@@ -136,6 +152,13 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
 ], ProductsController.prototype, "remove", null);
+__decorate([
+    (0, common_1.Get)('productcat/:name'),
+    __param(0, (0, common_1.Param)('name')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], ProductsController.prototype, "productByCategoryName", null);
 exports.ProductsController = ProductsController = __decorate([
     (0, common_1.Controller)('products'),
     __metadata("design:paramtypes", [products_service_1.ProductsService, spec_product_service_1.SpecProductService])

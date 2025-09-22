@@ -17,6 +17,16 @@ export class ProductsService {
     return this.productRepository.findAllProducts();
   }
 
+  async findPage(page: number) {
+    const products = await this.productRepository.findAllProducts();
+    return products.slice((page-1)*9, (page-1)*9+9)
+  }
+  
+  async getPages(){
+    const products = await this.productRepository.findAllProducts()
+    return Math.ceil(products.length/9);
+  }
+
   findOne(id: string) {
     return this.productRepository.findProductById(id);
   }

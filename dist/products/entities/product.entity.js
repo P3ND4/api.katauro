@@ -1,16 +1,26 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Categories = exports.Product = void 0;
+exports.CatEntity = exports.Categories = exports.Variant = exports.Product = void 0;
 class Product {
     id;
     name;
+    categoryId;
     description;
+    subtitle;
+    vector;
     category;
+    variants;
+}
+exports.Product = Product;
+class Variant {
+    id;
+    name;
     price;
     stock;
     image;
+    images;
 }
-exports.Product = Product;
+exports.Variant = Variant;
 var Categories;
 (function (Categories) {
     Categories["tableLumin"] = "Luminarias de mesa";
@@ -20,4 +30,9 @@ var Categories;
     Categories["lightBulb"] = "Bombillo";
     Categories["other"] = "Otras";
 })(Categories || (exports.Categories = Categories = {}));
+class CatEntity {
+    nombre;
+    id;
+}
+exports.CatEntity = CatEntity;
 //# sourceMappingURL=product.entity.js.map

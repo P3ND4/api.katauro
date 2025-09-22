@@ -14,13 +14,14 @@ const prisma_service_1 = require("../prisma/prisma.service");
 const products_repository_1 = require("./products.repository");
 const spec_product_service_1 = require("./spec-product/spec-product.service");
 const spec_product_repository_1 = require("./spec-product/spec-product.repository");
+const CatRepository_1 = require("./CatRepository");
 let ProductsModule = class ProductsModule {
 };
 exports.ProductsModule = ProductsModule;
 exports.ProductsModule = ProductsModule = __decorate([
     (0, common_1.Module)({
         controllers: [products_controller_1.ProductsController],
-        providers: [products_service_1.ProductsService, prisma_service_1.PrismaService, products_repository_1.ProductRepository, spec_product_service_1.SpecProductService, spec_product_repository_1.SpecProductRepository],
+        providers: [products_service_1.ProductsService, prisma_service_1.PrismaService, products_repository_1.ProductRepository, spec_product_service_1.SpecProductService, spec_product_repository_1.SpecProductRepository, CatRepository_1.catRepository],
     })
 ], ProductsModule);
 //# sourceMappingURL=products.module.js.map

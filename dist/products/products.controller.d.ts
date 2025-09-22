@@ -16,7 +16,7 @@ export declare class ProductsController {
         categoryId: string;
         vector: string;
     }>;
-    findAll(): Promise<{
+    findAll(page: string): Promise<{
         name: string;
         id: string;
         description: string;
@@ -27,6 +27,7 @@ export declare class ProductsController {
         (...data: any[]): void;
         (message?: any, ...optionalParams: any[]): void;
     };
+    findPage(): Promise<number>;
     createVariant(createSpecProductDTO: CreateSpecProductDTO): Promise<{
         image: string | null;
         id: string;
@@ -96,4 +97,5 @@ export declare class ProductsController {
         categoryId: string;
         vector: string;
     }>;
+    productByCategoryName(name: string): Promise<import("./entities/product.entity").Product[]>;
 }

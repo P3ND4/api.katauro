@@ -12,16 +12,27 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ProductsService = void 0;
 const common_1 = require("@nestjs/common");
 const products_repository_1 = require("./products.repository");
+const CatRepository_1 = require("./CatRepository");
 let ProductsService = class ProductsService {
     productRepository;
-    constructor(productRepository) {
+    catRep;
+    constructor(productRepository, catRep) {
         this.productRepository = productRepository;
+        this.catRep = catRep;
     }
     create(createProductDto) {
         return this.productRepository.createProduct(createProductDto);
     }
     findAll() {
         return this.productRepository.findAllProducts();
+    }
+    async findPage(page) {
+        const products = await this.productRepository.findAllProducts();
+        return products.slice((page - 1) * 9, (page - 1) * 9 + 9);
+    }
+    async getPages() {
+        const products = await this.productRepository.findAllProducts();
+        return Math.ceil(products.length / 9);
     }
     findOne(id) {
         return this.productRepository.findProductById(id);
@@ -32,10 +43,20 @@ let ProductsService = class ProductsService {
     remove(id) {
         return this.productRepository.deleteProduct(id);
     }
+    async getProductByCategory(name) {
+        var products = await this.productRepository.findAllProducts();
+        return products.filter((prod) => prod.category.nombre === name);
+    }
+    async getCatByName(name) {
+        return (await this.catRep.findCategories()).filter((cat) => cat.nombre === name);
+    }
+    async getCats() {
+        return this.catRep.findCategories();
+    }
 };
 exports.ProductsService = ProductsService;
 exports.ProductsService = ProductsService = __decorate([
     (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [products_repository_1.ProductRepository])
+    __metadata("design:paramtypes", [products_repository_1.ProductRepository, CatRepository_1.catRepository])
 ], ProductsService);
 //# sourceMappingURL=products.service.js.map
