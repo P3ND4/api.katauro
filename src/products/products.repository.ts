@@ -6,24 +6,24 @@ import { PrismaService } from "src/prisma/prisma.service";
 import { GenericProduct } from "generated/prisma";
 
 @Injectable()
-export class ProductRepository implements IProductRepository{
+export class ProductRepository implements IProductRepository {
 
-    constructor(private prismaService: PrismaService){}
+    constructor(private prismaService: PrismaService) { }
 
     findAllProducts(): Promise<GenericProduct[]> {
-        return this.prismaService.genericProduct.findMany({include: {variants: true, details: true, category: true}});
+        return this.prismaService.genericProduct.findMany({ include: { variants: true, details: true, category: true, finish: true } });
     }
     createProduct(data: CreateProductDto): Promise<GenericProduct> {
-        return this.prismaService.genericProduct.create({data: data});
+        return this.prismaService.genericProduct.create({ data: data });
     }
     findProductById(id: string): Promise<GenericProduct | null> {
-        return this.prismaService.genericProduct.findUnique({where: {id}, include: {variants: true, details: true, category: true}})
+        return this.prismaService.genericProduct.findUnique({ where: { id }, include: { variants: true, details: true, category: true, finish: true } })
     }
     updateProduct(id: string, data: UpdateProductDto): Promise<GenericProduct> {
-        return this.prismaService.genericProduct.update({where: {id}, data})
+        return this.prismaService.genericProduct.update({ where: { id }, data })
     }
     deleteProduct(id: string): Promise<GenericProduct> {
-        return this.prismaService.genericProduct.delete({where: {id}})
+        return this.prismaService.genericProduct.delete({ where: { id } })
     }
 
 }

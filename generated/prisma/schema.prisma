@@ -27,6 +27,14 @@ model User {
   orders Order[] @relation("UserOrders")
 }
 
+model finish {
+  id        String @id @default(uuid())
+  productId String
+  text      String
+
+  product GenericProduct @relation(fields: [productId], references: [id], onDelete: Cascade)
+}
+
 model ProductForCart {
   productId String
   userId    String
@@ -46,6 +54,7 @@ model GenericProduct {
   variants    SpecificProduct[] @relation()
   details     Details[]         @relation()
   category    Category          @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  finish      finish[]          @relation()
 }
 
 model Category {

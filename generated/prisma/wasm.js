@@ -129,6 +129,12 @@ exports.Prisma.UserScalarFieldEnum = {
   image: 'image'
 };
 
+exports.Prisma.FinishScalarFieldEnum = {
+  id: 'id',
+  productId: 'productId',
+  text: 'text'
+};
+
 exports.Prisma.ProductForCartScalarFieldEnum = {
   productId: 'productId',
   userId: 'userId'
@@ -214,6 +220,12 @@ exports.Prisma.UserOrderByRelevanceFieldEnum = {
   image: 'image'
 };
 
+exports.Prisma.finishOrderByRelevanceFieldEnum = {
+  id: 'id',
+  productId: 'productId',
+  text: 'text'
+};
+
 exports.Prisma.ProductForCartOrderByRelevanceFieldEnum = {
   productId: 'productId',
   userId: 'userId'
@@ -276,6 +288,7 @@ exports.Prisma.ProductForPromotionOrderByRelevanceFieldEnum = {
 
 exports.Prisma.ModelName = {
   User: 'User',
+  finish: 'finish',
   ProductForCart: 'ProductForCart',
   GenericProduct: 'GenericProduct',
   Category: 'Category',
