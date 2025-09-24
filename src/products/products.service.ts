@@ -39,9 +39,10 @@ export class ProductsService {
     return this.productRepository.deleteProduct(id);
   }
   
-  async getProductByCategory(name: string){
+  async getProductByCategory(name: string, page?: number){
     var products = await this.productRepository.findAllProducts() as Product[]
-    return products.filter((prod)=> prod.category.nombre === name)
+    products = products.filter((prod)=> prod.category.nombre === name)
+    return page? products.slice((page-1)*9, (page-1)*9+9): products
   }
 
   async getCatByName(name:string){

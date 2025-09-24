@@ -11,7 +11,8 @@ export declare class Product {
 }
 export declare class Variant {
     id: string;
-    name: string;
+    variantName: String;
+    color?: string;
     price: number;
     stock: number;
     image?: string;

@@ -14,7 +14,8 @@ class Product {
 exports.Product = Product;
 class Variant {
     id;
-    name;
+    variantName;
+    color;
     price;
     stock;
     image;

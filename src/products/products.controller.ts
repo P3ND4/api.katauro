@@ -17,10 +17,13 @@ export class ProductsController {
   }
 
   @Get()
-  findAll(@Query('page') page: string) {
+  findAll(@Query('page') page: string, @Query('category') cat: string) {
     try{
-      if(page){
+      if(page && !cat){
         return this.productsService.findPage(+page)
+      }
+      else if(cat){
+        return page? this.productsService.getProductByCategory(cat, +page): this.productsService.getProductByCategory(cat);
       }
       return this.productsService.findAll();
     }

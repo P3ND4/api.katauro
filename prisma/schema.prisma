@@ -31,7 +31,6 @@ model finish {
   id        String @id @default(uuid())
   productId String
   text      String
-
   product GenericProduct @relation(fields: [productId], references: [id], onDelete: Cascade)
 }
 
