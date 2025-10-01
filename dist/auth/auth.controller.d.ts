@@ -7,9 +7,9 @@ export declare class AuthController {
     constructor(authService: AuthService);
     login(loginDto: LoginDto, res: Response): Promise<void>;
     register(createUserDto: CreateUserDto): Promise<any>;
-    logout(res: Response): {
+    logout(req: any): Promise<{
         message: string;
-    };
+    }>;
     getMe(req: any): Promise<{
         email: string;
         name: string;

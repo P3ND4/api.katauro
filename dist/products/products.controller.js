@@ -31,10 +31,13 @@ let ProductsController = class ProductsController {
     create(createProductDto) {
         return this.productsService.create(createProductDto);
     }
-    findAll(page) {
+    findAll(page, cat) {
         try {
-            if (page) {
+            if (page && !cat) {
                 return this.productsService.findPage(+page);
+            }
+            else if (cat) {
+                return page ? this.productsService.getProductByCategory(cat, +page) : this.productsService.getProductByCategory(cat);
             }
             return this.productsService.findAll();
         }
@@ -42,8 +45,8 @@ let ProductsController = class ProductsController {
             return console_1.error;
         }
     }
-    findPage() {
-        return this.productsService.getPages();
+    findPage(cat) {
+        return cat ? this.productsService.getPages(cat) : this.productsService.getPages(cat);
     }
     createVariant(createSpecProductDTO) {
         return this.specProdService.create(createSpecProductDTO);
@@ -84,14 +87,16 @@ __decorate([
 __decorate([
     (0, common_1.Get)(),
     __param(0, (0, common_1.Query)('page')),
+    __param(1, (0, common_1.Query)('category')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
+    __metadata("design:paramtypes", [String, String]),
     __metadata("design:returntype", void 0)
 ], ProductsController.prototype, "findAll", null);
 __decorate([
     (0, common_1.Get)('pages'),
+    __param(0, (0, common_1.Query)('category')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
 ], ProductsController.prototype, "findPage", null);
 __decorate([

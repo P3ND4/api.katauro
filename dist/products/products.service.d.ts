@@ -31,7 +31,7 @@ export declare class ProductsService {
         categoryId: string;
         vector: string;
     }[]>;
-    getPages(): Promise<number>;
+    getPages(category?: string): Promise<number>;
     findOne(id: string): Promise<{
         name: string;
         id: string;
@@ -56,7 +56,7 @@ export declare class ProductsService {
         categoryId: string;
         vector: string;
     }>;
-    getProductByCategory(name: string): Promise<Product[]>;
+    getProductByCategory(name: string, page?: number): Promise<Product[]>;
     getCatByName(name: string): Promise<import("./entities/product.entity").CatEntity[]>;
     getCats(): Promise<import("./entities/product.entity").CatEntity[]>;
 }

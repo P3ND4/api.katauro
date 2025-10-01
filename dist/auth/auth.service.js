@@ -47,12 +47,15 @@ const common_1 = require("@nestjs/common");
 const jwt_1 = require("@nestjs/jwt");
 const users_service_1 = require("../users/users.service");
 const bcrypt = __importStar(require("bcrypt"));
+const revokedJwt_service_1 = require("./revokedJwt.service");
 let AuthService = class AuthService {
     userService;
     jwtService;
-    constructor(userService, jwtService) {
+    revokedJwtService;
+    constructor(userService, jwtService, revokedJwtService) {
         this.userService = userService;
         this.jwtService = jwtService;
+        this.revokedJwtService = revokedJwtService;
     }
     async register(createUserDto) {
         const userExists = await this.userService.findUserByEmail(createUserDto.email).catch(() => null);
@@ -71,7 +74,7 @@ let AuthService = class AuthService {
         if (!user || !(await bcrypt.compare(password, user.password))) {
             throw new common_1.UnauthorizedException('Invalid credentials');
         }
-        const payload = { email: user.email, sub: user.id };
+        const payload = { email: user.email, sub: user.id, tid: crypto.randomUUID() };
         const accessToken = this.jwtService.sign(payload, { expiresIn: '72h' });
         return { access_token: accessToken };
     }
@@ -89,6 +92,8 @@ let AuthService = class AuthService {
             throw new common_1.UnauthorizedException('Not logged in');
         try {
             const payload = this.jwtService.verify(token, { secret: process.env.JWT_SECRET });
+            if (await this.revokedJwtService.isTokenRevoked(payload.tid))
+                throw new common_1.UnauthorizedException('Not logged in');
             const user = await this.userService.findOne(payload.sub);
             if (!user)
                 throw new common_1.UnauthorizedException();
@@ -99,10 +104,24 @@ let AuthService = class AuthService {
             throw err;
         }
     }
+    async logout(token) {
+        if (!token || await this.revokedJwtService.isTokenRevoked(token))
+            throw new common_1.UnauthorizedException('Not logged in');
+        try {
+            const payload = this.jwtService.verify(token, { secret: process.env.JWT_SECRET });
+            const expTimestamp = payload.exp;
+            const expirationDate = new Date(expTimestamp * 1000);
+            await this.revokedJwtService.revokeToken(token, expirationDate, payload.tid);
+        }
+        catch (err) {
+            throw err;
+        }
+        return { message: 'Logout successful' };
+    }
 };
 exports.AuthService = AuthService;
 exports.AuthService = AuthService = __decorate([
     (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [users_service_1.UsersService, jwt_1.JwtService])
+    __metadata("design:paramtypes", [users_service_1.UsersService, jwt_1.JwtService, revokedJwt_service_1.RevokedJwtService])
 ], AuthService);
 //# sourceMappingURL=auth.service.js.map

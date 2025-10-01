@@ -18,16 +18,16 @@ let SpecProductRepository = class SpecProductRepository {
         this.prismaService = prismaService;
     }
     findByGeneric(genId) {
-        return this.prismaService.specificProduct.findMany({ where: { genericId: genId }, include: { images: true, genericProd: true } });
+        return this.prismaService.specificProduct.findMany({ where: { genericId: genId }, include: { images: true, genericProd: true, color: true } });
     }
     findAllProducts() {
-        return this.prismaService.specificProduct.findMany({ include: { images: true, genericProd: true } });
+        return this.prismaService.specificProduct.findMany({ include: { images: true, genericProd: true, color: true } });
     }
     createProduct(data) {
         return this.prismaService.specificProduct.create({ data: data });
     }
     findProductById(id) {
-        return this.prismaService.specificProduct.findUnique({ where: { id }, include: { images: true, genericProd: true } });
+        return this.prismaService.specificProduct.findUnique({ where: { id }, include: { images: true, genericProd: true, color: true } });
     }
     updateProduct(id, data) {
         return this.prismaService.specificProduct.update({ where: { id }, data });

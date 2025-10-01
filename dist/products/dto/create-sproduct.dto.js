@@ -7,7 +7,7 @@ class CreateSpecProductDTO {
     variantName;
     price;
     stock;
-    color;
+    colorId;
 }
 exports.CreateSpecProductDTO = CreateSpecProductDTO;
 //# sourceMappingURL=create-sproduct.dto.js.map

@@ -15,8 +15,10 @@ export class AuthController {
     const { access_token } = await this.authService.login(loginDto);
     res.cookie('jwt', access_token, {
       httpOnly: true,
-      sameSite: 'strict',
+      secure: false, // Asegúrate de usar secure en producción con HTTPS
+      //sameSite: 'none',
       maxAge: 72 * 3600000, // 72 hours
+      path: '/',  // 👈 esto es clave
     });
     res.json({ message: 'Login successful' });  // Aquí mandas la respuesta
   }
@@ -26,12 +28,13 @@ export class AuthController {
     return this.authService.register(createUserDto);
   }
 
-  @UseGuards(JwtAuthGuard)
-  @Post('logout')
-  logout(@Res() res: Response) {
-    res.clearCookie('jwt'); // Clear the JWT cookie
-    return { message: 'Logout successful' };
+  //@UseGuards(JwtAuthGuard)
+  @Get('logout')
+  async logout(@Req() req: any) {
+    const token = req.cookies['jwt'];
+    return this.authService.logout(token);
   }
+
 
   @Get('me')
   async getMe(@Req() req: any) {

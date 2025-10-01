@@ -132,7 +132,8 @@ exports.Prisma.UserScalarFieldEnum = {
 exports.Prisma.FinishScalarFieldEnum = {
   id: 'id',
   productId: 'productId',
-  text: 'text'
+  text: 'text',
+  image: 'image'
 };
 
 exports.Prisma.ProductForCartScalarFieldEnum = {
@@ -160,12 +161,25 @@ exports.Prisma.DetailsScalarFieldEnum = {
   text: 'text'
 };
 
+exports.Prisma.TokenBlacklistScalarFieldEnum = {
+  id: 'id',
+  token: 'token',
+  expiresAt: 'expiresAt',
+  tid: 'tid'
+};
+
+exports.Prisma.ColorScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  image: 'image'
+};
+
 exports.Prisma.SpecificProductScalarFieldEnum = {
   genericId: 'genericId',
   id: 'id',
   image: 'image',
   price: 'price',
-  color: 'color',
+  colorId: 'colorId',
   variantName: 'variantName',
   stock: 'stock'
 };
@@ -223,7 +237,8 @@ exports.Prisma.UserOrderByRelevanceFieldEnum = {
 exports.Prisma.finishOrderByRelevanceFieldEnum = {
   id: 'id',
   productId: 'productId',
-  text: 'text'
+  text: 'text',
+  image: 'image'
 };
 
 exports.Prisma.ProductForCartOrderByRelevanceFieldEnum = {
@@ -251,11 +266,23 @@ exports.Prisma.DetailsOrderByRelevanceFieldEnum = {
   text: 'text'
 };
 
+exports.Prisma.TokenBlacklistOrderByRelevanceFieldEnum = {
+  id: 'id',
+  token: 'token',
+  tid: 'tid'
+};
+
+exports.Prisma.ColorOrderByRelevanceFieldEnum = {
+  id: 'id',
+  name: 'name',
+  image: 'image'
+};
+
 exports.Prisma.SpecificProductOrderByRelevanceFieldEnum = {
   genericId: 'genericId',
   id: 'id',
   image: 'image',
-  color: 'color',
+  colorId: 'colorId',
   variantName: 'variantName'
 };
 
@@ -293,6 +320,8 @@ exports.Prisma.ModelName = {
   GenericProduct: 'GenericProduct',
   Category: 'Category',
   Details: 'Details',
+  TokenBlacklist: 'TokenBlacklist',
+  Color: 'Color',
   SpecificProduct: 'SpecificProduct',
   Images: 'Images',
   Order: 'Order',

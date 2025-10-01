@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CatEntity = exports.Categories = exports.Variant = exports.Product = void 0;
+exports.Color = exports.Finish = exports.CatEntity = exports.Categories = exports.Variant = exports.Product = void 0;
 class Product {
     id;
     name;
@@ -15,11 +15,12 @@ exports.Product = Product;
 class Variant {
     id;
     variantName;
-    color;
+    colorId;
     price;
     stock;
     image;
     images;
+    color;
 }
 exports.Variant = Variant;
 var Categories;
@@ -36,4 +37,16 @@ class CatEntity {
     id;
 }
 exports.CatEntity = CatEntity;
+class Finish {
+    id;
+    text;
+    image;
+}
+exports.Finish = Finish;
+class Color {
+    id;
+    text;
+    image;
+}
+exports.Color = Color;
 //# sourceMappingURL=product.entity.js.map

@@ -44,6 +44,16 @@ export type Category = $Result.DefaultSelection<Prisma.$CategoryPayload>
  */
 export type Details = $Result.DefaultSelection<Prisma.$DetailsPayload>
 /**
+ * Model TokenBlacklist
+ * 
+ */
+export type TokenBlacklist = $Result.DefaultSelection<Prisma.$TokenBlacklistPayload>
+/**
+ * Model Color
+ * 
+ */
+export type Color = $Result.DefaultSelection<Prisma.$ColorPayload>
+/**
  * Model SpecificProduct
  * 
  */
@@ -258,6 +268,26 @@ export class PrismaClient<
     * ```
     */
   get details(): Prisma.DetailsDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.tokenBlacklist`: Exposes CRUD operations for the **TokenBlacklist** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more TokenBlacklists
+    * const tokenBlacklists = await prisma.tokenBlacklist.findMany()
+    * ```
+    */
+  get tokenBlacklist(): Prisma.TokenBlacklistDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.color`: Exposes CRUD operations for the **Color** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Colors
+    * const colors = await prisma.color.findMany()
+    * ```
+    */
+  get color(): Prisma.ColorDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.specificProduct`: Exposes CRUD operations for the **SpecificProduct** model.
@@ -764,6 +794,8 @@ export namespace Prisma {
     GenericProduct: 'GenericProduct',
     Category: 'Category',
     Details: 'Details',
+    TokenBlacklist: 'TokenBlacklist',
+    Color: 'Color',
     SpecificProduct: 'SpecificProduct',
     Images: 'Images',
     Order: 'Order',
@@ -788,7 +820,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "finish" | "productForCart" | "genericProduct" | "category" | "details" | "specificProduct" | "images" | "order" | "productForOrder" | "promotion" | "productForPromotion"
+      modelProps: "user" | "finish" | "productForCart" | "genericProduct" | "category" | "details" | "tokenBlacklist" | "color" | "specificProduct" | "images" | "order" | "productForOrder" | "promotion" | "productForPromotion"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1185,6 +1217,138 @@ export namespace Prisma {
           count: {
             args: Prisma.DetailsCountArgs<ExtArgs>
             result: $Utils.Optional<DetailsCountAggregateOutputType> | number
+          }
+        }
+      }
+      TokenBlacklist: {
+        payload: Prisma.$TokenBlacklistPayload<ExtArgs>
+        fields: Prisma.TokenBlacklistFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.TokenBlacklistFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TokenBlacklistPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.TokenBlacklistFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TokenBlacklistPayload>
+          }
+          findFirst: {
+            args: Prisma.TokenBlacklistFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TokenBlacklistPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.TokenBlacklistFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TokenBlacklistPayload>
+          }
+          findMany: {
+            args: Prisma.TokenBlacklistFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TokenBlacklistPayload>[]
+          }
+          create: {
+            args: Prisma.TokenBlacklistCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TokenBlacklistPayload>
+          }
+          createMany: {
+            args: Prisma.TokenBlacklistCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.TokenBlacklistDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TokenBlacklistPayload>
+          }
+          update: {
+            args: Prisma.TokenBlacklistUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TokenBlacklistPayload>
+          }
+          deleteMany: {
+            args: Prisma.TokenBlacklistDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.TokenBlacklistUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.TokenBlacklistUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TokenBlacklistPayload>
+          }
+          aggregate: {
+            args: Prisma.TokenBlacklistAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTokenBlacklist>
+          }
+          groupBy: {
+            args: Prisma.TokenBlacklistGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TokenBlacklistGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.TokenBlacklistCountArgs<ExtArgs>
+            result: $Utils.Optional<TokenBlacklistCountAggregateOutputType> | number
+          }
+        }
+      }
+      Color: {
+        payload: Prisma.$ColorPayload<ExtArgs>
+        fields: Prisma.ColorFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ColorFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ColorPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ColorFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ColorPayload>
+          }
+          findFirst: {
+            args: Prisma.ColorFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ColorPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ColorFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ColorPayload>
+          }
+          findMany: {
+            args: Prisma.ColorFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ColorPayload>[]
+          }
+          create: {
+            args: Prisma.ColorCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ColorPayload>
+          }
+          createMany: {
+            args: Prisma.ColorCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.ColorDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ColorPayload>
+          }
+          update: {
+            args: Prisma.ColorUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ColorPayload>
+          }
+          deleteMany: {
+            args: Prisma.ColorDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ColorUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.ColorUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ColorPayload>
+          }
+          aggregate: {
+            args: Prisma.ColorAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateColor>
+          }
+          groupBy: {
+            args: Prisma.ColorGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ColorGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ColorCountArgs<ExtArgs>
+            result: $Utils.Optional<ColorCountAggregateOutputType> | number
           }
         }
       }
@@ -1682,6 +1846,8 @@ export namespace Prisma {
     genericProduct?: GenericProductOmit
     category?: CategoryOmit
     details?: DetailsOmit
+    tokenBlacklist?: TokenBlacklistOmit
+    color?: ColorOmit
     specificProduct?: SpecificProductOmit
     images?: ImagesOmit
     order?: OrderOmit
@@ -1899,6 +2065,37 @@ export namespace Prisma {
    */
   export type CategoryCountOutputTypeCountProductosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: GenericProductWhereInput
+  }
+
+
+  /**
+   * Count Type ColorCountOutputType
+   */
+
+  export type ColorCountOutputType = {
+    products: number
+  }
+
+  export type ColorCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    products?: boolean | ColorCountOutputTypeCountProductsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ColorCountOutputType without action
+   */
+  export type ColorCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ColorCountOutputType
+     */
+    select?: ColorCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ColorCountOutputType without action
+   */
+  export type ColorCountOutputTypeCountProductsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SpecificProductWhereInput
   }
 
 
@@ -3034,18 +3231,21 @@ export namespace Prisma {
     id: string | null
     productId: string | null
     text: string | null
+    image: string | null
   }
 
   export type FinishMaxAggregateOutputType = {
     id: string | null
     productId: string | null
     text: string | null
+    image: string | null
   }
 
   export type FinishCountAggregateOutputType = {
     id: number
     productId: number
     text: number
+    image: number
     _all: number
   }
 
@@ -3054,18 +3254,21 @@ export namespace Prisma {
     id?: true
     productId?: true
     text?: true
+    image?: true
   }
 
   export type FinishMaxAggregateInputType = {
     id?: true
     productId?: true
     text?: true
+    image?: true
   }
 
   export type FinishCountAggregateInputType = {
     id?: true
     productId?: true
     text?: true
+    image?: true
     _all?: true
   }
 
@@ -3145,6 +3348,7 @@ export namespace Prisma {
     id: string
     productId: string
     text: string
+    image: string | null
     _count: FinishCountAggregateOutputType | null
     _min: FinishMinAggregateOutputType | null
     _max: FinishMaxAggregateOutputType | null
@@ -3168,6 +3372,7 @@ export namespace Prisma {
     id?: boolean
     productId?: boolean
     text?: boolean
+    image?: boolean
     product?: boolean | GenericProductDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["finish"]>
 
@@ -3177,9 +3382,10 @@ export namespace Prisma {
     id?: boolean
     productId?: boolean
     text?: boolean
+    image?: boolean
   }
 
-  export type finishOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "productId" | "text", ExtArgs["result"]["finish"]>
+  export type finishOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "productId" | "text" | "image", ExtArgs["result"]["finish"]>
   export type finishInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     product?: boolean | GenericProductDefaultArgs<ExtArgs>
   }
@@ -3193,6 +3399,7 @@ export namespace Prisma {
       id: string
       productId: string
       text: string
+      image: string | null
     }, ExtArgs["result"]["finish"]>
     composites: {}
   }
@@ -3566,6 +3773,7 @@ export namespace Prisma {
     readonly id: FieldRef<"finish", 'String'>
     readonly productId: FieldRef<"finish", 'String'>
     readonly text: FieldRef<"finish", 'String'>
+    readonly image: FieldRef<"finish", 'String'>
   }
     
 
@@ -7683,6 +7891,1810 @@ export namespace Prisma {
 
 
   /**
+   * Model TokenBlacklist
+   */
+
+  export type AggregateTokenBlacklist = {
+    _count: TokenBlacklistCountAggregateOutputType | null
+    _min: TokenBlacklistMinAggregateOutputType | null
+    _max: TokenBlacklistMaxAggregateOutputType | null
+  }
+
+  export type TokenBlacklistMinAggregateOutputType = {
+    id: string | null
+    token: string | null
+    expiresAt: Date | null
+    tid: string | null
+  }
+
+  export type TokenBlacklistMaxAggregateOutputType = {
+    id: string | null
+    token: string | null
+    expiresAt: Date | null
+    tid: string | null
+  }
+
+  export type TokenBlacklistCountAggregateOutputType = {
+    id: number
+    token: number
+    expiresAt: number
+    tid: number
+    _all: number
+  }
+
+
+  export type TokenBlacklistMinAggregateInputType = {
+    id?: true
+    token?: true
+    expiresAt?: true
+    tid?: true
+  }
+
+  export type TokenBlacklistMaxAggregateInputType = {
+    id?: true
+    token?: true
+    expiresAt?: true
+    tid?: true
+  }
+
+  export type TokenBlacklistCountAggregateInputType = {
+    id?: true
+    token?: true
+    expiresAt?: true
+    tid?: true
+    _all?: true
+  }
+
+  export type TokenBlacklistAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TokenBlacklist to aggregate.
+     */
+    where?: TokenBlacklistWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TokenBlacklists to fetch.
+     */
+    orderBy?: TokenBlacklistOrderByWithRelationInput | TokenBlacklistOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: TokenBlacklistWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TokenBlacklists from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TokenBlacklists.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned TokenBlacklists
+    **/
+    _count?: true | TokenBlacklistCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TokenBlacklistMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TokenBlacklistMaxAggregateInputType
+  }
+
+  export type GetTokenBlacklistAggregateType<T extends TokenBlacklistAggregateArgs> = {
+        [P in keyof T & keyof AggregateTokenBlacklist]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTokenBlacklist[P]>
+      : GetScalarType<T[P], AggregateTokenBlacklist[P]>
+  }
+
+
+
+
+  export type TokenBlacklistGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TokenBlacklistWhereInput
+    orderBy?: TokenBlacklistOrderByWithAggregationInput | TokenBlacklistOrderByWithAggregationInput[]
+    by: TokenBlacklistScalarFieldEnum[] | TokenBlacklistScalarFieldEnum
+    having?: TokenBlacklistScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TokenBlacklistCountAggregateInputType | true
+    _min?: TokenBlacklistMinAggregateInputType
+    _max?: TokenBlacklistMaxAggregateInputType
+  }
+
+  export type TokenBlacklistGroupByOutputType = {
+    id: string
+    token: string
+    expiresAt: Date
+    tid: string
+    _count: TokenBlacklistCountAggregateOutputType | null
+    _min: TokenBlacklistMinAggregateOutputType | null
+    _max: TokenBlacklistMaxAggregateOutputType | null
+  }
+
+  type GetTokenBlacklistGroupByPayload<T extends TokenBlacklistGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TokenBlacklistGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TokenBlacklistGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TokenBlacklistGroupByOutputType[P]>
+            : GetScalarType<T[P], TokenBlacklistGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type TokenBlacklistSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    token?: boolean
+    expiresAt?: boolean
+    tid?: boolean
+  }, ExtArgs["result"]["tokenBlacklist"]>
+
+
+
+  export type TokenBlacklistSelectScalar = {
+    id?: boolean
+    token?: boolean
+    expiresAt?: boolean
+    tid?: boolean
+  }
+
+  export type TokenBlacklistOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "token" | "expiresAt" | "tid", ExtArgs["result"]["tokenBlacklist"]>
+
+  export type $TokenBlacklistPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "TokenBlacklist"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      token: string
+      expiresAt: Date
+      tid: string
+    }, ExtArgs["result"]["tokenBlacklist"]>
+    composites: {}
+  }
+
+  type TokenBlacklistGetPayload<S extends boolean | null | undefined | TokenBlacklistDefaultArgs> = $Result.GetResult<Prisma.$TokenBlacklistPayload, S>
+
+  type TokenBlacklistCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<TokenBlacklistFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: TokenBlacklistCountAggregateInputType | true
+    }
+
+  export interface TokenBlacklistDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['TokenBlacklist'], meta: { name: 'TokenBlacklist' } }
+    /**
+     * Find zero or one TokenBlacklist that matches the filter.
+     * @param {TokenBlacklistFindUniqueArgs} args - Arguments to find a TokenBlacklist
+     * @example
+     * // Get one TokenBlacklist
+     * const tokenBlacklist = await prisma.tokenBlacklist.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends TokenBlacklistFindUniqueArgs>(args: SelectSubset<T, TokenBlacklistFindUniqueArgs<ExtArgs>>): Prisma__TokenBlacklistClient<$Result.GetResult<Prisma.$TokenBlacklistPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one TokenBlacklist that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {TokenBlacklistFindUniqueOrThrowArgs} args - Arguments to find a TokenBlacklist
+     * @example
+     * // Get one TokenBlacklist
+     * const tokenBlacklist = await prisma.tokenBlacklist.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends TokenBlacklistFindUniqueOrThrowArgs>(args: SelectSubset<T, TokenBlacklistFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TokenBlacklistClient<$Result.GetResult<Prisma.$TokenBlacklistPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TokenBlacklist that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TokenBlacklistFindFirstArgs} args - Arguments to find a TokenBlacklist
+     * @example
+     * // Get one TokenBlacklist
+     * const tokenBlacklist = await prisma.tokenBlacklist.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends TokenBlacklistFindFirstArgs>(args?: SelectSubset<T, TokenBlacklistFindFirstArgs<ExtArgs>>): Prisma__TokenBlacklistClient<$Result.GetResult<Prisma.$TokenBlacklistPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TokenBlacklist that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TokenBlacklistFindFirstOrThrowArgs} args - Arguments to find a TokenBlacklist
+     * @example
+     * // Get one TokenBlacklist
+     * const tokenBlacklist = await prisma.tokenBlacklist.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends TokenBlacklistFindFirstOrThrowArgs>(args?: SelectSubset<T, TokenBlacklistFindFirstOrThrowArgs<ExtArgs>>): Prisma__TokenBlacklistClient<$Result.GetResult<Prisma.$TokenBlacklistPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more TokenBlacklists that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TokenBlacklistFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all TokenBlacklists
+     * const tokenBlacklists = await prisma.tokenBlacklist.findMany()
+     * 
+     * // Get first 10 TokenBlacklists
+     * const tokenBlacklists = await prisma.tokenBlacklist.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const tokenBlacklistWithIdOnly = await prisma.tokenBlacklist.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends TokenBlacklistFindManyArgs>(args?: SelectSubset<T, TokenBlacklistFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TokenBlacklistPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a TokenBlacklist.
+     * @param {TokenBlacklistCreateArgs} args - Arguments to create a TokenBlacklist.
+     * @example
+     * // Create one TokenBlacklist
+     * const TokenBlacklist = await prisma.tokenBlacklist.create({
+     *   data: {
+     *     // ... data to create a TokenBlacklist
+     *   }
+     * })
+     * 
+     */
+    create<T extends TokenBlacklistCreateArgs>(args: SelectSubset<T, TokenBlacklistCreateArgs<ExtArgs>>): Prisma__TokenBlacklistClient<$Result.GetResult<Prisma.$TokenBlacklistPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many TokenBlacklists.
+     * @param {TokenBlacklistCreateManyArgs} args - Arguments to create many TokenBlacklists.
+     * @example
+     * // Create many TokenBlacklists
+     * const tokenBlacklist = await prisma.tokenBlacklist.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends TokenBlacklistCreateManyArgs>(args?: SelectSubset<T, TokenBlacklistCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a TokenBlacklist.
+     * @param {TokenBlacklistDeleteArgs} args - Arguments to delete one TokenBlacklist.
+     * @example
+     * // Delete one TokenBlacklist
+     * const TokenBlacklist = await prisma.tokenBlacklist.delete({
+     *   where: {
+     *     // ... filter to delete one TokenBlacklist
+     *   }
+     * })
+     * 
+     */
+    delete<T extends TokenBlacklistDeleteArgs>(args: SelectSubset<T, TokenBlacklistDeleteArgs<ExtArgs>>): Prisma__TokenBlacklistClient<$Result.GetResult<Prisma.$TokenBlacklistPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one TokenBlacklist.
+     * @param {TokenBlacklistUpdateArgs} args - Arguments to update one TokenBlacklist.
+     * @example
+     * // Update one TokenBlacklist
+     * const tokenBlacklist = await prisma.tokenBlacklist.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends TokenBlacklistUpdateArgs>(args: SelectSubset<T, TokenBlacklistUpdateArgs<ExtArgs>>): Prisma__TokenBlacklistClient<$Result.GetResult<Prisma.$TokenBlacklistPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more TokenBlacklists.
+     * @param {TokenBlacklistDeleteManyArgs} args - Arguments to filter TokenBlacklists to delete.
+     * @example
+     * // Delete a few TokenBlacklists
+     * const { count } = await prisma.tokenBlacklist.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends TokenBlacklistDeleteManyArgs>(args?: SelectSubset<T, TokenBlacklistDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TokenBlacklists.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TokenBlacklistUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many TokenBlacklists
+     * const tokenBlacklist = await prisma.tokenBlacklist.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends TokenBlacklistUpdateManyArgs>(args: SelectSubset<T, TokenBlacklistUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one TokenBlacklist.
+     * @param {TokenBlacklistUpsertArgs} args - Arguments to update or create a TokenBlacklist.
+     * @example
+     * // Update or create a TokenBlacklist
+     * const tokenBlacklist = await prisma.tokenBlacklist.upsert({
+     *   create: {
+     *     // ... data to create a TokenBlacklist
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the TokenBlacklist we want to update
+     *   }
+     * })
+     */
+    upsert<T extends TokenBlacklistUpsertArgs>(args: SelectSubset<T, TokenBlacklistUpsertArgs<ExtArgs>>): Prisma__TokenBlacklistClient<$Result.GetResult<Prisma.$TokenBlacklistPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of TokenBlacklists.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TokenBlacklistCountArgs} args - Arguments to filter TokenBlacklists to count.
+     * @example
+     * // Count the number of TokenBlacklists
+     * const count = await prisma.tokenBlacklist.count({
+     *   where: {
+     *     // ... the filter for the TokenBlacklists we want to count
+     *   }
+     * })
+    **/
+    count<T extends TokenBlacklistCountArgs>(
+      args?: Subset<T, TokenBlacklistCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TokenBlacklistCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a TokenBlacklist.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TokenBlacklistAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TokenBlacklistAggregateArgs>(args: Subset<T, TokenBlacklistAggregateArgs>): Prisma.PrismaPromise<GetTokenBlacklistAggregateType<T>>
+
+    /**
+     * Group by TokenBlacklist.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TokenBlacklistGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TokenBlacklistGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TokenBlacklistGroupByArgs['orderBy'] }
+        : { orderBy?: TokenBlacklistGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TokenBlacklistGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTokenBlacklistGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the TokenBlacklist model
+   */
+  readonly fields: TokenBlacklistFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for TokenBlacklist.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__TokenBlacklistClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the TokenBlacklist model
+   */
+  interface TokenBlacklistFieldRefs {
+    readonly id: FieldRef<"TokenBlacklist", 'String'>
+    readonly token: FieldRef<"TokenBlacklist", 'String'>
+    readonly expiresAt: FieldRef<"TokenBlacklist", 'DateTime'>
+    readonly tid: FieldRef<"TokenBlacklist", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * TokenBlacklist findUnique
+   */
+  export type TokenBlacklistFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TokenBlacklist
+     */
+    select?: TokenBlacklistSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TokenBlacklist
+     */
+    omit?: TokenBlacklistOmit<ExtArgs> | null
+    /**
+     * Filter, which TokenBlacklist to fetch.
+     */
+    where: TokenBlacklistWhereUniqueInput
+  }
+
+  /**
+   * TokenBlacklist findUniqueOrThrow
+   */
+  export type TokenBlacklistFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TokenBlacklist
+     */
+    select?: TokenBlacklistSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TokenBlacklist
+     */
+    omit?: TokenBlacklistOmit<ExtArgs> | null
+    /**
+     * Filter, which TokenBlacklist to fetch.
+     */
+    where: TokenBlacklistWhereUniqueInput
+  }
+
+  /**
+   * TokenBlacklist findFirst
+   */
+  export type TokenBlacklistFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TokenBlacklist
+     */
+    select?: TokenBlacklistSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TokenBlacklist
+     */
+    omit?: TokenBlacklistOmit<ExtArgs> | null
+    /**
+     * Filter, which TokenBlacklist to fetch.
+     */
+    where?: TokenBlacklistWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TokenBlacklists to fetch.
+     */
+    orderBy?: TokenBlacklistOrderByWithRelationInput | TokenBlacklistOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TokenBlacklists.
+     */
+    cursor?: TokenBlacklistWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TokenBlacklists from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TokenBlacklists.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TokenBlacklists.
+     */
+    distinct?: TokenBlacklistScalarFieldEnum | TokenBlacklistScalarFieldEnum[]
+  }
+
+  /**
+   * TokenBlacklist findFirstOrThrow
+   */
+  export type TokenBlacklistFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TokenBlacklist
+     */
+    select?: TokenBlacklistSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TokenBlacklist
+     */
+    omit?: TokenBlacklistOmit<ExtArgs> | null
+    /**
+     * Filter, which TokenBlacklist to fetch.
+     */
+    where?: TokenBlacklistWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TokenBlacklists to fetch.
+     */
+    orderBy?: TokenBlacklistOrderByWithRelationInput | TokenBlacklistOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TokenBlacklists.
+     */
+    cursor?: TokenBlacklistWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TokenBlacklists from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TokenBlacklists.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TokenBlacklists.
+     */
+    distinct?: TokenBlacklistScalarFieldEnum | TokenBlacklistScalarFieldEnum[]
+  }
+
+  /**
+   * TokenBlacklist findMany
+   */
+  export type TokenBlacklistFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TokenBlacklist
+     */
+    select?: TokenBlacklistSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TokenBlacklist
+     */
+    omit?: TokenBlacklistOmit<ExtArgs> | null
+    /**
+     * Filter, which TokenBlacklists to fetch.
+     */
+    where?: TokenBlacklistWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TokenBlacklists to fetch.
+     */
+    orderBy?: TokenBlacklistOrderByWithRelationInput | TokenBlacklistOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing TokenBlacklists.
+     */
+    cursor?: TokenBlacklistWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TokenBlacklists from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TokenBlacklists.
+     */
+    skip?: number
+    distinct?: TokenBlacklistScalarFieldEnum | TokenBlacklistScalarFieldEnum[]
+  }
+
+  /**
+   * TokenBlacklist create
+   */
+  export type TokenBlacklistCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TokenBlacklist
+     */
+    select?: TokenBlacklistSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TokenBlacklist
+     */
+    omit?: TokenBlacklistOmit<ExtArgs> | null
+    /**
+     * The data needed to create a TokenBlacklist.
+     */
+    data: XOR<TokenBlacklistCreateInput, TokenBlacklistUncheckedCreateInput>
+  }
+
+  /**
+   * TokenBlacklist createMany
+   */
+  export type TokenBlacklistCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many TokenBlacklists.
+     */
+    data: TokenBlacklistCreateManyInput | TokenBlacklistCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * TokenBlacklist update
+   */
+  export type TokenBlacklistUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TokenBlacklist
+     */
+    select?: TokenBlacklistSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TokenBlacklist
+     */
+    omit?: TokenBlacklistOmit<ExtArgs> | null
+    /**
+     * The data needed to update a TokenBlacklist.
+     */
+    data: XOR<TokenBlacklistUpdateInput, TokenBlacklistUncheckedUpdateInput>
+    /**
+     * Choose, which TokenBlacklist to update.
+     */
+    where: TokenBlacklistWhereUniqueInput
+  }
+
+  /**
+   * TokenBlacklist updateMany
+   */
+  export type TokenBlacklistUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update TokenBlacklists.
+     */
+    data: XOR<TokenBlacklistUpdateManyMutationInput, TokenBlacklistUncheckedUpdateManyInput>
+    /**
+     * Filter which TokenBlacklists to update
+     */
+    where?: TokenBlacklistWhereInput
+    /**
+     * Limit how many TokenBlacklists to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * TokenBlacklist upsert
+   */
+  export type TokenBlacklistUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TokenBlacklist
+     */
+    select?: TokenBlacklistSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TokenBlacklist
+     */
+    omit?: TokenBlacklistOmit<ExtArgs> | null
+    /**
+     * The filter to search for the TokenBlacklist to update in case it exists.
+     */
+    where: TokenBlacklistWhereUniqueInput
+    /**
+     * In case the TokenBlacklist found by the `where` argument doesn't exist, create a new TokenBlacklist with this data.
+     */
+    create: XOR<TokenBlacklistCreateInput, TokenBlacklistUncheckedCreateInput>
+    /**
+     * In case the TokenBlacklist was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<TokenBlacklistUpdateInput, TokenBlacklistUncheckedUpdateInput>
+  }
+
+  /**
+   * TokenBlacklist delete
+   */
+  export type TokenBlacklistDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TokenBlacklist
+     */
+    select?: TokenBlacklistSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TokenBlacklist
+     */
+    omit?: TokenBlacklistOmit<ExtArgs> | null
+    /**
+     * Filter which TokenBlacklist to delete.
+     */
+    where: TokenBlacklistWhereUniqueInput
+  }
+
+  /**
+   * TokenBlacklist deleteMany
+   */
+  export type TokenBlacklistDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TokenBlacklists to delete
+     */
+    where?: TokenBlacklistWhereInput
+    /**
+     * Limit how many TokenBlacklists to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * TokenBlacklist without action
+   */
+  export type TokenBlacklistDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TokenBlacklist
+     */
+    select?: TokenBlacklistSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TokenBlacklist
+     */
+    omit?: TokenBlacklistOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Color
+   */
+
+  export type AggregateColor = {
+    _count: ColorCountAggregateOutputType | null
+    _min: ColorMinAggregateOutputType | null
+    _max: ColorMaxAggregateOutputType | null
+  }
+
+  export type ColorMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    image: string | null
+  }
+
+  export type ColorMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    image: string | null
+  }
+
+  export type ColorCountAggregateOutputType = {
+    id: number
+    name: number
+    image: number
+    _all: number
+  }
+
+
+  export type ColorMinAggregateInputType = {
+    id?: true
+    name?: true
+    image?: true
+  }
+
+  export type ColorMaxAggregateInputType = {
+    id?: true
+    name?: true
+    image?: true
+  }
+
+  export type ColorCountAggregateInputType = {
+    id?: true
+    name?: true
+    image?: true
+    _all?: true
+  }
+
+  export type ColorAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Color to aggregate.
+     */
+    where?: ColorWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Colors to fetch.
+     */
+    orderBy?: ColorOrderByWithRelationInput | ColorOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ColorWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Colors from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Colors.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Colors
+    **/
+    _count?: true | ColorCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ColorMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ColorMaxAggregateInputType
+  }
+
+  export type GetColorAggregateType<T extends ColorAggregateArgs> = {
+        [P in keyof T & keyof AggregateColor]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateColor[P]>
+      : GetScalarType<T[P], AggregateColor[P]>
+  }
+
+
+
+
+  export type ColorGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ColorWhereInput
+    orderBy?: ColorOrderByWithAggregationInput | ColorOrderByWithAggregationInput[]
+    by: ColorScalarFieldEnum[] | ColorScalarFieldEnum
+    having?: ColorScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ColorCountAggregateInputType | true
+    _min?: ColorMinAggregateInputType
+    _max?: ColorMaxAggregateInputType
+  }
+
+  export type ColorGroupByOutputType = {
+    id: string
+    name: string
+    image: string | null
+    _count: ColorCountAggregateOutputType | null
+    _min: ColorMinAggregateOutputType | null
+    _max: ColorMaxAggregateOutputType | null
+  }
+
+  type GetColorGroupByPayload<T extends ColorGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ColorGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ColorGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ColorGroupByOutputType[P]>
+            : GetScalarType<T[P], ColorGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ColorSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    image?: boolean
+    products?: boolean | Color$productsArgs<ExtArgs>
+    _count?: boolean | ColorCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["color"]>
+
+
+
+  export type ColorSelectScalar = {
+    id?: boolean
+    name?: boolean
+    image?: boolean
+  }
+
+  export type ColorOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "image", ExtArgs["result"]["color"]>
+  export type ColorInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    products?: boolean | Color$productsArgs<ExtArgs>
+    _count?: boolean | ColorCountOutputTypeDefaultArgs<ExtArgs>
+  }
+
+  export type $ColorPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Color"
+    objects: {
+      products: Prisma.$SpecificProductPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      image: string | null
+    }, ExtArgs["result"]["color"]>
+    composites: {}
+  }
+
+  type ColorGetPayload<S extends boolean | null | undefined | ColorDefaultArgs> = $Result.GetResult<Prisma.$ColorPayload, S>
+
+  type ColorCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ColorFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ColorCountAggregateInputType | true
+    }
+
+  export interface ColorDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Color'], meta: { name: 'Color' } }
+    /**
+     * Find zero or one Color that matches the filter.
+     * @param {ColorFindUniqueArgs} args - Arguments to find a Color
+     * @example
+     * // Get one Color
+     * const color = await prisma.color.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ColorFindUniqueArgs>(args: SelectSubset<T, ColorFindUniqueArgs<ExtArgs>>): Prisma__ColorClient<$Result.GetResult<Prisma.$ColorPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Color that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ColorFindUniqueOrThrowArgs} args - Arguments to find a Color
+     * @example
+     * // Get one Color
+     * const color = await prisma.color.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ColorFindUniqueOrThrowArgs>(args: SelectSubset<T, ColorFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ColorClient<$Result.GetResult<Prisma.$ColorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Color that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ColorFindFirstArgs} args - Arguments to find a Color
+     * @example
+     * // Get one Color
+     * const color = await prisma.color.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ColorFindFirstArgs>(args?: SelectSubset<T, ColorFindFirstArgs<ExtArgs>>): Prisma__ColorClient<$Result.GetResult<Prisma.$ColorPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Color that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ColorFindFirstOrThrowArgs} args - Arguments to find a Color
+     * @example
+     * // Get one Color
+     * const color = await prisma.color.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ColorFindFirstOrThrowArgs>(args?: SelectSubset<T, ColorFindFirstOrThrowArgs<ExtArgs>>): Prisma__ColorClient<$Result.GetResult<Prisma.$ColorPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Colors that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ColorFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Colors
+     * const colors = await prisma.color.findMany()
+     * 
+     * // Get first 10 Colors
+     * const colors = await prisma.color.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const colorWithIdOnly = await prisma.color.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ColorFindManyArgs>(args?: SelectSubset<T, ColorFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ColorPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Color.
+     * @param {ColorCreateArgs} args - Arguments to create a Color.
+     * @example
+     * // Create one Color
+     * const Color = await prisma.color.create({
+     *   data: {
+     *     // ... data to create a Color
+     *   }
+     * })
+     * 
+     */
+    create<T extends ColorCreateArgs>(args: SelectSubset<T, ColorCreateArgs<ExtArgs>>): Prisma__ColorClient<$Result.GetResult<Prisma.$ColorPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Colors.
+     * @param {ColorCreateManyArgs} args - Arguments to create many Colors.
+     * @example
+     * // Create many Colors
+     * const color = await prisma.color.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ColorCreateManyArgs>(args?: SelectSubset<T, ColorCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Color.
+     * @param {ColorDeleteArgs} args - Arguments to delete one Color.
+     * @example
+     * // Delete one Color
+     * const Color = await prisma.color.delete({
+     *   where: {
+     *     // ... filter to delete one Color
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ColorDeleteArgs>(args: SelectSubset<T, ColorDeleteArgs<ExtArgs>>): Prisma__ColorClient<$Result.GetResult<Prisma.$ColorPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Color.
+     * @param {ColorUpdateArgs} args - Arguments to update one Color.
+     * @example
+     * // Update one Color
+     * const color = await prisma.color.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ColorUpdateArgs>(args: SelectSubset<T, ColorUpdateArgs<ExtArgs>>): Prisma__ColorClient<$Result.GetResult<Prisma.$ColorPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Colors.
+     * @param {ColorDeleteManyArgs} args - Arguments to filter Colors to delete.
+     * @example
+     * // Delete a few Colors
+     * const { count } = await prisma.color.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ColorDeleteManyArgs>(args?: SelectSubset<T, ColorDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Colors.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ColorUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Colors
+     * const color = await prisma.color.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ColorUpdateManyArgs>(args: SelectSubset<T, ColorUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Color.
+     * @param {ColorUpsertArgs} args - Arguments to update or create a Color.
+     * @example
+     * // Update or create a Color
+     * const color = await prisma.color.upsert({
+     *   create: {
+     *     // ... data to create a Color
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Color we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ColorUpsertArgs>(args: SelectSubset<T, ColorUpsertArgs<ExtArgs>>): Prisma__ColorClient<$Result.GetResult<Prisma.$ColorPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Colors.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ColorCountArgs} args - Arguments to filter Colors to count.
+     * @example
+     * // Count the number of Colors
+     * const count = await prisma.color.count({
+     *   where: {
+     *     // ... the filter for the Colors we want to count
+     *   }
+     * })
+    **/
+    count<T extends ColorCountArgs>(
+      args?: Subset<T, ColorCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ColorCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Color.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ColorAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ColorAggregateArgs>(args: Subset<T, ColorAggregateArgs>): Prisma.PrismaPromise<GetColorAggregateType<T>>
+
+    /**
+     * Group by Color.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ColorGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ColorGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ColorGroupByArgs['orderBy'] }
+        : { orderBy?: ColorGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ColorGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetColorGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Color model
+   */
+  readonly fields: ColorFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Color.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ColorClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    products<T extends Color$productsArgs<ExtArgs> = {}>(args?: Subset<T, Color$productsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SpecificProductPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Color model
+   */
+  interface ColorFieldRefs {
+    readonly id: FieldRef<"Color", 'String'>
+    readonly name: FieldRef<"Color", 'String'>
+    readonly image: FieldRef<"Color", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Color findUnique
+   */
+  export type ColorFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Color
+     */
+    select?: ColorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Color
+     */
+    omit?: ColorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ColorInclude<ExtArgs> | null
+    /**
+     * Filter, which Color to fetch.
+     */
+    where: ColorWhereUniqueInput
+  }
+
+  /**
+   * Color findUniqueOrThrow
+   */
+  export type ColorFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Color
+     */
+    select?: ColorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Color
+     */
+    omit?: ColorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ColorInclude<ExtArgs> | null
+    /**
+     * Filter, which Color to fetch.
+     */
+    where: ColorWhereUniqueInput
+  }
+
+  /**
+   * Color findFirst
+   */
+  export type ColorFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Color
+     */
+    select?: ColorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Color
+     */
+    omit?: ColorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ColorInclude<ExtArgs> | null
+    /**
+     * Filter, which Color to fetch.
+     */
+    where?: ColorWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Colors to fetch.
+     */
+    orderBy?: ColorOrderByWithRelationInput | ColorOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Colors.
+     */
+    cursor?: ColorWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Colors from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Colors.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Colors.
+     */
+    distinct?: ColorScalarFieldEnum | ColorScalarFieldEnum[]
+  }
+
+  /**
+   * Color findFirstOrThrow
+   */
+  export type ColorFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Color
+     */
+    select?: ColorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Color
+     */
+    omit?: ColorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ColorInclude<ExtArgs> | null
+    /**
+     * Filter, which Color to fetch.
+     */
+    where?: ColorWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Colors to fetch.
+     */
+    orderBy?: ColorOrderByWithRelationInput | ColorOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Colors.
+     */
+    cursor?: ColorWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Colors from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Colors.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Colors.
+     */
+    distinct?: ColorScalarFieldEnum | ColorScalarFieldEnum[]
+  }
+
+  /**
+   * Color findMany
+   */
+  export type ColorFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Color
+     */
+    select?: ColorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Color
+     */
+    omit?: ColorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ColorInclude<ExtArgs> | null
+    /**
+     * Filter, which Colors to fetch.
+     */
+    where?: ColorWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Colors to fetch.
+     */
+    orderBy?: ColorOrderByWithRelationInput | ColorOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Colors.
+     */
+    cursor?: ColorWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Colors from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Colors.
+     */
+    skip?: number
+    distinct?: ColorScalarFieldEnum | ColorScalarFieldEnum[]
+  }
+
+  /**
+   * Color create
+   */
+  export type ColorCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Color
+     */
+    select?: ColorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Color
+     */
+    omit?: ColorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ColorInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Color.
+     */
+    data: XOR<ColorCreateInput, ColorUncheckedCreateInput>
+  }
+
+  /**
+   * Color createMany
+   */
+  export type ColorCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Colors.
+     */
+    data: ColorCreateManyInput | ColorCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Color update
+   */
+  export type ColorUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Color
+     */
+    select?: ColorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Color
+     */
+    omit?: ColorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ColorInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Color.
+     */
+    data: XOR<ColorUpdateInput, ColorUncheckedUpdateInput>
+    /**
+     * Choose, which Color to update.
+     */
+    where: ColorWhereUniqueInput
+  }
+
+  /**
+   * Color updateMany
+   */
+  export type ColorUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Colors.
+     */
+    data: XOR<ColorUpdateManyMutationInput, ColorUncheckedUpdateManyInput>
+    /**
+     * Filter which Colors to update
+     */
+    where?: ColorWhereInput
+    /**
+     * Limit how many Colors to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Color upsert
+   */
+  export type ColorUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Color
+     */
+    select?: ColorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Color
+     */
+    omit?: ColorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ColorInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Color to update in case it exists.
+     */
+    where: ColorWhereUniqueInput
+    /**
+     * In case the Color found by the `where` argument doesn't exist, create a new Color with this data.
+     */
+    create: XOR<ColorCreateInput, ColorUncheckedCreateInput>
+    /**
+     * In case the Color was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ColorUpdateInput, ColorUncheckedUpdateInput>
+  }
+
+  /**
+   * Color delete
+   */
+  export type ColorDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Color
+     */
+    select?: ColorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Color
+     */
+    omit?: ColorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ColorInclude<ExtArgs> | null
+    /**
+     * Filter which Color to delete.
+     */
+    where: ColorWhereUniqueInput
+  }
+
+  /**
+   * Color deleteMany
+   */
+  export type ColorDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Colors to delete
+     */
+    where?: ColorWhereInput
+    /**
+     * Limit how many Colors to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Color.products
+   */
+  export type Color$productsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SpecificProduct
+     */
+    select?: SpecificProductSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SpecificProduct
+     */
+    omit?: SpecificProductOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SpecificProductInclude<ExtArgs> | null
+    where?: SpecificProductWhereInput
+    orderBy?: SpecificProductOrderByWithRelationInput | SpecificProductOrderByWithRelationInput[]
+    cursor?: SpecificProductWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: SpecificProductScalarFieldEnum | SpecificProductScalarFieldEnum[]
+  }
+
+  /**
+   * Color without action
+   */
+  export type ColorDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Color
+     */
+    select?: ColorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Color
+     */
+    omit?: ColorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ColorInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Model SpecificProduct
    */
 
@@ -7709,7 +9721,7 @@ export namespace Prisma {
     id: string | null
     image: string | null
     price: number | null
-    color: string | null
+    colorId: string | null
     variantName: string | null
     stock: number | null
   }
@@ -7719,7 +9731,7 @@ export namespace Prisma {
     id: string | null
     image: string | null
     price: number | null
-    color: string | null
+    colorId: string | null
     variantName: string | null
     stock: number | null
   }
@@ -7729,7 +9741,7 @@ export namespace Prisma {
     id: number
     image: number
     price: number
-    color: number
+    colorId: number
     variantName: number
     stock: number
     _all: number
@@ -7751,7 +9763,7 @@ export namespace Prisma {
     id?: true
     image?: true
     price?: true
-    color?: true
+    colorId?: true
     variantName?: true
     stock?: true
   }
@@ -7761,7 +9773,7 @@ export namespace Prisma {
     id?: true
     image?: true
     price?: true
-    color?: true
+    colorId?: true
     variantName?: true
     stock?: true
   }
@@ -7771,7 +9783,7 @@ export namespace Prisma {
     id?: true
     image?: true
     price?: true
-    color?: true
+    colorId?: true
     variantName?: true
     stock?: true
     _all?: true
@@ -7868,7 +9880,7 @@ export namespace Prisma {
     id: string
     image: string | null
     price: number
-    color: string
+    colorId: string | null
     variantName: string
     stock: number
     _count: SpecificProductCountAggregateOutputType | null
@@ -7897,7 +9909,7 @@ export namespace Prisma {
     id?: boolean
     image?: boolean
     price?: boolean
-    color?: boolean
+    colorId?: boolean
     variantName?: boolean
     stock?: boolean
     order?: boolean | SpecificProduct$orderArgs<ExtArgs>
@@ -7905,6 +9917,7 @@ export namespace Prisma {
     genericProd?: boolean | GenericProductDefaultArgs<ExtArgs>
     images?: boolean | SpecificProduct$imagesArgs<ExtArgs>
     ProductForCart?: boolean | SpecificProduct$ProductForCartArgs<ExtArgs>
+    color?: boolean | SpecificProduct$colorArgs<ExtArgs>
     _count?: boolean | SpecificProductCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["specificProduct"]>
 
@@ -7915,18 +9928,19 @@ export namespace Prisma {
     id?: boolean
     image?: boolean
     price?: boolean
-    color?: boolean
+    colorId?: boolean
     variantName?: boolean
     stock?: boolean
   }
 
-  export type SpecificProductOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"genericId" | "id" | "image" | "price" | "color" | "variantName" | "stock", ExtArgs["result"]["specificProduct"]>
+  export type SpecificProductOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"genericId" | "id" | "image" | "price" | "colorId" | "variantName" | "stock", ExtArgs["result"]["specificProduct"]>
   export type SpecificProductInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     order?: boolean | SpecificProduct$orderArgs<ExtArgs>
     promotions?: boolean | SpecificProduct$promotionsArgs<ExtArgs>
     genericProd?: boolean | GenericProductDefaultArgs<ExtArgs>
     images?: boolean | SpecificProduct$imagesArgs<ExtArgs>
     ProductForCart?: boolean | SpecificProduct$ProductForCartArgs<ExtArgs>
+    color?: boolean | SpecificProduct$colorArgs<ExtArgs>
     _count?: boolean | SpecificProductCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -7938,13 +9952,14 @@ export namespace Prisma {
       genericProd: Prisma.$GenericProductPayload<ExtArgs>
       images: Prisma.$ImagesPayload<ExtArgs>[]
       ProductForCart: Prisma.$ProductForCartPayload<ExtArgs>[]
+      color: Prisma.$ColorPayload<ExtArgs> | null
     }
     scalars: $Extensions.GetPayloadResult<{
       genericId: string
       id: string
       image: string | null
       price: number
-      color: string
+      colorId: string | null
       variantName: string
       stock: number
     }, ExtArgs["result"]["specificProduct"]>
@@ -8292,6 +10307,7 @@ export namespace Prisma {
     genericProd<T extends GenericProductDefaultArgs<ExtArgs> = {}>(args?: Subset<T, GenericProductDefaultArgs<ExtArgs>>): Prisma__GenericProductClient<$Result.GetResult<Prisma.$GenericProductPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     images<T extends SpecificProduct$imagesArgs<ExtArgs> = {}>(args?: Subset<T, SpecificProduct$imagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ImagesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     ProductForCart<T extends SpecificProduct$ProductForCartArgs<ExtArgs> = {}>(args?: Subset<T, SpecificProduct$ProductForCartArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProductForCartPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    color<T extends SpecificProduct$colorArgs<ExtArgs> = {}>(args?: Subset<T, SpecificProduct$colorArgs<ExtArgs>>): Prisma__ColorClient<$Result.GetResult<Prisma.$ColorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -8325,7 +10341,7 @@ export namespace Prisma {
     readonly id: FieldRef<"SpecificProduct", 'String'>
     readonly image: FieldRef<"SpecificProduct", 'String'>
     readonly price: FieldRef<"SpecificProduct", 'Float'>
-    readonly color: FieldRef<"SpecificProduct", 'String'>
+    readonly colorId: FieldRef<"SpecificProduct", 'String'>
     readonly variantName: FieldRef<"SpecificProduct", 'String'>
     readonly stock: FieldRef<"SpecificProduct", 'Int'>
   }
@@ -8764,6 +10780,25 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: ProductForCartScalarFieldEnum | ProductForCartScalarFieldEnum[]
+  }
+
+  /**
+   * SpecificProduct.color
+   */
+  export type SpecificProduct$colorArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Color
+     */
+    select?: ColorSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Color
+     */
+    omit?: ColorOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ColorInclude<ExtArgs> | null
+    where?: ColorWhereInput
   }
 
   /**
@@ -13458,7 +15493,8 @@ export namespace Prisma {
   export const FinishScalarFieldEnum: {
     id: 'id',
     productId: 'productId',
-    text: 'text'
+    text: 'text',
+    image: 'image'
   };
 
   export type FinishScalarFieldEnum = (typeof FinishScalarFieldEnum)[keyof typeof FinishScalarFieldEnum]
@@ -13501,12 +15537,31 @@ export namespace Prisma {
   export type DetailsScalarFieldEnum = (typeof DetailsScalarFieldEnum)[keyof typeof DetailsScalarFieldEnum]
 
 
+  export const TokenBlacklistScalarFieldEnum: {
+    id: 'id',
+    token: 'token',
+    expiresAt: 'expiresAt',
+    tid: 'tid'
+  };
+
+  export type TokenBlacklistScalarFieldEnum = (typeof TokenBlacklistScalarFieldEnum)[keyof typeof TokenBlacklistScalarFieldEnum]
+
+
+  export const ColorScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    image: 'image'
+  };
+
+  export type ColorScalarFieldEnum = (typeof ColorScalarFieldEnum)[keyof typeof ColorScalarFieldEnum]
+
+
   export const SpecificProductScalarFieldEnum: {
     genericId: 'genericId',
     id: 'id',
     image: 'image',
     price: 'price',
-    color: 'color',
+    colorId: 'colorId',
     variantName: 'variantName',
     stock: 'stock'
   };
@@ -13591,7 +15646,8 @@ export namespace Prisma {
   export const finishOrderByRelevanceFieldEnum: {
     id: 'id',
     productId: 'productId',
-    text: 'text'
+    text: 'text',
+    image: 'image'
   };
 
   export type finishOrderByRelevanceFieldEnum = (typeof finishOrderByRelevanceFieldEnum)[keyof typeof finishOrderByRelevanceFieldEnum]
@@ -13634,11 +15690,29 @@ export namespace Prisma {
   export type DetailsOrderByRelevanceFieldEnum = (typeof DetailsOrderByRelevanceFieldEnum)[keyof typeof DetailsOrderByRelevanceFieldEnum]
 
 
+  export const TokenBlacklistOrderByRelevanceFieldEnum: {
+    id: 'id',
+    token: 'token',
+    tid: 'tid'
+  };
+
+  export type TokenBlacklistOrderByRelevanceFieldEnum = (typeof TokenBlacklistOrderByRelevanceFieldEnum)[keyof typeof TokenBlacklistOrderByRelevanceFieldEnum]
+
+
+  export const ColorOrderByRelevanceFieldEnum: {
+    id: 'id',
+    name: 'name',
+    image: 'image'
+  };
+
+  export type ColorOrderByRelevanceFieldEnum = (typeof ColorOrderByRelevanceFieldEnum)[keyof typeof ColorOrderByRelevanceFieldEnum]
+
+
   export const SpecificProductOrderByRelevanceFieldEnum: {
     genericId: 'genericId',
     id: 'id',
     image: 'image',
-    color: 'color',
+    colorId: 'colorId',
     variantName: 'variantName'
   };
 
@@ -13699,6 +15773,13 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'DateTime'
+   */
+  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+    
+
+
+  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -13709,13 +15790,6 @@ export namespace Prisma {
    * Reference to a field of type 'Int'
    */
   export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
-    
-
-
-  /**
-   * Reference to a field of type 'DateTime'
-   */
-  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
     
 
 
@@ -13800,6 +15874,7 @@ export namespace Prisma {
     id?: StringFilter<"finish"> | string
     productId?: StringFilter<"finish"> | string
     text?: StringFilter<"finish"> | string
+    image?: StringNullableFilter<"finish"> | string | null
     product?: XOR<GenericProductScalarRelationFilter, GenericProductWhereInput>
   }
 
@@ -13807,6 +15882,7 @@ export namespace Prisma {
     id?: SortOrder
     productId?: SortOrder
     text?: SortOrder
+    image?: SortOrderInput | SortOrder
     product?: GenericProductOrderByWithRelationInput
     _relevance?: finishOrderByRelevanceInput
   }
@@ -13818,6 +15894,7 @@ export namespace Prisma {
     NOT?: finishWhereInput | finishWhereInput[]
     productId?: StringFilter<"finish"> | string
     text?: StringFilter<"finish"> | string
+    image?: StringNullableFilter<"finish"> | string | null
     product?: XOR<GenericProductScalarRelationFilter, GenericProductWhereInput>
   }, "id">
 
@@ -13825,6 +15902,7 @@ export namespace Prisma {
     id?: SortOrder
     productId?: SortOrder
     text?: SortOrder
+    image?: SortOrderInput | SortOrder
     _count?: finishCountOrderByAggregateInput
     _max?: finishMaxOrderByAggregateInput
     _min?: finishMinOrderByAggregateInput
@@ -13837,6 +15915,7 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"finish"> | string
     productId?: StringWithAggregatesFilter<"finish"> | string
     text?: StringWithAggregatesFilter<"finish"> | string
+    image?: StringNullableWithAggregatesFilter<"finish"> | string | null
   }
 
   export type ProductForCartWhereInput = {
@@ -14041,6 +16120,100 @@ export namespace Prisma {
     text?: StringWithAggregatesFilter<"Details"> | string
   }
 
+  export type TokenBlacklistWhereInput = {
+    AND?: TokenBlacklistWhereInput | TokenBlacklistWhereInput[]
+    OR?: TokenBlacklistWhereInput[]
+    NOT?: TokenBlacklistWhereInput | TokenBlacklistWhereInput[]
+    id?: StringFilter<"TokenBlacklist"> | string
+    token?: StringFilter<"TokenBlacklist"> | string
+    expiresAt?: DateTimeFilter<"TokenBlacklist"> | Date | string
+    tid?: StringFilter<"TokenBlacklist"> | string
+  }
+
+  export type TokenBlacklistOrderByWithRelationInput = {
+    id?: SortOrder
+    token?: SortOrder
+    expiresAt?: SortOrder
+    tid?: SortOrder
+    _relevance?: TokenBlacklistOrderByRelevanceInput
+  }
+
+  export type TokenBlacklistWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    token?: string
+    tid?: string
+    AND?: TokenBlacklistWhereInput | TokenBlacklistWhereInput[]
+    OR?: TokenBlacklistWhereInput[]
+    NOT?: TokenBlacklistWhereInput | TokenBlacklistWhereInput[]
+    expiresAt?: DateTimeFilter<"TokenBlacklist"> | Date | string
+  }, "id" | "token" | "tid">
+
+  export type TokenBlacklistOrderByWithAggregationInput = {
+    id?: SortOrder
+    token?: SortOrder
+    expiresAt?: SortOrder
+    tid?: SortOrder
+    _count?: TokenBlacklistCountOrderByAggregateInput
+    _max?: TokenBlacklistMaxOrderByAggregateInput
+    _min?: TokenBlacklistMinOrderByAggregateInput
+  }
+
+  export type TokenBlacklistScalarWhereWithAggregatesInput = {
+    AND?: TokenBlacklistScalarWhereWithAggregatesInput | TokenBlacklistScalarWhereWithAggregatesInput[]
+    OR?: TokenBlacklistScalarWhereWithAggregatesInput[]
+    NOT?: TokenBlacklistScalarWhereWithAggregatesInput | TokenBlacklistScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"TokenBlacklist"> | string
+    token?: StringWithAggregatesFilter<"TokenBlacklist"> | string
+    expiresAt?: DateTimeWithAggregatesFilter<"TokenBlacklist"> | Date | string
+    tid?: StringWithAggregatesFilter<"TokenBlacklist"> | string
+  }
+
+  export type ColorWhereInput = {
+    AND?: ColorWhereInput | ColorWhereInput[]
+    OR?: ColorWhereInput[]
+    NOT?: ColorWhereInput | ColorWhereInput[]
+    id?: StringFilter<"Color"> | string
+    name?: StringFilter<"Color"> | string
+    image?: StringNullableFilter<"Color"> | string | null
+    products?: SpecificProductListRelationFilter
+  }
+
+  export type ColorOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    image?: SortOrderInput | SortOrder
+    products?: SpecificProductOrderByRelationAggregateInput
+    _relevance?: ColorOrderByRelevanceInput
+  }
+
+  export type ColorWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: ColorWhereInput | ColorWhereInput[]
+    OR?: ColorWhereInput[]
+    NOT?: ColorWhereInput | ColorWhereInput[]
+    name?: StringFilter<"Color"> | string
+    image?: StringNullableFilter<"Color"> | string | null
+    products?: SpecificProductListRelationFilter
+  }, "id">
+
+  export type ColorOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    image?: SortOrderInput | SortOrder
+    _count?: ColorCountOrderByAggregateInput
+    _max?: ColorMaxOrderByAggregateInput
+    _min?: ColorMinOrderByAggregateInput
+  }
+
+  export type ColorScalarWhereWithAggregatesInput = {
+    AND?: ColorScalarWhereWithAggregatesInput | ColorScalarWhereWithAggregatesInput[]
+    OR?: ColorScalarWhereWithAggregatesInput[]
+    NOT?: ColorScalarWhereWithAggregatesInput | ColorScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Color"> | string
+    name?: StringWithAggregatesFilter<"Color"> | string
+    image?: StringNullableWithAggregatesFilter<"Color"> | string | null
+  }
+
   export type SpecificProductWhereInput = {
     AND?: SpecificProductWhereInput | SpecificProductWhereInput[]
     OR?: SpecificProductWhereInput[]
@@ -14049,7 +16222,7 @@ export namespace Prisma {
     id?: StringFilter<"SpecificProduct"> | string
     image?: StringNullableFilter<"SpecificProduct"> | string | null
     price?: FloatFilter<"SpecificProduct"> | number
-    color?: StringFilter<"SpecificProduct"> | string
+    colorId?: StringNullableFilter<"SpecificProduct"> | string | null
     variantName?: StringFilter<"SpecificProduct"> | string
     stock?: IntFilter<"SpecificProduct"> | number
     order?: ProductForOrderListRelationFilter
@@ -14057,6 +16230,7 @@ export namespace Prisma {
     genericProd?: XOR<GenericProductScalarRelationFilter, GenericProductWhereInput>
     images?: ImagesListRelationFilter
     ProductForCart?: ProductForCartListRelationFilter
+    color?: XOR<ColorNullableScalarRelationFilter, ColorWhereInput> | null
   }
 
   export type SpecificProductOrderByWithRelationInput = {
@@ -14064,7 +16238,7 @@ export namespace Prisma {
     id?: SortOrder
     image?: SortOrderInput | SortOrder
     price?: SortOrder
-    color?: SortOrder
+    colorId?: SortOrderInput | SortOrder
     variantName?: SortOrder
     stock?: SortOrder
     order?: ProductForOrderOrderByRelationAggregateInput
@@ -14072,6 +16246,7 @@ export namespace Prisma {
     genericProd?: GenericProductOrderByWithRelationInput
     images?: ImagesOrderByRelationAggregateInput
     ProductForCart?: ProductForCartOrderByRelationAggregateInput
+    color?: ColorOrderByWithRelationInput
     _relevance?: SpecificProductOrderByRelevanceInput
   }
 
@@ -14083,7 +16258,7 @@ export namespace Prisma {
     genericId?: StringFilter<"SpecificProduct"> | string
     image?: StringNullableFilter<"SpecificProduct"> | string | null
     price?: FloatFilter<"SpecificProduct"> | number
-    color?: StringFilter<"SpecificProduct"> | string
+    colorId?: StringNullableFilter<"SpecificProduct"> | string | null
     variantName?: StringFilter<"SpecificProduct"> | string
     stock?: IntFilter<"SpecificProduct"> | number
     order?: ProductForOrderListRelationFilter
@@ -14091,6 +16266,7 @@ export namespace Prisma {
     genericProd?: XOR<GenericProductScalarRelationFilter, GenericProductWhereInput>
     images?: ImagesListRelationFilter
     ProductForCart?: ProductForCartListRelationFilter
+    color?: XOR<ColorNullableScalarRelationFilter, ColorWhereInput> | null
   }, "id">
 
   export type SpecificProductOrderByWithAggregationInput = {
@@ -14098,7 +16274,7 @@ export namespace Prisma {
     id?: SortOrder
     image?: SortOrderInput | SortOrder
     price?: SortOrder
-    color?: SortOrder
+    colorId?: SortOrderInput | SortOrder
     variantName?: SortOrder
     stock?: SortOrder
     _count?: SpecificProductCountOrderByAggregateInput
@@ -14116,7 +16292,7 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"SpecificProduct"> | string
     image?: StringNullableWithAggregatesFilter<"SpecificProduct"> | string | null
     price?: FloatWithAggregatesFilter<"SpecificProduct"> | number
-    color?: StringWithAggregatesFilter<"SpecificProduct"> | string
+    colorId?: StringNullableWithAggregatesFilter<"SpecificProduct"> | string | null
     variantName?: StringWithAggregatesFilter<"SpecificProduct"> | string
     stock?: IntWithAggregatesFilter<"SpecificProduct"> | number
   }
@@ -14443,6 +16619,7 @@ export namespace Prisma {
   export type finishCreateInput = {
     id?: string
     text: string
+    image?: string | null
     product: GenericProductCreateNestedOneWithoutFinishInput
   }
 
@@ -14450,11 +16627,13 @@ export namespace Prisma {
     id?: string
     productId: string
     text: string
+    image?: string | null
   }
 
   export type finishUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
     product?: GenericProductUpdateOneRequiredWithoutFinishNestedInput
   }
 
@@ -14462,23 +16641,27 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     productId?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type finishCreateManyInput = {
     id?: string
     productId: string
     text: string
+    image?: string | null
   }
 
   export type finishUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type finishUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     productId?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ProductForCartCreateInput = {
@@ -14669,11 +16852,105 @@ export namespace Prisma {
     text?: StringFieldUpdateOperationsInput | string
   }
 
+  export type TokenBlacklistCreateInput = {
+    id?: string
+    token: string
+    expiresAt?: Date | string
+    tid: string
+  }
+
+  export type TokenBlacklistUncheckedCreateInput = {
+    id?: string
+    token: string
+    expiresAt?: Date | string
+    tid: string
+  }
+
+  export type TokenBlacklistUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    token?: StringFieldUpdateOperationsInput | string
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    tid?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TokenBlacklistUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    token?: StringFieldUpdateOperationsInput | string
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    tid?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TokenBlacklistCreateManyInput = {
+    id?: string
+    token: string
+    expiresAt?: Date | string
+    tid: string
+  }
+
+  export type TokenBlacklistUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    token?: StringFieldUpdateOperationsInput | string
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    tid?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TokenBlacklistUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    token?: StringFieldUpdateOperationsInput | string
+    expiresAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    tid?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type ColorCreateInput = {
+    id?: string
+    name: string
+    image?: string | null
+    products?: SpecificProductCreateNestedManyWithoutColorInput
+  }
+
+  export type ColorUncheckedCreateInput = {
+    id?: string
+    name: string
+    image?: string | null
+    products?: SpecificProductUncheckedCreateNestedManyWithoutColorInput
+  }
+
+  export type ColorUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    products?: SpecificProductUpdateManyWithoutColorNestedInput
+  }
+
+  export type ColorUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    products?: SpecificProductUncheckedUpdateManyWithoutColorNestedInput
+  }
+
+  export type ColorCreateManyInput = {
+    id?: string
+    name: string
+    image?: string | null
+  }
+
+  export type ColorUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type ColorUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
   export type SpecificProductCreateInput = {
     id?: string
     image?: string | null
     price: number
-    color?: string
     variantName: string
     stock: number
     order?: ProductForOrderCreateNestedManyWithoutProductInput
@@ -14681,6 +16958,7 @@ export namespace Prisma {
     genericProd: GenericProductCreateNestedOneWithoutVariantsInput
     images?: ImagesCreateNestedManyWithoutProductInput
     ProductForCart?: ProductForCartCreateNestedManyWithoutProductInput
+    color?: ColorCreateNestedOneWithoutProductsInput
   }
 
   export type SpecificProductUncheckedCreateInput = {
@@ -14688,7 +16966,7 @@ export namespace Prisma {
     id?: string
     image?: string | null
     price: number
-    color?: string
+    colorId?: string | null
     variantName: string
     stock: number
     order?: ProductForOrderUncheckedCreateNestedManyWithoutProductInput
@@ -14701,7 +16979,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
     price?: FloatFieldUpdateOperationsInput | number
-    color?: StringFieldUpdateOperationsInput | string
     variantName?: StringFieldUpdateOperationsInput | string
     stock?: IntFieldUpdateOperationsInput | number
     order?: ProductForOrderUpdateManyWithoutProductNestedInput
@@ -14709,6 +16986,7 @@ export namespace Prisma {
     genericProd?: GenericProductUpdateOneRequiredWithoutVariantsNestedInput
     images?: ImagesUpdateManyWithoutProductNestedInput
     ProductForCart?: ProductForCartUpdateManyWithoutProductNestedInput
+    color?: ColorUpdateOneWithoutProductsNestedInput
   }
 
   export type SpecificProductUncheckedUpdateInput = {
@@ -14716,7 +16994,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
     price?: FloatFieldUpdateOperationsInput | number
-    color?: StringFieldUpdateOperationsInput | string
+    colorId?: NullableStringFieldUpdateOperationsInput | string | null
     variantName?: StringFieldUpdateOperationsInput | string
     stock?: IntFieldUpdateOperationsInput | number
     order?: ProductForOrderUncheckedUpdateManyWithoutProductNestedInput
@@ -14730,7 +17008,7 @@ export namespace Prisma {
     id?: string
     image?: string | null
     price: number
-    color?: string
+    colorId?: string | null
     variantName: string
     stock: number
   }
@@ -14739,7 +17017,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
     price?: FloatFieldUpdateOperationsInput | number
-    color?: StringFieldUpdateOperationsInput | string
     variantName?: StringFieldUpdateOperationsInput | string
     stock?: IntFieldUpdateOperationsInput | number
   }
@@ -14749,7 +17026,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
     price?: FloatFieldUpdateOperationsInput | number
-    color?: StringFieldUpdateOperationsInput | string
+    colorId?: NullableStringFieldUpdateOperationsInput | string | null
     variantName?: StringFieldUpdateOperationsInput | string
     stock?: IntFieldUpdateOperationsInput | number
   }
@@ -15113,18 +17390,21 @@ export namespace Prisma {
     id?: SortOrder
     productId?: SortOrder
     text?: SortOrder
+    image?: SortOrder
   }
 
   export type finishMaxOrderByAggregateInput = {
     id?: SortOrder
     productId?: SortOrder
     text?: SortOrder
+    image?: SortOrder
   }
 
   export type finishMinOrderByAggregateInput = {
     id?: SortOrder
     productId?: SortOrder
     text?: SortOrder
+    image?: SortOrder
   }
 
   export type UserScalarRelationFilter = {
@@ -15286,6 +17566,82 @@ export namespace Prisma {
     text?: SortOrder
   }
 
+  export type DateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type TokenBlacklistOrderByRelevanceInput = {
+    fields: TokenBlacklistOrderByRelevanceFieldEnum | TokenBlacklistOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type TokenBlacklistCountOrderByAggregateInput = {
+    id?: SortOrder
+    token?: SortOrder
+    expiresAt?: SortOrder
+    tid?: SortOrder
+  }
+
+  export type TokenBlacklistMaxOrderByAggregateInput = {
+    id?: SortOrder
+    token?: SortOrder
+    expiresAt?: SortOrder
+    tid?: SortOrder
+  }
+
+  export type TokenBlacklistMinOrderByAggregateInput = {
+    id?: SortOrder
+    token?: SortOrder
+    expiresAt?: SortOrder
+    tid?: SortOrder
+  }
+
+  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type ColorOrderByRelevanceInput = {
+    fields: ColorOrderByRelevanceFieldEnum | ColorOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type ColorCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    image?: SortOrder
+  }
+
+  export type ColorMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    image?: SortOrder
+  }
+
+  export type ColorMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    image?: SortOrder
+  }
+
   export type FloatFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel>
     in?: number[]
@@ -15326,6 +17682,11 @@ export namespace Prisma {
     none?: ImagesWhereInput
   }
 
+  export type ColorNullableScalarRelationFilter = {
+    is?: ColorWhereInput | null
+    isNot?: ColorWhereInput | null
+  }
+
   export type ProductForOrderOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -15349,7 +17710,7 @@ export namespace Prisma {
     id?: SortOrder
     image?: SortOrder
     price?: SortOrder
-    color?: SortOrder
+    colorId?: SortOrder
     variantName?: SortOrder
     stock?: SortOrder
   }
@@ -15364,7 +17725,7 @@ export namespace Prisma {
     id?: SortOrder
     image?: SortOrder
     price?: SortOrder
-    color?: SortOrder
+    colorId?: SortOrder
     variantName?: SortOrder
     stock?: SortOrder
   }
@@ -15374,7 +17735,7 @@ export namespace Prisma {
     id?: SortOrder
     image?: SortOrder
     price?: SortOrder
-    color?: SortOrder
+    colorId?: SortOrder
     variantName?: SortOrder
     stock?: SortOrder
   }
@@ -15440,17 +17801,6 @@ export namespace Prisma {
     prodId?: SortOrder
   }
 
-  export type DateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[]
-    notIn?: Date[] | string[]
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
-  }
-
   export type OrderOrderByRelevanceInput = {
     fields: OrderOrderByRelevanceFieldEnum | OrderOrderByRelevanceFieldEnum[]
     sort: SortOrder
@@ -15473,20 +17823,6 @@ export namespace Prisma {
     id?: SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
-  }
-
-  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[]
-    notIn?: Date[] | string[]
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type OrderScalarRelationFilter = {
@@ -15935,6 +18271,52 @@ export namespace Prisma {
     update?: XOR<XOR<GenericProductUpdateToOneWithWhereWithoutDetailsInput, GenericProductUpdateWithoutDetailsInput>, GenericProductUncheckedUpdateWithoutDetailsInput>
   }
 
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
+  }
+
+  export type SpecificProductCreateNestedManyWithoutColorInput = {
+    create?: XOR<SpecificProductCreateWithoutColorInput, SpecificProductUncheckedCreateWithoutColorInput> | SpecificProductCreateWithoutColorInput[] | SpecificProductUncheckedCreateWithoutColorInput[]
+    connectOrCreate?: SpecificProductCreateOrConnectWithoutColorInput | SpecificProductCreateOrConnectWithoutColorInput[]
+    createMany?: SpecificProductCreateManyColorInputEnvelope
+    connect?: SpecificProductWhereUniqueInput | SpecificProductWhereUniqueInput[]
+  }
+
+  export type SpecificProductUncheckedCreateNestedManyWithoutColorInput = {
+    create?: XOR<SpecificProductCreateWithoutColorInput, SpecificProductUncheckedCreateWithoutColorInput> | SpecificProductCreateWithoutColorInput[] | SpecificProductUncheckedCreateWithoutColorInput[]
+    connectOrCreate?: SpecificProductCreateOrConnectWithoutColorInput | SpecificProductCreateOrConnectWithoutColorInput[]
+    createMany?: SpecificProductCreateManyColorInputEnvelope
+    connect?: SpecificProductWhereUniqueInput | SpecificProductWhereUniqueInput[]
+  }
+
+  export type SpecificProductUpdateManyWithoutColorNestedInput = {
+    create?: XOR<SpecificProductCreateWithoutColorInput, SpecificProductUncheckedCreateWithoutColorInput> | SpecificProductCreateWithoutColorInput[] | SpecificProductUncheckedCreateWithoutColorInput[]
+    connectOrCreate?: SpecificProductCreateOrConnectWithoutColorInput | SpecificProductCreateOrConnectWithoutColorInput[]
+    upsert?: SpecificProductUpsertWithWhereUniqueWithoutColorInput | SpecificProductUpsertWithWhereUniqueWithoutColorInput[]
+    createMany?: SpecificProductCreateManyColorInputEnvelope
+    set?: SpecificProductWhereUniqueInput | SpecificProductWhereUniqueInput[]
+    disconnect?: SpecificProductWhereUniqueInput | SpecificProductWhereUniqueInput[]
+    delete?: SpecificProductWhereUniqueInput | SpecificProductWhereUniqueInput[]
+    connect?: SpecificProductWhereUniqueInput | SpecificProductWhereUniqueInput[]
+    update?: SpecificProductUpdateWithWhereUniqueWithoutColorInput | SpecificProductUpdateWithWhereUniqueWithoutColorInput[]
+    updateMany?: SpecificProductUpdateManyWithWhereWithoutColorInput | SpecificProductUpdateManyWithWhereWithoutColorInput[]
+    deleteMany?: SpecificProductScalarWhereInput | SpecificProductScalarWhereInput[]
+  }
+
+  export type SpecificProductUncheckedUpdateManyWithoutColorNestedInput = {
+    create?: XOR<SpecificProductCreateWithoutColorInput, SpecificProductUncheckedCreateWithoutColorInput> | SpecificProductCreateWithoutColorInput[] | SpecificProductUncheckedCreateWithoutColorInput[]
+    connectOrCreate?: SpecificProductCreateOrConnectWithoutColorInput | SpecificProductCreateOrConnectWithoutColorInput[]
+    upsert?: SpecificProductUpsertWithWhereUniqueWithoutColorInput | SpecificProductUpsertWithWhereUniqueWithoutColorInput[]
+    createMany?: SpecificProductCreateManyColorInputEnvelope
+    set?: SpecificProductWhereUniqueInput | SpecificProductWhereUniqueInput[]
+    disconnect?: SpecificProductWhereUniqueInput | SpecificProductWhereUniqueInput[]
+    delete?: SpecificProductWhereUniqueInput | SpecificProductWhereUniqueInput[]
+    connect?: SpecificProductWhereUniqueInput | SpecificProductWhereUniqueInput[]
+    update?: SpecificProductUpdateWithWhereUniqueWithoutColorInput | SpecificProductUpdateWithWhereUniqueWithoutColorInput[]
+    updateMany?: SpecificProductUpdateManyWithWhereWithoutColorInput | SpecificProductUpdateManyWithWhereWithoutColorInput[]
+    deleteMany?: SpecificProductScalarWhereInput | SpecificProductScalarWhereInput[]
+  }
+
   export type ProductForOrderCreateNestedManyWithoutProductInput = {
     create?: XOR<ProductForOrderCreateWithoutProductInput, ProductForOrderUncheckedCreateWithoutProductInput> | ProductForOrderCreateWithoutProductInput[] | ProductForOrderUncheckedCreateWithoutProductInput[]
     connectOrCreate?: ProductForOrderCreateOrConnectWithoutProductInput | ProductForOrderCreateOrConnectWithoutProductInput[]
@@ -15967,6 +18349,12 @@ export namespace Prisma {
     connectOrCreate?: ProductForCartCreateOrConnectWithoutProductInput | ProductForCartCreateOrConnectWithoutProductInput[]
     createMany?: ProductForCartCreateManyProductInputEnvelope
     connect?: ProductForCartWhereUniqueInput | ProductForCartWhereUniqueInput[]
+  }
+
+  export type ColorCreateNestedOneWithoutProductsInput = {
+    create?: XOR<ColorCreateWithoutProductsInput, ColorUncheckedCreateWithoutProductsInput>
+    connectOrCreate?: ColorCreateOrConnectWithoutProductsInput
+    connect?: ColorWhereUniqueInput
   }
 
   export type ProductForOrderUncheckedCreateNestedManyWithoutProductInput = {
@@ -16077,6 +18465,16 @@ export namespace Prisma {
     deleteMany?: ProductForCartScalarWhereInput | ProductForCartScalarWhereInput[]
   }
 
+  export type ColorUpdateOneWithoutProductsNestedInput = {
+    create?: XOR<ColorCreateWithoutProductsInput, ColorUncheckedCreateWithoutProductsInput>
+    connectOrCreate?: ColorCreateOrConnectWithoutProductsInput
+    upsert?: ColorUpsertWithoutProductsInput
+    disconnect?: ColorWhereInput | boolean
+    delete?: ColorWhereInput | boolean
+    connect?: ColorWhereUniqueInput
+    update?: XOR<XOR<ColorUpdateToOneWithWhereWithoutProductsInput, ColorUpdateWithoutProductsInput>, ColorUncheckedUpdateWithoutProductsInput>
+  }
+
   export type ProductForOrderUncheckedUpdateManyWithoutProductNestedInput = {
     create?: XOR<ProductForOrderCreateWithoutProductInput, ProductForOrderUncheckedCreateWithoutProductInput> | ProductForOrderCreateWithoutProductInput[] | ProductForOrderUncheckedCreateWithoutProductInput[]
     connectOrCreate?: ProductForOrderCreateOrConnectWithoutProductInput | ProductForOrderCreateOrConnectWithoutProductInput[]
@@ -16165,10 +18563,6 @@ export namespace Prisma {
     connectOrCreate?: ProductForOrderCreateOrConnectWithoutOrderInput | ProductForOrderCreateOrConnectWithoutOrderInput[]
     createMany?: ProductForOrderCreateManyOrderInputEnvelope
     connect?: ProductForOrderWhereUniqueInput | ProductForOrderWhereUniqueInput[]
-  }
-
-  export type DateTimeFieldUpdateOperationsInput = {
-    set?: Date | string
   }
 
   export type UserUpdateOneRequiredWithoutOrdersNestedInput = {
@@ -16397,6 +18791,31 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
+  export type NestedDateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
   export type NestedFloatFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel>
     in?: number[]
@@ -16438,31 +18857,6 @@ export namespace Prisma {
     _sum?: NestedIntFilter<$PrismaModel>
     _min?: NestedIntFilter<$PrismaModel>
     _max?: NestedIntFilter<$PrismaModel>
-  }
-
-  export type NestedDateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[]
-    notIn?: Date[] | string[]
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
-  }
-
-  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[]
-    notIn?: Date[] | string[]
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type NestedBoolFilter<$PrismaModel = never> = {
@@ -16656,13 +19050,13 @@ export namespace Prisma {
     id?: string
     image?: string | null
     price: number
-    color?: string
     variantName: string
     stock: number
     order?: ProductForOrderCreateNestedManyWithoutProductInput
     promotions?: ProductForPromotionCreateNestedManyWithoutProductInput
     genericProd: GenericProductCreateNestedOneWithoutVariantsInput
     images?: ImagesCreateNestedManyWithoutProductInput
+    color?: ColorCreateNestedOneWithoutProductsInput
   }
 
   export type SpecificProductUncheckedCreateWithoutProductForCartInput = {
@@ -16670,7 +19064,7 @@ export namespace Prisma {
     id?: string
     image?: string | null
     price: number
-    color?: string
+    colorId?: string | null
     variantName: string
     stock: number
     order?: ProductForOrderUncheckedCreateNestedManyWithoutProductInput
@@ -16729,13 +19123,13 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
     price?: FloatFieldUpdateOperationsInput | number
-    color?: StringFieldUpdateOperationsInput | string
     variantName?: StringFieldUpdateOperationsInput | string
     stock?: IntFieldUpdateOperationsInput | number
     order?: ProductForOrderUpdateManyWithoutProductNestedInput
     promotions?: ProductForPromotionUpdateManyWithoutProductNestedInput
     genericProd?: GenericProductUpdateOneRequiredWithoutVariantsNestedInput
     images?: ImagesUpdateManyWithoutProductNestedInput
+    color?: ColorUpdateOneWithoutProductsNestedInput
   }
 
   export type SpecificProductUncheckedUpdateWithoutProductForCartInput = {
@@ -16743,7 +19137,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
     price?: FloatFieldUpdateOperationsInput | number
-    color?: StringFieldUpdateOperationsInput | string
+    colorId?: NullableStringFieldUpdateOperationsInput | string | null
     variantName?: StringFieldUpdateOperationsInput | string
     stock?: IntFieldUpdateOperationsInput | number
     order?: ProductForOrderUncheckedUpdateManyWithoutProductNestedInput
@@ -16755,20 +19149,20 @@ export namespace Prisma {
     id?: string
     image?: string | null
     price: number
-    color?: string
     variantName: string
     stock: number
     order?: ProductForOrderCreateNestedManyWithoutProductInput
     promotions?: ProductForPromotionCreateNestedManyWithoutProductInput
     images?: ImagesCreateNestedManyWithoutProductInput
     ProductForCart?: ProductForCartCreateNestedManyWithoutProductInput
+    color?: ColorCreateNestedOneWithoutProductsInput
   }
 
   export type SpecificProductUncheckedCreateWithoutGenericProdInput = {
     id?: string
     image?: string | null
     price: number
-    color?: string
+    colorId?: string | null
     variantName: string
     stock: number
     order?: ProductForOrderUncheckedCreateNestedManyWithoutProductInput
@@ -16825,11 +19219,13 @@ export namespace Prisma {
   export type finishCreateWithoutProductInput = {
     id?: string
     text: string
+    image?: string | null
   }
 
   export type finishUncheckedCreateWithoutProductInput = {
     id?: string
     text: string
+    image?: string | null
   }
 
   export type finishCreateOrConnectWithoutProductInput = {
@@ -16866,7 +19262,7 @@ export namespace Prisma {
     id?: StringFilter<"SpecificProduct"> | string
     image?: StringNullableFilter<"SpecificProduct"> | string | null
     price?: FloatFilter<"SpecificProduct"> | number
-    color?: StringFilter<"SpecificProduct"> | string
+    colorId?: StringNullableFilter<"SpecificProduct"> | string | null
     variantName?: StringFilter<"SpecificProduct"> | string
     stock?: IntFilter<"SpecificProduct"> | number
   }
@@ -16940,6 +19336,7 @@ export namespace Prisma {
     id?: StringFilter<"finish"> | string
     productId?: StringFilter<"finish"> | string
     text?: StringFilter<"finish"> | string
+    image?: StringNullableFilter<"finish"> | string | null
   }
 
   export type GenericProductCreateWithoutCategoryInput = {
@@ -17062,6 +19459,58 @@ export namespace Prisma {
     finish?: finishUncheckedUpdateManyWithoutProductNestedInput
   }
 
+  export type SpecificProductCreateWithoutColorInput = {
+    id?: string
+    image?: string | null
+    price: number
+    variantName: string
+    stock: number
+    order?: ProductForOrderCreateNestedManyWithoutProductInput
+    promotions?: ProductForPromotionCreateNestedManyWithoutProductInput
+    genericProd: GenericProductCreateNestedOneWithoutVariantsInput
+    images?: ImagesCreateNestedManyWithoutProductInput
+    ProductForCart?: ProductForCartCreateNestedManyWithoutProductInput
+  }
+
+  export type SpecificProductUncheckedCreateWithoutColorInput = {
+    genericId: string
+    id?: string
+    image?: string | null
+    price: number
+    variantName: string
+    stock: number
+    order?: ProductForOrderUncheckedCreateNestedManyWithoutProductInput
+    promotions?: ProductForPromotionUncheckedCreateNestedManyWithoutProductInput
+    images?: ImagesUncheckedCreateNestedManyWithoutProductInput
+    ProductForCart?: ProductForCartUncheckedCreateNestedManyWithoutProductInput
+  }
+
+  export type SpecificProductCreateOrConnectWithoutColorInput = {
+    where: SpecificProductWhereUniqueInput
+    create: XOR<SpecificProductCreateWithoutColorInput, SpecificProductUncheckedCreateWithoutColorInput>
+  }
+
+  export type SpecificProductCreateManyColorInputEnvelope = {
+    data: SpecificProductCreateManyColorInput | SpecificProductCreateManyColorInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type SpecificProductUpsertWithWhereUniqueWithoutColorInput = {
+    where: SpecificProductWhereUniqueInput
+    update: XOR<SpecificProductUpdateWithoutColorInput, SpecificProductUncheckedUpdateWithoutColorInput>
+    create: XOR<SpecificProductCreateWithoutColorInput, SpecificProductUncheckedCreateWithoutColorInput>
+  }
+
+  export type SpecificProductUpdateWithWhereUniqueWithoutColorInput = {
+    where: SpecificProductWhereUniqueInput
+    data: XOR<SpecificProductUpdateWithoutColorInput, SpecificProductUncheckedUpdateWithoutColorInput>
+  }
+
+  export type SpecificProductUpdateManyWithWhereWithoutColorInput = {
+    where: SpecificProductScalarWhereInput
+    data: XOR<SpecificProductUpdateManyMutationInput, SpecificProductUncheckedUpdateManyWithoutColorInput>
+  }
+
   export type ProductForOrderCreateWithoutProductInput = {
     count?: number
     order: OrderCreateNestedOneWithoutProductsInput
@@ -17163,6 +19612,23 @@ export namespace Prisma {
   export type ProductForCartCreateManyProductInputEnvelope = {
     data: ProductForCartCreateManyProductInput | ProductForCartCreateManyProductInput[]
     skipDuplicates?: boolean
+  }
+
+  export type ColorCreateWithoutProductsInput = {
+    id?: string
+    name: string
+    image?: string | null
+  }
+
+  export type ColorUncheckedCreateWithoutProductsInput = {
+    id?: string
+    name: string
+    image?: string | null
+  }
+
+  export type ColorCreateOrConnectWithoutProductsInput = {
+    where: ColorWhereUniqueInput
+    create: XOR<ColorCreateWithoutProductsInput, ColorUncheckedCreateWithoutProductsInput>
   }
 
   export type ProductForOrderUpsertWithWhereUniqueWithoutProductInput = {
@@ -17288,17 +19754,40 @@ export namespace Prisma {
     data: XOR<ProductForCartUpdateManyMutationInput, ProductForCartUncheckedUpdateManyWithoutProductInput>
   }
 
+  export type ColorUpsertWithoutProductsInput = {
+    update: XOR<ColorUpdateWithoutProductsInput, ColorUncheckedUpdateWithoutProductsInput>
+    create: XOR<ColorCreateWithoutProductsInput, ColorUncheckedCreateWithoutProductsInput>
+    where?: ColorWhereInput
+  }
+
+  export type ColorUpdateToOneWithWhereWithoutProductsInput = {
+    where?: ColorWhereInput
+    data: XOR<ColorUpdateWithoutProductsInput, ColorUncheckedUpdateWithoutProductsInput>
+  }
+
+  export type ColorUpdateWithoutProductsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type ColorUncheckedUpdateWithoutProductsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
   export type SpecificProductCreateWithoutImagesInput = {
     id?: string
     image?: string | null
     price: number
-    color?: string
     variantName: string
     stock: number
     order?: ProductForOrderCreateNestedManyWithoutProductInput
     promotions?: ProductForPromotionCreateNestedManyWithoutProductInput
     genericProd: GenericProductCreateNestedOneWithoutVariantsInput
     ProductForCart?: ProductForCartCreateNestedManyWithoutProductInput
+    color?: ColorCreateNestedOneWithoutProductsInput
   }
 
   export type SpecificProductUncheckedCreateWithoutImagesInput = {
@@ -17306,7 +19795,7 @@ export namespace Prisma {
     id?: string
     image?: string | null
     price: number
-    color?: string
+    colorId?: string | null
     variantName: string
     stock: number
     order?: ProductForOrderUncheckedCreateNestedManyWithoutProductInput
@@ -17334,13 +19823,13 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
     price?: FloatFieldUpdateOperationsInput | number
-    color?: StringFieldUpdateOperationsInput | string
     variantName?: StringFieldUpdateOperationsInput | string
     stock?: IntFieldUpdateOperationsInput | number
     order?: ProductForOrderUpdateManyWithoutProductNestedInput
     promotions?: ProductForPromotionUpdateManyWithoutProductNestedInput
     genericProd?: GenericProductUpdateOneRequiredWithoutVariantsNestedInput
     ProductForCart?: ProductForCartUpdateManyWithoutProductNestedInput
+    color?: ColorUpdateOneWithoutProductsNestedInput
   }
 
   export type SpecificProductUncheckedUpdateWithoutImagesInput = {
@@ -17348,7 +19837,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
     price?: FloatFieldUpdateOperationsInput | number
-    color?: StringFieldUpdateOperationsInput | string
+    colorId?: NullableStringFieldUpdateOperationsInput | string | null
     variantName?: StringFieldUpdateOperationsInput | string
     stock?: IntFieldUpdateOperationsInput | number
     order?: ProductForOrderUncheckedUpdateManyWithoutProductNestedInput
@@ -17469,13 +19958,13 @@ export namespace Prisma {
     id?: string
     image?: string | null
     price: number
-    color?: string
     variantName: string
     stock: number
     promotions?: ProductForPromotionCreateNestedManyWithoutProductInput
     genericProd: GenericProductCreateNestedOneWithoutVariantsInput
     images?: ImagesCreateNestedManyWithoutProductInput
     ProductForCart?: ProductForCartCreateNestedManyWithoutProductInput
+    color?: ColorCreateNestedOneWithoutProductsInput
   }
 
   export type SpecificProductUncheckedCreateWithoutOrderInput = {
@@ -17483,7 +19972,7 @@ export namespace Prisma {
     id?: string
     image?: string | null
     price: number
-    color?: string
+    colorId?: string | null
     variantName: string
     stock: number
     promotions?: ProductForPromotionUncheckedCreateNestedManyWithoutProductInput
@@ -17534,13 +20023,13 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
     price?: FloatFieldUpdateOperationsInput | number
-    color?: StringFieldUpdateOperationsInput | string
     variantName?: StringFieldUpdateOperationsInput | string
     stock?: IntFieldUpdateOperationsInput | number
     promotions?: ProductForPromotionUpdateManyWithoutProductNestedInput
     genericProd?: GenericProductUpdateOneRequiredWithoutVariantsNestedInput
     images?: ImagesUpdateManyWithoutProductNestedInput
     ProductForCart?: ProductForCartUpdateManyWithoutProductNestedInput
+    color?: ColorUpdateOneWithoutProductsNestedInput
   }
 
   export type SpecificProductUncheckedUpdateWithoutOrderInput = {
@@ -17548,7 +20037,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
     price?: FloatFieldUpdateOperationsInput | number
-    color?: StringFieldUpdateOperationsInput | string
+    colorId?: NullableStringFieldUpdateOperationsInput | string | null
     variantName?: StringFieldUpdateOperationsInput | string
     stock?: IntFieldUpdateOperationsInput | number
     promotions?: ProductForPromotionUncheckedUpdateManyWithoutProductNestedInput
@@ -17594,13 +20083,13 @@ export namespace Prisma {
     id?: string
     image?: string | null
     price: number
-    color?: string
     variantName: string
     stock: number
     order?: ProductForOrderCreateNestedManyWithoutProductInput
     genericProd: GenericProductCreateNestedOneWithoutVariantsInput
     images?: ImagesCreateNestedManyWithoutProductInput
     ProductForCart?: ProductForCartCreateNestedManyWithoutProductInput
+    color?: ColorCreateNestedOneWithoutProductsInput
   }
 
   export type SpecificProductUncheckedCreateWithoutPromotionsInput = {
@@ -17608,7 +20097,7 @@ export namespace Prisma {
     id?: string
     image?: string | null
     price: number
-    color?: string
+    colorId?: string | null
     variantName: string
     stock: number
     order?: ProductForOrderUncheckedCreateNestedManyWithoutProductInput
@@ -17657,13 +20146,13 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
     price?: FloatFieldUpdateOperationsInput | number
-    color?: StringFieldUpdateOperationsInput | string
     variantName?: StringFieldUpdateOperationsInput | string
     stock?: IntFieldUpdateOperationsInput | number
     order?: ProductForOrderUpdateManyWithoutProductNestedInput
     genericProd?: GenericProductUpdateOneRequiredWithoutVariantsNestedInput
     images?: ImagesUpdateManyWithoutProductNestedInput
     ProductForCart?: ProductForCartUpdateManyWithoutProductNestedInput
+    color?: ColorUpdateOneWithoutProductsNestedInput
   }
 
   export type SpecificProductUncheckedUpdateWithoutPromotionsInput = {
@@ -17671,7 +20160,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
     price?: FloatFieldUpdateOperationsInput | number
-    color?: StringFieldUpdateOperationsInput | string
+    colorId?: NullableStringFieldUpdateOperationsInput | string | null
     variantName?: StringFieldUpdateOperationsInput | string
     stock?: IntFieldUpdateOperationsInput | number
     order?: ProductForOrderUncheckedUpdateManyWithoutProductNestedInput
@@ -17748,7 +20237,7 @@ export namespace Prisma {
     id?: string
     image?: string | null
     price: number
-    color?: string
+    colorId?: string | null
     variantName: string
     stock: number
   }
@@ -17761,26 +20250,27 @@ export namespace Prisma {
   export type finishCreateManyProductInput = {
     id?: string
     text: string
+    image?: string | null
   }
 
   export type SpecificProductUpdateWithoutGenericProdInput = {
     id?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
     price?: FloatFieldUpdateOperationsInput | number
-    color?: StringFieldUpdateOperationsInput | string
     variantName?: StringFieldUpdateOperationsInput | string
     stock?: IntFieldUpdateOperationsInput | number
     order?: ProductForOrderUpdateManyWithoutProductNestedInput
     promotions?: ProductForPromotionUpdateManyWithoutProductNestedInput
     images?: ImagesUpdateManyWithoutProductNestedInput
     ProductForCart?: ProductForCartUpdateManyWithoutProductNestedInput
+    color?: ColorUpdateOneWithoutProductsNestedInput
   }
 
   export type SpecificProductUncheckedUpdateWithoutGenericProdInput = {
     id?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
     price?: FloatFieldUpdateOperationsInput | number
-    color?: StringFieldUpdateOperationsInput | string
+    colorId?: NullableStringFieldUpdateOperationsInput | string | null
     variantName?: StringFieldUpdateOperationsInput | string
     stock?: IntFieldUpdateOperationsInput | number
     order?: ProductForOrderUncheckedUpdateManyWithoutProductNestedInput
@@ -17793,7 +20283,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     image?: NullableStringFieldUpdateOperationsInput | string | null
     price?: FloatFieldUpdateOperationsInput | number
-    color?: StringFieldUpdateOperationsInput | string
+    colorId?: NullableStringFieldUpdateOperationsInput | string | null
     variantName?: StringFieldUpdateOperationsInput | string
     stock?: IntFieldUpdateOperationsInput | number
   }
@@ -17816,16 +20306,19 @@ export namespace Prisma {
   export type finishUpdateWithoutProductInput = {
     id?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type finishUncheckedUpdateWithoutProductInput = {
     id?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type finishUncheckedUpdateManyWithoutProductInput = {
     id?: StringFieldUpdateOperationsInput | string
     text?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type GenericProductCreateManyCategoryInput = {
@@ -17864,6 +20357,50 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     subtitle?: StringFieldUpdateOperationsInput | string
     vector?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type SpecificProductCreateManyColorInput = {
+    genericId: string
+    id?: string
+    image?: string | null
+    price: number
+    variantName: string
+    stock: number
+  }
+
+  export type SpecificProductUpdateWithoutColorInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: FloatFieldUpdateOperationsInput | number
+    variantName?: StringFieldUpdateOperationsInput | string
+    stock?: IntFieldUpdateOperationsInput | number
+    order?: ProductForOrderUpdateManyWithoutProductNestedInput
+    promotions?: ProductForPromotionUpdateManyWithoutProductNestedInput
+    genericProd?: GenericProductUpdateOneRequiredWithoutVariantsNestedInput
+    images?: ImagesUpdateManyWithoutProductNestedInput
+    ProductForCart?: ProductForCartUpdateManyWithoutProductNestedInput
+  }
+
+  export type SpecificProductUncheckedUpdateWithoutColorInput = {
+    genericId?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: FloatFieldUpdateOperationsInput | number
+    variantName?: StringFieldUpdateOperationsInput | string
+    stock?: IntFieldUpdateOperationsInput | number
+    order?: ProductForOrderUncheckedUpdateManyWithoutProductNestedInput
+    promotions?: ProductForPromotionUncheckedUpdateManyWithoutProductNestedInput
+    images?: ImagesUncheckedUpdateManyWithoutProductNestedInput
+    ProductForCart?: ProductForCartUncheckedUpdateManyWithoutProductNestedInput
+  }
+
+  export type SpecificProductUncheckedUpdateManyWithoutColorInput = {
+    genericId?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
+    image?: NullableStringFieldUpdateOperationsInput | string | null
+    price?: FloatFieldUpdateOperationsInput | number
+    variantName?: StringFieldUpdateOperationsInput | string
+    stock?: IntFieldUpdateOperationsInput | number
   }
 
   export type ProductForOrderCreateManyProductInput = {

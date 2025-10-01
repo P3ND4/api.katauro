@@ -11,7 +11,7 @@ export declare class SpecProductService {
         variantName: string;
         price: number;
         stock: number;
-        color: string;
+        colorId: string | null;
     }>;
     update(id: string, updateSpecProductDto: UpdateSpecProductDto): Promise<{
         image: string | null;
@@ -20,7 +20,7 @@ export declare class SpecProductService {
         variantName: string;
         price: number;
         stock: number;
-        color: string;
+        colorId: string | null;
     }>;
     delete(id: string): Promise<{
         image: string | null;
@@ -29,7 +29,7 @@ export declare class SpecProductService {
         variantName: string;
         price: number;
         stock: number;
-        color: string;
+        colorId: string | null;
     }>;
     findById(id: string): Promise<{
         image: string | null;
@@ -38,7 +38,7 @@ export declare class SpecProductService {
         variantName: string;
         price: number;
         stock: number;
-        color: string;
+        colorId: string | null;
     } | null>;
     findByGeneric(id: string): Promise<{
         image: string | null;
@@ -47,6 +47,6 @@ export declare class SpecProductService {
         variantName: string;
         price: number;
         stock: number;
-        color: string;
+        colorId: string | null;
     }[]>;
 }

@@ -17,7 +17,6 @@ const common_1 = require("@nestjs/common");
 const auth_service_1 = require("./auth.service");
 const create_user_dto_1 = require("../users/dto/create-user.dto");
 const loginDto_1 = require("./dto/loginDto");
-const auth_guard_1 = require("./auth.guard");
 let AuthController = class AuthController {
     authService;
     constructor(authService) {
@@ -27,17 +26,18 @@ let AuthController = class AuthController {
         const { access_token } = await this.authService.login(loginDto);
         res.cookie('jwt', access_token, {
             httpOnly: true,
-            sameSite: 'strict',
+            secure: false,
             maxAge: 72 * 3600000,
+            path: '/',
         });
         res.json({ message: 'Login successful' });
     }
     register(createUserDto) {
         return this.authService.register(createUserDto);
     }
-    logout(res) {
-        res.clearCookie('jwt');
-        return { message: 'Logout successful' };
+    async logout(req) {
+        const token = req.cookies['jwt'];
+        return this.authService.logout(token);
     }
     async getMe(req) {
         const token = req.cookies['jwt'];
@@ -61,12 +61,11 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], AuthController.prototype, "register", null);
 __decorate([
-    (0, common_1.UseGuards)(auth_guard_1.JwtAuthGuard),
-    (0, common_1.Post)('logout'),
-    __param(0, (0, common_1.Res)()),
+    (0, common_1.Get)('logout'),
+    __param(0, (0, common_1.Req)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], AuthController.prototype, "logout", null);
 __decorate([
     (0, common_1.Get)('me'),

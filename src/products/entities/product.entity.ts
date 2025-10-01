@@ -11,17 +11,18 @@ export class Product {
     variants: Variant[];
 }
 
-export class Variant{
+export class Variant {
     id: string;
     variantName: String;
-    color?: string;
+    colorId: string;
     price: number;
     stock: number;
     image?: string;
     images: Images[]
+    color: Color
 }
 
-export enum Categories{
+export enum Categories {
     tableLumin = "Luminarias de mesa",
     wallLumin = "Luminarias de pared",
     footLumin = "Luminarias de pie",
@@ -30,7 +31,19 @@ export enum Categories{
     other = "Otras"
 }
 
-export class CatEntity{
+export class CatEntity {
     nombre: string
     id: string
+}
+
+export class Finish {
+    id: string
+    text: string
+    image?: string
+}
+
+export class Color {
+    id: string
+    text: string
+    image?: string
 }

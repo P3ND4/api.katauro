@@ -30,9 +30,9 @@ let ProductsService = class ProductsService {
         const products = await this.productRepository.findAllProducts();
         return products.slice((page - 1) * 9, (page - 1) * 9 + 9);
     }
-    async getPages() {
+    async getPages(category) {
         const products = await this.productRepository.findAllProducts();
-        return Math.ceil(products.length / 9);
+        return !category ? Math.ceil(products.length / 9) : Math.ceil(products.filter((p) => p.category.nombre === category).length / 9);
     }
     findOne(id) {
         return this.productRepository.findProductById(id);
@@ -43,9 +43,10 @@ let ProductsService = class ProductsService {
     remove(id) {
         return this.productRepository.deleteProduct(id);
     }
-    async getProductByCategory(name) {
+    async getProductByCategory(name, page) {
         var products = await this.productRepository.findAllProducts();
-        return products.filter((prod) => prod.category.nombre === name);
+        products = products.filter((prod) => prod.category.nombre === name);
+        return page ? products.slice((page - 1) * 9, (page - 1) * 9 + 9) : products;
     }
     async getCatByName(name) {
         return (await this.catRep.findCategories()).filter((cat) => cat.nombre === name);

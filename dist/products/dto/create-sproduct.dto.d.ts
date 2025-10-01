@@ -4,5 +4,5 @@ export declare class CreateSpecProductDTO {
     variantName: string;
     price: number;
     stock: number;
-    color?: string;
+    colorId?: string;
 }

@@ -16,18 +16,18 @@ export declare class ProductsController {
         categoryId: string;
         vector: string;
     }>;
-    findAll(page: string): Promise<{
+    findAll(page: string, cat: string): Promise<{
         name: string;
         id: string;
         description: string;
         subtitle: string;
         categoryId: string;
         vector: string;
-    }[]> | {
+    }[]> | Promise<import("./entities/product.entity").Product[]> | {
         (...data: any[]): void;
         (message?: any, ...optionalParams: any[]): void;
     };
-    findPage(): Promise<number>;
+    findPage(cat: string): Promise<number>;
     createVariant(createSpecProductDTO: CreateSpecProductDTO): Promise<{
         image: string | null;
         id: string;
@@ -35,7 +35,7 @@ export declare class ProductsController {
         variantName: string;
         price: number;
         stock: number;
-        color: string;
+        colorId: string | null;
     }>;
     getVatiansForProduct(id: string): Promise<{
         image: string | null;
@@ -44,7 +44,7 @@ export declare class ProductsController {
         variantName: string;
         price: number;
         stock: number;
-        color: string;
+        colorId: string | null;
     }[]>;
     getVariant(id: string): Promise<{
         image: string | null;
@@ -53,7 +53,7 @@ export declare class ProductsController {
         variantName: string;
         price: number;
         stock: number;
-        color: string;
+        colorId: string | null;
     } | null>;
     deleteVaiant(id: string): Promise<{
         image: string | null;
@@ -62,7 +62,7 @@ export declare class ProductsController {
         variantName: string;
         price: number;
         stock: number;
-        color: string;
+        colorId: string | null;
     }>;
     updateVariant(id: string, data: UpdateSpecProductDto): Promise<{
         image: string | null;
@@ -71,7 +71,7 @@ export declare class ProductsController {
         variantName: string;
         price: number;
         stock: number;
-        color: string;
+        colorId: string | null;
     }>;
     findOne(id: string): Promise<{
         name: string;
