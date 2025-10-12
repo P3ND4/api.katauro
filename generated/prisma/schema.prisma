@@ -21,18 +21,26 @@ model User {
   name     String
   lastName String
   password String
-  image    String?
+  image    String
   cart     ProductForCart[] @relation()
 
   orders Order[] @relation("UserOrders")
 }
 
-model finish {
-  id        String         @id @default(uuid())
+model finishForProducts {
   productId String
-  text      String
-  image     String?
+  finishId  String
+  finish    finish         @relation(fields: [finishId], references: [id], onDelete: Cascade)
   product   GenericProduct @relation(fields: [productId], references: [id], onDelete: Cascade)
+
+  @@id([productId, finishId])
+}
+
+model finish {
+  id       String              @id @default(uuid())
+  text     String
+  image    String
+  products finishForProducts[] @relation()
 }
 
 model ProductForCart {
@@ -45,16 +53,17 @@ model ProductForCart {
 }
 
 model GenericProduct {
-  id          String            @id @default(uuid())
+  id          String              @id @default(uuid())
   name        String
   description String
   subtitle    String
-  vector      String            @default("")
-  categoryId  String            @default("2b11c629-841f-11f0-8f51-02006ca180b4")
-  variants    SpecificProduct[] @relation()
-  details     Details[]         @relation()
-  category    Category          @relation(fields: [categoryId], references: [id], onDelete: Cascade)
-  finish      finish[]          @relation()
+  typology    String              @default("Variable")
+  vector      String              @default("")
+  categoryId  String              @default("2b11c629-841f-11f0-8f51-02006ca180b4")
+  variants    SpecificProduct[]   @relation()
+  details     Details[]           @relation()
+  category    Category            @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  finish      finishForProducts[] @relation()
 }
 
 model Category {
@@ -80,16 +89,16 @@ model TokenBlacklist {
 model Color {
   id       String            @id @default(uuid())
   name     String
-  image    String?
+  image    String
   products SpecificProduct[] @relation()
 }
 
 model SpecificProduct {
   genericId      String
   id             String                @id @default(uuid())
-  image          String?
+  image          String
   price          Float
-  colorId        String?
+  colorId        String
   variantName    String
   stock          Int
   order          ProductForOrder[]     @relation()
@@ -97,7 +106,7 @@ model SpecificProduct {
   genericProd    GenericProduct        @relation(fields: [genericId], references: [id], onDelete: Cascade)
   images         Images[]              @relation()
   ProductForCart ProductForCart[]
-  color          Color?                @relation(fields: [colorId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  color          Color                 @relation(fields: [colorId], references: [id], onDelete: Cascade, onUpdate: Cascade)
 }
 
 model Images {

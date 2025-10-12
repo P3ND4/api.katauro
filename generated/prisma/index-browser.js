@@ -129,9 +129,13 @@ exports.Prisma.UserScalarFieldEnum = {
   image: 'image'
 };
 
+exports.Prisma.FinishForProductsScalarFieldEnum = {
+  productId: 'productId',
+  finishId: 'finishId'
+};
+
 exports.Prisma.FinishScalarFieldEnum = {
   id: 'id',
-  productId: 'productId',
   text: 'text',
   image: 'image'
 };
@@ -146,6 +150,7 @@ exports.Prisma.GenericProductScalarFieldEnum = {
   name: 'name',
   description: 'description',
   subtitle: 'subtitle',
+  typology: 'typology',
   vector: 'vector',
   categoryId: 'categoryId'
 };
@@ -220,11 +225,6 @@ exports.Prisma.SortOrder = {
   desc: 'desc'
 };
 
-exports.Prisma.NullsOrder = {
-  first: 'first',
-  last: 'last'
-};
-
 exports.Prisma.UserOrderByRelevanceFieldEnum = {
   id: 'id',
   email: 'email',
@@ -234,9 +234,13 @@ exports.Prisma.UserOrderByRelevanceFieldEnum = {
   image: 'image'
 };
 
+exports.Prisma.finishForProductsOrderByRelevanceFieldEnum = {
+  productId: 'productId',
+  finishId: 'finishId'
+};
+
 exports.Prisma.finishOrderByRelevanceFieldEnum = {
   id: 'id',
-  productId: 'productId',
   text: 'text',
   image: 'image'
 };
@@ -251,6 +255,7 @@ exports.Prisma.GenericProductOrderByRelevanceFieldEnum = {
   name: 'name',
   description: 'description',
   subtitle: 'subtitle',
+  typology: 'typology',
   vector: 'vector',
   categoryId: 'categoryId'
 };
@@ -315,6 +320,7 @@ exports.Prisma.ProductForPromotionOrderByRelevanceFieldEnum = {
 
 exports.Prisma.ModelName = {
   User: 'User',
+  finishForProducts: 'finishForProducts',
   finish: 'finish',
   ProductForCart: 'ProductForCart',
   GenericProduct: 'GenericProduct',

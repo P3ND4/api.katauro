@@ -4,11 +4,13 @@ export class Product {
     id: string;
     name: string;
     categoryId: string
+    finish: Finish[]
     description?: string;
     subtitle: string
     vector?: string
     category: CatEntity;
     variants: Variant[];
+    typology: Typology;
 }
 
 export class Variant {
@@ -39,11 +41,16 @@ export class CatEntity {
 export class Finish {
     id: string
     text: string
-    image?: string
+    image: string
 }
 
 export class Color {
     id: string
     text: string
     image?: string
+}
+
+export enum Typology{
+    simple = "Simple",
+    variant = "Variante"
 }

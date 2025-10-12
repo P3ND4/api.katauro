@@ -1,9 +1,15 @@
-import { Categories } from "../entities/product.entity";
+import { Categories, Typology, Variant } from "../entities/product.entity";
+import { CreateSpecProductDTO } from "./create-sproduct.dto";
 
 export class CreateProductDto {
     name: string;
     description: string;
     subtitle: string;
     categoryId: string;
-    vector?: string;
+    typology: Typology
+    vector: string;
+    finishId: string[]
+    variants: CreateSpecProductDTO[]
+    details: string[]
+
 }

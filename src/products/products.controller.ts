@@ -83,4 +83,17 @@ export class ProductsController {
     return this.productsService.getProductByCategory(name)
   }
 
+  @Get('finish')
+  getFinishes(){
+    return this.productsService.getFinishes();
+  }
+  @Delete('finish')
+  deleteFinish(@Param(`id`) id: string){
+    this.productsService.deleteFinish(id);
+  }
+  @Post('finish')
+  createFinish(@Body() data: any){
+    this.productsService.createFinish(data);
+  }
+
 }

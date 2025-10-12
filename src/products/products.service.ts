@@ -2,14 +2,15 @@ import { Injectable } from '@nestjs/common';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { ProductRepository } from './products.repository';
-import { Categories, Product } from './entities/product.entity';
-import { catRepository } from './CatRepository';
+import { Product } from './entities/product.entity';
+import { propRepository } from './CatRepository';
 
 @Injectable()
 export class ProductsService {
-  constructor(private productRepository: ProductRepository, private catRep: catRepository){}
+  constructor(private productRepository: ProductRepository, private propRep: propRepository){}
 
-  create(createProductDto: CreateProductDto) {
+  async create(createProductDto: CreateProductDto) {
+
     return this.productRepository.createProduct(createProductDto);
   }
 
@@ -42,16 +43,29 @@ export class ProductsService {
   
   async getProductByCategory(name: string, page?: number){
     var products = await this.productRepository.findAllProducts() as Product[]
-    products = products.filter((prod)=> prod.category.nombre === name)
+    products = products.filter((prod)=> prod.category.nombre === name);
     return page? products.slice((page-1)*9, (page-1)*9+9): products
   }
 
   async getCatByName(name:string){
-    return (await this.catRep.findCategories()).filter((cat)=> cat.nombre ===name);
+    return (await this.propRep.findCategories()).filter((cat)=> cat.nombre ===name);
   }
 
   async getCats(){
-    return this.catRep.findCategories();
+    return this.propRep.findCategories();
   }
+
+  getFinishes(){
+    return this.propRep.findFinishes();
+  }
+
+  createFinish(data: any){
+    return this.propRep.addFinish(data);
+  }
+
+  deleteFinish(id: string){
+    return this.propRep.deleteFinish(id);
+  }
+
 
 }
