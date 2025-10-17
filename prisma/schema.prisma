@@ -99,7 +99,6 @@ model SpecificProduct {
   image          String
   price          Float
   colorId        String
-  variantName    String
   stock          Int
   order          ProductForOrder[]     @relation()
   promotions     ProductForPromotion[] @relation()

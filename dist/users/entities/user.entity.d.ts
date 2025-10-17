@@ -4,5 +4,5 @@ export declare class User {
     name: string;
     lastName: string;
     password: string;
-    image?: string;
+    image: string;
 }

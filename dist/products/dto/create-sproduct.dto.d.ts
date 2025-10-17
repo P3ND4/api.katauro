@@ -1,8 +1,7 @@
 export declare class CreateSpecProductDTO {
-    genericId: string;
-    image?: string;
-    variantName: string;
     price: number;
     stock: number;
-    colorId?: string;
+    colorId: string;
+    image: string;
+    images: string[];
 }

@@ -16,6 +16,36 @@ export class ProductsController {
     return this.productsService.create(createProductDto);
   }
 
+  @Get('productcat/:name')
+  productByCategoryName(@Param('name') name: string) {
+    return this.productsService.getProductByCategory(name)
+  }
+
+  @Get('finish')
+  getFinishes() {
+    return this.productsService.getFinishes();
+  }
+  @Delete('finish/:id')
+  deleteFinish(@Param('id') id: string) {
+    return this.productsService.deleteFinish(id);
+  }
+  @Post('finish')
+  createFinish(@Body() data: any) {
+    return this.productsService.createFinish(data);
+  }
+  @Get('categories')
+  findCats() {
+    return this.productsService.getCats();
+  }
+  @Get('colors')
+  getColors() {
+    return this.productsService.getColors();
+  }
+  @Post('colors')
+  createColor(@Body() data: { image: string, name: string }) {
+    return this.productsService.createColor(data);
+  }
+
   @Get()
   findAll(@Query('page') page: string, @Query('category') cat: string) {
     try {
@@ -78,22 +108,8 @@ export class ProductsController {
     return this.productsService.remove(id);
   }
 
-  @Get('productcat/:name')
-  productByCategoryName(@Param('name') name: string) {
-    return this.productsService.getProductByCategory(name)
+  @Delete('colors/:id')
+  deleteColor(@Param('id') id: string) {
+    return this.productsService.deleteColor(id);
   }
-
-  @Get('finish')
-  getFinishes(){
-    return this.productsService.getFinishes();
-  }
-  @Delete('finish')
-  deleteFinish(@Param(`id`) id: string){
-    this.productsService.deleteFinish(id);
-  }
-  @Post('finish')
-  createFinish(@Body() data: any){
-    this.productsService.createFinish(data);
-  }
-
 }

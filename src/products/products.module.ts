@@ -5,10 +5,10 @@ import { PrismaService } from 'src/prisma/prisma.service';
 import { ProductRepository } from './products.repository';
 import { SpecProductService } from './spec-product/spec-product.service';
 import { SpecProductRepository } from './spec-product/spec-product.repository';
-import { catRepository } from './CatRepository';
+import { propRepository } from './CatRepository';
 
 @Module({
   controllers: [ProductsController],
-  providers: [ProductsService, PrismaService, ProductRepository, SpecProductService, SpecProductRepository, catRepository],
+  providers: [ProductsService, PrismaService, ProductRepository, SpecProductService, SpecProductRepository, propRepository],
 })
 export class ProductsModule {}

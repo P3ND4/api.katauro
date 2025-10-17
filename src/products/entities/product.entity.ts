@@ -46,7 +46,7 @@ export class Finish {
 
 export class Color {
     id: string
-    text: string
+    name: string
     image?: string
 }
 

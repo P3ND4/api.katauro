@@ -16,13 +16,14 @@ const products_module_1 = require("./products/products.module");
 const order_module_1 = require("./order/order.module");
 const auth_module_1 = require("./auth/auth.module");
 const config_1 = require("@nestjs/config");
+const cloudinary_module_1 = require("./cloudinary/cloudinary.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
         imports: [config_1.ConfigModule.forRoot({ isGlobal: true }),
-            users_module_1.UsersModule, products_module_1.ProductsModule, order_module_1.OrderModule, auth_module_1.AuthModule],
+            users_module_1.UsersModule, products_module_1.ProductsModule, order_module_1.OrderModule, auth_module_1.AuthModule, cloudinary_module_1.CloudinaryModule],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService, prisma_service_1.PrismaService],
     })

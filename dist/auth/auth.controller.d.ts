@@ -14,7 +14,7 @@ export declare class AuthController {
         email: string;
         name: string;
         lastName: string;
-        image: string | null;
+        image: string;
         id: string;
     }>;
 }

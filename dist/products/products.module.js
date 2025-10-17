@@ -21,7 +21,7 @@ exports.ProductsModule = ProductsModule;
 exports.ProductsModule = ProductsModule = __decorate([
     (0, common_1.Module)({
         controllers: [products_controller_1.ProductsController],
-        providers: [products_service_1.ProductsService, prisma_service_1.PrismaService, products_repository_1.ProductRepository, spec_product_service_1.SpecProductService, spec_product_repository_1.SpecProductRepository, CatRepository_1.catRepository],
+        providers: [products_service_1.ProductsService, prisma_service_1.PrismaService, products_repository_1.ProductRepository, spec_product_service_1.SpecProductService, spec_product_repository_1.SpecProductRepository, CatRepository_1.propRepository],
     })
 ], ProductsModule);
 //# sourceMappingURL=products.module.js.map

@@ -31,6 +31,27 @@ let ProductsController = class ProductsController {
     create(createProductDto) {
         return this.productsService.create(createProductDto);
     }
+    productByCategoryName(name) {
+        return this.productsService.getProductByCategory(name);
+    }
+    getFinishes() {
+        return this.productsService.getFinishes();
+    }
+    deleteFinish(id) {
+        return this.productsService.deleteFinish(id);
+    }
+    createFinish(data) {
+        return this.productsService.createFinish(data);
+    }
+    findCats() {
+        return this.productsService.getCats();
+    }
+    getColors() {
+        return this.productsService.getColors();
+    }
+    createColor(data) {
+        return this.productsService.createColor(data);
+    }
     findAll(page, cat) {
         try {
             if (page && !cat) {
@@ -72,8 +93,8 @@ let ProductsController = class ProductsController {
     remove(id) {
         return this.productsService.remove(id);
     }
-    productByCategoryName(name) {
-        return this.productsService.getProductByCategory(name);
+    deleteColor(id) {
+        return this.productsService.deleteColor(id);
     }
 };
 exports.ProductsController = ProductsController;
@@ -84,6 +105,52 @@ __decorate([
     __metadata("design:paramtypes", [create_product_dto_1.CreateProductDto]),
     __metadata("design:returntype", void 0)
 ], ProductsController.prototype, "create", null);
+__decorate([
+    (0, common_1.Get)('productcat/:name'),
+    __param(0, (0, common_1.Param)('name')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], ProductsController.prototype, "productByCategoryName", null);
+__decorate([
+    (0, common_1.Get)('finish'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], ProductsController.prototype, "getFinishes", null);
+__decorate([
+    (0, common_1.Delete)('finish/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], ProductsController.prototype, "deleteFinish", null);
+__decorate([
+    (0, common_1.Post)('finish'),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], ProductsController.prototype, "createFinish", null);
+__decorate([
+    (0, common_1.Get)('categories'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], ProductsController.prototype, "findCats", null);
+__decorate([
+    (0, common_1.Get)('colors'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], ProductsController.prototype, "getColors", null);
+__decorate([
+    (0, common_1.Post)('colors'),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], ProductsController.prototype, "createColor", null);
 __decorate([
     (0, common_1.Get)(),
     __param(0, (0, common_1.Query)('page')),
@@ -158,12 +225,12 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], ProductsController.prototype, "remove", null);
 __decorate([
-    (0, common_1.Get)('productcat/:name'),
-    __param(0, (0, common_1.Param)('name')),
+    (0, common_1.Delete)('colors/:id'),
+    __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
-], ProductsController.prototype, "productByCategoryName", null);
+], ProductsController.prototype, "deleteColor", null);
 exports.ProductsController = ProductsController = __decorate([
     (0, common_1.Controller)('products'),
     __metadata("design:paramtypes", [products_service_1.ProductsService, spec_product_service_1.SpecProductService])

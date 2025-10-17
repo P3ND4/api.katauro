@@ -10762,7 +10762,6 @@ export namespace Prisma {
     image: string | null
     price: number | null
     colorId: string | null
-    variantName: string | null
     stock: number | null
   }
 
@@ -10772,7 +10771,6 @@ export namespace Prisma {
     image: string | null
     price: number | null
     colorId: string | null
-    variantName: string | null
     stock: number | null
   }
 
@@ -10782,7 +10780,6 @@ export namespace Prisma {
     image: number
     price: number
     colorId: number
-    variantName: number
     stock: number
     _all: number
   }
@@ -10804,7 +10801,6 @@ export namespace Prisma {
     image?: true
     price?: true
     colorId?: true
-    variantName?: true
     stock?: true
   }
 
@@ -10814,7 +10810,6 @@ export namespace Prisma {
     image?: true
     price?: true
     colorId?: true
-    variantName?: true
     stock?: true
   }
 
@@ -10824,7 +10819,6 @@ export namespace Prisma {
     image?: true
     price?: true
     colorId?: true
-    variantName?: true
     stock?: true
     _all?: true
   }
@@ -10921,7 +10915,6 @@ export namespace Prisma {
     image: string
     price: number
     colorId: string
-    variantName: string
     stock: number
     _count: SpecificProductCountAggregateOutputType | null
     _avg: SpecificProductAvgAggregateOutputType | null
@@ -10950,7 +10943,6 @@ export namespace Prisma {
     image?: boolean
     price?: boolean
     colorId?: boolean
-    variantName?: boolean
     stock?: boolean
     order?: boolean | SpecificProduct$orderArgs<ExtArgs>
     promotions?: boolean | SpecificProduct$promotionsArgs<ExtArgs>
@@ -10969,11 +10961,10 @@ export namespace Prisma {
     image?: boolean
     price?: boolean
     colorId?: boolean
-    variantName?: boolean
     stock?: boolean
   }
 
-  export type SpecificProductOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"genericId" | "id" | "image" | "price" | "colorId" | "variantName" | "stock", ExtArgs["result"]["specificProduct"]>
+  export type SpecificProductOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"genericId" | "id" | "image" | "price" | "colorId" | "stock", ExtArgs["result"]["specificProduct"]>
   export type SpecificProductInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     order?: boolean | SpecificProduct$orderArgs<ExtArgs>
     promotions?: boolean | SpecificProduct$promotionsArgs<ExtArgs>
@@ -11000,7 +10991,6 @@ export namespace Prisma {
       image: string
       price: number
       colorId: string
-      variantName: string
       stock: number
     }, ExtArgs["result"]["specificProduct"]>
     composites: {}
@@ -11382,7 +11372,6 @@ export namespace Prisma {
     readonly image: FieldRef<"SpecificProduct", 'String'>
     readonly price: FieldRef<"SpecificProduct", 'Float'>
     readonly colorId: FieldRef<"SpecificProduct", 'String'>
-    readonly variantName: FieldRef<"SpecificProduct", 'String'>
     readonly stock: FieldRef<"SpecificProduct", 'Int'>
   }
     
@@ -16591,7 +16580,6 @@ export namespace Prisma {
     image: 'image',
     price: 'price',
     colorId: 'colorId',
-    variantName: 'variantName',
     stock: 'stock'
   };
 
@@ -16741,8 +16729,7 @@ export namespace Prisma {
     genericId: 'genericId',
     id: 'id',
     image: 'image',
-    colorId: 'colorId',
-    variantName: 'variantName'
+    colorId: 'colorId'
   };
 
   export type SpecificProductOrderByRelevanceFieldEnum = (typeof SpecificProductOrderByRelevanceFieldEnum)[keyof typeof SpecificProductOrderByRelevanceFieldEnum]
@@ -17297,7 +17284,6 @@ export namespace Prisma {
     image?: StringFilter<"SpecificProduct"> | string
     price?: FloatFilter<"SpecificProduct"> | number
     colorId?: StringFilter<"SpecificProduct"> | string
-    variantName?: StringFilter<"SpecificProduct"> | string
     stock?: IntFilter<"SpecificProduct"> | number
     order?: ProductForOrderListRelationFilter
     promotions?: ProductForPromotionListRelationFilter
@@ -17313,7 +17299,6 @@ export namespace Prisma {
     image?: SortOrder
     price?: SortOrder
     colorId?: SortOrder
-    variantName?: SortOrder
     stock?: SortOrder
     order?: ProductForOrderOrderByRelationAggregateInput
     promotions?: ProductForPromotionOrderByRelationAggregateInput
@@ -17333,7 +17318,6 @@ export namespace Prisma {
     image?: StringFilter<"SpecificProduct"> | string
     price?: FloatFilter<"SpecificProduct"> | number
     colorId?: StringFilter<"SpecificProduct"> | string
-    variantName?: StringFilter<"SpecificProduct"> | string
     stock?: IntFilter<"SpecificProduct"> | number
     order?: ProductForOrderListRelationFilter
     promotions?: ProductForPromotionListRelationFilter
@@ -17349,7 +17333,6 @@ export namespace Prisma {
     image?: SortOrder
     price?: SortOrder
     colorId?: SortOrder
-    variantName?: SortOrder
     stock?: SortOrder
     _count?: SpecificProductCountOrderByAggregateInput
     _avg?: SpecificProductAvgOrderByAggregateInput
@@ -17367,7 +17350,6 @@ export namespace Prisma {
     image?: StringWithAggregatesFilter<"SpecificProduct"> | string
     price?: FloatWithAggregatesFilter<"SpecificProduct"> | number
     colorId?: StringWithAggregatesFilter<"SpecificProduct"> | string
-    variantName?: StringWithAggregatesFilter<"SpecificProduct"> | string
     stock?: IntWithAggregatesFilter<"SpecificProduct"> | number
   }
 
@@ -18064,7 +18046,6 @@ export namespace Prisma {
     id?: string
     image: string
     price: number
-    variantName: string
     stock: number
     order?: ProductForOrderCreateNestedManyWithoutProductInput
     promotions?: ProductForPromotionCreateNestedManyWithoutProductInput
@@ -18080,7 +18061,6 @@ export namespace Prisma {
     image: string
     price: number
     colorId: string
-    variantName: string
     stock: number
     order?: ProductForOrderUncheckedCreateNestedManyWithoutProductInput
     promotions?: ProductForPromotionUncheckedCreateNestedManyWithoutProductInput
@@ -18092,7 +18072,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
-    variantName?: StringFieldUpdateOperationsInput | string
     stock?: IntFieldUpdateOperationsInput | number
     order?: ProductForOrderUpdateManyWithoutProductNestedInput
     promotions?: ProductForPromotionUpdateManyWithoutProductNestedInput
@@ -18108,7 +18087,6 @@ export namespace Prisma {
     image?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
     colorId?: StringFieldUpdateOperationsInput | string
-    variantName?: StringFieldUpdateOperationsInput | string
     stock?: IntFieldUpdateOperationsInput | number
     order?: ProductForOrderUncheckedUpdateManyWithoutProductNestedInput
     promotions?: ProductForPromotionUncheckedUpdateManyWithoutProductNestedInput
@@ -18122,7 +18100,6 @@ export namespace Prisma {
     image: string
     price: number
     colorId: string
-    variantName: string
     stock: number
   }
 
@@ -18130,7 +18107,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
-    variantName?: StringFieldUpdateOperationsInput | string
     stock?: IntFieldUpdateOperationsInput | number
   }
 
@@ -18140,7 +18116,6 @@ export namespace Prisma {
     image?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
     colorId?: StringFieldUpdateOperationsInput | string
-    variantName?: StringFieldUpdateOperationsInput | string
     stock?: IntFieldUpdateOperationsInput | number
   }
 
@@ -18817,7 +18792,6 @@ export namespace Prisma {
     image?: SortOrder
     price?: SortOrder
     colorId?: SortOrder
-    variantName?: SortOrder
     stock?: SortOrder
   }
 
@@ -18832,7 +18806,6 @@ export namespace Prisma {
     image?: SortOrder
     price?: SortOrder
     colorId?: SortOrder
-    variantName?: SortOrder
     stock?: SortOrder
   }
 
@@ -18842,7 +18815,6 @@ export namespace Prisma {
     image?: SortOrder
     price?: SortOrder
     colorId?: SortOrder
-    variantName?: SortOrder
     stock?: SortOrder
   }
 
@@ -20248,7 +20220,6 @@ export namespace Prisma {
     id?: string
     image: string
     price: number
-    variantName: string
     stock: number
     order?: ProductForOrderCreateNestedManyWithoutProductInput
     promotions?: ProductForPromotionCreateNestedManyWithoutProductInput
@@ -20263,7 +20234,6 @@ export namespace Prisma {
     image: string
     price: number
     colorId: string
-    variantName: string
     stock: number
     order?: ProductForOrderUncheckedCreateNestedManyWithoutProductInput
     promotions?: ProductForPromotionUncheckedCreateNestedManyWithoutProductInput
@@ -20321,7 +20291,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
-    variantName?: StringFieldUpdateOperationsInput | string
     stock?: IntFieldUpdateOperationsInput | number
     order?: ProductForOrderUpdateManyWithoutProductNestedInput
     promotions?: ProductForPromotionUpdateManyWithoutProductNestedInput
@@ -20336,7 +20305,6 @@ export namespace Prisma {
     image?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
     colorId?: StringFieldUpdateOperationsInput | string
-    variantName?: StringFieldUpdateOperationsInput | string
     stock?: IntFieldUpdateOperationsInput | number
     order?: ProductForOrderUncheckedUpdateManyWithoutProductNestedInput
     promotions?: ProductForPromotionUncheckedUpdateManyWithoutProductNestedInput
@@ -20347,7 +20315,6 @@ export namespace Prisma {
     id?: string
     image: string
     price: number
-    variantName: string
     stock: number
     order?: ProductForOrderCreateNestedManyWithoutProductInput
     promotions?: ProductForPromotionCreateNestedManyWithoutProductInput
@@ -20361,7 +20328,6 @@ export namespace Prisma {
     image: string
     price: number
     colorId: string
-    variantName: string
     stock: number
     order?: ProductForOrderUncheckedCreateNestedManyWithoutProductInput
     promotions?: ProductForPromotionUncheckedCreateNestedManyWithoutProductInput
@@ -20457,7 +20423,6 @@ export namespace Prisma {
     image?: StringFilter<"SpecificProduct"> | string
     price?: FloatFilter<"SpecificProduct"> | number
     colorId?: StringFilter<"SpecificProduct"> | string
-    variantName?: StringFilter<"SpecificProduct"> | string
     stock?: IntFilter<"SpecificProduct"> | number
   }
 
@@ -20654,7 +20619,6 @@ export namespace Prisma {
     id?: string
     image: string
     price: number
-    variantName: string
     stock: number
     order?: ProductForOrderCreateNestedManyWithoutProductInput
     promotions?: ProductForPromotionCreateNestedManyWithoutProductInput
@@ -20668,7 +20632,6 @@ export namespace Prisma {
     id?: string
     image: string
     price: number
-    variantName: string
     stock: number
     order?: ProductForOrderUncheckedCreateNestedManyWithoutProductInput
     promotions?: ProductForPromotionUncheckedCreateNestedManyWithoutProductInput
@@ -20976,7 +20939,6 @@ export namespace Prisma {
     id?: string
     image: string
     price: number
-    variantName: string
     stock: number
     order?: ProductForOrderCreateNestedManyWithoutProductInput
     promotions?: ProductForPromotionCreateNestedManyWithoutProductInput
@@ -20991,7 +20953,6 @@ export namespace Prisma {
     image: string
     price: number
     colorId: string
-    variantName: string
     stock: number
     order?: ProductForOrderUncheckedCreateNestedManyWithoutProductInput
     promotions?: ProductForPromotionUncheckedCreateNestedManyWithoutProductInput
@@ -21018,7 +20979,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
-    variantName?: StringFieldUpdateOperationsInput | string
     stock?: IntFieldUpdateOperationsInput | number
     order?: ProductForOrderUpdateManyWithoutProductNestedInput
     promotions?: ProductForPromotionUpdateManyWithoutProductNestedInput
@@ -21033,7 +20993,6 @@ export namespace Prisma {
     image?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
     colorId?: StringFieldUpdateOperationsInput | string
-    variantName?: StringFieldUpdateOperationsInput | string
     stock?: IntFieldUpdateOperationsInput | number
     order?: ProductForOrderUncheckedUpdateManyWithoutProductNestedInput
     promotions?: ProductForPromotionUncheckedUpdateManyWithoutProductNestedInput
@@ -21153,7 +21112,6 @@ export namespace Prisma {
     id?: string
     image: string
     price: number
-    variantName: string
     stock: number
     promotions?: ProductForPromotionCreateNestedManyWithoutProductInput
     genericProd: GenericProductCreateNestedOneWithoutVariantsInput
@@ -21168,7 +21126,6 @@ export namespace Prisma {
     image: string
     price: number
     colorId: string
-    variantName: string
     stock: number
     promotions?: ProductForPromotionUncheckedCreateNestedManyWithoutProductInput
     images?: ImagesUncheckedCreateNestedManyWithoutProductInput
@@ -21218,7 +21175,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
-    variantName?: StringFieldUpdateOperationsInput | string
     stock?: IntFieldUpdateOperationsInput | number
     promotions?: ProductForPromotionUpdateManyWithoutProductNestedInput
     genericProd?: GenericProductUpdateOneRequiredWithoutVariantsNestedInput
@@ -21233,7 +21189,6 @@ export namespace Prisma {
     image?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
     colorId?: StringFieldUpdateOperationsInput | string
-    variantName?: StringFieldUpdateOperationsInput | string
     stock?: IntFieldUpdateOperationsInput | number
     promotions?: ProductForPromotionUncheckedUpdateManyWithoutProductNestedInput
     images?: ImagesUncheckedUpdateManyWithoutProductNestedInput
@@ -21278,7 +21233,6 @@ export namespace Prisma {
     id?: string
     image: string
     price: number
-    variantName: string
     stock: number
     order?: ProductForOrderCreateNestedManyWithoutProductInput
     genericProd: GenericProductCreateNestedOneWithoutVariantsInput
@@ -21293,7 +21247,6 @@ export namespace Prisma {
     image: string
     price: number
     colorId: string
-    variantName: string
     stock: number
     order?: ProductForOrderUncheckedCreateNestedManyWithoutProductInput
     images?: ImagesUncheckedCreateNestedManyWithoutProductInput
@@ -21341,7 +21294,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
-    variantName?: StringFieldUpdateOperationsInput | string
     stock?: IntFieldUpdateOperationsInput | number
     order?: ProductForOrderUpdateManyWithoutProductNestedInput
     genericProd?: GenericProductUpdateOneRequiredWithoutVariantsNestedInput
@@ -21356,7 +21308,6 @@ export namespace Prisma {
     image?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
     colorId?: StringFieldUpdateOperationsInput | string
-    variantName?: StringFieldUpdateOperationsInput | string
     stock?: IntFieldUpdateOperationsInput | number
     order?: ProductForOrderUncheckedUpdateManyWithoutProductNestedInput
     images?: ImagesUncheckedUpdateManyWithoutProductNestedInput
@@ -21449,7 +21400,6 @@ export namespace Prisma {
     image: string
     price: number
     colorId: string
-    variantName: string
     stock: number
   }
 
@@ -21466,7 +21416,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
-    variantName?: StringFieldUpdateOperationsInput | string
     stock?: IntFieldUpdateOperationsInput | number
     order?: ProductForOrderUpdateManyWithoutProductNestedInput
     promotions?: ProductForPromotionUpdateManyWithoutProductNestedInput
@@ -21480,7 +21429,6 @@ export namespace Prisma {
     image?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
     colorId?: StringFieldUpdateOperationsInput | string
-    variantName?: StringFieldUpdateOperationsInput | string
     stock?: IntFieldUpdateOperationsInput | number
     order?: ProductForOrderUncheckedUpdateManyWithoutProductNestedInput
     promotions?: ProductForPromotionUncheckedUpdateManyWithoutProductNestedInput
@@ -21493,7 +21441,6 @@ export namespace Prisma {
     image?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
     colorId?: StringFieldUpdateOperationsInput | string
-    variantName?: StringFieldUpdateOperationsInput | string
     stock?: IntFieldUpdateOperationsInput | number
   }
 
@@ -21571,7 +21518,6 @@ export namespace Prisma {
     id?: string
     image: string
     price: number
-    variantName: string
     stock: number
   }
 
@@ -21579,7 +21525,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
-    variantName?: StringFieldUpdateOperationsInput | string
     stock?: IntFieldUpdateOperationsInput | number
     order?: ProductForOrderUpdateManyWithoutProductNestedInput
     promotions?: ProductForPromotionUpdateManyWithoutProductNestedInput
@@ -21593,7 +21538,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
-    variantName?: StringFieldUpdateOperationsInput | string
     stock?: IntFieldUpdateOperationsInput | number
     order?: ProductForOrderUncheckedUpdateManyWithoutProductNestedInput
     promotions?: ProductForPromotionUncheckedUpdateManyWithoutProductNestedInput
@@ -21606,7 +21550,6 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
-    variantName?: StringFieldUpdateOperationsInput | string
     stock?: IntFieldUpdateOperationsInput | number
   }
 

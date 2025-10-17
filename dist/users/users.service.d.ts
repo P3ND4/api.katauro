@@ -11,7 +11,7 @@ export declare class UsersService {
         name: string;
         lastName: string;
         password: string;
-        image: string | null;
+        image: string;
         id: string;
     }>;
     findAll(): Promise<{
@@ -19,7 +19,7 @@ export declare class UsersService {
         name: string;
         lastName: string;
         password: string;
-        image: string | null;
+        image: string;
         id: string;
     }[]>;
     findOne(id: string): Promise<{
@@ -27,7 +27,7 @@ export declare class UsersService {
         name: string;
         lastName: string;
         password: string;
-        image: string | null;
+        image: string;
         id: string;
     } | null>;
     update(id: string, updateUserDto: UpdateUserDto): Promise<{
@@ -35,7 +35,7 @@ export declare class UsersService {
         name: string;
         lastName: string;
         password: string;
-        image: string | null;
+        image: string;
         id: string;
     }>;
     remove(id: string): Promise<{
@@ -43,7 +43,7 @@ export declare class UsersService {
         name: string;
         lastName: string;
         password: string;
-        image: string | null;
+        image: string;
         id: string;
     }>;
     findUserByEmail(email: string): Promise<{
@@ -51,7 +51,7 @@ export declare class UsersService {
         name: string;
         lastName: string;
         password: string;
-        image: string | null;
+        image: string;
         id: string;
     } | null>;
 }

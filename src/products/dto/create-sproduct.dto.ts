@@ -1,7 +1,7 @@
 export class CreateSpecProductDTO {
     price: number;
     stock: number;
-    colorId?: string
+    colorId: string
     image: string;
     images: string[]
 }

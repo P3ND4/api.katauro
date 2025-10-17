@@ -15,12 +15,12 @@ const products_repository_1 = require("./products.repository");
 const CatRepository_1 = require("./CatRepository");
 let ProductsService = class ProductsService {
     productRepository;
-    catRep;
-    constructor(productRepository, catRep) {
+    propRep;
+    constructor(productRepository, propRep) {
         this.productRepository = productRepository;
-        this.catRep = catRep;
+        this.propRep = propRep;
     }
-    create(createProductDto) {
+    async create(createProductDto) {
         return this.productRepository.createProduct(createProductDto);
     }
     findAll() {
@@ -49,15 +49,33 @@ let ProductsService = class ProductsService {
         return page ? products.slice((page - 1) * 9, (page - 1) * 9 + 9) : products;
     }
     async getCatByName(name) {
-        return (await this.catRep.findCategories()).filter((cat) => cat.nombre === name);
+        return (await this.propRep.findCategories()).filter((cat) => cat.nombre === name);
     }
     async getCats() {
-        return this.catRep.findCategories();
+        return this.propRep.findCategories();
+    }
+    getFinishes() {
+        return this.propRep.findFinishes();
+    }
+    createFinish(data) {
+        return this.propRep.addFinish(data);
+    }
+    deleteFinish(id) {
+        return this.propRep.deleteFinish(id);
+    }
+    getColors() {
+        return this.propRep.findColors();
+    }
+    createColor(data) {
+        return this.propRep.addColor(data);
+    }
+    deleteColor(id) {
+        return this.propRep.deleteColor(id);
     }
 };
 exports.ProductsService = ProductsService;
 exports.ProductsService = ProductsService = __decorate([
     (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [products_repository_1.ProductRepository, CatRepository_1.catRepository])
+    __metadata("design:paramtypes", [products_repository_1.ProductRepository, CatRepository_1.propRepository])
 ], ProductsService);
 //# sourceMappingURL=products.service.js.map

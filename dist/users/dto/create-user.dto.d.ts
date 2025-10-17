@@ -3,5 +3,5 @@ export declare class CreateUserDto {
     name: string;
     lastName: string;
     password: string;
-    image?: string;
+    image: string;
 }

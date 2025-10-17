@@ -21,13 +21,25 @@ let ProductRepository = class ProductRepository {
         return this.prismaService.genericProduct.findMany({ include: { variants: true, details: true, category: true, finish: true } });
     }
     createProduct(data) {
-        return this.prismaService.genericProduct.create({ data: data });
+        return this.prismaService.genericProduct.create({ data: {
+                name: data.name,
+                details: { create: data.details.map(x => ({ text: x })) },
+                description: data.description,
+                subtitle: data.subtitle,
+            } });
     }
     findProductById(id) {
         return this.prismaService.genericProduct.findUnique({ where: { id }, include: { variants: true, details: true, category: true, finish: true } });
     }
-    updateProduct(id, data) {
-        return this.prismaService.genericProduct.update({ where: { id }, data });
+    async updateProduct(id, data) {
+        if (data.details && data.details.length > 0)
+            await this.prismaService.details.deleteMany({ where: { idProd: id } });
+        return this.prismaService.genericProduct.update({ where: { id }, data: {
+                name: data.name,
+                description: data.description,
+                subtitle: data.subtitle,
+                details: { create: data.details?.map(x => ({ text: x, id: x })) },
+            } });
     }
     deleteProduct(id) {
         return this.prismaService.genericProduct.delete({ where: { id } });

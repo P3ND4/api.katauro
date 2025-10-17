@@ -5,48 +5,43 @@ export declare class SpecProductService {
     private variantRep;
     constructor(variantRep: SpecProductRepository);
     create(createSpecProductDTO: CreateSpecProductDTO): Promise<{
-        image: string | null;
+        image: string;
         id: string;
-        genericId: string;
-        variantName: string;
         price: number;
         stock: number;
-        colorId: string | null;
+        colorId: string;
+        genericId: string;
     }>;
     update(id: string, updateSpecProductDto: UpdateSpecProductDto): Promise<{
-        image: string | null;
+        image: string;
         id: string;
-        genericId: string;
-        variantName: string;
         price: number;
         stock: number;
-        colorId: string | null;
+        colorId: string;
+        genericId: string;
     }>;
     delete(id: string): Promise<{
-        image: string | null;
+        image: string;
         id: string;
-        genericId: string;
-        variantName: string;
         price: number;
         stock: number;
-        colorId: string | null;
+        colorId: string;
+        genericId: string;
     }>;
     findById(id: string): Promise<{
-        image: string | null;
+        image: string;
         id: string;
-        genericId: string;
-        variantName: string;
         price: number;
         stock: number;
-        colorId: string | null;
+        colorId: string;
+        genericId: string;
     } | null>;
     findByGeneric(id: string): Promise<{
-        image: string | null;
+        image: string;
         id: string;
-        genericId: string;
-        variantName: string;
         price: number;
         stock: number;
-        colorId: string | null;
+        colorId: string;
+        genericId: string;
     }[]>;
 }

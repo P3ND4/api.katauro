@@ -3,11 +3,13 @@ export declare class Product {
     id: string;
     name: string;
     categoryId: string;
+    finish: Finish[];
     description?: string;
     subtitle: string;
     vector?: string;
     category: CatEntity;
     variants: Variant[];
+    typology: Typology;
 }
 export declare class Variant {
     id: string;
@@ -34,10 +36,14 @@ export declare class CatEntity {
 export declare class Finish {
     id: string;
     text: string;
-    image?: string;
+    image: string;
 }
 export declare class Color {
     id: string;
-    text: string;
+    name: string;
     image?: string;
+}
+export declare enum Typology {
+    simple = "Simple",
+    variant = "Variante"
 }

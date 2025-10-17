@@ -7,7 +7,7 @@ import { propRepository } from './CatRepository';
 
 @Injectable()
 export class ProductsService {
-  constructor(private productRepository: ProductRepository, private propRep: propRepository){}
+  constructor(private productRepository: ProductRepository, private propRep: propRepository) { }
 
   async create(createProductDto: CreateProductDto) {
 
@@ -20,13 +20,13 @@ export class ProductsService {
 
   async findPage(page: number) {
     const products = await this.productRepository.findAllProducts();
-    return products.slice((page-1)*9, (page-1)*9+9)
+    return products.slice((page - 1) * 9, (page - 1) * 9 + 9)
   }
-  
-  async getPages(category?: string){
+
+  async getPages(category?: string) {
     const products = await this.productRepository.findAllProducts()
-    
-    return !category? Math.ceil(products.length/9): Math.ceil(products.filter((p)=>(p as Product).category.nombre === category).length/9);
+
+    return !category ? Math.ceil(products.length / 9) : Math.ceil(products.filter((p) => (p as Product).category.nombre === category).length / 9);
   }
 
   findOne(id: string) {
@@ -40,32 +40,43 @@ export class ProductsService {
   remove(id: string) {
     return this.productRepository.deleteProduct(id);
   }
-  
-  async getProductByCategory(name: string, page?: number){
+
+  async getProductByCategory(name: string, page?: number) {
     var products = await this.productRepository.findAllProducts() as Product[]
-    products = products.filter((prod)=> prod.category.nombre === name);
-    return page? products.slice((page-1)*9, (page-1)*9+9): products
+    products = products.filter((prod) => prod.category.nombre === name);
+    return page ? products.slice((page - 1) * 9, (page - 1) * 9 + 9) : products
   }
 
-  async getCatByName(name:string){
-    return (await this.propRep.findCategories()).filter((cat)=> cat.nombre ===name);
+  async getCatByName(name: string) {
+    return (await this.propRep.findCategories()).filter((cat) => cat.nombre === name);
   }
 
-  async getCats(){
+  async getCats() {
     return this.propRep.findCategories();
   }
 
-  getFinishes(){
+  getFinishes() {
     return this.propRep.findFinishes();
   }
 
-  createFinish(data: any){
+  createFinish(data: any) {
     return this.propRep.addFinish(data);
   }
 
-  deleteFinish(id: string){
+  deleteFinish(id: string) {
     return this.propRep.deleteFinish(id);
   }
 
+  getColors() {
+    return this.propRep.findColors();
+  }
+
+  createColor(data: { image: string, name: string }) {
+    return this.propRep.addColor(data);
+  }
+
+  deleteColor(id: string) {
+    return this.propRep.deleteColor(id);
+  }
 
 }

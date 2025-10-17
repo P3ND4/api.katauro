@@ -2,17 +2,18 @@ import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { ProductRepository } from './products.repository';
 import { Product } from './entities/product.entity';
-import { catRepository } from './CatRepository';
+import { propRepository } from './CatRepository';
 export declare class ProductsService {
     private productRepository;
-    private catRep;
-    constructor(productRepository: ProductRepository, catRep: catRepository);
+    private propRep;
+    constructor(productRepository: ProductRepository, propRep: propRepository);
     create(createProductDto: CreateProductDto): Promise<{
         name: string;
         id: string;
         description: string;
         subtitle: string;
         categoryId: string;
+        typology: string;
         vector: string;
     }>;
     findAll(): Promise<{
@@ -21,6 +22,7 @@ export declare class ProductsService {
         description: string;
         subtitle: string;
         categoryId: string;
+        typology: string;
         vector: string;
     }[]>;
     findPage(page: number): Promise<{
@@ -29,6 +31,7 @@ export declare class ProductsService {
         description: string;
         subtitle: string;
         categoryId: string;
+        typology: string;
         vector: string;
     }[]>;
     getPages(category?: string): Promise<number>;
@@ -38,6 +41,7 @@ export declare class ProductsService {
         description: string;
         subtitle: string;
         categoryId: string;
+        typology: string;
         vector: string;
     } | null>;
     update(id: string, updateProductDto: UpdateProductDto): Promise<{
@@ -46,6 +50,7 @@ export declare class ProductsService {
         description: string;
         subtitle: string;
         categoryId: string;
+        typology: string;
         vector: string;
     }>;
     remove(id: string): Promise<{
@@ -54,9 +59,19 @@ export declare class ProductsService {
         description: string;
         subtitle: string;
         categoryId: string;
+        typology: string;
         vector: string;
     }>;
     getProductByCategory(name: string, page?: number): Promise<Product[]>;
     getCatByName(name: string): Promise<import("./entities/product.entity").CatEntity[]>;
     getCats(): Promise<import("./entities/product.entity").CatEntity[]>;
+    getFinishes(): Promise<import("./entities/product.entity").Finish[]>;
+    createFinish(data: any): Promise<import("./entities/product.entity").Finish>;
+    deleteFinish(id: string): Promise<import("./entities/product.entity").Finish>;
+    getColors(): Promise<import("./entities/product.entity").Color[]>;
+    createColor(data: {
+        image: string;
+        name: string;
+    }): Promise<import("./entities/product.entity").Color>;
+    deleteColor(id: string): Promise<import("./entities/product.entity").Color>;
 }

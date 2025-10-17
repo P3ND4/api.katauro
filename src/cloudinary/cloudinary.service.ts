@@ -6,22 +6,18 @@ import * as crypto from 'crypto';
 export class CloudinaryService {
 
     async generateSignature() {
-        const timestamp = Math.round(new Date().getTime() / 1000);
-        const uploadPreset = 'secure_preset'; // el nombre de tu preset configurado en Cloudinary
+        const timestamp = Math.floor(Date.now() / 1000);
+        const api_key = process.env.CLOUDINARY_API_KEY!;
+        const api_secret = process.env.CLOUDINARY_API_SECRET!;
+        const cloud_name = process.env.CLOUDINARY_CLOUD_NAME!;
+        const upload_preset = 'katauroPresetSigned';
+        const folder = 'katauro';
 
-        // crear firma con tu API_SECRET
-        const signature = crypto
-            .createHash('sha1')
-            .update(`timestamp=${timestamp}&upload_preset=${uploadPreset}${process.env.CLOUDINARY_API_SECRET}`)
-            .digest('hex');
+        // Firma = todos los parámetros que vas a enviar (orden alfabético)
+        const signatureString = `folder=${folder}&timestamp=${timestamp}&upload_preset=${upload_preset}${api_secret}`;
+        const signature = crypto.createHash('sha1').update(signatureString).digest('hex');
 
-        return {
-            timestamp,
-            signature,
-            upload_preset: uploadPreset,
-            api_key: process.env.CLOUDINARY_API_KEY,
-            cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-        };
+        return { timestamp, signature, api_key, cloud_name, upload_preset, folder };
     }
 }
 

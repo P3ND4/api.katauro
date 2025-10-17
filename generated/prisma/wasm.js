@@ -185,7 +185,6 @@ exports.Prisma.SpecificProductScalarFieldEnum = {
   image: 'image',
   price: 'price',
   colorId: 'colorId',
-  variantName: 'variantName',
   stock: 'stock'
 };
 
@@ -287,8 +286,7 @@ exports.Prisma.SpecificProductOrderByRelevanceFieldEnum = {
   genericId: 'genericId',
   id: 'id',
   image: 'image',
-  colorId: 'colorId',
-  variantName: 'variantName'
+  colorId: 'colorId'
 };
 
 exports.Prisma.ImagesOrderByRelevanceFieldEnum = {

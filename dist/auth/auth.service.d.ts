@@ -15,7 +15,7 @@ export declare class AuthService {
         email: string;
         name: string;
         lastName: string;
-        image: string | null;
+        image: string;
         id: string;
     }>;
     logout(token: string): Promise<{
