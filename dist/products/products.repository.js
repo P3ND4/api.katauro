@@ -21,25 +21,58 @@ let ProductRepository = class ProductRepository {
         return this.prismaService.genericProduct.findMany({ include: { variants: true, details: true, category: true, finish: true } });
     }
     createProduct(data) {
-        return this.prismaService.genericProduct.create({ data: {
+        return this.prismaService.genericProduct.create({
+            data: {
                 name: data.name,
                 details: { create: data.details.map(x => ({ text: x })) },
                 description: data.description,
                 subtitle: data.subtitle,
-            } });
+                vector: data.vector,
+                finish: { create: data.finishId.map(x => ({ finishId: x })) },
+                variants: {
+                    create: data.variants.map((x) => ({
+                        colorId: x.colorId,
+                        stock: x.stock,
+                        image: x.image,
+                        price: x.price,
+                        images: { create: x.images.map(y => ({ link: y })) }
+                    }))
+                }
+            }
+        });
     }
     findProductById(id) {
         return this.prismaService.genericProduct.findUnique({ where: { id }, include: { variants: true, details: true, category: true, finish: true } });
     }
     async updateProduct(id, data) {
-        if (data.details && data.details.length > 0)
-            await this.prismaService.details.deleteMany({ where: { idProd: id } });
-        return this.prismaService.genericProduct.update({ where: { id }, data: {
+        await this.prismaService.genericProduct.update({
+            where: { id },
+            data: {
+                details: { deleteMany: {} },
+                finish: { deleteMany: {} },
+                variants: {
+                    deleteMany: {},
+                },
+            },
+        });
+        return this.prismaService.genericProduct.update({
+            where: { id }, data: {
                 name: data.name,
                 description: data.description,
                 subtitle: data.subtitle,
-                details: { create: data.details?.map(x => ({ text: x, id: x })) },
-            } });
+                details: { create: data.details?.map(x => ({ text: x })) },
+                finish: { create: data.finishId?.map(x => ({ finishId: x })) },
+                variants: {
+                    create: data.variants?.map((x) => ({
+                        colorId: x.colorId,
+                        stock: x.stock,
+                        image: x.image,
+                        price: x.price,
+                        images: { create: x.images.map(y => ({ link: y })) }
+                    }))
+                }
+            }
+        });
     }
     deleteProduct(id) {
         return this.prismaService.genericProduct.delete({ where: { id } });
