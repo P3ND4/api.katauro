@@ -22,6 +22,8 @@ export class ProductRepository implements IProductRepository {
                 name: data.name,
                 details: { create: data.details.map(x => ({ text: x })) },
                 description: data.description,
+                categoryId: data.categoryId,
+                typology: data.typology,
                 subtitle: data.subtitle,
                 vector: data.vector,
                 finish: { create: data.finishId.map(x => ({ finishId: x })) },
