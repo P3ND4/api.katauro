@@ -3,7 +3,7 @@ export declare class Product {
     id: string;
     name: string;
     categoryId: string;
-    finish: Finish[];
+    finish: FinishForProduct[];
     description?: string;
     subtitle: string;
     vector?: string;
@@ -20,6 +20,10 @@ export declare class Variant {
     image?: string;
     images: Images[];
     color: Color;
+}
+export declare class FinishForProduct {
+    productId: string;
+    finishId: string;
 }
 export declare enum Categories {
     tableLumin = "Luminarias de mesa",

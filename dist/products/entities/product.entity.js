@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Typology = exports.Color = exports.Finish = exports.CatEntity = exports.Categories = exports.Variant = exports.Product = void 0;
+exports.Typology = exports.Color = exports.Finish = exports.CatEntity = exports.Categories = exports.FinishForProduct = exports.Variant = exports.Product = void 0;
 class Product {
     id;
     name;
@@ -25,6 +25,11 @@ class Variant {
     color;
 }
 exports.Variant = Variant;
+class FinishForProduct {
+    productId;
+    finishId;
+}
+exports.FinishForProduct = FinishForProduct;
 var Categories;
 (function (Categories) {
     Categories["tableLumin"] = "Luminarias de mesa";

@@ -1,10 +1,11 @@
-import { Images } from "generated/prisma";
+import { finishForProducts, Images } from "generated/prisma";
+import { inherits } from "util";
 
 export class Product {
     id: string;
     name: string;
     categoryId: string
-    finish: Finish[]
+    finish: FinishForProduct[]
     description?: string;
     subtitle: string
     vector?: string
@@ -22,6 +23,11 @@ export class Variant {
     image?: string;
     images: Images[]
     color: Color
+}
+
+export class FinishForProduct{
+    productId: string;
+    finishId: string;
 }
 
 export enum Categories {
