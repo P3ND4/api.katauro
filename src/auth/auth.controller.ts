@@ -15,7 +15,7 @@ export class AuthController {
     const { access_token } = await this.authService.login(loginDto);
     res.cookie('jwt', access_token, {
       httpOnly: true,
-      secure: true, // Asegúrate de usar secure en producción con HTTPS
+      //secure: true, // Asegúrate de usar secure en producción con HTTPS
       sameSite: 'none',
       maxAge: 72 * 3600000, // 72 hours
       path: '/',  // 👈 esto es clave
