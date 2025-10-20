@@ -47,6 +47,11 @@ async function bootstrap() {
         methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
         credentials: true,
     });
+    app.enableCors({
+        origin: 'https://admin.katauro.com',
+        methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+        credentials: true,
+    });
     app.use((0, cookie_parser_1.default)());
     await app.listen(process.env.PORT ?? 3000);
 }
