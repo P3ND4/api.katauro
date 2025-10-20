@@ -43,12 +43,7 @@ const dotenv = __importStar(require("dotenv"));
 async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
     app.enableCors({
-        origin: 'http://localhost:4200',
-        methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-        credentials: true,
-    });
-    app.enableCors({
-        origin: 'https://admin.katauro.com',
+        origin: ['http://localhost:4200', 'https://katauro.com', 'https://admin.katauro.com'],
         methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
         credentials: true,
     });
