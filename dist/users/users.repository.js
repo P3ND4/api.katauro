@@ -20,11 +20,41 @@ let UsersRepository = class UsersRepository {
     findUserByEmail(email) {
         return this.prismaService.user.findUniqueOrThrow({
             where: { email: email },
-            include: { cart: { include: { product: true } } }
+            include: {
+                cart: {
+                    include: {
+                        product: {
+                            include: {
+                                images: true, color: true, genericProd: {
+                                    include: {
+                                        finish: true, details: true, category: true
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         });
     }
     findAllUsers() {
-        return this.prismaService.user.findMany({ include: { cart: true } });
+        return this.prismaService.user.findMany({
+            include: {
+                cart: {
+                    include: {
+                        product: {
+                            include: {
+                                images: true, color: true, genericProd: {
+                                    include: {
+                                        finish: true, details: true, category: true
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        });
     }
     async createUser(data) {
         return await this.prismaService.user.create({ data: data });
@@ -32,7 +62,21 @@ let UsersRepository = class UsersRepository {
     findUserById(id) {
         return this.prismaService.user.findUnique({
             where: { id },
-            include: { cart: true }
+            include: {
+                cart: {
+                    include: {
+                        product: {
+                            include: {
+                                images: true, color: true, genericProd: {
+                                    include: {
+                                        finish: true, details: true, category: true
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         });
     }
     updateUser(id, data) {

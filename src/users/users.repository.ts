@@ -9,25 +9,69 @@ import { Injectable } from "@nestjs/common";
 @Injectable()
 export class UsersRepository implements IUserRepository {
     constructor(private prismaService: PrismaService) {
-     }
+    }
     findUserByEmail(email: string): Promise<User | null> {
         return this.prismaService.user.findUniqueOrThrow({
             where: { email: email },
-            include: {cart: {include: {product: true}}}
+            include: {
+                cart: {
+                    include: {
+                        product: {
+                            include: {
+                                images: true, color: true, genericProd: {
+                                    include: {
+                                        finish: true, details: true, category: true
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         });
     }
     findAllUsers(): Promise<User[]> {
-        return this.prismaService.user.findMany({include:{cart: true}});
+        return this.prismaService.user.findMany({
+            include: {
+                cart: {
+                    include: {
+                        product: {
+                            include: {
+                                images: true, color: true, genericProd: {
+                                    include: {
+                                        finish: true, details: true, category: true
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        });
     }
 
     async createUser(data: CreateUserDto): Promise<User> {
-        return await this.prismaService.user.create({data:data})
+        return await this.prismaService.user.create({ data: data })
     }
 
     findUserById(id: string): Promise<User | null> {
         return this.prismaService.user.findUnique({
             where: { id },
-            include: {cart: true}
+            include: {
+                cart: {
+                    include: {
+                        product: {
+                            include: {
+                                images: true, color: true, genericProd: {
+                                    include: {
+                                        finish: true, details: true, category: true
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         });
     }
 
@@ -38,7 +82,7 @@ export class UsersRepository implements IUserRepository {
                 name: data.name,
                 email: data.email,
                 password: data.password,
-                cart: {create: data.updateCart?.map(variantId => ({productId: variantId}))},
+                cart: { create: data.updateCart?.map(variantId => ({ productId: variantId })) },
                 image: data.image,
             },
         });
@@ -48,6 +92,6 @@ export class UsersRepository implements IUserRepository {
         return this.prismaService.user.delete({
             where: { id },
         });
-        
+
     }
 }
