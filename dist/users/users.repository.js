@@ -38,7 +38,13 @@ let UsersRepository = class UsersRepository {
     updateUser(id, data) {
         return this.prismaService.user.update({
             where: { id },
-            data,
+            data: {
+                name: data.name,
+                email: data.email,
+                password: data.password,
+                cart: { create: data.updateCart?.map(variantId => ({ productId: variantId })) },
+                image: data.image,
+            },
         });
     }
     deleteUser(id) {

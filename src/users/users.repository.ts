@@ -34,7 +34,13 @@ export class UsersRepository implements IUserRepository {
     updateUser(id: string, data: UpdateUserDto): Promise<User> {
         return this.prismaService.user.update({
             where: { id },
-            data,
+            data: {
+                name: data.name,
+                email: data.email,
+                password: data.password,
+                cart: {create: data.updateCart?.map(variantId => ({productId: variantId}))},
+                image: data.image,
+            },
         });
     }
 
