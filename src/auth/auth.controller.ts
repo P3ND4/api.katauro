@@ -16,7 +16,7 @@ export class AuthController {
     res.cookie('jwt', access_token, {
       httpOnly: true,
       //secure: true, // Asegúrate de usar secure en producción con HTTPS
-      sameSite: 'none',
+      sameSite: true,//'none',
       maxAge: 72 * 3600000, // 72 hours
       path: '/',  // 👈 esto es clave
     });
