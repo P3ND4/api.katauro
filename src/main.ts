@@ -10,7 +10,8 @@ async function bootstrap() {
   const allowedOrigins = [
     'http://localhost:4200',
     'https://katauro.com',
-    'https://admin.katauro.com'
+    'https://admin.katauro.com',
+    'https://katauro-luminaria-web.vercel.app'
   ];
 
   app.enableCors({
