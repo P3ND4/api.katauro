@@ -4,7 +4,6 @@ import { CreateUserDto } from 'src/users/dto/create-user.dto';
 import { UsersService } from 'src/users/users.service';
 import * as bcrypt from 'bcrypt';
 import { LoginDto } from './dto/loginDto';
-import { error } from 'console';
 import { RevokedJwtService } from './revokedJwt.service';
 
 @Injectable()
@@ -14,8 +13,6 @@ export class AuthService {
 
         const userExists = await this.userService.findUserByEmail(createUserDto.email).catch(() => null);
         if (userExists) throw new BadRequestException('User already exists');
-        const hashedPassword = await bcrypt.hash(createUserDto.password, 10);
-        createUserDto.password = hashedPassword
         return this.userService.create(createUserDto);
     }
 

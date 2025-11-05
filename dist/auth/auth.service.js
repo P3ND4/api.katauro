@@ -61,8 +61,6 @@ let AuthService = class AuthService {
         const userExists = await this.userService.findUserByEmail(createUserDto.email).catch(() => null);
         if (userExists)
             throw new common_1.BadRequestException('User already exists');
-        const hashedPassword = await bcrypt.hash(createUserDto.password, 10);
-        createUserDto.password = hashedPassword;
         return this.userService.create(createUserDto);
     }
     async login(credentials) {
