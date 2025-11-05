@@ -56,6 +56,7 @@ let UsersService = class UsersService {
     }
     async create(createUserDto) {
         createUserDto.password = await bcrypt.hash(createUserDto.password, 10);
+        createUserDto.image = 'https://res.cloudinary.com/dmhadvchw/image/upload/q_auto,f_auto/v1761761487/avatardefault_92824_sqhmie.png';
         return await this.usersRepository.createUser(createUserDto);
     }
     ;

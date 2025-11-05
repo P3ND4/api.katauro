@@ -12,6 +12,7 @@ export class UsersService {
 
   async create(createUserDto: CreateUserDto) {
     createUserDto.password = await bcrypt.hash(createUserDto.password, 10);
+    createUserDto.image = 'https://res.cloudinary.com/dmhadvchw/image/upload/q_auto,f_auto/v1761761487/avatardefault_92824_sqhmie.png'
     return await this.usersRepository.createUser(createUserDto);
   };
 
@@ -24,7 +25,7 @@ export class UsersService {
   }
 
   async update(id: string, updateUserDto: UpdateUserDto) {
-    if(updateUserDto.password) updateUserDto.password = await bcrypt.hash(updateUserDto.password, 10);
+    if (updateUserDto.password) updateUserDto.password = await bcrypt.hash(updateUserDto.password, 10);
     return this.usersRepository.updateUser(id, updateUserDto);
   }
 
