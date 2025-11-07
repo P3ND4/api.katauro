@@ -82,6 +82,7 @@ export class UsersRepository implements IUserRepository {
                 name: data.name,
                 email: data.email,
                 password: data.password,
+                phone: data.phone,
                 cart: { create: data.updateCart?.map(variantId => ({ productId: variantId })) },
                 image: data.image,
             },

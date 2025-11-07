@@ -8,6 +8,7 @@ class User {
     lastName;
     password;
     image;
+    phone;
 }
 exports.User = User;
 //# sourceMappingURL=user.entity.js.map

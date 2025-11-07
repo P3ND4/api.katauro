@@ -10,6 +10,7 @@ export declare class UsersController {
         lastName: string;
         password: string;
         image: string;
+        phone: number;
         id: string;
     }>;
     findAll(): Promise<{
@@ -18,6 +19,7 @@ export declare class UsersController {
         lastName: string;
         password: string;
         image: string;
+        phone: number;
         id: string;
     }[]>;
     findOne(id: string): Promise<{
@@ -26,6 +28,7 @@ export declare class UsersController {
         lastName: string;
         password: string;
         image: string;
+        phone: number;
         id: string;
     } | null>;
     update(id: string, updateUserDto: UpdateUserDto): Promise<{
@@ -34,6 +37,7 @@ export declare class UsersController {
         lastName: string;
         password: string;
         image: string;
+        phone: number;
         id: string;
     }>;
     remove(id: string): Promise<{
@@ -42,6 +46,7 @@ export declare class UsersController {
         lastName: string;
         password: string;
         image: string;
+        phone: number;
         id: string;
     }>;
 }

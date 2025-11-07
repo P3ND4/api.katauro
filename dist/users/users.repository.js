@@ -86,6 +86,7 @@ let UsersRepository = class UsersRepository {
                 name: data.name,
                 email: data.email,
                 password: data.password,
+                phone: data.phone,
                 cart: { create: data.updateCart?.map(variantId => ({ productId: variantId })) },
                 image: data.image,
             },

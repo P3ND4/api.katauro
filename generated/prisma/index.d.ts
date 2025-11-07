@@ -2343,8 +2343,18 @@ export namespace Prisma {
 
   export type AggregateUser = {
     _count: UserCountAggregateOutputType | null
+    _avg: UserAvgAggregateOutputType | null
+    _sum: UserSumAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
+  }
+
+  export type UserAvgAggregateOutputType = {
+    phone: number | null
+  }
+
+  export type UserSumAggregateOutputType = {
+    phone: number | null
   }
 
   export type UserMinAggregateOutputType = {
@@ -2353,6 +2363,7 @@ export namespace Prisma {
     name: string | null
     lastName: string | null
     password: string | null
+    phone: number | null
     image: string | null
   }
 
@@ -2362,6 +2373,7 @@ export namespace Prisma {
     name: string | null
     lastName: string | null
     password: string | null
+    phone: number | null
     image: string | null
   }
 
@@ -2371,10 +2383,19 @@ export namespace Prisma {
     name: number
     lastName: number
     password: number
+    phone: number
     image: number
     _all: number
   }
 
+
+  export type UserAvgAggregateInputType = {
+    phone?: true
+  }
+
+  export type UserSumAggregateInputType = {
+    phone?: true
+  }
 
   export type UserMinAggregateInputType = {
     id?: true
@@ -2382,6 +2403,7 @@ export namespace Prisma {
     name?: true
     lastName?: true
     password?: true
+    phone?: true
     image?: true
   }
 
@@ -2391,6 +2413,7 @@ export namespace Prisma {
     name?: true
     lastName?: true
     password?: true
+    phone?: true
     image?: true
   }
 
@@ -2400,6 +2423,7 @@ export namespace Prisma {
     name?: true
     lastName?: true
     password?: true
+    phone?: true
     image?: true
     _all?: true
   }
@@ -2442,6 +2466,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: UserAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: UserSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: UserMinAggregateInputType
@@ -2472,6 +2508,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: UserCountAggregateInputType | true
+    _avg?: UserAvgAggregateInputType
+    _sum?: UserSumAggregateInputType
     _min?: UserMinAggregateInputType
     _max?: UserMaxAggregateInputType
   }
@@ -2482,8 +2520,11 @@ export namespace Prisma {
     name: string
     lastName: string
     password: string
+    phone: number
     image: string
     _count: UserCountAggregateOutputType | null
+    _avg: UserAvgAggregateOutputType | null
+    _sum: UserSumAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
   }
@@ -2508,6 +2549,7 @@ export namespace Prisma {
     name?: boolean
     lastName?: boolean
     password?: boolean
+    phone?: boolean
     image?: boolean
     cart?: boolean | User$cartArgs<ExtArgs>
     orders?: boolean | User$ordersArgs<ExtArgs>
@@ -2522,10 +2564,11 @@ export namespace Prisma {
     name?: boolean
     lastName?: boolean
     password?: boolean
+    phone?: boolean
     image?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "name" | "lastName" | "password" | "image", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "name" | "lastName" | "password" | "phone" | "image", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     cart?: boolean | User$cartArgs<ExtArgs>
     orders?: boolean | User$ordersArgs<ExtArgs>
@@ -2544,6 +2587,7 @@ export namespace Prisma {
       name: string
       lastName: string
       password: string
+      phone: number
       image: string
     }, ExtArgs["result"]["user"]>
     composites: {}
@@ -2921,6 +2965,7 @@ export namespace Prisma {
     readonly name: FieldRef<"User", 'String'>
     readonly lastName: FieldRef<"User", 'String'>
     readonly password: FieldRef<"User", 'String'>
+    readonly phone: FieldRef<"User", 'Int'>
     readonly image: FieldRef<"User", 'String'>
   }
     
@@ -16494,6 +16539,7 @@ export namespace Prisma {
     name: 'name',
     lastName: 'lastName',
     password: 'password',
+    phone: 'phone',
     image: 'image'
   };
 
@@ -16789,6 +16835,13 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Int'
+   */
+  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+    
+
+
+  /**
    * Reference to a field of type 'DateTime'
    */
   export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
@@ -16799,13 +16852,6 @@ export namespace Prisma {
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
-    
-
-
-  /**
-   * Reference to a field of type 'Int'
-   */
-  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
     
 
 
@@ -16828,6 +16874,7 @@ export namespace Prisma {
     name?: StringFilter<"User"> | string
     lastName?: StringFilter<"User"> | string
     password?: StringFilter<"User"> | string
+    phone?: IntFilter<"User"> | number
     image?: StringFilter<"User"> | string
     cart?: ProductForCartListRelationFilter
     orders?: OrderListRelationFilter
@@ -16839,6 +16886,7 @@ export namespace Prisma {
     name?: SortOrder
     lastName?: SortOrder
     password?: SortOrder
+    phone?: SortOrder
     image?: SortOrder
     cart?: ProductForCartOrderByRelationAggregateInput
     orders?: OrderOrderByRelationAggregateInput
@@ -16854,6 +16902,7 @@ export namespace Prisma {
     name?: StringFilter<"User"> | string
     lastName?: StringFilter<"User"> | string
     password?: StringFilter<"User"> | string
+    phone?: IntFilter<"User"> | number
     image?: StringFilter<"User"> | string
     cart?: ProductForCartListRelationFilter
     orders?: OrderListRelationFilter
@@ -16865,10 +16914,13 @@ export namespace Prisma {
     name?: SortOrder
     lastName?: SortOrder
     password?: SortOrder
+    phone?: SortOrder
     image?: SortOrder
     _count?: UserCountOrderByAggregateInput
+    _avg?: UserAvgOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
     _min?: UserMinOrderByAggregateInput
+    _sum?: UserSumOrderByAggregateInput
   }
 
   export type UserScalarWhereWithAggregatesInput = {
@@ -16880,6 +16932,7 @@ export namespace Prisma {
     name?: StringWithAggregatesFilter<"User"> | string
     lastName?: StringWithAggregatesFilter<"User"> | string
     password?: StringWithAggregatesFilter<"User"> | string
+    phone?: IntWithAggregatesFilter<"User"> | number
     image?: StringWithAggregatesFilter<"User"> | string
   }
 
@@ -17607,6 +17660,7 @@ export namespace Prisma {
     name: string
     lastName: string
     password: string
+    phone?: number
     image: string
     cart?: ProductForCartCreateNestedManyWithoutUserInput
     orders?: OrderCreateNestedManyWithoutUserInput
@@ -17618,6 +17672,7 @@ export namespace Prisma {
     name: string
     lastName: string
     password: string
+    phone?: number
     image: string
     cart?: ProductForCartUncheckedCreateNestedManyWithoutUserInput
     orders?: OrderUncheckedCreateNestedManyWithoutUserInput
@@ -17629,6 +17684,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    phone?: IntFieldUpdateOperationsInput | number
     image?: StringFieldUpdateOperationsInput | string
     cart?: ProductForCartUpdateManyWithoutUserNestedInput
     orders?: OrderUpdateManyWithoutUserNestedInput
@@ -17640,6 +17696,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    phone?: IntFieldUpdateOperationsInput | number
     image?: StringFieldUpdateOperationsInput | string
     cart?: ProductForCartUncheckedUpdateManyWithoutUserNestedInput
     orders?: OrderUncheckedUpdateManyWithoutUserNestedInput
@@ -17651,6 +17708,7 @@ export namespace Prisma {
     name: string
     lastName: string
     password: string
+    phone?: number
     image: string
   }
 
@@ -17660,6 +17718,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    phone?: IntFieldUpdateOperationsInput | number
     image?: StringFieldUpdateOperationsInput | string
   }
 
@@ -17669,6 +17728,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    phone?: IntFieldUpdateOperationsInput | number
     image?: StringFieldUpdateOperationsInput | string
   }
 
@@ -18354,6 +18414,17 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
   export type ProductForCartListRelationFilter = {
     every?: ProductForCartWhereInput
     some?: ProductForCartWhereInput
@@ -18386,7 +18457,12 @@ export namespace Prisma {
     name?: SortOrder
     lastName?: SortOrder
     password?: SortOrder
+    phone?: SortOrder
     image?: SortOrder
+  }
+
+  export type UserAvgOrderByAggregateInput = {
+    phone?: SortOrder
   }
 
   export type UserMaxOrderByAggregateInput = {
@@ -18395,6 +18471,7 @@ export namespace Prisma {
     name?: SortOrder
     lastName?: SortOrder
     password?: SortOrder
+    phone?: SortOrder
     image?: SortOrder
   }
 
@@ -18404,7 +18481,12 @@ export namespace Prisma {
     name?: SortOrder
     lastName?: SortOrder
     password?: SortOrder
+    phone?: SortOrder
     image?: SortOrder
+  }
+
+  export type UserSumOrderByAggregateInput = {
+    phone?: SortOrder
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -18423,6 +18505,22 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type FinishScalarRelationFilter = {
@@ -18734,17 +18832,6 @@ export namespace Prisma {
     not?: NestedFloatFilter<$PrismaModel> | number
   }
 
-  export type IntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
-  }
-
   export type ProductForOrderListRelationFilter = {
     every?: ProductForOrderWhereInput
     some?: ProductForOrderWhereInput
@@ -18837,22 +18924,6 @@ export namespace Prisma {
     _sum?: NestedFloatFilter<$PrismaModel>
     _min?: NestedFloatFilter<$PrismaModel>
     _max?: NestedFloatFilter<$PrismaModel>
-  }
-
-  export type IntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type ImagesOrderByRelevanceInput = {
@@ -19049,6 +19120,14 @@ export namespace Prisma {
 
   export type StringFieldUpdateOperationsInput = {
     set?: string
+  }
+
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type ProductForCartUpdateManyWithoutUserNestedInput = {
@@ -19523,14 +19602,6 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type IntFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
-  }
-
   export type ProductForOrderUpdateManyWithoutProductNestedInput = {
     create?: XOR<ProductForOrderCreateWithoutProductInput, ProductForOrderUncheckedCreateWithoutProductInput> | ProductForOrderCreateWithoutProductInput[] | ProductForOrderUncheckedCreateWithoutProductInput[]
     connectOrCreate?: ProductForOrderCreateOrConnectWithoutProductInput | ProductForOrderCreateOrConnectWithoutProductInput[]
@@ -19846,6 +19917,17 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
+  export type NestedIntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[]
@@ -19864,7 +19946,7 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
-  export type NestedIntFilter<$PrismaModel = never> = {
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[]
     notIn?: number[]
@@ -19872,7 +19954,23 @@ export namespace Prisma {
     lte?: number | IntFieldRefInput<$PrismaModel>
     gt?: number | IntFieldRefInput<$PrismaModel>
     gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
   }
 
   export type NestedDateTimeFilter<$PrismaModel = never> = {
@@ -19900,17 +19998,6 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
-  export type NestedFloatFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatFilter<$PrismaModel> | number
-  }
-
   export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel>
     in?: number[]
@@ -19925,22 +20012,6 @@ export namespace Prisma {
     _sum?: NestedFloatFilter<$PrismaModel>
     _min?: NestedFloatFilter<$PrismaModel>
     _max?: NestedFloatFilter<$PrismaModel>
-  }
-
-  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type NestedBoolFilter<$PrismaModel = never> = {
@@ -20197,6 +20268,7 @@ export namespace Prisma {
     name: string
     lastName: string
     password: string
+    phone?: number
     image: string
     orders?: OrderCreateNestedManyWithoutUserInput
   }
@@ -20207,6 +20279,7 @@ export namespace Prisma {
     name: string
     lastName: string
     password: string
+    phone?: number
     image: string
     orders?: OrderUncheckedCreateNestedManyWithoutUserInput
   }
@@ -20262,6 +20335,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    phone?: IntFieldUpdateOperationsInput | number
     image?: StringFieldUpdateOperationsInput | string
     orders?: OrderUpdateManyWithoutUserNestedInput
   }
@@ -20272,6 +20346,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    phone?: IntFieldUpdateOperationsInput | number
     image?: StringFieldUpdateOperationsInput | string
     orders?: OrderUncheckedUpdateManyWithoutUserNestedInput
   }
@@ -21005,6 +21080,7 @@ export namespace Prisma {
     name: string
     lastName: string
     password: string
+    phone?: number
     image: string
     cart?: ProductForCartCreateNestedManyWithoutUserInput
   }
@@ -21015,6 +21091,7 @@ export namespace Prisma {
     name: string
     lastName: string
     password: string
+    phone?: number
     image: string
     cart?: ProductForCartUncheckedCreateNestedManyWithoutUserInput
   }
@@ -21061,6 +21138,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    phone?: IntFieldUpdateOperationsInput | number
     image?: StringFieldUpdateOperationsInput | string
     cart?: ProductForCartUpdateManyWithoutUserNestedInput
   }
@@ -21071,6 +21149,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
+    phone?: IntFieldUpdateOperationsInput | number
     image?: StringFieldUpdateOperationsInput | string
     cart?: ProductForCartUncheckedUpdateManyWithoutUserNestedInput
   }

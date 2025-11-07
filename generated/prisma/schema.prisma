@@ -21,6 +21,7 @@ model User {
   name     String
   lastName String
   password String
+  phone    Int              @default(55)
   image    String
   cart     ProductForCart[] @relation()
 
