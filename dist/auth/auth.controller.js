@@ -26,6 +26,7 @@ let AuthController = class AuthController {
         const { access_token } = await this.authService.login(loginDto);
         res.cookie('jwt', access_token, {
             httpOnly: true,
+            secure: true,
             sameSite: 'none',
             maxAge: 72 * 3600000,
             path: '/',
