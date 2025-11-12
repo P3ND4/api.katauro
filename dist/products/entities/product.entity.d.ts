@@ -30,7 +30,7 @@ export declare enum Categories {
     wallLumin = "Luminarias de pared",
     footLumin = "Luminarias de pie",
     roofLumin = "Luminarias de techo",
-    lightBulb = "Bombillo",
+    lightBulb = "Accesorios",
     other = "Otras"
 }
 export declare class CatEntity {
