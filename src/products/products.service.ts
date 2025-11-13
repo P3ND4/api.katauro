@@ -7,6 +7,14 @@ import { propRepository } from './CatRepository';
 
 @Injectable()
 export class ProductsService {
+
+  readonly CatParser = [
+    Categories.footLumin,
+    Categories.lightBulb,
+    Categories.roofLumin,
+    Categories.tableLumin,
+    Categories.wallLumin
+  ]
   constructor(private productRepository: ProductRepository, private propRep: propRepository) { }
 
   async create(createProductDto: CreateProductDto) {
@@ -24,10 +32,12 @@ export class ProductsService {
   }
 
   //TODO: esto hay que mejorarlo para cualquier filtrado
-  async getPages(category: Categories[]) {
+  async getPages(category?: string) {
     const products = await this.productRepository.findAllProducts()
 
-    return !category ? Math.ceil(products.length / 9) : Math.ceil(products.filter((p) => (p as Product).category.nombre in category).length / 9);
+    const catList = category ? category.split('-')  : null;
+    const categories = catList ? catList.map((cat) => this.CatParser[+cat]) : null;
+    return !categories? Math.ceil(products.length / 9) : Math.ceil(products.filter((p) => (p as Product).category.nombre in categories).length / 9);
   }
 
   findOne(id: string) {
@@ -42,9 +52,10 @@ export class ProductsService {
     return this.productRepository.deleteProduct(id);
   }
 
-  async getProductByCategory(name: string[], page?: number) {
+  async getProductByCategory(name: string, page?: number) {
     var products = await this.productRepository.findAllProducts() as Product[]
-    products = products.filter((prod) => prod.category.nombre in name);
+    const names = name.split('-').map(n => this.CatParser[+n]);
+    products = products.filter((prod) => prod.category.nombre in names);
     return page ? products.slice((page - 1) * 9, (page - 1) * 9 + 9) : products
   }
 
