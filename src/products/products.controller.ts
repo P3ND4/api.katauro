@@ -20,7 +20,7 @@ export class ProductsController {
 
   @Get('productcat/:name')
   productByCategoryName(@Param('name') name: string) {
-    return this.productsService.getProductByCategory([name])
+    return this.productsService.getProductByCategory(name)
   }
 
   @Get('finish')
@@ -49,17 +49,13 @@ export class ProductsController {
   }
 
   @Get()
-  findAll(@Query('page') page: string, @Query('category') cat: string, @Body() filters?: {categories: Categories[]}) {
+  findAll(@Query('page') page: string, @Query('category') cat: string) {
     try {
-      if(filters){
-        return page? this.productsService.getProductByCategory(filters.categories, +page) : this.productsService.getProductByCategory(filters.categories);
-      }
-      
-      else if (page && !cat) {
+      if (page && !cat) {
         return this.productsService.findPage(+page)
       }
       else if (cat) {
-        return page ? this.productsService.getProductByCategory([cat], +page) : this.productsService.getProductByCategory([cat]);
+        return page ? this.productsService.getProductByCategory(cat, +page) : this.productsService.getProductByCategory(cat);
       }
       return this.productsService.findAll();
     }
@@ -69,8 +65,8 @@ export class ProductsController {
   }
 
   @Get('pages')
-  findPage(@Query('category') cat: Categories) {
-    return cat ? this.productsService.getPages([cat]) : this.productsService.getPages([]);
+  findPage(@Query('category') cat: string) {
+    return cat ? this.productsService.getPages(cat) : this.productsService.getPages();
   }
 
 
