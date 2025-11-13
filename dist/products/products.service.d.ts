@@ -13,27 +13,27 @@ export declare class ProductsService {
         id: string;
         description: string;
         subtitle: string;
-        categoryId: string;
         typology: string;
         vector: string;
+        categoryId: string;
     }>;
     findAll(): Promise<{
         name: string;
         id: string;
         description: string;
         subtitle: string;
-        categoryId: string;
         typology: string;
         vector: string;
+        categoryId: string;
     }[]>;
     findPage(page: number): Promise<{
         name: string;
         id: string;
         description: string;
         subtitle: string;
-        categoryId: string;
         typology: string;
         vector: string;
+        categoryId: string;
     }[]>;
     getPages(category?: string): Promise<number>;
     findOne(id: string): Promise<{
@@ -41,27 +41,27 @@ export declare class ProductsService {
         id: string;
         description: string;
         subtitle: string;
-        categoryId: string;
         typology: string;
         vector: string;
+        categoryId: string;
     } | null>;
     update(id: string, updateProductDto: UpdateProductDto): Promise<{
         name: string;
         id: string;
         description: string;
         subtitle: string;
-        categoryId: string;
         typology: string;
         vector: string;
+        categoryId: string;
     }>;
     remove(id: string): Promise<{
         name: string;
         id: string;
         description: string;
         subtitle: string;
-        categoryId: string;
         typology: string;
         vector: string;
+        categoryId: string;
     }>;
     getProductByCategory(name: string, page?: number): Promise<Product[]>;
     getCatByName(name: string): Promise<import("./entities/product.entity").CatEntity[]>;
