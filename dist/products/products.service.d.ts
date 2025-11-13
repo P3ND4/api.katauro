@@ -6,6 +6,7 @@ import { propRepository } from './CatRepository';
 export declare class ProductsService {
     private productRepository;
     private propRep;
+    readonly CatParser: Categories[];
     constructor(productRepository: ProductRepository, propRep: propRepository);
     create(createProductDto: CreateProductDto): Promise<{
         name: string;
@@ -34,7 +35,7 @@ export declare class ProductsService {
         typology: string;
         vector: string;
     }[]>;
-    getPages(category: Categories[]): Promise<number>;
+    getPages(category?: string): Promise<number>;
     findOne(id: string): Promise<{
         name: string;
         id: string;
@@ -62,7 +63,7 @@ export declare class ProductsService {
         typology: string;
         vector: string;
     }>;
-    getProductByCategory(name: string[], page?: number): Promise<Product[]>;
+    getProductByCategory(name: string, page?: number): Promise<Product[]>;
     getCatByName(name: string): Promise<import("./entities/product.entity").CatEntity[]>;
     getCats(): Promise<import("./entities/product.entity").CatEntity[]>;
     getFinishes(): Promise<import("./entities/product.entity").Finish[]>;

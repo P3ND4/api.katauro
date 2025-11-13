@@ -4,7 +4,6 @@ import { UpdateProductDto } from './dto/update-product.dto';
 import { CreateSpecProductDTO } from './dto/create-sproduct.dto';
 import { SpecProductService } from './spec-product/spec-product.service';
 import { UpdateSpecProductDto } from './dto/update-sproduct.dto';
-import { Categories } from './entities/product.entity';
 export declare class ProductsController {
     private readonly productsService;
     private readonly specProdService;
@@ -28,9 +27,7 @@ export declare class ProductsController {
         image: string;
         name: string;
     }): Promise<import("./entities/product.entity").Color>;
-    findAll(page: string, cat: string, filters?: {
-        categories: Categories[];
-    }): Promise<{
+    findAll(page: string, cat: string): Promise<{
         name: string;
         id: string;
         description: string;
@@ -42,7 +39,7 @@ export declare class ProductsController {
         (...data: any[]): void;
         (message?: any, ...optionalParams: any[]): void;
     };
-    findPage(cat: Categories): Promise<number>;
+    findPage(cat: string): Promise<number>;
     createVariant(createSpecProductDTO: CreateSpecProductDTO): Promise<{
         image: string;
         id: string;
