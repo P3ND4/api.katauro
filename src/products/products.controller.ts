@@ -6,6 +6,8 @@ import { CreateSpecProductDTO } from './dto/create-sproduct.dto';
 import { SpecProductService } from './spec-product/spec-product.service';
 import { UpdateSpecProductDto } from './dto/update-sproduct.dto';
 import { error } from 'console';
+import { Categories } from './entities/product.entity';
+import { ESLint } from 'eslint';
 
 @Controller('products')
 export class ProductsController {
@@ -18,7 +20,7 @@ export class ProductsController {
 
   @Get('productcat/:name')
   productByCategoryName(@Param('name') name: string) {
-    return this.productsService.getProductByCategory(name)
+    return this.productsService.getProductByCategory([name])
   }
 
   @Get('finish')
@@ -47,13 +49,17 @@ export class ProductsController {
   }
 
   @Get()
-  findAll(@Query('page') page: string, @Query('category') cat: string) {
+  findAll(@Query('page') page: string, @Query('category') cat: string, @Body() filters?: {categories: Categories[]}) {
     try {
-      if (page && !cat) {
+      if(filters){
+        return page? this.productsService.getProductByCategory(filters.categories, +page) : this.productsService.getProductByCategory(filters.categories);
+      }
+      
+      else if (page && !cat) {
         return this.productsService.findPage(+page)
       }
       else if (cat) {
-        return page ? this.productsService.getProductByCategory(cat, +page) : this.productsService.getProductByCategory(cat);
+        return page ? this.productsService.getProductByCategory([cat], +page) : this.productsService.getProductByCategory([cat]);
       }
       return this.productsService.findAll();
     }
@@ -63,8 +69,8 @@ export class ProductsController {
   }
 
   @Get('pages')
-  findPage(@Query('category') cat: string) {
-    return cat ? this.productsService.getPages(cat) : this.productsService.getPages(cat);
+  findPage(@Query('category') cat: Categories) {
+    return cat ? this.productsService.getPages([cat]) : this.productsService.getPages([]);
   }
 
 

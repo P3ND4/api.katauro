@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { ProductRepository } from './products.repository';
-import { Product } from './entities/product.entity';
+import { Categories, Product } from './entities/product.entity';
 import { propRepository } from './CatRepository';
 
 @Injectable()
@@ -23,10 +23,11 @@ export class ProductsService {
     return products.slice((page - 1) * 9, (page - 1) * 9 + 9)
   }
 
-  async getPages(category?: string) {
+  //TODO: esto hay que mejorarlo para cualquier filtrado
+  async getPages(category: Categories[]) {
     const products = await this.productRepository.findAllProducts()
 
-    return !category ? Math.ceil(products.length / 9) : Math.ceil(products.filter((p) => (p as Product).category.nombre === category).length / 9);
+    return !category ? Math.ceil(products.length / 9) : Math.ceil(products.filter((p) => (p as Product).category.nombre in category).length / 9);
   }
 
   findOne(id: string) {
@@ -41,9 +42,9 @@ export class ProductsService {
     return this.productRepository.deleteProduct(id);
   }
 
-  async getProductByCategory(name: string, page?: number) {
+  async getProductByCategory(name: string[], page?: number) {
     var products = await this.productRepository.findAllProducts() as Product[]
-    products = products.filter((prod) => prod.category.nombre === name);
+    products = products.filter((prod) => prod.category.nombre in name);
     return page ? products.slice((page - 1) * 9, (page - 1) * 9 + 9) : products
   }
 
