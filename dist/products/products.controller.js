@@ -67,7 +67,7 @@ let ProductsController = class ProductsController {
         }
     }
     findPage(cat) {
-        return cat ? this.productsService.getPages(cat) : this.productsService.getPages(cat);
+        return cat ? this.productsService.getPages(cat) : this.productsService.getPages();
     }
     createVariant(createSpecProductDTO) {
         return this.specProdService.create(createSpecProductDTO);

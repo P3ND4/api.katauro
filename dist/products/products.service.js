@@ -12,10 +12,18 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ProductsService = void 0;
 const common_1 = require("@nestjs/common");
 const products_repository_1 = require("./products.repository");
+const product_entity_1 = require("./entities/product.entity");
 const CatRepository_1 = require("./CatRepository");
 let ProductsService = class ProductsService {
     productRepository;
     propRep;
+    CatParser = [
+        product_entity_1.Categories.footLumin,
+        product_entity_1.Categories.lightBulb,
+        product_entity_1.Categories.roofLumin,
+        product_entity_1.Categories.tableLumin,
+        product_entity_1.Categories.wallLumin
+    ];
     constructor(productRepository, propRep) {
         this.productRepository = productRepository;
         this.propRep = propRep;
@@ -32,7 +40,9 @@ let ProductsService = class ProductsService {
     }
     async getPages(category) {
         const products = await this.productRepository.findAllProducts();
-        return !category ? Math.ceil(products.length / 9) : Math.ceil(products.filter((p) => p.category.nombre === category).length / 9);
+        const catList = category ? category.split('-') : null;
+        const categories = catList ? catList.map((cat) => this.CatParser[+cat]) : null;
+        return !categories ? Math.ceil(products.length / 9) : Math.ceil(products.filter((p) => categories.includes(p.category.nombre)).length / 9);
     }
     findOne(id) {
         return this.productRepository.findProductById(id);
@@ -45,7 +55,8 @@ let ProductsService = class ProductsService {
     }
     async getProductByCategory(name, page) {
         var products = await this.productRepository.findAllProducts();
-        products = products.filter((prod) => prod.category.nombre === name);
+        const names = name.split('-').map(n => this.CatParser[+n]);
+        products = products.filter((prod) => names.includes(prod.category.nombre));
         return page ? products.slice((page - 1) * 9, (page - 1) * 9 + 9) : products;
     }
     async getCatByName(name) {
