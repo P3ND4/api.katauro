@@ -32,7 +32,7 @@ let ProductsService = class ProductsService {
     }
     async getPages(category) {
         const products = await this.productRepository.findAllProducts();
-        return !category ? Math.ceil(products.length / 9) : Math.ceil(products.filter((p) => p.category.nombre === category).length / 9);
+        return !category ? Math.ceil(products.length / 9) : Math.ceil(products.filter((p) => p.category.nombre in category).length / 9);
     }
     findOne(id) {
         return this.productRepository.findProductById(id);
@@ -45,7 +45,7 @@ let ProductsService = class ProductsService {
     }
     async getProductByCategory(name, page) {
         var products = await this.productRepository.findAllProducts();
-        products = products.filter((prod) => prod.category.nombre === name);
+        products = products.filter((prod) => prod.category.nombre in name);
         return page ? products.slice((page - 1) * 9, (page - 1) * 9 + 9) : products;
     }
     async getCatByName(name) {

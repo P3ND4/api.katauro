@@ -1,7 +1,7 @@
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { ProductRepository } from './products.repository';
-import { Product } from './entities/product.entity';
+import { Categories, Product } from './entities/product.entity';
 import { propRepository } from './CatRepository';
 export declare class ProductsService {
     private productRepository;
@@ -34,7 +34,7 @@ export declare class ProductsService {
         typology: string;
         vector: string;
     }[]>;
-    getPages(category?: string): Promise<number>;
+    getPages(category: Categories[]): Promise<number>;
     findOne(id: string): Promise<{
         name: string;
         id: string;
@@ -62,7 +62,7 @@ export declare class ProductsService {
         typology: string;
         vector: string;
     }>;
-    getProductByCategory(name: string, page?: number): Promise<Product[]>;
+    getProductByCategory(name: string[], page?: number): Promise<Product[]>;
     getCatByName(name: string): Promise<import("./entities/product.entity").CatEntity[]>;
     getCats(): Promise<import("./entities/product.entity").CatEntity[]>;
     getFinishes(): Promise<import("./entities/product.entity").Finish[]>;

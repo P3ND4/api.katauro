@@ -21,6 +21,7 @@ const create_sproduct_dto_1 = require("./dto/create-sproduct.dto");
 const spec_product_service_1 = require("./spec-product/spec-product.service");
 const update_sproduct_dto_1 = require("./dto/update-sproduct.dto");
 const console_1 = require("console");
+const product_entity_1 = require("./entities/product.entity");
 let ProductsController = class ProductsController {
     productsService;
     specProdService;
@@ -32,7 +33,7 @@ let ProductsController = class ProductsController {
         return this.productsService.create(createProductDto);
     }
     productByCategoryName(name) {
-        return this.productsService.getProductByCategory(name);
+        return this.productsService.getProductByCategory([name]);
     }
     getFinishes() {
         return this.productsService.getFinishes();
@@ -52,13 +53,16 @@ let ProductsController = class ProductsController {
     createColor(data) {
         return this.productsService.createColor(data);
     }
-    findAll(page, cat) {
+    findAll(page, cat, filters) {
         try {
-            if (page && !cat) {
+            if (filters) {
+                return page ? this.productsService.getProductByCategory(filters.categories, +page) : this.productsService.getProductByCategory(filters.categories);
+            }
+            else if (page && !cat) {
                 return this.productsService.findPage(+page);
             }
             else if (cat) {
-                return page ? this.productsService.getProductByCategory(cat, +page) : this.productsService.getProductByCategory(cat);
+                return page ? this.productsService.getProductByCategory([cat], +page) : this.productsService.getProductByCategory([cat]);
             }
             return this.productsService.findAll();
         }
@@ -67,7 +71,7 @@ let ProductsController = class ProductsController {
         }
     }
     findPage(cat) {
-        return cat ? this.productsService.getPages(cat) : this.productsService.getPages(cat);
+        return cat ? this.productsService.getPages([cat]) : this.productsService.getPages([]);
     }
     createVariant(createSpecProductDTO) {
         return this.specProdService.create(createSpecProductDTO);
@@ -155,8 +159,9 @@ __decorate([
     (0, common_1.Get)(),
     __param(0, (0, common_1.Query)('page')),
     __param(1, (0, common_1.Query)('category')),
+    __param(2, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, String]),
+    __metadata("design:paramtypes", [String, String, Object]),
     __metadata("design:returntype", void 0)
 ], ProductsController.prototype, "findAll", null);
 __decorate([
