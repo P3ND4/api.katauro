@@ -1,9 +1,11 @@
 import { SpecProductRepository } from './spec-product.repository';
 import { CreateSpecProductDTO } from '../dto/create-sproduct.dto';
 import { UpdateSpecProductDto } from '../dto/update-sproduct.dto';
+import { CloudinaryService } from 'src/cloudinary/cloudinary.service';
 export declare class SpecProductService {
     private variantRep;
-    constructor(variantRep: SpecProductRepository);
+    private cloudy;
+    constructor(variantRep: SpecProductRepository, cloudy: CloudinaryService);
     create(createSpecProductDTO: CreateSpecProductDTO): Promise<{
         image: string;
         id: string;
@@ -20,14 +22,7 @@ export declare class SpecProductService {
         colorId: string;
         genericId: string;
     }>;
-    delete(id: string): Promise<{
-        image: string;
-        id: string;
-        price: number;
-        stock: number;
-        colorId: string;
-        genericId: string;
-    }>;
+    delete(id: string): Promise<void>;
     findById(id: string): Promise<{
         image: string;
         id: string;

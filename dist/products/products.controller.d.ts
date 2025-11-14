@@ -64,6 +64,7 @@ export declare class ProductsController {
         colorId: string;
         genericId: string;
     } | null>;
+<<<<<<< HEAD
     deleteVaiant(id: string): Promise<{
         image: string;
         id: string;
@@ -72,6 +73,9 @@ export declare class ProductsController {
         colorId: string;
         genericId: string;
     }>;
+=======
+    deleteVaiant(id: string): Promise<void>;
+>>>>>>> dev
     updateVariant(id: string, data: UpdateSpecProductDto): Promise<{
         image: string;
         id: string;

@@ -1,4 +1,6 @@
 export declare class CloudinaryService {
+    private readonly logger;
+    constructor();
     generateSignature(): Promise<{
         timestamp: number;
         signature: string;
@@ -7,4 +9,5 @@ export declare class CloudinaryService {
         upload_preset: string;
         folder: string;
     }>;
+    deleteImage(publicId: string): Promise<any>;
 }

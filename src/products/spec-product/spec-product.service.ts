@@ -2,11 +2,13 @@ import { Injectable } from '@nestjs/common';
 import { SpecProductRepository } from './spec-product.repository';
 import { CreateSpecProductDTO } from '../dto/create-sproduct.dto';
 import { UpdateSpecProductDto } from '../dto/update-sproduct.dto';
+import { Variant } from '../entities/product.entity';
+import { CloudinaryService } from 'src/cloudinary/cloudinary.service';
 
 @Injectable()
 export class SpecProductService {
 
-    constructor(private variantRep: SpecProductRepository){
+    constructor(private variantRep: SpecProductRepository, private cloudy: CloudinaryService){
 
     }
 
@@ -18,8 +20,13 @@ export class SpecProductService {
         return this.variantRep.updateProduct(id, updateSpecProductDto);
     }
 
-    delete(id: string){
-        return this.variantRep.deleteProduct(id);
+    async delete(id: string){
+        const deleted = await this.variantRep.deleteProduct(id) as Variant;
+        if (deleted) {
+            deleted.images?.forEach(async (img) => {
+                this.cloudy
+            });
+        }
     }
 
     findById(id: string){

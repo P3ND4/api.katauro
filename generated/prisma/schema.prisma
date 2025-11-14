@@ -106,7 +106,7 @@ model SpecificProduct {
   genericProd    GenericProduct        @relation(fields: [genericId], references: [id], onDelete: Cascade)
   images         Images[]              @relation()
   ProductForCart ProductForCart[]
-  color          Color                 @relation(fields: [colorId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  color          Color                 @relation(fields: [colorId], references: [id], onUpdate: Cascade)
 }
 
 model Images {

@@ -37,7 +37,7 @@ export class ProductsService {
 
     const catList = category ? category.split('-') : null;
     const categories = catList ? catList.map((cat) => this.CatParser[+cat]) : null;
-    return !categories ? Math.ceil(products.length / 9) : Math.ceil(products.filter((p) => categories.includes((p as Product).category.nombre as Categories)).length / 9);
+    return !categories ? Math.ceil(products.length / 9) : Math.ceil(products.filter((p) => categories.includes((p as Product).category?.nombre as Categories)).length / 9);
   }
 
   findOne(id: string) {
@@ -55,7 +55,7 @@ export class ProductsService {
   async getProductByCategory(name: string, page?: number) {
     var products = await this.productRepository.findAllProducts() as Product[]
     const names = name.split('-').map(n => this.CatParser[+n]);
-    products = products.filter((prod) => names.includes(prod.category.nombre as Categories));
+    products = products.filter((prod) => names.includes(prod.category?.nombre as Categories));
     return page ? products.slice((page - 1) * 9, (page - 1) * 9 + 9) : products
   }
 

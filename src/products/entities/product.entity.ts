@@ -5,25 +5,27 @@ export class Product {
     id: string;
     name: string;
     categoryId: string
-    finish: FinishForProduct[]
+    finish?: FinishForProduct[]
     description?: string;
     subtitle: string
     vector?: string
-    category: CatEntity;
-    variants: Variant[];
+    category?: CatEntity;
+    variants?: Variant[];
     typology: Typology;
 }
 
 export class Variant {
     id: string;
-    variantName: String;
     colorId: string;
     price: number;
     stock: number;
     image?: string;
     images: Images[]
     color: Color
+    genericId: string;
+    genericProd?: Product;
 }
+
 
 export class FinishForProduct{
     productId: string;

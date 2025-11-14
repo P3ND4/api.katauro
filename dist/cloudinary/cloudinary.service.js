@@ -38,11 +38,22 @@ var __importStar = (this && this.__importStar) || (function () {
         return result;
     };
 })();
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+var CloudinaryService_1;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CloudinaryService = void 0;
 const common_1 = require("@nestjs/common");
 const crypto = __importStar(require("crypto"));
-let CloudinaryService = class CloudinaryService {
+const cloudinary_config_1 = __importDefault(require("./cloudinary.config"));
+let CloudinaryService = CloudinaryService_1 = class CloudinaryService {
+    logger = new common_1.Logger(CloudinaryService_1.name);
+    constructor() {
+    }
     async generateSignature() {
         const timestamp = Math.floor(Date.now() / 1000);
         const api_key = process.env.CLOUDINARY_API_KEY;
@@ -54,9 +65,24 @@ let CloudinaryService = class CloudinaryService {
         const signature = crypto.createHash('sha1').update(signatureString).digest('hex');
         return { timestamp, signature, api_key, cloud_name, upload_preset, folder };
     }
+    async deleteImage(publicId) {
+        try {
+            const result = await cloudinary_config_1.default.uploader.destroy(publicId, {
+                invalidate: true,
+                resource_type: 'image',
+            });
+            this.logger.log(`Imagen eliminada de Cloudinary: ${publicId} => ${JSON.stringify(result)}`);
+            return result;
+        }
+        catch (error) {
+            this.logger.error(`Error al eliminar imagen de Cloudinary: ${publicId}`, error);
+            throw error;
+        }
+    }
 };
 exports.CloudinaryService = CloudinaryService;
-exports.CloudinaryService = CloudinaryService = __decorate([
-    (0, common_1.Injectable)()
+exports.CloudinaryService = CloudinaryService = CloudinaryService_1 = __decorate([
+    (0, common_1.Injectable)(),
+    __metadata("design:paramtypes", [])
 ], CloudinaryService);
 //# sourceMappingURL=cloudinary.service.js.map

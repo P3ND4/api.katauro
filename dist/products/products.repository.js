@@ -77,7 +77,7 @@ let ProductRepository = class ProductRepository {
         });
     }
     deleteProduct(id) {
-        return this.prismaService.genericProduct.delete({ where: { id } });
+        return this.prismaService.genericProduct.delete({ where: { id }, include: { variants: { include: { images: true } } } });
     }
 };
 exports.ProductRepository = ProductRepository;
