@@ -20,6 +20,7 @@ export declare class ProductsController {
     productByCategoryName(name: string): Promise<import("./entities/product.entity").Product[]>;
     getFinishes(): Promise<import("./entities/product.entity").Finish[]>;
     deleteFinish(id: string): Promise<import("./entities/product.entity").Finish>;
+    deleteColor(id: string): Promise<import("./entities/product.entity").Color>;
     createFinish(data: any): Promise<import("./entities/product.entity").Finish>;
     findCats(): Promise<import("./entities/product.entity").CatEntity[]>;
     getColors(): Promise<import("./entities/product.entity").Color[]>;
@@ -64,18 +65,7 @@ export declare class ProductsController {
         colorId: string;
         genericId: string;
     } | null>;
-<<<<<<< HEAD
-    deleteVaiant(id: string): Promise<{
-        image: string;
-        id: string;
-        price: number;
-        stock: number;
-        colorId: string;
-        genericId: string;
-    }>;
-=======
     deleteVaiant(id: string): Promise<void>;
->>>>>>> dev
     updateVariant(id: string, data: UpdateSpecProductDto): Promise<{
         image: string;
         id: string;
@@ -111,5 +101,4 @@ export declare class ProductsController {
         typology: string;
         vector: string;
     }>;
-    deleteColor(id: string): Promise<import("./entities/product.entity").Color>;
 }

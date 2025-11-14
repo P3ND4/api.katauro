@@ -40,6 +40,9 @@ let ProductsController = class ProductsController {
     deleteFinish(id) {
         return this.productsService.deleteFinish(id);
     }
+    deleteColor(id) {
+        return this.productsService.deleteColor(id);
+    }
     createFinish(data) {
         return this.productsService.createFinish(data);
     }
@@ -93,9 +96,6 @@ let ProductsController = class ProductsController {
     remove(id) {
         return this.productsService.remove(id);
     }
-    deleteColor(id) {
-        return this.productsService.deleteColor(id);
-    }
 };
 exports.ProductsController = ProductsController;
 __decorate([
@@ -125,6 +125,13 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
 ], ProductsController.prototype, "deleteFinish", null);
+__decorate([
+    (0, common_1.Delete)('colors/:id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], ProductsController.prototype, "deleteColor", null);
 __decorate([
     (0, common_1.Post)('finish'),
     __param(0, (0, common_1.Body)()),
@@ -224,13 +231,6 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
 ], ProductsController.prototype, "remove", null);
-__decorate([
-    (0, common_1.Delete)('colors/:id'),
-    __param(0, (0, common_1.Param)('id')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", void 0)
-], ProductsController.prototype, "deleteColor", null);
 exports.ProductsController = ProductsController = __decorate([
     (0, common_1.Controller)('products'),
     __metadata("design:paramtypes", [products_service_1.ProductsService, spec_product_service_1.SpecProductService])
