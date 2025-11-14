@@ -6,9 +6,10 @@ import { ProductRepository } from './products.repository';
 import { SpecProductService } from './spec-product/spec-product.service';
 import { SpecProductRepository } from './spec-product/spec-product.repository';
 import { propRepository } from './CatRepository';
+import { CloudinaryService } from 'src/cloudinary/cloudinary.service';
 
 @Module({
   controllers: [ProductsController],
-  providers: [ProductsService, PrismaService, ProductRepository, SpecProductService, SpecProductRepository, propRepository],
+  providers: [ProductsService, PrismaService, ProductRepository, SpecProductService, SpecProductRepository, propRepository, CloudinaryService],
 })
 export class ProductsModule {}

@@ -1,6 +1,8 @@
+
 import { SpecificProduct } from "generated/prisma";
 import { CreateSpecProductDTO } from "../dto/create-sproduct.dto";
 import { UpdateSpecProductDto } from "../dto/update-sproduct.dto";
+import { Variant } from "../entities/product.entity";
 
 export interface ISpecificProductRepository {
     findAllProducts(): Promise<SpecificProduct[]>;

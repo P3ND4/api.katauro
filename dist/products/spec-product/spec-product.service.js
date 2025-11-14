@@ -12,10 +12,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.SpecProductService = void 0;
 const common_1 = require("@nestjs/common");
 const spec_product_repository_1 = require("./spec-product.repository");
+const cloudinary_service_1 = require("../../cloudinary/cloudinary.service");
 let SpecProductService = class SpecProductService {
     variantRep;
-    constructor(variantRep) {
+    cloudy;
+    constructor(variantRep, cloudy) {
         this.variantRep = variantRep;
+        this.cloudy = cloudy;
     }
     create(createSpecProductDTO) {
         return this.variantRep.createProduct(createSpecProductDTO);
@@ -23,8 +26,13 @@ let SpecProductService = class SpecProductService {
     update(id, updateSpecProductDto) {
         return this.variantRep.updateProduct(id, updateSpecProductDto);
     }
-    delete(id) {
-        return this.variantRep.deleteProduct(id);
+    async delete(id) {
+        const deleted = await this.variantRep.deleteProduct(id);
+        if (deleted) {
+            deleted.images?.forEach(async (img) => {
+                this.cloudy;
+            });
+        }
     }
     findById(id) {
         return this.variantRep.findProductById(id);
@@ -36,6 +44,6 @@ let SpecProductService = class SpecProductService {
 exports.SpecProductService = SpecProductService;
 exports.SpecProductService = SpecProductService = __decorate([
     (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [spec_product_repository_1.SpecProductRepository])
+    __metadata("design:paramtypes", [spec_product_repository_1.SpecProductRepository, cloudinary_service_1.CloudinaryService])
 ], SpecProductService);
 //# sourceMappingURL=spec-product.service.js.map

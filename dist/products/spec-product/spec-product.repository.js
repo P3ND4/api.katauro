@@ -33,7 +33,7 @@ let SpecProductRepository = class SpecProductRepository {
         return this.prismaService.specificProduct.update({ where: { id }, data: { stock: data.stock, price: data.price, image: data.image, genericId: '', images: { create: data.images?.map(x => ({ link: x })) }, colorId: data.colorId } });
     }
     deleteProduct(id) {
-        return this.prismaService.specificProduct.delete({ where: { id } });
+        return this.prismaService.specificProduct.delete({ where: { id }, include: { images: true } });
     }
 };
 exports.SpecProductRepository = SpecProductRepository;

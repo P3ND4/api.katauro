@@ -13,9 +13,9 @@ export declare class ProductsController {
         id: string;
         description: string;
         subtitle: string;
+        categoryId: string;
         typology: string;
         vector: string;
-        categoryId: string;
     }>;
     productByCategoryName(name: string): Promise<import("./entities/product.entity").Product[]>;
     getFinishes(): Promise<import("./entities/product.entity").Finish[]>;
@@ -32,80 +32,73 @@ export declare class ProductsController {
         id: string;
         description: string;
         subtitle: string;
+        categoryId: string;
         typology: string;
         vector: string;
-        categoryId: string;
     }[]> | Promise<import("./entities/product.entity").Product[]> | {
         (...data: any[]): void;
         (message?: any, ...optionalParams: any[]): void;
     };
     findPage(cat: string): Promise<number>;
     createVariant(createSpecProductDTO: CreateSpecProductDTO): Promise<{
-        id: string;
-        genericId: string;
         image: string;
+        id: string;
         price: number;
-        colorId: string;
         stock: number;
+        colorId: string;
+        genericId: string;
     }>;
     getVatiansForProduct(id: string): Promise<{
-        id: string;
-        genericId: string;
         image: string;
+        id: string;
         price: number;
-        colorId: string;
         stock: number;
+        colorId: string;
+        genericId: string;
     }[]>;
     getVariant(id: string): Promise<{
-        id: string;
-        genericId: string;
         image: string;
+        id: string;
         price: number;
-        colorId: string;
         stock: number;
+        colorId: string;
+        genericId: string;
     } | null>;
-    deleteVaiant(id: string): Promise<{
-        id: string;
-        genericId: string;
-        image: string;
-        price: number;
-        colorId: string;
-        stock: number;
-    }>;
+    deleteVaiant(id: string): Promise<void>;
     updateVariant(id: string, data: UpdateSpecProductDto): Promise<{
-        id: string;
-        genericId: string;
         image: string;
+        id: string;
         price: number;
-        colorId: string;
         stock: number;
+        colorId: string;
+        genericId: string;
     }>;
     findOne(id: string): Promise<{
         name: string;
         id: string;
         description: string;
         subtitle: string;
+        categoryId: string;
         typology: string;
         vector: string;
-        categoryId: string;
     } | null>;
     update(id: string, updateProductDto: UpdateProductDto): Promise<{
         name: string;
         id: string;
         description: string;
         subtitle: string;
+        categoryId: string;
         typology: string;
         vector: string;
-        categoryId: string;
     }>;
     remove(id: string): Promise<{
         name: string;
         id: string;
         description: string;
         subtitle: string;
+        categoryId: string;
         typology: string;
         vector: string;
-        categoryId: string;
     }>;
     deleteColor(id: string): Promise<import("./entities/product.entity").Color>;
 }

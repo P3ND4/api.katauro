@@ -31,6 +31,10 @@ export class ProductsController {
   deleteFinish(@Param('id') id: string) {
     return this.productsService.deleteFinish(id);
   }
+  @Delete('colors/:id')
+  deleteColor(@Param('id') id: string) {
+    return this.productsService.deleteColor(id);
+  }
   @Post('finish')
   createFinish(@Body() data: any) {
     return this.productsService.createFinish(data);
@@ -110,8 +114,5 @@ export class ProductsController {
     return this.productsService.remove(id);
   }
 
-  @Delete('colors/:id')
-  deleteColor(@Param('id') id: string) {
-    return this.productsService.deleteColor(id);
-  }
+
 }

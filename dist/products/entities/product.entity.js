@@ -16,13 +16,14 @@ class Product {
 exports.Product = Product;
 class Variant {
     id;
-    variantName;
     colorId;
     price;
     stock;
     image;
     images;
     color;
+    genericId;
+    genericProd;
 }
 exports.Variant = Variant;
 class FinishForProduct {
