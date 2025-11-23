@@ -117,11 +117,14 @@ model Images {
 }
 
 model Order {
-  id        String            @id @default(uuid())
-  userId    String
-  createdAt DateTime          @default(now())
-  user      User              @relation(fields: [userId], references: [id], "UserOrders", onDelete: Cascade)
-  products  ProductForOrder[] @relation("OrderProducts")
+  id         String            @id @default(uuid())
+  userId     String
+  delivery   Boolean           @default(false)
+  totalPrice Float             @default(0)
+  state      String            @default("Pendiente")
+  createdAt  DateTime          @default(now())
+  user       User              @relation(fields: [userId], references: [id], "UserOrders", onDelete: Cascade)
+  products   ProductForOrder[] @relation("OrderProducts")
 }
 
 model ProductForOrder {

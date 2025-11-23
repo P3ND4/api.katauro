@@ -24,11 +24,14 @@ let OrderRepository = class OrderRepository {
         return this.prismaService.order.create({ data: {
                 userId: data.userId,
                 createdAt: data.createdAt,
+                totalPrice: data.totalPrice,
+                delivery: data.delivery,
+                state: data.state,
                 products: { create: data.productsID.map((prod) => ({
                         productId: prod.productId,
                         count: prod.count
                     })) }
-            }, include: { products: true, user: true } });
+            }, include: { products: { include: { product: true } }, user: { include: { orders: true } } } });
     }
     findOrderById(id) {
         return this.prismaService.order.findUnique({ where: { id }, include: { products: true, user: true } });
