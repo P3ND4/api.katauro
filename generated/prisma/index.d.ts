@@ -12788,45 +12788,81 @@ export namespace Prisma {
 
   export type AggregateOrder = {
     _count: OrderCountAggregateOutputType | null
+    _avg: OrderAvgAggregateOutputType | null
+    _sum: OrderSumAggregateOutputType | null
     _min: OrderMinAggregateOutputType | null
     _max: OrderMaxAggregateOutputType | null
+  }
+
+  export type OrderAvgAggregateOutputType = {
+    totalPrice: number | null
+  }
+
+  export type OrderSumAggregateOutputType = {
+    totalPrice: number | null
   }
 
   export type OrderMinAggregateOutputType = {
     id: string | null
     userId: string | null
+    delivery: boolean | null
+    totalPrice: number | null
+    state: string | null
     createdAt: Date | null
   }
 
   export type OrderMaxAggregateOutputType = {
     id: string | null
     userId: string | null
+    delivery: boolean | null
+    totalPrice: number | null
+    state: string | null
     createdAt: Date | null
   }
 
   export type OrderCountAggregateOutputType = {
     id: number
     userId: number
+    delivery: number
+    totalPrice: number
+    state: number
     createdAt: number
     _all: number
   }
 
 
+  export type OrderAvgAggregateInputType = {
+    totalPrice?: true
+  }
+
+  export type OrderSumAggregateInputType = {
+    totalPrice?: true
+  }
+
   export type OrderMinAggregateInputType = {
     id?: true
     userId?: true
+    delivery?: true
+    totalPrice?: true
+    state?: true
     createdAt?: true
   }
 
   export type OrderMaxAggregateInputType = {
     id?: true
     userId?: true
+    delivery?: true
+    totalPrice?: true
+    state?: true
     createdAt?: true
   }
 
   export type OrderCountAggregateInputType = {
     id?: true
     userId?: true
+    delivery?: true
+    totalPrice?: true
+    state?: true
     createdAt?: true
     _all?: true
   }
@@ -12869,6 +12905,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: OrderAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: OrderSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: OrderMinAggregateInputType
@@ -12899,6 +12947,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: OrderCountAggregateInputType | true
+    _avg?: OrderAvgAggregateInputType
+    _sum?: OrderSumAggregateInputType
     _min?: OrderMinAggregateInputType
     _max?: OrderMaxAggregateInputType
   }
@@ -12906,8 +12956,13 @@ export namespace Prisma {
   export type OrderGroupByOutputType = {
     id: string
     userId: string
+    delivery: boolean
+    totalPrice: number
+    state: string
     createdAt: Date
     _count: OrderCountAggregateOutputType | null
+    _avg: OrderAvgAggregateOutputType | null
+    _sum: OrderSumAggregateOutputType | null
     _min: OrderMinAggregateOutputType | null
     _max: OrderMaxAggregateOutputType | null
   }
@@ -12929,6 +12984,9 @@ export namespace Prisma {
   export type OrderSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     userId?: boolean
+    delivery?: boolean
+    totalPrice?: boolean
+    state?: boolean
     createdAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
     products?: boolean | Order$productsArgs<ExtArgs>
@@ -12940,10 +12998,13 @@ export namespace Prisma {
   export type OrderSelectScalar = {
     id?: boolean
     userId?: boolean
+    delivery?: boolean
+    totalPrice?: boolean
+    state?: boolean
     createdAt?: boolean
   }
 
-  export type OrderOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "createdAt", ExtArgs["result"]["order"]>
+  export type OrderOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "delivery" | "totalPrice" | "state" | "createdAt", ExtArgs["result"]["order"]>
   export type OrderInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
     products?: boolean | Order$productsArgs<ExtArgs>
@@ -12959,6 +13020,9 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: string
       userId: string
+      delivery: boolean
+      totalPrice: number
+      state: string
       createdAt: Date
     }, ExtArgs["result"]["order"]>
     composites: {}
@@ -13333,6 +13397,9 @@ export namespace Prisma {
   interface OrderFieldRefs {
     readonly id: FieldRef<"Order", 'String'>
     readonly userId: FieldRef<"Order", 'String'>
+    readonly delivery: FieldRef<"Order", 'Boolean'>
+    readonly totalPrice: FieldRef<"Order", 'Float'>
+    readonly state: FieldRef<"Order", 'String'>
     readonly createdAt: FieldRef<"Order", 'DateTime'>
   }
     
@@ -16644,6 +16711,9 @@ export namespace Prisma {
   export const OrderScalarFieldEnum: {
     id: 'id',
     userId: 'userId',
+    delivery: 'delivery',
+    totalPrice: 'totalPrice',
+    state: 'state',
     createdAt: 'createdAt'
   };
 
@@ -16792,7 +16862,8 @@ export namespace Prisma {
 
   export const OrderOrderByRelevanceFieldEnum: {
     id: 'id',
-    userId: 'userId'
+    userId: 'userId',
+    state: 'state'
   };
 
   export type OrderOrderByRelevanceFieldEnum = (typeof OrderOrderByRelevanceFieldEnum)[keyof typeof OrderOrderByRelevanceFieldEnum]
@@ -17458,6 +17529,9 @@ export namespace Prisma {
     NOT?: OrderWhereInput | OrderWhereInput[]
     id?: StringFilter<"Order"> | string
     userId?: StringFilter<"Order"> | string
+    delivery?: BoolFilter<"Order"> | boolean
+    totalPrice?: FloatFilter<"Order"> | number
+    state?: StringFilter<"Order"> | string
     createdAt?: DateTimeFilter<"Order"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     products?: ProductForOrderListRelationFilter
@@ -17466,6 +17540,9 @@ export namespace Prisma {
   export type OrderOrderByWithRelationInput = {
     id?: SortOrder
     userId?: SortOrder
+    delivery?: SortOrder
+    totalPrice?: SortOrder
+    state?: SortOrder
     createdAt?: SortOrder
     user?: UserOrderByWithRelationInput
     products?: ProductForOrderOrderByRelationAggregateInput
@@ -17478,6 +17555,9 @@ export namespace Prisma {
     OR?: OrderWhereInput[]
     NOT?: OrderWhereInput | OrderWhereInput[]
     userId?: StringFilter<"Order"> | string
+    delivery?: BoolFilter<"Order"> | boolean
+    totalPrice?: FloatFilter<"Order"> | number
+    state?: StringFilter<"Order"> | string
     createdAt?: DateTimeFilter<"Order"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
     products?: ProductForOrderListRelationFilter
@@ -17486,10 +17566,15 @@ export namespace Prisma {
   export type OrderOrderByWithAggregationInput = {
     id?: SortOrder
     userId?: SortOrder
+    delivery?: SortOrder
+    totalPrice?: SortOrder
+    state?: SortOrder
     createdAt?: SortOrder
     _count?: OrderCountOrderByAggregateInput
+    _avg?: OrderAvgOrderByAggregateInput
     _max?: OrderMaxOrderByAggregateInput
     _min?: OrderMinOrderByAggregateInput
+    _sum?: OrderSumOrderByAggregateInput
   }
 
   export type OrderScalarWhereWithAggregatesInput = {
@@ -17498,6 +17583,9 @@ export namespace Prisma {
     NOT?: OrderScalarWhereWithAggregatesInput | OrderScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Order"> | string
     userId?: StringWithAggregatesFilter<"Order"> | string
+    delivery?: BoolWithAggregatesFilter<"Order"> | boolean
+    totalPrice?: FloatWithAggregatesFilter<"Order"> | number
+    state?: StringWithAggregatesFilter<"Order"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Order"> | Date | string
   }
 
@@ -18222,6 +18310,9 @@ export namespace Prisma {
 
   export type OrderCreateInput = {
     id?: string
+    delivery?: boolean
+    totalPrice?: number
+    state?: string
     createdAt?: Date | string
     user: UserCreateNestedOneWithoutOrdersInput
     products?: ProductForOrderCreateNestedManyWithoutOrderInput
@@ -18230,12 +18321,18 @@ export namespace Prisma {
   export type OrderUncheckedCreateInput = {
     id?: string
     userId: string
+    delivery?: boolean
+    totalPrice?: number
+    state?: string
     createdAt?: Date | string
     products?: ProductForOrderUncheckedCreateNestedManyWithoutOrderInput
   }
 
   export type OrderUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    delivery?: BoolFieldUpdateOperationsInput | boolean
+    totalPrice?: FloatFieldUpdateOperationsInput | number
+    state?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutOrdersNestedInput
     products?: ProductForOrderUpdateManyWithoutOrderNestedInput
@@ -18244,6 +18341,9 @@ export namespace Prisma {
   export type OrderUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    delivery?: BoolFieldUpdateOperationsInput | boolean
+    totalPrice?: FloatFieldUpdateOperationsInput | number
+    state?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     products?: ProductForOrderUncheckedUpdateManyWithoutOrderNestedInput
   }
@@ -18251,17 +18351,26 @@ export namespace Prisma {
   export type OrderCreateManyInput = {
     id?: string
     userId: string
+    delivery?: boolean
+    totalPrice?: number
+    state?: string
     createdAt?: Date | string
   }
 
   export type OrderUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    delivery?: BoolFieldUpdateOperationsInput | boolean
+    totalPrice?: FloatFieldUpdateOperationsInput | number
+    state?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type OrderUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    delivery?: BoolFieldUpdateOperationsInput | boolean
+    totalPrice?: FloatFieldUpdateOperationsInput | number
+    state?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -18950,6 +19059,11 @@ export namespace Prisma {
     prodId?: SortOrder
   }
 
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
   export type OrderOrderByRelevanceInput = {
     fields: OrderOrderByRelevanceFieldEnum | OrderOrderByRelevanceFieldEnum[]
     sort: SortOrder
@@ -18959,19 +19073,44 @@ export namespace Prisma {
   export type OrderCountOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
+    delivery?: SortOrder
+    totalPrice?: SortOrder
+    state?: SortOrder
     createdAt?: SortOrder
+  }
+
+  export type OrderAvgOrderByAggregateInput = {
+    totalPrice?: SortOrder
   }
 
   export type OrderMaxOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
+    delivery?: SortOrder
+    totalPrice?: SortOrder
+    state?: SortOrder
     createdAt?: SortOrder
   }
 
   export type OrderMinOrderByAggregateInput = {
     id?: SortOrder
     userId?: SortOrder
+    delivery?: SortOrder
+    totalPrice?: SortOrder
+    state?: SortOrder
     createdAt?: SortOrder
+  }
+
+  export type OrderSumOrderByAggregateInput = {
+    totalPrice?: SortOrder
+  }
+
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type OrderScalarRelationFilter = {
@@ -19016,11 +19155,6 @@ export namespace Prisma {
     count?: SortOrder
   }
 
-  export type BoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
-  }
-
   export type PromotionOrderByRelevanceInput = {
     fields: PromotionOrderByRelevanceFieldEnum | PromotionOrderByRelevanceFieldEnum[]
     sort: SortOrder
@@ -19049,14 +19183,6 @@ export namespace Prisma {
     startDate?: SortOrder
     endDate?: SortOrder
     isActive?: SortOrder
-  }
-
-  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type PromotionScalarRelationFilter = {
@@ -19764,6 +19890,10 @@ export namespace Prisma {
     connect?: ProductForOrderWhereUniqueInput | ProductForOrderWhereUniqueInput[]
   }
 
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
+  }
+
   export type UserUpdateOneRequiredWithoutOrdersNestedInput = {
     create?: XOR<UserCreateWithoutOrdersInput, UserUncheckedCreateWithoutOrdersInput>
     connectOrCreate?: UserCreateOrConnectWithoutOrdersInput
@@ -19840,10 +19970,6 @@ export namespace Prisma {
     connectOrCreate?: ProductForPromotionCreateOrConnectWithoutPromotionInput | ProductForPromotionCreateOrConnectWithoutPromotionInput[]
     createMany?: ProductForPromotionCreateManyPromotionInputEnvelope
     connect?: ProductForPromotionWhereUniqueInput | ProductForPromotionWhereUniqueInput[]
-  }
-
-  export type BoolFieldUpdateOperationsInput = {
-    set?: boolean
   }
 
   export type ProductForPromotionUpdateManyWithoutPromotionNestedInput = {
@@ -20047,12 +20173,18 @@ export namespace Prisma {
 
   export type OrderCreateWithoutUserInput = {
     id?: string
+    delivery?: boolean
+    totalPrice?: number
+    state?: string
     createdAt?: Date | string
     products?: ProductForOrderCreateNestedManyWithoutOrderInput
   }
 
   export type OrderUncheckedCreateWithoutUserInput = {
     id?: string
+    delivery?: boolean
+    totalPrice?: number
+    state?: string
     createdAt?: Date | string
     products?: ProductForOrderUncheckedCreateNestedManyWithoutOrderInput
   }
@@ -20113,6 +20245,9 @@ export namespace Prisma {
     NOT?: OrderScalarWhereInput | OrderScalarWhereInput[]
     id?: StringFilter<"Order"> | string
     userId?: StringFilter<"Order"> | string
+    delivery?: BoolFilter<"Order"> | boolean
+    totalPrice?: FloatFilter<"Order"> | number
+    state?: StringFilter<"Order"> | string
     createdAt?: DateTimeFilter<"Order"> | Date | string
   }
 
@@ -21172,6 +21307,9 @@ export namespace Prisma {
 
   export type OrderCreateWithoutProductsInput = {
     id?: string
+    delivery?: boolean
+    totalPrice?: number
+    state?: string
     createdAt?: Date | string
     user: UserCreateNestedOneWithoutOrdersInput
   }
@@ -21179,6 +21317,9 @@ export namespace Prisma {
   export type OrderUncheckedCreateWithoutProductsInput = {
     id?: string
     userId: string
+    delivery?: boolean
+    totalPrice?: number
+    state?: string
     createdAt?: Date | string
   }
 
@@ -21229,6 +21370,9 @@ export namespace Prisma {
 
   export type OrderUpdateWithoutProductsInput = {
     id?: StringFieldUpdateOperationsInput | string
+    delivery?: BoolFieldUpdateOperationsInput | boolean
+    totalPrice?: FloatFieldUpdateOperationsInput | number
+    state?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutOrdersNestedInput
   }
@@ -21236,6 +21380,9 @@ export namespace Prisma {
   export type OrderUncheckedUpdateWithoutProductsInput = {
     id?: StringFieldUpdateOperationsInput | string
     userId?: StringFieldUpdateOperationsInput | string
+    delivery?: BoolFieldUpdateOperationsInput | boolean
+    totalPrice?: FloatFieldUpdateOperationsInput | number
+    state?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -21426,6 +21573,9 @@ export namespace Prisma {
 
   export type OrderCreateManyUserInput = {
     id?: string
+    delivery?: boolean
+    totalPrice?: number
+    state?: string
     createdAt?: Date | string
   }
 
@@ -21443,18 +21593,27 @@ export namespace Prisma {
 
   export type OrderUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
+    delivery?: BoolFieldUpdateOperationsInput | boolean
+    totalPrice?: FloatFieldUpdateOperationsInput | number
+    state?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     products?: ProductForOrderUpdateManyWithoutOrderNestedInput
   }
 
   export type OrderUncheckedUpdateWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
+    delivery?: BoolFieldUpdateOperationsInput | boolean
+    totalPrice?: FloatFieldUpdateOperationsInput | number
+    state?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     products?: ProductForOrderUncheckedUpdateManyWithoutOrderNestedInput
   }
 
   export type OrderUncheckedUpdateManyWithoutUserInput = {
     id?: StringFieldUpdateOperationsInput | string
+    delivery?: BoolFieldUpdateOperationsInput | boolean
+    totalPrice?: FloatFieldUpdateOperationsInput | number
+    state?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 

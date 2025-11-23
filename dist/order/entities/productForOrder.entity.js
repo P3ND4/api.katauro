@@ -1,9 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ProdForOrder = void 0;
-class ProdForOrder {
+exports.ProductForOrder = void 0;
+class ProductForOrder {
+    orderId;
     productId;
     count;
+    product;
 }
-exports.ProdForOrder = ProdForOrder;
+exports.ProductForOrder = ProductForOrder;
 //# sourceMappingURL=productForOrder.entity.js.map

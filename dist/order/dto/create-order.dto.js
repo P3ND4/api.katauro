@@ -2,8 +2,10 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreateOrderDto = void 0;
 class CreateOrderDto {
-    id;
     userId;
+    delivery;
+    state;
+    totalPrice;
     createdAt;
     productsID;
 }

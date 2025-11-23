@@ -7,26 +7,41 @@ export declare class OrderService {
     create(createOrderDto: CreateOrderDto): Promise<{
         id: string;
         userId: string;
+        delivery: boolean;
+        state: string;
+        totalPrice: number;
         createdAt: Date;
     }>;
     findAll(): Promise<{
         id: string;
         userId: string;
+        delivery: boolean;
+        state: string;
+        totalPrice: number;
         createdAt: Date;
     }[]>;
     findOne(id: string): Promise<{
         id: string;
         userId: string;
+        delivery: boolean;
+        state: string;
+        totalPrice: number;
         createdAt: Date;
     } | null>;
     update(id: string, updateOrderDto: UpdateOrderDto): Promise<{
         id: string;
         userId: string;
+        delivery: boolean;
+        state: string;
+        totalPrice: number;
         createdAt: Date;
     }>;
     remove(id: string): Promise<{
         id: string;
         userId: string;
+        delivery: boolean;
+        state: string;
+        totalPrice: number;
         createdAt: Date;
     }>;
 }

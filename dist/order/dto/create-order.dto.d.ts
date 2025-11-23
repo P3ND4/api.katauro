@@ -1,7 +1,11 @@
-import { ProdForOrder } from "../entities/productForOrder.entity";
 export declare class CreateOrderDto {
-    id: string;
     userId: string;
+    delivery: boolean;
+    state: string;
+    totalPrice: number;
     createdAt: Date;
-    productsID: ProdForOrder[];
+    productsID: {
+        productId: string;
+        count: number;
+    }[];
 }
