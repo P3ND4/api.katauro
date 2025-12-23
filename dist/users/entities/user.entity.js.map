@@ -1,1 +1,1 @@
-{"version":3,"file":"user.entity.js","sourceRoot":"","sources":["../../../src/users/entities/user.entity.ts"],"names":[],"mappings":";;;AAAA,MAAa,IAAI;IACb,EAAE,CAAS;IACX,KAAK,CAAS;IACd,IAAI,CAAS;IACb,QAAQ,CAAS;IACjB,QAAQ,CAAS;IACjB,KAAK,CAAS;IACd,KAAK,CAAS;CAEjB;AATD,oBASC"}
+{"version":3,"file":"user.entity.js","sourceRoot":"","sources":["../../../src/users/entities/user.entity.ts"],"names":[],"mappings":";;;AAEA,MAAa,IAAI;IACb,EAAE,CAAS;IACX,KAAK,CAAS;IACd,IAAI,CAAS;IACb,QAAQ,CAAS;IACjB,QAAQ,CAAS;IACjB,KAAK,CAAS;IACd,KAAK,CAAS;IACd,MAAM,CAAU;CACnB;AATD,oBASC"}

@@ -1,3 +1,4 @@
+import { Order } from "src/order/entities/order.entity";
 export declare class User {
     id: string;
     email: string;
@@ -6,4 +7,5 @@ export declare class User {
     password: string;
     image: string;
     phone: number;
+    orders?: Order[];
 }

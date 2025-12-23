@@ -18,23 +18,36 @@ let OrderRepository = class OrderRepository {
         this.prismaService = prismaService;
     }
     findAllOrders() {
-        return this.prismaService.order.findMany({ include: { products: true, user: true } });
+        return this.prismaService.order.findMany({ include: { products: { include: { product: { include: { genericProd: { include: { category: true } } } } } }, user: { include: { orders: true } } } });
     }
     createOrder(data) {
-        return this.prismaService.order.create({ data: {
+        return this.prismaService.order.create({
+            data: {
                 userId: data.userId,
                 createdAt: data.createdAt,
-                totalPrice: data.totalPrice,
+                price: data.price,
+                delPrice: data.delPrice,
                 delivery: data.delivery,
                 state: data.state,
-                products: { create: data.productsID.map((prod) => ({
+                address: data.address,
+                province: data.province,
+                city: data.city,
+                name: data.name,
+                lastName: data.lastName,
+                email: data.email,
+                phone: data.phone,
+                note: data.note,
+                products: {
+                    create: data.productsID.map((prod) => ({
                         productId: prod.productId,
                         count: prod.count
-                    })) }
-            }, include: { products: { include: { product: true } }, user: { include: { orders: true } } } });
+                    }))
+                }
+            }, include: { products: { include: { product: true } }, user: { include: { orders: true } } }
+        });
     }
     findOrderById(id) {
-        return this.prismaService.order.findUnique({ where: { id }, include: { products: true, user: true } });
+        return this.prismaService.order.findUnique({ where: { id }, include: { products: { include: { product: { include: { genericProd: { include: { category: true } } } } } }, user: true } });
     }
     updateOrder(id, data) {
         return this.prismaService.order.update({ where: { id }, data: data, include: { products: true, user: true } });

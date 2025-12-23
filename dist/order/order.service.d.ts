@@ -1,47 +1,98 @@
 import { CreateOrderDto } from './dto/create-order.dto';
 import { UpdateOrderDto } from './dto/update-order.dto';
 import { OrderRepository } from './order.repository';
+import { OrderState } from './entities/order.entity';
 export declare class OrderService {
     private orderRepository;
     constructor(orderRepository: OrderRepository);
+    stateParser: OrderState[];
     create(createOrderDto: CreateOrderDto): Promise<{
+        email: string;
+        name: string;
+        lastName: string;
+        phone: string;
         id: string;
+        price: number;
         userId: string;
         delivery: boolean;
         state: string;
-        totalPrice: number;
+        delPrice: number;
         createdAt: Date;
+        address: string;
+        province: string;
+        city: string;
+        note: string;
     }>;
-    findAll(): Promise<{
+    findAll(option: {
+        search?: string;
+        state?: string;
+        order?: string;
+    }): Promise<{
+        email: string;
+        name: string;
+        lastName: string;
+        phone: string;
         id: string;
+        price: number;
         userId: string;
         delivery: boolean;
         state: string;
-        totalPrice: number;
+        delPrice: number;
         createdAt: Date;
+        address: string;
+        province: string;
+        city: string;
+        note: string;
     }[]>;
     findOne(id: string): Promise<{
+        email: string;
+        name: string;
+        lastName: string;
+        phone: string;
         id: string;
+        price: number;
         userId: string;
         delivery: boolean;
         state: string;
-        totalPrice: number;
+        delPrice: number;
         createdAt: Date;
+        address: string;
+        province: string;
+        city: string;
+        note: string;
     } | null>;
     update(id: string, updateOrderDto: UpdateOrderDto): Promise<{
+        email: string;
+        name: string;
+        lastName: string;
+        phone: string;
         id: string;
+        price: number;
         userId: string;
         delivery: boolean;
         state: string;
-        totalPrice: number;
+        delPrice: number;
         createdAt: Date;
+        address: string;
+        province: string;
+        city: string;
+        note: string;
     }>;
     remove(id: string): Promise<{
+        email: string;
+        name: string;
+        lastName: string;
+        phone: string;
         id: string;
+        price: number;
         userId: string;
         delivery: boolean;
         state: string;
-        totalPrice: number;
+        delPrice: number;
         createdAt: Date;
+        address: string;
+        province: string;
+        city: string;
+        note: string;
     }>;
 }

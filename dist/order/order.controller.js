@@ -25,8 +25,13 @@ let OrderController = class OrderController {
     create(createOrderDto) {
         return this.orderService.create(createOrderDto);
     }
-    findAll() {
-        return this.orderService.findAll();
+    findAll(search, state, orderBy) {
+        const option = {
+            search: search,
+            state: state,
+            order: orderBy
+        };
+        return this.orderService.findAll(option);
     }
     findOne(id) {
         return this.orderService.findOne(id);
@@ -48,8 +53,11 @@ __decorate([
 ], OrderController.prototype, "create", null);
 __decorate([
     (0, common_1.Get)(),
+    __param(0, (0, common_1.Query)('search')),
+    __param(1, (0, common_1.Query)('state')),
+    __param(2, (0, common_1.Query)('order')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [String, String, String]),
     __metadata("design:returntype", void 0)
 ], OrderController.prototype, "findAll", null);
 __decorate([
