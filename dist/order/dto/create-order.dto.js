@@ -5,8 +5,17 @@ class CreateOrderDto {
     userId;
     delivery;
     state;
-    totalPrice;
+    price;
+    delPrice;
     createdAt;
+    name;
+    lastName;
+    email;
+    phone;
+    address;
+    province;
+    city;
+    note;
     productsID;
 }
 exports.CreateOrderDto = CreateOrderDto;

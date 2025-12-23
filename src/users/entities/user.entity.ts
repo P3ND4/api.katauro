@@ -1,3 +1,5 @@
+import { Order } from "src/order/entities/order.entity";
+
 export class User {
     id: string;
     email: string;
@@ -6,5 +8,5 @@ export class User {
     password: string;
     image: string;
     phone: number;
-
+    orders?: Order[]
 }

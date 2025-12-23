@@ -198,8 +198,17 @@ exports.Prisma.ImagesScalarFieldEnum = {
 exports.Prisma.OrderScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
+  name: 'name',
+  lastName: 'lastName',
+  email: 'email',
+  phone: 'phone',
+  address: 'address',
+  province: 'province',
+  city: 'city',
+  note: 'note',
   delivery: 'delivery',
-  totalPrice: 'totalPrice',
+  price: 'price',
+  delPrice: 'delPrice',
   state: 'state',
   createdAt: 'createdAt'
 };
@@ -302,6 +311,14 @@ exports.Prisma.ImagesOrderByRelevanceFieldEnum = {
 exports.Prisma.OrderOrderByRelevanceFieldEnum = {
   id: 'id',
   userId: 'userId',
+  name: 'name',
+  lastName: 'lastName',
+  email: 'email',
+  phone: 'phone',
+  address: 'address',
+  province: 'province',
+  city: 'city',
+  note: 'note',
   state: 'state'
 };
 

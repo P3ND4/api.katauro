@@ -6,9 +6,18 @@ class Order {
     userId;
     delivery;
     state;
-    totalPrice;
+    price;
+    delPrice;
     createdAt;
     user;
+    address;
+    province;
+    city;
+    note;
+    name;
+    lastName;
+    email;
+    phone;
     products;
 }
 exports.Order = Order;

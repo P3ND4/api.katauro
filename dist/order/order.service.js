@@ -12,16 +12,29 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.OrderService = void 0;
 const common_1 = require("@nestjs/common");
 const order_repository_1 = require("./order.repository");
+const order_entity_1 = require("./entities/order.entity");
 let OrderService = class OrderService {
     orderRepository;
     constructor(orderRepository) {
         this.orderRepository = orderRepository;
     }
+    stateParser = [order_entity_1.OrderState.canceled, order_entity_1.OrderState.completed, order_entity_1.OrderState.pending];
     create(createOrderDto) {
         return this.orderRepository.createOrder(createOrderDto);
     }
-    findAll() {
-        return this.orderRepository.findAllOrders();
+    async findAll(option) {
+        var orders = await this.orderRepository.findAllOrders();
+        if (option.search) {
+            orders = orders.filter(x => x.id.includes(option.search));
+        }
+        if (option.state) {
+            const states = option.state.split('-').map(x => this.stateParser[x ?? 0]);
+            orders = orders.filter(x => states.includes(x.state));
+        }
+        if (option.order) {
+            orders = orders.sort((x, y) => option.order == '1' ? x.createdAt.getTime() - y.createdAt.getTime() : y.createdAt.getTime() - x.createdAt.getTime());
+        }
+        return orders;
     }
     findOne(id) {
         return this.orderRepository.findOrderById(id);

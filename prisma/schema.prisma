@@ -117,14 +117,23 @@ model Images {
 }
 
 model Order {
-  id         String            @id @default(uuid())
-  userId     String
-  delivery   Boolean           @default(false)
-  totalPrice Float             @default(0)
-  state      String            @default("Pendiente")
-  createdAt  DateTime          @default(now())
-  user       User              @relation(fields: [userId], references: [id], "UserOrders", onDelete: Cascade)
-  products   ProductForOrder[] @relation("OrderProducts")
+  id        String            @id @default(uuid())
+  userId    String
+  name      String            @default("")
+  lastName  String            @default("")
+  email     String            @default("")
+  phone     String            @default("")
+  address   String            @default("")
+  province  String            @default("")
+  city      String            @default("")
+  note      String            @default("")
+  delivery  Boolean           @default(false)
+  price     Float             @default(0)
+  delPrice  Float             @default(0)
+  state     String            @default("Pendiente")
+  createdAt DateTime          @default(now())
+  user      User              @relation(fields: [userId], references: [id], "UserOrders", onDelete: Cascade)
+  products  ProductForOrder[] @relation("OrderProducts")
 }
 
 model ProductForOrder {

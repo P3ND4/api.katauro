@@ -5,9 +5,18 @@ export declare class Order {
     userId: string;
     delivery: boolean;
     state: string;
-    totalPrice: number;
+    price: number;
+    delPrice: number;
     createdAt: Date;
     user: User;
+    address: string;
+    province: string;
+    city: string;
+    note: string;
+    name: string;
+    lastName: string;
+    email: string;
+    phone: string;
     products: ProductForOrder[];
 }
 export declare enum OrderState {
