@@ -25,7 +25,13 @@ model User {
   image    String
   cart     ProductForCart[] @relation()
 
-  orders Order[] @relation("UserOrders")
+  emailVerified            Boolean  @default(false)
+  emailVerificationCode    String   @default("")
+  emailVerificationExpires DateTime @default(now())
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @default(now()) @updatedAt()
+  orders    Order[]  @relation("UserOrders")
 }
 
 model finishForProducts {

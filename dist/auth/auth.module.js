@@ -10,14 +10,16 @@ exports.AuthModule = void 0;
 const common_1 = require("@nestjs/common");
 const auth_service_1 = require("./auth.service");
 const auth_controller_1 = require("./auth.controller");
-const auth_guard_1 = require("./auth.guard");
-const jwt_strategy_1 = require("./jwt.strategy");
+const auth_guard_1 = require("../shared/guards/auth.guard");
+const jwt_strategy_1 = require("../shared/services/jwt/jwt.strategy");
 const users_service_1 = require("../users/users.service");
 const jwt_1 = require("@nestjs/jwt");
 const config_1 = require("@nestjs/config");
 const prisma_service_1 = require("../prisma/prisma.service");
 const users_repository_1 = require("../users/users.repository");
-const revokedJwt_service_1 = require("./revokedJwt.service");
+const revokedJwt_service_1 = require("../shared/services/jwt/revokedJwt.service");
+const mail_service_1 = require("../shared/services/mail/mail.service");
+const jwt_reset_strategy_1 = require("../shared/services/jwt/jwt-reset.strategy");
 let AuthModule = class AuthModule {
 };
 exports.AuthModule = AuthModule;
@@ -30,15 +32,15 @@ exports.AuthModule = AuthModule = __decorate([
                 imports: [config_1.ConfigModule],
                 useFactory: async (configService) => ({
                     secret: configService.get('JWT_SECRET'),
-                    signOptions: { expiresIn: '60s' },
+                    signOptions: { expiresIn: '1h' },
                 }),
                 inject: [config_1.ConfigService],
             }),
         ],
-        providers: [auth_service_1.AuthService, jwt_strategy_1.JwtStrategy, auth_guard_1.JwtAuthGuard,
-            users_service_1.UsersService, jwt_strategy_1.JwtStrategy,
+        providers: [auth_service_1.AuthService, auth_guard_1.JwtAuthGuard,
+            users_service_1.UsersService, jwt_strategy_1.JwtStrategy, jwt_reset_strategy_1.JwtResetStrategy,
             config_1.ConfigService, prisma_service_1.PrismaService, users_repository_1.UsersRepository,
-            revokedJwt_service_1.RevokedJwtService],
+            revokedJwt_service_1.RevokedJwtService, mail_service_1.MailService],
     })
 ], AuthModule);
 //# sourceMappingURL=auth.module.js.map

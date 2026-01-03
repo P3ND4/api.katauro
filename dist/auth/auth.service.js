@@ -47,15 +47,19 @@ const common_1 = require("@nestjs/common");
 const jwt_1 = require("@nestjs/jwt");
 const users_service_1 = require("../users/users.service");
 const bcrypt = __importStar(require("bcrypt"));
-const revokedJwt_service_1 = require("./revokedJwt.service");
+const crypto_1 = require("crypto");
+const revokedJwt_service_1 = require("../shared/services/jwt/revokedJwt.service");
+const mail_service_1 = require("../shared/services/mail/mail.service");
 let AuthService = class AuthService {
     userService;
     jwtService;
     revokedJwtService;
-    constructor(userService, jwtService, revokedJwtService) {
+    mailService;
+    constructor(userService, jwtService, revokedJwtService, mailService) {
         this.userService = userService;
         this.jwtService = jwtService;
         this.revokedJwtService = revokedJwtService;
+        this.mailService = mailService;
     }
     async register(createUserDto) {
         const userExists = await this.userService.findUserByEmail(createUserDto.email).catch(() => null);
@@ -72,6 +76,9 @@ let AuthService = class AuthService {
         if (!user || !(await bcrypt.compare(password, user.password))) {
             throw new common_1.UnauthorizedException('Invalid credentials');
         }
+        return this.createToken(user);
+    }
+    createToken(user) {
         const payload = { email: user.email, sub: user.id, tid: crypto.randomUUID() };
         const accessToken = this.jwtService.sign(payload, { expiresIn: '72h' });
         return { access_token: accessToken };
@@ -116,10 +123,58 @@ let AuthService = class AuthService {
         }
         return { message: 'Logout successful' };
     }
+    async sendCode(email) {
+        const user = await this.userService.findUserByEmail(email);
+        if (!user)
+            throw new common_1.BadRequestException('User not found');
+        const code = this.generateOTP();
+        const expires = new Date(Date.now() + 5 * 60 * 1000);
+        await this.userService.update(user.id, {
+            emailVerificationCode: code,
+            emailVerificationExpires: expires
+        });
+        return this.mailService.sendVerification(user.email, code);
+    }
+    async verifyCode(email, code) {
+        const user = await this.userService.findUserByEmail(email);
+        if (!user)
+            throw new common_1.BadRequestException('User not found');
+        if (!user.emailVerificationCode || !user.emailVerificationExpires)
+            throw new Error('No hay código pendiente');
+        if (user.emailVerificationExpires < new Date())
+            throw new Error('Código expirado');
+        if (user.emailVerificationCode !== code)
+            throw new Error('Código incorrecto');
+        await this.userService.update(user.id, {
+            emailVerified: true,
+            emailVerificationCode: undefined,
+            emailVerificationExpires: undefined,
+        });
+        return this.generateResetToken(user.id);
+    }
+    async changePassword(email, newPassword) {
+        const user = await this.userService.findUserByEmail(email);
+        if (!user)
+            throw new common_1.BadRequestException('User not found');
+        return this.userService.update(user.id, { password: newPassword });
+    }
+    generateOTP() {
+        return (0, crypto_1.randomInt)(100000, 999999).toString();
+    }
+    generateResetToken(userId) {
+        const payload = {
+            sub: userId,
+            purpose: 'reset-password',
+        };
+        return this.jwtService.sign(payload, {
+            expiresIn: '10m',
+        });
+    }
 };
 exports.AuthService = AuthService;
 exports.AuthService = AuthService = __decorate([
     (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [users_service_1.UsersService, jwt_1.JwtService, revokedJwt_service_1.RevokedJwtService])
+    __metadata("design:paramtypes", [users_service_1.UsersService, jwt_1.JwtService, revokedJwt_service_1.RevokedJwtService,
+        mail_service_1.MailService])
 ], AuthService);
 //# sourceMappingURL=auth.service.js.map

@@ -2,6 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import cookieParser from 'cookie-parser';
 import * as dotenv from 'dotenv';
+import { PrismaExceptionFilter } from './shared/filters/prisma-exception.filter';
 
 
 async function bootstrap() {
@@ -44,6 +45,7 @@ async function bootstrap() {
     }
   });
 
+  app.useGlobalFilters(new PrismaExceptionFilter());
   app.use(cookieParser());
   await app.listen(process.env.PORT ?? 3000);
 }

@@ -85,6 +85,9 @@ export class UsersRepository implements IUserRepository {
                 phone: data.phone,
                 cart: { create: data.updateCart?.map(variantId => ({ productId: variantId })) },
                 image: data.image,
+                emailVerificationCode: data.emailVerificationCode,
+                emailVerificationExpires: data.emailVerificationExpires,
+                emailVerified: data.emailVerified
             },
         });
     }

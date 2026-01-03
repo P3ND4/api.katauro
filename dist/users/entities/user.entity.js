@@ -10,6 +10,11 @@ class User {
     image;
     phone;
     orders;
+    emailVerified;
+    emailVerificationCode;
+    emailVerificationExpires;
+    createdAt;
+    updatedAt;
 }
 exports.User = User;
 //# sourceMappingURL=user.entity.js.map

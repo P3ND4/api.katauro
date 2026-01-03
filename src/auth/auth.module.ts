@@ -1,14 +1,16 @@
 import { Module } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { AuthController } from './auth.controller';
-import { JwtAuthGuard } from './auth.guard';
-import { JwtStrategy } from './jwt.strategy';
+import { JwtAuthGuard } from '../shared/guards/auth.guard';
+import { JwtStrategy } from '../shared/services/jwt/jwt.strategy';
 import { UsersService } from 'src/users/users.service';
 import { JwtModule, JwtService } from '@nestjs/jwt';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { UsersRepository } from 'src/users/users.repository';
-import { RevokedJwtService } from './revokedJwt.service';
+import { RevokedJwtService } from '../shared/services/jwt/revokedJwt.service';
+import { MailService } from 'src/shared/services/mail/mail.service';
+import { JwtResetStrategy } from 'src/shared/services/jwt/jwt-reset.strategy';
 
 @Module({
   controllers: [AuthController],
@@ -18,14 +20,14 @@ import { RevokedJwtService } from './revokedJwt.service';
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService) => ({
         secret: configService.get<string>('JWT_SECRET'),
-        signOptions: { expiresIn: '60s' },
+        signOptions: { expiresIn: '1h' },
       }),
       inject: [ConfigService],
     }),
   ],
-  providers: [AuthService, JwtStrategy, JwtAuthGuard,
-    UsersService, JwtStrategy,
+  providers: [AuthService, JwtAuthGuard,
+    UsersService, JwtStrategy, JwtResetStrategy,
     ConfigService, PrismaService, UsersRepository,
-    RevokedJwtService],
+    RevokedJwtService, MailService],
 })
 export class AuthModule { }
