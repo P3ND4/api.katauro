@@ -17,6 +17,8 @@ const common_1 = require("@nestjs/common");
 const auth_service_1 = require("./auth.service");
 const create_user_dto_1 = require("../users/dto/create-user.dto");
 const loginDto_1 = require("./dto/loginDto");
+const auth_guard_1 = require("../shared/guards/auth.guard");
+const reset_guard_1 = require("../shared/guards/reset.guard");
 let AuthController = class AuthController {
     authService;
     constructor(authService) {
@@ -24,14 +26,17 @@ let AuthController = class AuthController {
     }
     async login(loginDto, res) {
         const { access_token } = await this.authService.login(loginDto);
-        res.cookie('jwt', access_token, {
+        this.createCookie(access_token, res);
+        res.json({ message: 'Login successful' });
+    }
+    createCookie(access_token, res, cookieName = 'jwt', time = 72 * 3600000) {
+        res.cookie(cookieName, access_token, {
             httpOnly: true,
             secure: true,
             sameSite: 'none',
-            maxAge: 72 * 3600000,
+            maxAge: time,
             path: '/',
         });
-        res.json({ message: 'Login successful' });
     }
     register(createUserDto) {
         return this.authService.register(createUserDto);
@@ -39,6 +44,17 @@ let AuthController = class AuthController {
     async logout(req) {
         const token = req.cookies['jwt'];
         return this.authService.logout(token);
+    }
+    sendCode(user) {
+        return this.authService.sendCode(user.email);
+    }
+    async verifyCode(user, res) {
+        const token = await this.authService.verifyCode(user.email, user.code);
+        this.createCookie(token, res, 'jwt-reset', 3600000 / 6);
+        res.json({ message: 'Verification successful' });
+    }
+    changePassword(body) {
+        return this.authService.changePassword(body.email, body.newPassword);
     }
     async getMe(req) {
         const token = req.cookies['jwt'];
@@ -62,12 +78,36 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], AuthController.prototype, "register", null);
 __decorate([
+    (0, common_1.UseGuards)(auth_guard_1.JwtAuthGuard),
     (0, common_1.Get)('logout'),
     __param(0, (0, common_1.Req)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", Promise)
 ], AuthController.prototype, "logout", null);
+__decorate([
+    (0, common_1.Patch)('sendCode'),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], AuthController.prototype, "sendCode", null);
+__decorate([
+    (0, common_1.Patch)('verifyCode'),
+    __param(0, (0, common_1.Body)()),
+    __param(1, (0, common_1.Res)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, Object]),
+    __metadata("design:returntype", Promise)
+], AuthController.prototype, "verifyCode", null);
+__decorate([
+    (0, common_1.UseGuards)(reset_guard_1.ResetGuard),
+    (0, common_1.Patch)('changePassword'),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", void 0)
+], AuthController.prototype, "changePassword", null);
 __decorate([
     (0, common_1.Get)('me'),
     __param(0, (0, common_1.Req)()),

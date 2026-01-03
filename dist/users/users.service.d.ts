@@ -13,7 +13,12 @@ export declare class UsersService {
         password: string;
         image: string;
         phone: number;
+        emailVerified: boolean;
+        emailVerificationCode: string;
+        emailVerificationExpires: Date;
         id: string;
+        createdAt: Date;
+        updatedAt: Date;
     }>;
     findAll(): Promise<{
         email: string;
@@ -22,7 +27,12 @@ export declare class UsersService {
         password: string;
         image: string;
         phone: number;
+        emailVerified: boolean;
+        emailVerificationCode: string;
+        emailVerificationExpires: Date;
         id: string;
+        createdAt: Date;
+        updatedAt: Date;
     }[]>;
     findOne(id: string): Promise<{
         email: string;
@@ -31,7 +41,12 @@ export declare class UsersService {
         password: string;
         image: string;
         phone: number;
+        emailVerified: boolean;
+        emailVerificationCode: string;
+        emailVerificationExpires: Date;
         id: string;
+        createdAt: Date;
+        updatedAt: Date;
     } | null>;
     update(id: string, updateUserDto: UpdateUserDto): Promise<{
         email: string;
@@ -40,7 +55,12 @@ export declare class UsersService {
         password: string;
         image: string;
         phone: number;
+        emailVerified: boolean;
+        emailVerificationCode: string;
+        emailVerificationExpires: Date;
         id: string;
+        createdAt: Date;
+        updatedAt: Date;
     }>;
     remove(id: string): Promise<{
         email: string;
@@ -49,7 +69,12 @@ export declare class UsersService {
         password: string;
         image: string;
         phone: number;
+        emailVerified: boolean;
+        emailVerificationCode: string;
+        emailVerificationExpires: Date;
         id: string;
+        createdAt: Date;
+        updatedAt: Date;
     }>;
     findUserByEmail(email: string): Promise<{
         email: string;
@@ -58,6 +83,11 @@ export declare class UsersService {
         password: string;
         image: string;
         phone: number;
+        emailVerified: boolean;
+        emailVerificationCode: string;
+        emailVerificationExpires: Date;
         id: string;
+        createdAt: Date;
+        updatedAt: Date;
     } | null>;
 }

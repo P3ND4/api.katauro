@@ -127,7 +127,12 @@ exports.Prisma.UserScalarFieldEnum = {
   lastName: 'lastName',
   password: 'password',
   phone: 'phone',
-  image: 'image'
+  image: 'image',
+  emailVerified: 'emailVerified',
+  emailVerificationCode: 'emailVerificationCode',
+  emailVerificationExpires: 'emailVerificationExpires',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.FinishForProductsScalarFieldEnum = {
@@ -243,7 +248,8 @@ exports.Prisma.UserOrderByRelevanceFieldEnum = {
   name: 'name',
   lastName: 'lastName',
   password: 'password',
-  image: 'image'
+  image: 'image',
+  emailVerificationCode: 'emailVerificationCode'
 };
 
 exports.Prisma.finishForProductsOrderByRelevanceFieldEnum = {

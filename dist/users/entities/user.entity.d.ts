@@ -8,4 +8,9 @@ export declare class User {
     image: string;
     phone: number;
     orders?: Order[];
+    emailVerified: boolean;
+    emailVerificationCode: string;
+    emailVerificationExpires: Date;
+    createdAt: Date;
+    updatedAt: Date;
 }

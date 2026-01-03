@@ -5,4 +5,7 @@ export class CreateUserDto {
     password: string;
     image: string;
     phone: number;
+    emailVerified?: boolean;
+    emailVerificationCode?: string;
+    emailVerificationExpires?: Date;
 }

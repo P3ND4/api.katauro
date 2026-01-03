@@ -8,11 +8,12 @@ import { OrderModule } from './order/order.module';
 import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
 import { CloudinaryModule } from './cloudinary/cloudinary.module';
+import { MailService } from './shared/services/mail/mail.service';
 
 @Module({
   imports: [ConfigModule.forRoot({ isGlobal: true }), // SOLO aquí
     UsersModule, ProductsModule, OrderModule, AuthModule, CloudinaryModule],
   controllers: [AppController],
-  providers: [AppService, PrismaService],
+  providers: [AppService, PrismaService, MailService],
 })
 export class AppModule { }

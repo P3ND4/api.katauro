@@ -12,13 +12,17 @@ const users_service_1 = require("./users.service");
 const users_controller_1 = require("./users.controller");
 const prisma_service_1 = require("../prisma/prisma.service");
 const users_repository_1 = require("./users.repository");
+const jwt_strategy_1 = require("../shared/services/jwt/jwt.strategy");
+const auth_guard_1 = require("../shared/guards/auth.guard");
+const config_1 = require("@nestjs/config");
 let UsersModule = class UsersModule {
 };
 exports.UsersModule = UsersModule;
 exports.UsersModule = UsersModule = __decorate([
     (0, common_1.Module)({
         controllers: [users_controller_1.UsersController],
-        providers: [users_service_1.UsersService, prisma_service_1.PrismaService, users_repository_1.UsersRepository],
+        imports: [],
+        providers: [config_1.ConfigService, users_service_1.UsersService, prisma_service_1.PrismaService, users_repository_1.UsersRepository, jwt_strategy_1.JwtStrategy, auth_guard_1.JwtAuthGuard],
     })
 ], UsersModule);
 //# sourceMappingURL=users.module.js.map
