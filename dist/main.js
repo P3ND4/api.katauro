@@ -40,6 +40,7 @@ const core_1 = require("@nestjs/core");
 const app_module_1 = require("./app.module");
 const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const dotenv = __importStar(require("dotenv"));
+const prisma_exception_filter_1 = require("./shared/filters/prisma-exception.filter");
 async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
     const allowedOrigins = [
@@ -75,6 +76,7 @@ async function bootstrap() {
             next();
         }
     });
+    app.useGlobalFilters(new prisma_exception_filter_1.PrismaExceptionFilter());
     app.use((0, cookie_parser_1.default)());
     await app.listen(process.env.PORT ?? 3000);
 }
