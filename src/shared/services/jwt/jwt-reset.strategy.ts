@@ -12,8 +12,8 @@ export class JwtResetStrategy extends PassportStrategy(Strategy, 'jwt-reset') {
                 [
                     (req) => req.cookies['jwt-reset']
                 ]),
-            secretOrKey: configService.get<string>('JWT_SECRET'),
             ignoreExpiration: false,
+            secretOrKey: configService.get<string>('JWT_SECRET'),
         });
     }
 

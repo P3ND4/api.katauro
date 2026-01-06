@@ -53,24 +53,17 @@ export class ProductsController {
   }
 
   @Get()
-  findAll(@Query('page') page: string, @Query('category') cat: string) {
-    try {
-      if (page && !cat) {
-        return this.productsService.findPage(+page)
-      }
-      else if (cat) {
-        return page ? this.productsService.getProductByCategory(cat, +page) : this.productsService.getProductByCategory(cat);
-      }
-      return this.productsService.findAll();
-    }
-    catch (err) {
-      return error;
-    }
+  findAll(@Query('page') page: string, @Query('category') cat: string, @Query('search') search: string) {
+    return page ? this.productsService.findAll({ category: cat, page: +page, search: search }) : this.productsService.findAll({ category: cat, search: search });
   }
 
   @Get('pages')
-  findPage(@Query('category') cat: string) {
-    return cat ? this.productsService.getPages(cat) : this.productsService.getPages();
+  findPage(@Query('category') cat: string, @Query('search') search: string) {
+    const options = {
+      categories: cat,
+      search: search,
+    };
+    return cat ? this.productsService.getPages(options) : this.productsService.getPages();
   }
 
 

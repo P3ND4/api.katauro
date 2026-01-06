@@ -28,19 +28,8 @@ export declare class ProductsController {
         image: string;
         name: string;
     }): Promise<import("./entities/product.entity").Color>;
-    findAll(page: string, cat: string): Promise<{
-        name: string;
-        id: string;
-        description: string;
-        subtitle: string;
-        categoryId: string;
-        typology: string;
-        vector: string;
-    }[]> | Promise<import("./entities/product.entity").Product[]> | {
-        (...data: any[]): void;
-        (message?: any, ...optionalParams: any[]): void;
-    };
-    findPage(cat: string): Promise<number>;
+    findAll(page: string, cat: string, search: string): Promise<import("./entities/product.entity").Product[]>;
+    findPage(cat: string, search: string): Promise<number>;
     createVariant(createSpecProductDTO: CreateSpecProductDTO): Promise<{
         image: string;
         id: string;

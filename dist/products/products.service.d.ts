@@ -17,15 +17,11 @@ export declare class ProductsService {
         typology: string;
         vector: string;
     }>;
-    findAll(): Promise<{
-        name: string;
-        id: string;
-        description: string;
-        subtitle: string;
-        categoryId: string;
-        typology: string;
-        vector: string;
-    }[]>;
+    findAll(options?: {
+        category?: string;
+        search?: string;
+        page?: number;
+    }): Promise<Product[]>;
     findPage(page: number): Promise<{
         name: string;
         id: string;
@@ -35,7 +31,10 @@ export declare class ProductsService {
         typology: string;
         vector: string;
     }[]>;
-    getPages(category?: string): Promise<number>;
+    getPages(options?: {
+        category?: string;
+        search?: string;
+    }): Promise<number>;
     findOne(id: string): Promise<{
         name: string;
         id: string;

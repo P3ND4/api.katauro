@@ -31,18 +31,25 @@ let ProductsService = class ProductsService {
     async create(createProductDto) {
         return this.productRepository.createProduct(createProductDto);
     }
-    findAll() {
-        return this.productRepository.findAllProducts();
+    async findAll(options) {
+        var products = (await this.productRepository.findAllProducts());
+        const catList = options?.category ? options.category.split('-') : null;
+        const categories = catList ? catList.map((cat) => this.CatParser[+cat]) : null;
+        products = categories ? products.filter((p) => categories.includes(p.category?.nombre)) : products;
+        products = options?.search ? products.filter(p => p.name.toLowerCase().includes(options.search.toLowerCase())) : products;
+        return options?.page ? products.slice((options.page - 1) * 9, (options.page - 1) * 9 + 9) : products;
     }
     async findPage(page) {
         const products = await this.productRepository.findAllProducts();
         return products.slice((page - 1) * 9, (page - 1) * 9 + 9);
     }
-    async getPages(category) {
-        const products = await this.productRepository.findAllProducts();
-        const catList = category ? category.split('-') : null;
+    async getPages(options) {
+        var products = (await this.productRepository.findAllProducts());
+        const catList = options?.category ? options.category.split('-') : null;
         const categories = catList ? catList.map((cat) => this.CatParser[+cat]) : null;
-        return !categories ? Math.ceil(products.length / 9) : Math.ceil(products.filter((p) => categories.includes(p.category?.nombre)).length / 9);
+        products = categories ? products.filter((p) => categories.includes(p.category?.nombre)) : products;
+        products = options?.search ? products.filter(p => p.name.toLowerCase().includes(options.search.toLowerCase())) : products;
+        return products.length / 9 > 0 ? Math.ceil(products.length / 9) : 1;
     }
     findOne(id) {
         return this.productRepository.findProductById(id);
