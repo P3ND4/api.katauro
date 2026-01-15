@@ -20,7 +20,7 @@ export class CloudinaryService {
         const api_secret = process.env.CLOUDINARY_API_SECRET!;
         const cloud_name = process.env.CLOUDINARY_CLOUD_NAME!;
         const upload_preset = 'katauroPresetSigned';
-        const folder = 'katauro';
+        const folder = 'temp';
 
         // Firma = todos los parámetros que vas a enviar (orden alfabético)
         const signatureString = `folder=${folder}&timestamp=${timestamp}&upload_preset=${upload_preset}${api_secret}`;

@@ -13,13 +13,17 @@ exports.OrderService = void 0;
 const common_1 = require("@nestjs/common");
 const order_repository_1 = require("./order.repository");
 const order_entity_1 = require("./entities/order.entity");
+const spec_product_service_1 = require("../products/spec-product/spec-product.service");
 let OrderService = class OrderService {
     orderRepository;
-    constructor(orderRepository) {
+    variantService;
+    constructor(orderRepository, variantService) {
         this.orderRepository = orderRepository;
+        this.variantService = variantService;
     }
     stateParser = [order_entity_1.OrderState.canceled, order_entity_1.OrderState.completed, order_entity_1.OrderState.pending];
-    create(createOrderDto) {
+    async create(createOrderDto) {
+        createOrderDto.productsID.forEach(x => this.variantService.update(x.productId, { setStock: -x.count }));
         return this.orderRepository.createOrder(createOrderDto);
     }
     async findAll(option) {
@@ -39,7 +43,13 @@ let OrderService = class OrderService {
     findOne(id) {
         return this.orderRepository.findOrderById(id);
     }
-    update(id, updateOrderDto) {
+    async update(id, updateOrderDto) {
+        if (updateOrderDto.state === order_entity_1.OrderState.canceled) {
+            const order = (await this.orderRepository.findOrderById(id));
+            order.products.forEach(async (x) => {
+                await this.variantService.update(x.productId, { setStock: x.count });
+            });
+        }
         return this.orderRepository.updateOrder(id, updateOrderDto);
     }
     remove(id) {
@@ -49,6 +59,6 @@ let OrderService = class OrderService {
 exports.OrderService = OrderService;
 exports.OrderService = OrderService = __decorate([
     (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [order_repository_1.OrderRepository])
+    __metadata("design:paramtypes", [order_repository_1.OrderRepository, spec_product_service_1.SpecProductService])
 ], OrderService);
 //# sourceMappingURL=order.service.js.map

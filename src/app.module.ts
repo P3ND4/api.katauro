@@ -9,10 +9,11 @@ import { AuthModule } from './auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
 import { CloudinaryModule } from './cloudinary/cloudinary.module';
 import { MailService } from './shared/services/mail/mail.service';
+import { ScheduleModule } from '@nestjs/schedule';
 
 @Module({
   imports: [ConfigModule.forRoot({ isGlobal: true }), // SOLO aquí
-    UsersModule, ProductsModule, OrderModule, AuthModule, CloudinaryModule],
+    UsersModule, ProductsModule, OrderModule, AuthModule, CloudinaryModule, ScheduleModule.forRoot()],
   controllers: [AppController],
   providers: [AppService, PrismaService, MailService],
 })

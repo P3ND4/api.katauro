@@ -11,11 +11,30 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.propRepository = void 0;
 const prisma_service_1 = require("../prisma/prisma.service");
+const product_entity_1 = require("./entities/product.entity");
 const common_1 = require("@nestjs/common");
 let propRepository = class propRepository {
     prisma;
     constructor(prisma) {
         this.prisma = prisma;
+    }
+    baseCategories = [
+        product_entity_1.Categories.footLumin,
+        product_entity_1.Categories.lightBulb,
+        product_entity_1.Categories.roofLumin,
+        product_entity_1.Categories.tableLumin,
+        product_entity_1.Categories.wallLumin
+    ];
+    async seedBaseCategories() {
+        for (const name of this.baseCategories) {
+            await this.prisma.category.upsert({
+                where: { nombre: name },
+                update: {},
+                create: {
+                    nombre: name,
+                },
+            });
+        }
     }
     findColors() {
         return this.prisma.color.findMany();

@@ -28,6 +28,9 @@ let ProductsService = class ProductsService {
         this.productRepository = productRepository;
         this.propRep = propRep;
     }
+    onModuleInit() {
+        this.propRep.seedBaseCategories();
+    }
     async create(createProductDto) {
         return this.productRepository.createProduct(createProductDto);
     }

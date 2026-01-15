@@ -13,9 +13,9 @@ export declare class ProductsController {
         id: string;
         description: string;
         subtitle: string;
-        categoryId: string;
         typology: string;
         vector: string;
+        categoryId: string;
     }>;
     productByCategoryName(name: string): Promise<import("./entities/product.entity").Product[]>;
     getFinishes(): Promise<import("./entities/product.entity").Finish[]>;
@@ -31,63 +31,63 @@ export declare class ProductsController {
     findAll(page: string, cat: string, search: string): Promise<import("./entities/product.entity").Product[]>;
     findPage(cat: string, search: string): Promise<number>;
     createVariant(createSpecProductDTO: CreateSpecProductDTO): Promise<{
-        image: string;
         id: string;
-        price: number;
-        stock: number;
-        colorId: string;
         genericId: string;
+        image: string;
+        price: number;
+        colorId: string;
+        stock: number;
     }>;
     getVatiansForProduct(id: string): Promise<{
-        image: string;
         id: string;
-        price: number;
-        stock: number;
-        colorId: string;
         genericId: string;
+        image: string;
+        price: number;
+        colorId: string;
+        stock: number;
     }[]>;
     getVariant(id: string): Promise<{
-        image: string;
         id: string;
-        price: number;
-        stock: number;
-        colorId: string;
         genericId: string;
+        image: string;
+        price: number;
+        colorId: string;
+        stock: number;
     } | null>;
     deleteVaiant(id: string): Promise<void>;
     updateVariant(id: string, data: UpdateSpecProductDto): Promise<{
-        image: string;
         id: string;
-        price: number;
-        stock: number;
-        colorId: string;
         genericId: string;
+        image: string;
+        price: number;
+        colorId: string;
+        stock: number;
     }>;
     findOne(id: string): Promise<{
         name: string;
         id: string;
         description: string;
         subtitle: string;
-        categoryId: string;
         typology: string;
         vector: string;
+        categoryId: string;
     } | null>;
     update(id: string, updateProductDto: UpdateProductDto): Promise<{
         name: string;
         id: string;
         description: string;
         subtitle: string;
-        categoryId: string;
         typology: string;
         vector: string;
+        categoryId: string;
     }>;
     remove(id: string): Promise<{
         name: string;
         id: string;
         description: string;
         subtitle: string;
-        categoryId: string;
         typology: string;
         vector: string;
+        categoryId: string;
     }>;
 }

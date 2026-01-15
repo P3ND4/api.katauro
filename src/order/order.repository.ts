@@ -12,6 +12,9 @@ export class OrderRepository implements IOrderRepository {
         return this.prismaService.order.findMany({ include: { products: { include: { product: { include: { genericProd: { include: { category: true } } } } } }, user: { include: { orders: true } } } });
     }
     createOrder(data: CreateOrderDto): Promise<Order> {
+        
+
+
         return this.prismaService.order.create({
             data: {
                 userId: data.userId,

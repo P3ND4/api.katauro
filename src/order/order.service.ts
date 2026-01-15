@@ -2,13 +2,15 @@ import { Injectable } from '@nestjs/common';
 import { CreateOrderDto } from './dto/create-order.dto';
 import { UpdateOrderDto } from './dto/update-order.dto';
 import { OrderRepository } from './order.repository';
-import { OrderState } from './entities/order.entity';
+import { Order, OrderState } from './entities/order.entity';
+import { SpecProductService } from 'src/products/spec-product/spec-product.service';
 
 @Injectable()
 export class OrderService {
-  constructor(private orderRepository: OrderRepository) { }
+  constructor(private orderRepository: OrderRepository, private variantService: SpecProductService) { }
   stateParser = [OrderState.canceled, OrderState.completed, OrderState.pending]
-  create(createOrderDto: CreateOrderDto) {
+  async create(createOrderDto: CreateOrderDto) {
+    createOrderDto.productsID.forEach(x => this.variantService.update(x.productId, { setStock: - x.count }));
     return this.orderRepository.createOrder(createOrderDto);
   }
 
@@ -24,15 +26,20 @@ export class OrderService {
     if (option.order) {
       orders = orders.sort((x, y) => option.order == '1' ? x.createdAt.getTime() - y.createdAt.getTime() : y.createdAt.getTime() - x.createdAt.getTime())
     }
-
-    return orders
+    return orders;
   }
 
   findOne(id: string) {
     return this.orderRepository.findOrderById(id);
   }
-  
-  update(id: string, updateOrderDto: UpdateOrderDto) {
+
+  async update(id: string, updateOrderDto: UpdateOrderDto) {
+    if (updateOrderDto.state === OrderState.canceled) {
+      const order = (await this.orderRepository.findOrderById(id)) as Order;
+      order.products.forEach(async (x) => {
+        await this.variantService.update(x.productId, { setStock: x.count });
+      });
+    }
     return this.orderRepository.updateOrder(id, updateOrderDto);
   }
 

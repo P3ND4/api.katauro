@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, OnModuleInit } from '@nestjs/common';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { ProductRepository } from './products.repository';
@@ -6,7 +6,7 @@ import { Categories, Product } from './entities/product.entity';
 import { propRepository } from './CatRepository';
 
 @Injectable()
-export class ProductsService {
+export class ProductsService implements OnModuleInit {
 
   readonly CatParser = [
     Categories.footLumin,
@@ -16,6 +16,9 @@ export class ProductsService {
     Categories.wallLumin
   ]
   constructor(private productRepository: ProductRepository, private propRep: propRepository) { }
+  onModuleInit() {
+    this.propRep.seedBaseCategories();
+  }
 
   async create(createProductDto: CreateProductDto) {
 

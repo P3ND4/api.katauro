@@ -16,18 +16,18 @@ datasource db {
 }
 
 model User {
-  id       String           @id @default(uuid())
-  email    String           @unique
-  name     String
-  lastName String
-  password String
-  phone    Int              @default(55)
-  image    String
-  cart     ProductForCart[] @relation()
-
-  emailVerified            Boolean  @default(false)
-  emailVerificationCode    String   @default("")
-  emailVerificationExpires DateTime @default(now())
+  id                       String           @id @default(uuid())
+  email                    String           @unique
+  name                     String
+  lastName                 String
+  password                 String
+  phone                    String
+  image                    String
+  cart                     ProductForCart[] @relation()
+  publicId                 String?          @unique
+  emailVerified            Boolean          @default(false)
+  emailVerificationCode    String           @default("")
+  emailVerificationExpires DateTime         @default(now())
 
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt()
@@ -47,6 +47,7 @@ model finish {
   id       String              @id @default(uuid())
   text     String
   image    String
+  publicId String?             @unique
   products finishForProducts[] @relation()
 }
 
@@ -75,7 +76,7 @@ model GenericProduct {
 
 model Category {
   id        String           @id @default(uuid())
-  nombre    String
+  nombre    String           @unique
   productos GenericProduct[] @relation()
 }
 
@@ -97,6 +98,7 @@ model Color {
   id       String            @id @default(uuid())
   name     String
   image    String
+  publicId String?           @unique
   products SpecificProduct[] @relation()
 }
 
@@ -106,7 +108,7 @@ model SpecificProduct {
   image          String
   price          Float
   colorId        String
-  stock          Int
+  stock          Int                   @default(0)
   order          ProductForOrder[]     @relation()
   promotions     ProductForPromotion[] @relation()
   genericProd    GenericProduct        @relation(fields: [genericId], references: [id], onDelete: Cascade)
@@ -115,11 +117,13 @@ model SpecificProduct {
   color          Color                 @relation(fields: [colorId], references: [id], onUpdate: Cascade)
 }
 
+//TODO: Hacer el publicId obligatorio en Images, Users, Color y finish
 model Images {
-  id      String          @id @default(ulid())
-  link    String
-  prodId  String
-  product SpecificProduct @relation(fields: [prodId], references: [id], onDelete: Cascade)
+  id       String          @id @default(ulid())
+  link     String
+  prodId   String
+  publicId String?         @unique
+  product  SpecificProduct @relation(fields: [prodId], references: [id], onDelete: Cascade)
 }
 
 model Order {

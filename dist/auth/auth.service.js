@@ -62,19 +62,16 @@ let AuthService = class AuthService {
         this.mailService = mailService;
     }
     async register(createUserDto) {
-        const userExists = await this.userService.findUserByEmail(createUserDto.email).catch(() => null);
-        if (userExists)
-            throw new common_1.BadRequestException('User already exists');
         return this.userService.create(createUserDto);
     }
     async login(credentials) {
         const { email, password } = credentials;
         const user = await this.userService.findUserByEmail(email);
         if (!user) {
-            throw new common_1.BadRequestException('User not found');
+            throw new common_1.UnauthorizedException('No existe usuario con ese email');
         }
         if (!user || !(await bcrypt.compare(password, user.password))) {
-            throw new common_1.UnauthorizedException('Invalid credentials');
+            throw new common_1.UnauthorizedException('Contraseña incorrecta');
         }
         return this.createToken(user);
     }
@@ -140,11 +137,11 @@ let AuthService = class AuthService {
         if (!user)
             throw new common_1.BadRequestException('User not found');
         if (!user.emailVerificationCode || !user.emailVerificationExpires)
-            throw new Error('No hay código pendiente');
+            throw new common_1.BadRequestException('No hay código pendiente');
         if (user.emailVerificationExpires < new Date())
-            throw new Error('Código expirado');
+            throw new common_1.BadRequestException('Código expirado');
         if (user.emailVerificationCode !== code)
-            throw new Error('Código incorrecto');
+            throw new common_1.BadRequestException('Código incorrecto');
         await this.userService.update(user.id, {
             emailVerified: true,
             emailVerificationCode: undefined,

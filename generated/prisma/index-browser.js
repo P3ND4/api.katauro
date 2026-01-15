@@ -128,6 +128,7 @@ exports.Prisma.UserScalarFieldEnum = {
   password: 'password',
   phone: 'phone',
   image: 'image',
+  publicId: 'publicId',
   emailVerified: 'emailVerified',
   emailVerificationCode: 'emailVerificationCode',
   emailVerificationExpires: 'emailVerificationExpires',
@@ -143,7 +144,8 @@ exports.Prisma.FinishForProductsScalarFieldEnum = {
 exports.Prisma.FinishScalarFieldEnum = {
   id: 'id',
   text: 'text',
-  image: 'image'
+  image: 'image',
+  publicId: 'publicId'
 };
 
 exports.Prisma.ProductForCartScalarFieldEnum = {
@@ -182,7 +184,8 @@ exports.Prisma.TokenBlacklistScalarFieldEnum = {
 exports.Prisma.ColorScalarFieldEnum = {
   id: 'id',
   name: 'name',
-  image: 'image'
+  image: 'image',
+  publicId: 'publicId'
 };
 
 exports.Prisma.SpecificProductScalarFieldEnum = {
@@ -197,7 +200,8 @@ exports.Prisma.SpecificProductScalarFieldEnum = {
 exports.Prisma.ImagesScalarFieldEnum = {
   id: 'id',
   link: 'link',
-  prodId: 'prodId'
+  prodId: 'prodId',
+  publicId: 'publicId'
 };
 
 exports.Prisma.OrderScalarFieldEnum = {
@@ -242,13 +246,20 @@ exports.Prisma.SortOrder = {
   desc: 'desc'
 };
 
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
 exports.Prisma.UserOrderByRelevanceFieldEnum = {
   id: 'id',
   email: 'email',
   name: 'name',
   lastName: 'lastName',
   password: 'password',
+  phone: 'phone',
   image: 'image',
+  publicId: 'publicId',
   emailVerificationCode: 'emailVerificationCode'
 };
 
@@ -260,7 +271,8 @@ exports.Prisma.finishForProductsOrderByRelevanceFieldEnum = {
 exports.Prisma.finishOrderByRelevanceFieldEnum = {
   id: 'id',
   text: 'text',
-  image: 'image'
+  image: 'image',
+  publicId: 'publicId'
 };
 
 exports.Prisma.ProductForCartOrderByRelevanceFieldEnum = {
@@ -298,7 +310,8 @@ exports.Prisma.TokenBlacklistOrderByRelevanceFieldEnum = {
 exports.Prisma.ColorOrderByRelevanceFieldEnum = {
   id: 'id',
   name: 'name',
-  image: 'image'
+  image: 'image',
+  publicId: 'publicId'
 };
 
 exports.Prisma.SpecificProductOrderByRelevanceFieldEnum = {
@@ -311,7 +324,8 @@ exports.Prisma.SpecificProductOrderByRelevanceFieldEnum = {
 exports.Prisma.ImagesOrderByRelevanceFieldEnum = {
   id: 'id',
   link: 'link',
-  prodId: 'prodId'
+  prodId: 'prodId',
+  publicId: 'publicId'
 };
 
 exports.Prisma.OrderOrderByRelevanceFieldEnum = {
