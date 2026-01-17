@@ -1,5 +1,5 @@
-import { ISpecificProductRepository } from "../repositorys/ISpecificProductRepository";
-import { PrismaService } from "src/prisma/prisma.service";
+import { ISpecificProductRepository } from "../repositories/ISpecificProductRepository";
+import { PrismaService } from "src/shared/services/prisma/prisma.service";
 import { SpecificProduct } from "generated/prisma";
 import { CreateSpecProductDTO } from "../dto/create-sproduct.dto";
 import { UpdateSpecProductDto } from "../dto/update-sproduct.dto";

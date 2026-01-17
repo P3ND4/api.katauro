@@ -1,6 +1,6 @@
-import { PrismaService } from "src/prisma/prisma.service";
+import { PrismaService } from "src/shared/services/prisma/prisma.service";
 import { Categories, CatEntity, Color, Finish } from "./entities/product.entity";
-import { IPropiertiesRepository } from "./repositorys/IPropiertiesRepository";
+import { IPropiertiesRepository } from "./repositories/IPropiertiesRepository";
 export declare class propRepository implements IPropiertiesRepository {
     private prisma;
     constructor(prisma: PrismaService);
