@@ -10,7 +10,7 @@ export class PromotionService implements OnModuleInit {
 
   constructor(private promoRep: PromotionRepository, private bannerRep: BannerRepository, private carouselRep: CarouselRepository) { }
   onModuleInit() {
-    throw new Error('Method not implemented.');
+  
   }
 
   create(createPromotionDto: CreatePromotionDto) {
