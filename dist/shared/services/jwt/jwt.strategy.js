@@ -21,7 +21,6 @@ let JwtStrategy = class JwtStrategy extends (0, passport_1.PassportStrategy)(pas
             jwtFromRequest: passport_jwt_1.ExtractJwt.fromExtractors([
                 (req) => {
                     const cookie = req.cookies['jwt'];
-                    console.log(cookie);
                     return cookie;
                 }
             ]),

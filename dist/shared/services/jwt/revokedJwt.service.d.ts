@@ -1,4 +1,4 @@
-import { PrismaService } from "src/prisma/prisma.service";
+import { PrismaService } from "src/shared/services/prisma/prisma.service";
 export declare class RevokedJwtService {
     private prisma;
     constructor(prisma: PrismaService);
@@ -9,4 +9,5 @@ export declare class RevokedJwtService {
         tid: string;
     }>;
     isTokenRevoked(tid: string): Promise<boolean>;
+    cleanExpiredTokens(): Promise<void>;
 }

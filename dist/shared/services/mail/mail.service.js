@@ -54,10 +54,17 @@ let MailService = class MailService {
     });
     async sendVerification(email, code) {
         await this.transporter.sendMail({
-            from: '"Mi App" <verificacion@katauro.com>',
+            from: '"Katauro" <verificacion@katauro.com>',
             to: email,
-            subject: 'Verifica tu correo',
-            html: `<p>Tu código es <b>${code}</b></p>`,
+            subject: 'Código de verificación',
+            html: `<p>Tu código de verificación es:</p>
+                <h2>${code}</h2>
+                <p>Este código expira en 5 minutos.</p>
+            `,
+            headers: {
+                'X-Priority': '1',
+                Importance: 'High',
+            },
         });
     }
 };

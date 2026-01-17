@@ -1,4 +1,5 @@
 import { Images } from "generated/prisma";
+import { Promotion } from "src/promotion/entities/promotion.entity";
 export declare class Product {
     id: string;
     name: string;
@@ -21,6 +22,11 @@ export declare class Variant {
     color: Color;
     genericId: string;
     genericProd?: Product;
+    promotions: {
+        productId: string;
+        promotionId: string;
+        promotion: Promotion;
+    }[];
 }
 export declare class FinishForProduct {
     productId: string;

@@ -1,8 +1,8 @@
-import { IOrderRepository } from "./repositorys/IOrderRepository";
+import { IOrderRepository } from "./repositories/IOrderRepository";
 import { Order } from "generated/prisma";
 import { CreateOrderDto } from "./dto/create-order.dto";
 import { UpdateOrderDto } from "./dto/update-order.dto";
-import { PrismaService } from "src/prisma/prisma.service";
+import { PrismaService } from "src/shared/services/prisma/prisma.service";
 export declare class OrderRepository implements IOrderRepository {
     private prismaService;
     constructor(prismaService: PrismaService);

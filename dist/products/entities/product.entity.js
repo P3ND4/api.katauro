@@ -24,6 +24,7 @@ class Variant {
     color;
     genericId;
     genericProd;
+    promotions;
 }
 exports.Variant = Variant;
 class FinishForProduct {

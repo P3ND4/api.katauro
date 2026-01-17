@@ -6,16 +6,13 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.PrismaService = void 0;
+exports.OwnerGuard = void 0;
 const common_1 = require("@nestjs/common");
-const client_1 = require("../../generated/prisma/client");
-let PrismaService = class PrismaService extends client_1.PrismaClient {
-    async onModuleInit() {
-        await this.$connect();
-    }
+const passport_1 = require("@nestjs/passport");
+let OwnerGuard = class OwnerGuard extends (0, passport_1.AuthGuard)('jwt-owner') {
 };
-exports.PrismaService = PrismaService;
-exports.PrismaService = PrismaService = __decorate([
+exports.OwnerGuard = OwnerGuard;
+exports.OwnerGuard = OwnerGuard = __decorate([
     (0, common_1.Injectable)()
-], PrismaService);
-//# sourceMappingURL=prisma.service.js.map
+], OwnerGuard);
+//# sourceMappingURL=owner.guard.js.map
