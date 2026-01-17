@@ -24,7 +24,6 @@ let PromotionService = class PromotionService {
         this.carouselRep = carouselRep;
     }
     onModuleInit() {
-        throw new Error('Method not implemented.');
     }
     create(createPromotionDto) {
         return this.promoRep.CreatePromotion(createPromotionDto);
