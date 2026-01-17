@@ -1,4 +1,5 @@
 import { finishForProducts, Images } from "generated/prisma";
+import { Promotion } from "src/promotion/entities/promotion.entity";
 import { inherits } from "util";
 
 export class Product {
@@ -24,10 +25,15 @@ export class Variant {
     color: Color
     genericId: string;
     genericProd?: Product;
+    promotions: {
+        productId: string
+        promotionId: string
+        promotion: Promotion
+    }[]
 }
 
 
-export class FinishForProduct{
+export class FinishForProduct {
     productId: string;
     finishId: string;
 }
@@ -58,7 +64,7 @@ export class Color {
     image?: string
 }
 
-export enum Typology{
+export enum Typology {
     simple = "Simple",
     variant = "Variante"
 }

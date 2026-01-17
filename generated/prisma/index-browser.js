@@ -230,15 +230,36 @@ exports.Prisma.ProductForOrderScalarFieldEnum = {
 
 exports.Prisma.PromotionScalarFieldEnum = {
   promo_id: 'promo_id',
-  code: 'code',
   startDate: 'startDate',
   endDate: 'endDate',
-  isActive: 'isActive'
+  name: 'name',
+  discountType: 'discountType',
+  Type: 'Type'
+};
+
+exports.Prisma.CategoryforPromoScalarFieldEnum = {
+  promoId: 'promoId',
+  categoryId: 'categoryId'
 };
 
 exports.Prisma.ProductForPromotionScalarFieldEnum = {
   productId: 'productId',
   promotionId: 'promotionId'
+};
+
+exports.Prisma.PromoBannerScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  description: 'description',
+  prodId: 'prodId',
+  image: 'image',
+  publicId: 'publicId',
+  carouselId: 'carouselId'
+};
+
+exports.Prisma.CarouselScalarFieldEnum = {
+  id: 'id',
+  name: 'name'
 };
 
 exports.Prisma.SortOrder = {
@@ -349,12 +370,31 @@ exports.Prisma.ProductForOrderOrderByRelevanceFieldEnum = {
 
 exports.Prisma.PromotionOrderByRelevanceFieldEnum = {
   promo_id: 'promo_id',
-  code: 'code'
+  name: 'name',
+  discountType: 'discountType',
+  Type: 'Type'
+};
+
+exports.Prisma.CategoryforPromoOrderByRelevanceFieldEnum = {
+  promoId: 'promoId',
+  categoryId: 'categoryId'
 };
 
 exports.Prisma.ProductForPromotionOrderByRelevanceFieldEnum = {
   productId: 'productId',
   promotionId: 'promotionId'
+};
+
+exports.Prisma.PromoBannerOrderByRelevanceFieldEnum = {
+  name: 'name',
+  description: 'description',
+  prodId: 'prodId',
+  image: 'image',
+  publicId: 'publicId'
+};
+
+exports.Prisma.CarouselOrderByRelevanceFieldEnum = {
+  name: 'name'
 };
 
 
@@ -373,7 +413,10 @@ exports.Prisma.ModelName = {
   Order: 'Order',
   ProductForOrder: 'ProductForOrder',
   Promotion: 'Promotion',
-  ProductForPromotion: 'ProductForPromotion'
+  CategoryforPromo: 'CategoryforPromo',
+  ProductForPromotion: 'ProductForPromotion',
+  PromoBanner: 'PromoBanner',
+  Carousel: 'Carousel'
 };
 
 /**

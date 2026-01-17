@@ -1,9 +1,9 @@
 import { Injectable } from "@nestjs/common";
-import { IOrderRepository } from "./repositorys/IOrderRepository";
+import { IOrderRepository } from "./repositories/IOrderRepository";
 import { Order } from "generated/prisma";
 import { CreateOrderDto } from "./dto/create-order.dto";
 import { UpdateOrderDto } from "./dto/update-order.dto";
-import { PrismaService } from "src/prisma/prisma.service";
+import { PrismaService } from "src/shared/services/prisma/prisma.service";
 
 @Injectable()
 export class OrderRepository implements IOrderRepository {

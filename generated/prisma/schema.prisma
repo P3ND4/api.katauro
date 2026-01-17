@@ -21,7 +21,7 @@ model User {
   name                     String
   lastName                 String
   password                 String
-  phone                    Int
+  phone                    String
   image                    String
   cart                     ProductForCart[] @relation()
   publicId                 String?          @unique
@@ -75,9 +75,10 @@ model GenericProduct {
 }
 
 model Category {
-  id        String           @id @default(uuid())
-  nombre    String           @unique
-  productos GenericProduct[] @relation()
+  id               String             @id @default(uuid())
+  nombre           String             @unique
+  productos        GenericProduct[]   @relation()
+  CategoryforPromo CategoryforPromo[] @relation()
 }
 
 model Details {
@@ -113,8 +114,9 @@ model SpecificProduct {
   promotions     ProductForPromotion[] @relation()
   genericProd    GenericProduct        @relation(fields: [genericId], references: [id], onDelete: Cascade)
   images         Images[]              @relation()
-  ProductForCart ProductForCart[]
+  ProductForCart ProductForCart[]      @relation()
   color          Color                 @relation(fields: [colorId], references: [id], onUpdate: Cascade)
+  PromoBanner    PromoBanner[]         @relation()
 }
 
 //TODO: Hacer el publicId obligatorio en Images, Users, Color y finish
@@ -157,12 +159,23 @@ model ProductForOrder {
 }
 
 model Promotion {
-  promo_id  String                @id @default(uuid())
-  code      String                @unique
-  startDate DateTime
-  endDate   DateTime
-  isActive  Boolean               @default(true)
-  products  ProductForPromotion[]
+  promo_id     String                @id @default(uuid())
+  startDate    DateTime
+  endDate      DateTime
+  name         String
+  discountType String
+  Type         String
+  products     ProductForPromotion[]
+  categories   CategoryforPromo[]    @relation()
+}
+
+model CategoryforPromo {
+  promoId    String
+  categoryId String
+  promo      Promotion @relation(fields: [promoId], references: [promo_id], onDelete: Cascade)
+  category   Category  @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+
+  @@id([promoId, categoryId])
 }
 
 model ProductForPromotion {
@@ -172,4 +185,22 @@ model ProductForPromotion {
   promotion   Promotion       @relation(fields: [promotionId], references: [promo_id], onDelete: Cascade)
 
   @@id([productId, promotionId])
+}
+
+model PromoBanner {
+  id          Int             @id @default(autoincrement())
+  name        String
+  description String
+  prodId      String
+  product     SpecificProduct @relation(fields: [prodId], references: [id], onDelete: Cascade)
+  image       String
+  publicId    String?
+  carouselId  Int
+  carousel    Carousel        @relation("BannerForCarousel", fields: [carouselId], references: [id], onDelete: Cascade)
+}
+
+model Carousel {
+  id      Int           @id() @default(autoincrement())
+  name    String        @unique
+  banners PromoBanner[] @relation("BannerForCarousel")
 }

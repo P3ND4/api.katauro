@@ -1,7 +1,7 @@
 import { Injectable } from "@nestjs/common";
 import { Cron } from "@nestjs/schedule";
 import { TokenBlacklist } from "generated/prisma";
-import { PrismaService } from "src/prisma/prisma.service";
+import { PrismaService } from "src/shared/services/prisma/prisma.service";
 
 @Injectable()
 export class RevokedJwtService {

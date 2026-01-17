@@ -84,10 +84,25 @@ export type ProductForOrder = $Result.DefaultSelection<Prisma.$ProductForOrderPa
  */
 export type Promotion = $Result.DefaultSelection<Prisma.$PromotionPayload>
 /**
+ * Model CategoryforPromo
+ * 
+ */
+export type CategoryforPromo = $Result.DefaultSelection<Prisma.$CategoryforPromoPayload>
+/**
  * Model ProductForPromotion
  * 
  */
 export type ProductForPromotion = $Result.DefaultSelection<Prisma.$ProductForPromotionPayload>
+/**
+ * Model PromoBanner
+ * 
+ */
+export type PromoBanner = $Result.DefaultSelection<Prisma.$PromoBannerPayload>
+/**
+ * Model Carousel
+ * 
+ */
+export type Carousel = $Result.DefaultSelection<Prisma.$CarouselPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -355,6 +370,16 @@ export class PrismaClient<
   get promotion(): Prisma.PromotionDelegate<ExtArgs, ClientOptions>;
 
   /**
+   * `prisma.categoryforPromo`: Exposes CRUD operations for the **CategoryforPromo** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more CategoryforPromos
+    * const categoryforPromos = await prisma.categoryforPromo.findMany()
+    * ```
+    */
+  get categoryforPromo(): Prisma.CategoryforPromoDelegate<ExtArgs, ClientOptions>;
+
+  /**
    * `prisma.productForPromotion`: Exposes CRUD operations for the **ProductForPromotion** model.
     * Example usage:
     * ```ts
@@ -363,6 +388,26 @@ export class PrismaClient<
     * ```
     */
   get productForPromotion(): Prisma.ProductForPromotionDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.promoBanner`: Exposes CRUD operations for the **PromoBanner** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more PromoBanners
+    * const promoBanners = await prisma.promoBanner.findMany()
+    * ```
+    */
+  get promoBanner(): Prisma.PromoBannerDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.carousel`: Exposes CRUD operations for the **Carousel** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Carousels
+    * const carousels = await prisma.carousel.findMany()
+    * ```
+    */
+  get carousel(): Prisma.CarouselDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -817,7 +862,10 @@ export namespace Prisma {
     Order: 'Order',
     ProductForOrder: 'ProductForOrder',
     Promotion: 'Promotion',
-    ProductForPromotion: 'ProductForPromotion'
+    CategoryforPromo: 'CategoryforPromo',
+    ProductForPromotion: 'ProductForPromotion',
+    PromoBanner: 'PromoBanner',
+    Carousel: 'Carousel'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -836,7 +884,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "finishForProducts" | "finish" | "productForCart" | "genericProduct" | "category" | "details" | "tokenBlacklist" | "color" | "specificProduct" | "images" | "order" | "productForOrder" | "promotion" | "productForPromotion"
+      modelProps: "user" | "finishForProducts" | "finish" | "productForCart" | "genericProduct" | "category" | "details" | "tokenBlacklist" | "color" | "specificProduct" | "images" | "order" | "productForOrder" | "promotion" | "categoryforPromo" | "productForPromotion" | "promoBanner" | "carousel"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1764,6 +1812,72 @@ export namespace Prisma {
           }
         }
       }
+      CategoryforPromo: {
+        payload: Prisma.$CategoryforPromoPayload<ExtArgs>
+        fields: Prisma.CategoryforPromoFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CategoryforPromoFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryforPromoPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CategoryforPromoFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryforPromoPayload>
+          }
+          findFirst: {
+            args: Prisma.CategoryforPromoFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryforPromoPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CategoryforPromoFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryforPromoPayload>
+          }
+          findMany: {
+            args: Prisma.CategoryforPromoFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryforPromoPayload>[]
+          }
+          create: {
+            args: Prisma.CategoryforPromoCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryforPromoPayload>
+          }
+          createMany: {
+            args: Prisma.CategoryforPromoCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.CategoryforPromoDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryforPromoPayload>
+          }
+          update: {
+            args: Prisma.CategoryforPromoUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryforPromoPayload>
+          }
+          deleteMany: {
+            args: Prisma.CategoryforPromoDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CategoryforPromoUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.CategoryforPromoUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CategoryforPromoPayload>
+          }
+          aggregate: {
+            args: Prisma.CategoryforPromoAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCategoryforPromo>
+          }
+          groupBy: {
+            args: Prisma.CategoryforPromoGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CategoryforPromoGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CategoryforPromoCountArgs<ExtArgs>
+            result: $Utils.Optional<CategoryforPromoCountAggregateOutputType> | number
+          }
+        }
+      }
       ProductForPromotion: {
         payload: Prisma.$ProductForPromotionPayload<ExtArgs>
         fields: Prisma.ProductForPromotionFieldRefs
@@ -1827,6 +1941,138 @@ export namespace Prisma {
           count: {
             args: Prisma.ProductForPromotionCountArgs<ExtArgs>
             result: $Utils.Optional<ProductForPromotionCountAggregateOutputType> | number
+          }
+        }
+      }
+      PromoBanner: {
+        payload: Prisma.$PromoBannerPayload<ExtArgs>
+        fields: Prisma.PromoBannerFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.PromoBannerFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PromoBannerPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.PromoBannerFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PromoBannerPayload>
+          }
+          findFirst: {
+            args: Prisma.PromoBannerFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PromoBannerPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.PromoBannerFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PromoBannerPayload>
+          }
+          findMany: {
+            args: Prisma.PromoBannerFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PromoBannerPayload>[]
+          }
+          create: {
+            args: Prisma.PromoBannerCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PromoBannerPayload>
+          }
+          createMany: {
+            args: Prisma.PromoBannerCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.PromoBannerDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PromoBannerPayload>
+          }
+          update: {
+            args: Prisma.PromoBannerUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PromoBannerPayload>
+          }
+          deleteMany: {
+            args: Prisma.PromoBannerDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.PromoBannerUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.PromoBannerUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PromoBannerPayload>
+          }
+          aggregate: {
+            args: Prisma.PromoBannerAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePromoBanner>
+          }
+          groupBy: {
+            args: Prisma.PromoBannerGroupByArgs<ExtArgs>
+            result: $Utils.Optional<PromoBannerGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.PromoBannerCountArgs<ExtArgs>
+            result: $Utils.Optional<PromoBannerCountAggregateOutputType> | number
+          }
+        }
+      }
+      Carousel: {
+        payload: Prisma.$CarouselPayload<ExtArgs>
+        fields: Prisma.CarouselFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.CarouselFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CarouselPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.CarouselFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CarouselPayload>
+          }
+          findFirst: {
+            args: Prisma.CarouselFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CarouselPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.CarouselFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CarouselPayload>
+          }
+          findMany: {
+            args: Prisma.CarouselFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CarouselPayload>[]
+          }
+          create: {
+            args: Prisma.CarouselCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CarouselPayload>
+          }
+          createMany: {
+            args: Prisma.CarouselCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.CarouselDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CarouselPayload>
+          }
+          update: {
+            args: Prisma.CarouselUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CarouselPayload>
+          }
+          deleteMany: {
+            args: Prisma.CarouselDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.CarouselUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.CarouselUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$CarouselPayload>
+          }
+          aggregate: {
+            args: Prisma.CarouselAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCarousel>
+          }
+          groupBy: {
+            args: Prisma.CarouselGroupByArgs<ExtArgs>
+            result: $Utils.Optional<CarouselGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.CarouselCountArgs<ExtArgs>
+            result: $Utils.Optional<CarouselCountAggregateOutputType> | number
           }
         }
       }
@@ -1936,7 +2182,10 @@ export namespace Prisma {
     order?: OrderOmit
     productForOrder?: ProductForOrderOmit
     promotion?: PromotionOmit
+    categoryforPromo?: CategoryforPromoOmit
     productForPromotion?: ProductForPromotionOmit
+    promoBanner?: PromoBannerOmit
+    carousel?: CarouselOmit
   }
 
   /* Types for Logging */
@@ -2157,10 +2406,12 @@ export namespace Prisma {
 
   export type CategoryCountOutputType = {
     productos: number
+    CategoryforPromo: number
   }
 
   export type CategoryCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     productos?: boolean | CategoryCountOutputTypeCountProductosArgs
+    CategoryforPromo?: boolean | CategoryCountOutputTypeCountCategoryforPromoArgs
   }
 
   // Custom InputTypes
@@ -2179,6 +2430,13 @@ export namespace Prisma {
    */
   export type CategoryCountOutputTypeCountProductosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: GenericProductWhereInput
+  }
+
+  /**
+   * CategoryCountOutputType without action
+   */
+  export type CategoryCountOutputTypeCountCategoryforPromoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CategoryforPromoWhereInput
   }
 
 
@@ -2222,6 +2480,7 @@ export namespace Prisma {
     promotions: number
     images: number
     ProductForCart: number
+    PromoBanner: number
   }
 
   export type SpecificProductCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2229,6 +2488,7 @@ export namespace Prisma {
     promotions?: boolean | SpecificProductCountOutputTypeCountPromotionsArgs
     images?: boolean | SpecificProductCountOutputTypeCountImagesArgs
     ProductForCart?: boolean | SpecificProductCountOutputTypeCountProductForCartArgs
+    PromoBanner?: boolean | SpecificProductCountOutputTypeCountPromoBannerArgs
   }
 
   // Custom InputTypes
@@ -2270,6 +2530,13 @@ export namespace Prisma {
     where?: ProductForCartWhereInput
   }
 
+  /**
+   * SpecificProductCountOutputType without action
+   */
+  export type SpecificProductCountOutputTypeCountPromoBannerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PromoBannerWhereInput
+  }
+
 
   /**
    * Count Type OrderCountOutputType
@@ -2308,10 +2575,12 @@ export namespace Prisma {
 
   export type PromotionCountOutputType = {
     products: number
+    categories: number
   }
 
   export type PromotionCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     products?: boolean | PromotionCountOutputTypeCountProductsArgs
+    categories?: boolean | PromotionCountOutputTypeCountCategoriesArgs
   }
 
   // Custom InputTypes
@@ -2330,6 +2599,44 @@ export namespace Prisma {
    */
   export type PromotionCountOutputTypeCountProductsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: ProductForPromotionWhereInput
+  }
+
+  /**
+   * PromotionCountOutputType without action
+   */
+  export type PromotionCountOutputTypeCountCategoriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CategoryforPromoWhereInput
+  }
+
+
+  /**
+   * Count Type CarouselCountOutputType
+   */
+
+  export type CarouselCountOutputType = {
+    banners: number
+  }
+
+  export type CarouselCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    banners?: boolean | CarouselCountOutputTypeCountBannersArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * CarouselCountOutputType without action
+   */
+  export type CarouselCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CarouselCountOutputType
+     */
+    select?: CarouselCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * CarouselCountOutputType without action
+   */
+  export type CarouselCountOutputTypeCountBannersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PromoBannerWhereInput
   }
 
 
@@ -7330,6 +7637,7 @@ export namespace Prisma {
     id?: boolean
     nombre?: boolean
     productos?: boolean | Category$productosArgs<ExtArgs>
+    CategoryforPromo?: boolean | Category$CategoryforPromoArgs<ExtArgs>
     _count?: boolean | CategoryCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["category"]>
 
@@ -7343,6 +7651,7 @@ export namespace Prisma {
   export type CategoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nombre", ExtArgs["result"]["category"]>
   export type CategoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     productos?: boolean | Category$productosArgs<ExtArgs>
+    CategoryforPromo?: boolean | Category$CategoryforPromoArgs<ExtArgs>
     _count?: boolean | CategoryCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -7350,6 +7659,7 @@ export namespace Prisma {
     name: "Category"
     objects: {
       productos: Prisma.$GenericProductPayload<ExtArgs>[]
+      CategoryforPromo: Prisma.$CategoryforPromoPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -7695,6 +8005,7 @@ export namespace Prisma {
   export interface Prisma__CategoryClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     productos<T extends Category$productosArgs<ExtArgs> = {}>(args?: Subset<T, Category$productosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GenericProductPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    CategoryforPromo<T extends Category$CategoryforPromoArgs<ExtArgs> = {}>(args?: Subset<T, Category$CategoryforPromoArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CategoryforPromoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -8090,6 +8401,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: GenericProductScalarFieldEnum | GenericProductScalarFieldEnum[]
+  }
+
+  /**
+   * Category.CategoryforPromo
+   */
+  export type Category$CategoryforPromoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CategoryforPromo
+     */
+    select?: CategoryforPromoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CategoryforPromo
+     */
+    omit?: CategoryforPromoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryforPromoInclude<ExtArgs> | null
+    where?: CategoryforPromoWhereInput
+    orderBy?: CategoryforPromoOrderByWithRelationInput | CategoryforPromoOrderByWithRelationInput[]
+    cursor?: CategoryforPromoWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CategoryforPromoScalarFieldEnum | CategoryforPromoScalarFieldEnum[]
   }
 
   /**
@@ -11049,6 +11384,7 @@ export namespace Prisma {
     images?: boolean | SpecificProduct$imagesArgs<ExtArgs>
     ProductForCart?: boolean | SpecificProduct$ProductForCartArgs<ExtArgs>
     color?: boolean | ColorDefaultArgs<ExtArgs>
+    PromoBanner?: boolean | SpecificProduct$PromoBannerArgs<ExtArgs>
     _count?: boolean | SpecificProductCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["specificProduct"]>
 
@@ -11071,6 +11407,7 @@ export namespace Prisma {
     images?: boolean | SpecificProduct$imagesArgs<ExtArgs>
     ProductForCart?: boolean | SpecificProduct$ProductForCartArgs<ExtArgs>
     color?: boolean | ColorDefaultArgs<ExtArgs>
+    PromoBanner?: boolean | SpecificProduct$PromoBannerArgs<ExtArgs>
     _count?: boolean | SpecificProductCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -11083,6 +11420,7 @@ export namespace Prisma {
       images: Prisma.$ImagesPayload<ExtArgs>[]
       ProductForCart: Prisma.$ProductForCartPayload<ExtArgs>[]
       color: Prisma.$ColorPayload<ExtArgs>
+      PromoBanner: Prisma.$PromoBannerPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       genericId: string
@@ -11437,6 +11775,7 @@ export namespace Prisma {
     images<T extends SpecificProduct$imagesArgs<ExtArgs> = {}>(args?: Subset<T, SpecificProduct$imagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ImagesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     ProductForCart<T extends SpecificProduct$ProductForCartArgs<ExtArgs> = {}>(args?: Subset<T, SpecificProduct$ProductForCartArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProductForCartPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     color<T extends ColorDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ColorDefaultArgs<ExtArgs>>): Prisma__ColorClient<$Result.GetResult<Prisma.$ColorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    PromoBanner<T extends SpecificProduct$PromoBannerArgs<ExtArgs> = {}>(args?: Subset<T, SpecificProduct$PromoBannerArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PromoBannerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -11908,6 +12247,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: ProductForCartScalarFieldEnum | ProductForCartScalarFieldEnum[]
+  }
+
+  /**
+   * SpecificProduct.PromoBanner
+   */
+  export type SpecificProduct$PromoBannerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PromoBanner
+     */
+    select?: PromoBannerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PromoBanner
+     */
+    omit?: PromoBannerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PromoBannerInclude<ExtArgs> | null
+    where?: PromoBannerWhereInput
+    orderBy?: PromoBannerOrderByWithRelationInput | PromoBannerOrderByWithRelationInput[]
+    cursor?: PromoBannerWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PromoBannerScalarFieldEnum | PromoBannerScalarFieldEnum[]
   }
 
   /**
@@ -14911,52 +15274,58 @@ export namespace Prisma {
 
   export type PromotionMinAggregateOutputType = {
     promo_id: string | null
-    code: string | null
     startDate: Date | null
     endDate: Date | null
-    isActive: boolean | null
+    name: string | null
+    discountType: string | null
+    Type: string | null
   }
 
   export type PromotionMaxAggregateOutputType = {
     promo_id: string | null
-    code: string | null
     startDate: Date | null
     endDate: Date | null
-    isActive: boolean | null
+    name: string | null
+    discountType: string | null
+    Type: string | null
   }
 
   export type PromotionCountAggregateOutputType = {
     promo_id: number
-    code: number
     startDate: number
     endDate: number
-    isActive: number
+    name: number
+    discountType: number
+    Type: number
     _all: number
   }
 
 
   export type PromotionMinAggregateInputType = {
     promo_id?: true
-    code?: true
     startDate?: true
     endDate?: true
-    isActive?: true
+    name?: true
+    discountType?: true
+    Type?: true
   }
 
   export type PromotionMaxAggregateInputType = {
     promo_id?: true
-    code?: true
     startDate?: true
     endDate?: true
-    isActive?: true
+    name?: true
+    discountType?: true
+    Type?: true
   }
 
   export type PromotionCountAggregateInputType = {
     promo_id?: true
-    code?: true
     startDate?: true
     endDate?: true
-    isActive?: true
+    name?: true
+    discountType?: true
+    Type?: true
     _all?: true
   }
 
@@ -15034,10 +15403,11 @@ export namespace Prisma {
 
   export type PromotionGroupByOutputType = {
     promo_id: string
-    code: string
     startDate: Date
     endDate: Date
-    isActive: boolean
+    name: string
+    discountType: string
+    Type: string
     _count: PromotionCountAggregateOutputType | null
     _min: PromotionMinAggregateOutputType | null
     _max: PromotionMaxAggregateOutputType | null
@@ -15059,11 +15429,13 @@ export namespace Prisma {
 
   export type PromotionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     promo_id?: boolean
-    code?: boolean
     startDate?: boolean
     endDate?: boolean
-    isActive?: boolean
+    name?: boolean
+    discountType?: boolean
+    Type?: boolean
     products?: boolean | Promotion$productsArgs<ExtArgs>
+    categories?: boolean | Promotion$categoriesArgs<ExtArgs>
     _count?: boolean | PromotionCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["promotion"]>
 
@@ -15071,15 +15443,17 @@ export namespace Prisma {
 
   export type PromotionSelectScalar = {
     promo_id?: boolean
-    code?: boolean
     startDate?: boolean
     endDate?: boolean
-    isActive?: boolean
+    name?: boolean
+    discountType?: boolean
+    Type?: boolean
   }
 
-  export type PromotionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"promo_id" | "code" | "startDate" | "endDate" | "isActive", ExtArgs["result"]["promotion"]>
+  export type PromotionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"promo_id" | "startDate" | "endDate" | "name" | "discountType" | "Type", ExtArgs["result"]["promotion"]>
   export type PromotionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     products?: boolean | Promotion$productsArgs<ExtArgs>
+    categories?: boolean | Promotion$categoriesArgs<ExtArgs>
     _count?: boolean | PromotionCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -15087,13 +15461,15 @@ export namespace Prisma {
     name: "Promotion"
     objects: {
       products: Prisma.$ProductForPromotionPayload<ExtArgs>[]
+      categories: Prisma.$CategoryforPromoPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       promo_id: string
-      code: string
       startDate: Date
       endDate: Date
-      isActive: boolean
+      name: string
+      discountType: string
+      Type: string
     }, ExtArgs["result"]["promotion"]>
     composites: {}
   }
@@ -15435,6 +15811,7 @@ export namespace Prisma {
   export interface Prisma__PromotionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     products<T extends Promotion$productsArgs<ExtArgs> = {}>(args?: Subset<T, Promotion$productsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProductForPromotionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    categories<T extends Promotion$categoriesArgs<ExtArgs> = {}>(args?: Subset<T, Promotion$categoriesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CategoryforPromoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -15465,10 +15842,11 @@ export namespace Prisma {
    */
   interface PromotionFieldRefs {
     readonly promo_id: FieldRef<"Promotion", 'String'>
-    readonly code: FieldRef<"Promotion", 'String'>
     readonly startDate: FieldRef<"Promotion", 'DateTime'>
     readonly endDate: FieldRef<"Promotion", 'DateTime'>
-    readonly isActive: FieldRef<"Promotion", 'Boolean'>
+    readonly name: FieldRef<"Promotion", 'String'>
+    readonly discountType: FieldRef<"Promotion", 'String'>
+    readonly Type: FieldRef<"Promotion", 'String'>
   }
     
 
@@ -15836,6 +16214,30 @@ export namespace Prisma {
   }
 
   /**
+   * Promotion.categories
+   */
+  export type Promotion$categoriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CategoryforPromo
+     */
+    select?: CategoryforPromoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CategoryforPromo
+     */
+    omit?: CategoryforPromoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryforPromoInclude<ExtArgs> | null
+    where?: CategoryforPromoWhereInput
+    orderBy?: CategoryforPromoOrderByWithRelationInput | CategoryforPromoOrderByWithRelationInput[]
+    cursor?: CategoryforPromoWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: CategoryforPromoScalarFieldEnum | CategoryforPromoScalarFieldEnum[]
+  }
+
+  /**
    * Promotion without action
    */
   export type PromotionDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -15851,6 +16253,906 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: PromotionInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model CategoryforPromo
+   */
+
+  export type AggregateCategoryforPromo = {
+    _count: CategoryforPromoCountAggregateOutputType | null
+    _min: CategoryforPromoMinAggregateOutputType | null
+    _max: CategoryforPromoMaxAggregateOutputType | null
+  }
+
+  export type CategoryforPromoMinAggregateOutputType = {
+    promoId: string | null
+    categoryId: string | null
+  }
+
+  export type CategoryforPromoMaxAggregateOutputType = {
+    promoId: string | null
+    categoryId: string | null
+  }
+
+  export type CategoryforPromoCountAggregateOutputType = {
+    promoId: number
+    categoryId: number
+    _all: number
+  }
+
+
+  export type CategoryforPromoMinAggregateInputType = {
+    promoId?: true
+    categoryId?: true
+  }
+
+  export type CategoryforPromoMaxAggregateInputType = {
+    promoId?: true
+    categoryId?: true
+  }
+
+  export type CategoryforPromoCountAggregateInputType = {
+    promoId?: true
+    categoryId?: true
+    _all?: true
+  }
+
+  export type CategoryforPromoAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CategoryforPromo to aggregate.
+     */
+    where?: CategoryforPromoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CategoryforPromos to fetch.
+     */
+    orderBy?: CategoryforPromoOrderByWithRelationInput | CategoryforPromoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CategoryforPromoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CategoryforPromos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CategoryforPromos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned CategoryforPromos
+    **/
+    _count?: true | CategoryforPromoCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CategoryforPromoMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CategoryforPromoMaxAggregateInputType
+  }
+
+  export type GetCategoryforPromoAggregateType<T extends CategoryforPromoAggregateArgs> = {
+        [P in keyof T & keyof AggregateCategoryforPromo]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCategoryforPromo[P]>
+      : GetScalarType<T[P], AggregateCategoryforPromo[P]>
+  }
+
+
+
+
+  export type CategoryforPromoGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CategoryforPromoWhereInput
+    orderBy?: CategoryforPromoOrderByWithAggregationInput | CategoryforPromoOrderByWithAggregationInput[]
+    by: CategoryforPromoScalarFieldEnum[] | CategoryforPromoScalarFieldEnum
+    having?: CategoryforPromoScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CategoryforPromoCountAggregateInputType | true
+    _min?: CategoryforPromoMinAggregateInputType
+    _max?: CategoryforPromoMaxAggregateInputType
+  }
+
+  export type CategoryforPromoGroupByOutputType = {
+    promoId: string
+    categoryId: string
+    _count: CategoryforPromoCountAggregateOutputType | null
+    _min: CategoryforPromoMinAggregateOutputType | null
+    _max: CategoryforPromoMaxAggregateOutputType | null
+  }
+
+  type GetCategoryforPromoGroupByPayload<T extends CategoryforPromoGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CategoryforPromoGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CategoryforPromoGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CategoryforPromoGroupByOutputType[P]>
+            : GetScalarType<T[P], CategoryforPromoGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CategoryforPromoSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    promoId?: boolean
+    categoryId?: boolean
+    promo?: boolean | PromotionDefaultArgs<ExtArgs>
+    category?: boolean | CategoryDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["categoryforPromo"]>
+
+
+
+  export type CategoryforPromoSelectScalar = {
+    promoId?: boolean
+    categoryId?: boolean
+  }
+
+  export type CategoryforPromoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"promoId" | "categoryId", ExtArgs["result"]["categoryforPromo"]>
+  export type CategoryforPromoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    promo?: boolean | PromotionDefaultArgs<ExtArgs>
+    category?: boolean | CategoryDefaultArgs<ExtArgs>
+  }
+
+  export type $CategoryforPromoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "CategoryforPromo"
+    objects: {
+      promo: Prisma.$PromotionPayload<ExtArgs>
+      category: Prisma.$CategoryPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      promoId: string
+      categoryId: string
+    }, ExtArgs["result"]["categoryforPromo"]>
+    composites: {}
+  }
+
+  type CategoryforPromoGetPayload<S extends boolean | null | undefined | CategoryforPromoDefaultArgs> = $Result.GetResult<Prisma.$CategoryforPromoPayload, S>
+
+  type CategoryforPromoCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CategoryforPromoFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CategoryforPromoCountAggregateInputType | true
+    }
+
+  export interface CategoryforPromoDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['CategoryforPromo'], meta: { name: 'CategoryforPromo' } }
+    /**
+     * Find zero or one CategoryforPromo that matches the filter.
+     * @param {CategoryforPromoFindUniqueArgs} args - Arguments to find a CategoryforPromo
+     * @example
+     * // Get one CategoryforPromo
+     * const categoryforPromo = await prisma.categoryforPromo.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CategoryforPromoFindUniqueArgs>(args: SelectSubset<T, CategoryforPromoFindUniqueArgs<ExtArgs>>): Prisma__CategoryforPromoClient<$Result.GetResult<Prisma.$CategoryforPromoPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one CategoryforPromo that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CategoryforPromoFindUniqueOrThrowArgs} args - Arguments to find a CategoryforPromo
+     * @example
+     * // Get one CategoryforPromo
+     * const categoryforPromo = await prisma.categoryforPromo.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CategoryforPromoFindUniqueOrThrowArgs>(args: SelectSubset<T, CategoryforPromoFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CategoryforPromoClient<$Result.GetResult<Prisma.$CategoryforPromoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CategoryforPromo that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategoryforPromoFindFirstArgs} args - Arguments to find a CategoryforPromo
+     * @example
+     * // Get one CategoryforPromo
+     * const categoryforPromo = await prisma.categoryforPromo.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CategoryforPromoFindFirstArgs>(args?: SelectSubset<T, CategoryforPromoFindFirstArgs<ExtArgs>>): Prisma__CategoryforPromoClient<$Result.GetResult<Prisma.$CategoryforPromoPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first CategoryforPromo that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategoryforPromoFindFirstOrThrowArgs} args - Arguments to find a CategoryforPromo
+     * @example
+     * // Get one CategoryforPromo
+     * const categoryforPromo = await prisma.categoryforPromo.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CategoryforPromoFindFirstOrThrowArgs>(args?: SelectSubset<T, CategoryforPromoFindFirstOrThrowArgs<ExtArgs>>): Prisma__CategoryforPromoClient<$Result.GetResult<Prisma.$CategoryforPromoPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more CategoryforPromos that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategoryforPromoFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all CategoryforPromos
+     * const categoryforPromos = await prisma.categoryforPromo.findMany()
+     * 
+     * // Get first 10 CategoryforPromos
+     * const categoryforPromos = await prisma.categoryforPromo.findMany({ take: 10 })
+     * 
+     * // Only select the `promoId`
+     * const categoryforPromoWithPromoIdOnly = await prisma.categoryforPromo.findMany({ select: { promoId: true } })
+     * 
+     */
+    findMany<T extends CategoryforPromoFindManyArgs>(args?: SelectSubset<T, CategoryforPromoFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CategoryforPromoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a CategoryforPromo.
+     * @param {CategoryforPromoCreateArgs} args - Arguments to create a CategoryforPromo.
+     * @example
+     * // Create one CategoryforPromo
+     * const CategoryforPromo = await prisma.categoryforPromo.create({
+     *   data: {
+     *     // ... data to create a CategoryforPromo
+     *   }
+     * })
+     * 
+     */
+    create<T extends CategoryforPromoCreateArgs>(args: SelectSubset<T, CategoryforPromoCreateArgs<ExtArgs>>): Prisma__CategoryforPromoClient<$Result.GetResult<Prisma.$CategoryforPromoPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many CategoryforPromos.
+     * @param {CategoryforPromoCreateManyArgs} args - Arguments to create many CategoryforPromos.
+     * @example
+     * // Create many CategoryforPromos
+     * const categoryforPromo = await prisma.categoryforPromo.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CategoryforPromoCreateManyArgs>(args?: SelectSubset<T, CategoryforPromoCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a CategoryforPromo.
+     * @param {CategoryforPromoDeleteArgs} args - Arguments to delete one CategoryforPromo.
+     * @example
+     * // Delete one CategoryforPromo
+     * const CategoryforPromo = await prisma.categoryforPromo.delete({
+     *   where: {
+     *     // ... filter to delete one CategoryforPromo
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CategoryforPromoDeleteArgs>(args: SelectSubset<T, CategoryforPromoDeleteArgs<ExtArgs>>): Prisma__CategoryforPromoClient<$Result.GetResult<Prisma.$CategoryforPromoPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one CategoryforPromo.
+     * @param {CategoryforPromoUpdateArgs} args - Arguments to update one CategoryforPromo.
+     * @example
+     * // Update one CategoryforPromo
+     * const categoryforPromo = await prisma.categoryforPromo.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CategoryforPromoUpdateArgs>(args: SelectSubset<T, CategoryforPromoUpdateArgs<ExtArgs>>): Prisma__CategoryforPromoClient<$Result.GetResult<Prisma.$CategoryforPromoPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more CategoryforPromos.
+     * @param {CategoryforPromoDeleteManyArgs} args - Arguments to filter CategoryforPromos to delete.
+     * @example
+     * // Delete a few CategoryforPromos
+     * const { count } = await prisma.categoryforPromo.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CategoryforPromoDeleteManyArgs>(args?: SelectSubset<T, CategoryforPromoDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more CategoryforPromos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategoryforPromoUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many CategoryforPromos
+     * const categoryforPromo = await prisma.categoryforPromo.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CategoryforPromoUpdateManyArgs>(args: SelectSubset<T, CategoryforPromoUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one CategoryforPromo.
+     * @param {CategoryforPromoUpsertArgs} args - Arguments to update or create a CategoryforPromo.
+     * @example
+     * // Update or create a CategoryforPromo
+     * const categoryforPromo = await prisma.categoryforPromo.upsert({
+     *   create: {
+     *     // ... data to create a CategoryforPromo
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the CategoryforPromo we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CategoryforPromoUpsertArgs>(args: SelectSubset<T, CategoryforPromoUpsertArgs<ExtArgs>>): Prisma__CategoryforPromoClient<$Result.GetResult<Prisma.$CategoryforPromoPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of CategoryforPromos.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategoryforPromoCountArgs} args - Arguments to filter CategoryforPromos to count.
+     * @example
+     * // Count the number of CategoryforPromos
+     * const count = await prisma.categoryforPromo.count({
+     *   where: {
+     *     // ... the filter for the CategoryforPromos we want to count
+     *   }
+     * })
+    **/
+    count<T extends CategoryforPromoCountArgs>(
+      args?: Subset<T, CategoryforPromoCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CategoryforPromoCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a CategoryforPromo.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategoryforPromoAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CategoryforPromoAggregateArgs>(args: Subset<T, CategoryforPromoAggregateArgs>): Prisma.PrismaPromise<GetCategoryforPromoAggregateType<T>>
+
+    /**
+     * Group by CategoryforPromo.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CategoryforPromoGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CategoryforPromoGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CategoryforPromoGroupByArgs['orderBy'] }
+        : { orderBy?: CategoryforPromoGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CategoryforPromoGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCategoryforPromoGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the CategoryforPromo model
+   */
+  readonly fields: CategoryforPromoFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for CategoryforPromo.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CategoryforPromoClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    promo<T extends PromotionDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PromotionDefaultArgs<ExtArgs>>): Prisma__PromotionClient<$Result.GetResult<Prisma.$PromotionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    category<T extends CategoryDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CategoryDefaultArgs<ExtArgs>>): Prisma__CategoryClient<$Result.GetResult<Prisma.$CategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the CategoryforPromo model
+   */
+  interface CategoryforPromoFieldRefs {
+    readonly promoId: FieldRef<"CategoryforPromo", 'String'>
+    readonly categoryId: FieldRef<"CategoryforPromo", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * CategoryforPromo findUnique
+   */
+  export type CategoryforPromoFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CategoryforPromo
+     */
+    select?: CategoryforPromoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CategoryforPromo
+     */
+    omit?: CategoryforPromoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryforPromoInclude<ExtArgs> | null
+    /**
+     * Filter, which CategoryforPromo to fetch.
+     */
+    where: CategoryforPromoWhereUniqueInput
+  }
+
+  /**
+   * CategoryforPromo findUniqueOrThrow
+   */
+  export type CategoryforPromoFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CategoryforPromo
+     */
+    select?: CategoryforPromoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CategoryforPromo
+     */
+    omit?: CategoryforPromoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryforPromoInclude<ExtArgs> | null
+    /**
+     * Filter, which CategoryforPromo to fetch.
+     */
+    where: CategoryforPromoWhereUniqueInput
+  }
+
+  /**
+   * CategoryforPromo findFirst
+   */
+  export type CategoryforPromoFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CategoryforPromo
+     */
+    select?: CategoryforPromoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CategoryforPromo
+     */
+    omit?: CategoryforPromoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryforPromoInclude<ExtArgs> | null
+    /**
+     * Filter, which CategoryforPromo to fetch.
+     */
+    where?: CategoryforPromoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CategoryforPromos to fetch.
+     */
+    orderBy?: CategoryforPromoOrderByWithRelationInput | CategoryforPromoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CategoryforPromos.
+     */
+    cursor?: CategoryforPromoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CategoryforPromos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CategoryforPromos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CategoryforPromos.
+     */
+    distinct?: CategoryforPromoScalarFieldEnum | CategoryforPromoScalarFieldEnum[]
+  }
+
+  /**
+   * CategoryforPromo findFirstOrThrow
+   */
+  export type CategoryforPromoFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CategoryforPromo
+     */
+    select?: CategoryforPromoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CategoryforPromo
+     */
+    omit?: CategoryforPromoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryforPromoInclude<ExtArgs> | null
+    /**
+     * Filter, which CategoryforPromo to fetch.
+     */
+    where?: CategoryforPromoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CategoryforPromos to fetch.
+     */
+    orderBy?: CategoryforPromoOrderByWithRelationInput | CategoryforPromoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for CategoryforPromos.
+     */
+    cursor?: CategoryforPromoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CategoryforPromos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CategoryforPromos.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of CategoryforPromos.
+     */
+    distinct?: CategoryforPromoScalarFieldEnum | CategoryforPromoScalarFieldEnum[]
+  }
+
+  /**
+   * CategoryforPromo findMany
+   */
+  export type CategoryforPromoFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CategoryforPromo
+     */
+    select?: CategoryforPromoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CategoryforPromo
+     */
+    omit?: CategoryforPromoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryforPromoInclude<ExtArgs> | null
+    /**
+     * Filter, which CategoryforPromos to fetch.
+     */
+    where?: CategoryforPromoWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of CategoryforPromos to fetch.
+     */
+    orderBy?: CategoryforPromoOrderByWithRelationInput | CategoryforPromoOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing CategoryforPromos.
+     */
+    cursor?: CategoryforPromoWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` CategoryforPromos from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` CategoryforPromos.
+     */
+    skip?: number
+    distinct?: CategoryforPromoScalarFieldEnum | CategoryforPromoScalarFieldEnum[]
+  }
+
+  /**
+   * CategoryforPromo create
+   */
+  export type CategoryforPromoCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CategoryforPromo
+     */
+    select?: CategoryforPromoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CategoryforPromo
+     */
+    omit?: CategoryforPromoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryforPromoInclude<ExtArgs> | null
+    /**
+     * The data needed to create a CategoryforPromo.
+     */
+    data: XOR<CategoryforPromoCreateInput, CategoryforPromoUncheckedCreateInput>
+  }
+
+  /**
+   * CategoryforPromo createMany
+   */
+  export type CategoryforPromoCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many CategoryforPromos.
+     */
+    data: CategoryforPromoCreateManyInput | CategoryforPromoCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * CategoryforPromo update
+   */
+  export type CategoryforPromoUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CategoryforPromo
+     */
+    select?: CategoryforPromoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CategoryforPromo
+     */
+    omit?: CategoryforPromoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryforPromoInclude<ExtArgs> | null
+    /**
+     * The data needed to update a CategoryforPromo.
+     */
+    data: XOR<CategoryforPromoUpdateInput, CategoryforPromoUncheckedUpdateInput>
+    /**
+     * Choose, which CategoryforPromo to update.
+     */
+    where: CategoryforPromoWhereUniqueInput
+  }
+
+  /**
+   * CategoryforPromo updateMany
+   */
+  export type CategoryforPromoUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update CategoryforPromos.
+     */
+    data: XOR<CategoryforPromoUpdateManyMutationInput, CategoryforPromoUncheckedUpdateManyInput>
+    /**
+     * Filter which CategoryforPromos to update
+     */
+    where?: CategoryforPromoWhereInput
+    /**
+     * Limit how many CategoryforPromos to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * CategoryforPromo upsert
+   */
+  export type CategoryforPromoUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CategoryforPromo
+     */
+    select?: CategoryforPromoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CategoryforPromo
+     */
+    omit?: CategoryforPromoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryforPromoInclude<ExtArgs> | null
+    /**
+     * The filter to search for the CategoryforPromo to update in case it exists.
+     */
+    where: CategoryforPromoWhereUniqueInput
+    /**
+     * In case the CategoryforPromo found by the `where` argument doesn't exist, create a new CategoryforPromo with this data.
+     */
+    create: XOR<CategoryforPromoCreateInput, CategoryforPromoUncheckedCreateInput>
+    /**
+     * In case the CategoryforPromo was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CategoryforPromoUpdateInput, CategoryforPromoUncheckedUpdateInput>
+  }
+
+  /**
+   * CategoryforPromo delete
+   */
+  export type CategoryforPromoDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CategoryforPromo
+     */
+    select?: CategoryforPromoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CategoryforPromo
+     */
+    omit?: CategoryforPromoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryforPromoInclude<ExtArgs> | null
+    /**
+     * Filter which CategoryforPromo to delete.
+     */
+    where: CategoryforPromoWhereUniqueInput
+  }
+
+  /**
+   * CategoryforPromo deleteMany
+   */
+  export type CategoryforPromoDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which CategoryforPromos to delete
+     */
+    where?: CategoryforPromoWhereInput
+    /**
+     * Limit how many CategoryforPromos to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * CategoryforPromo without action
+   */
+  export type CategoryforPromoDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CategoryforPromo
+     */
+    select?: CategoryforPromoSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the CategoryforPromo
+     */
+    omit?: CategoryforPromoOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CategoryforPromoInclude<ExtArgs> | null
   }
 
 
@@ -16755,6 +18057,1955 @@ export namespace Prisma {
 
 
   /**
+   * Model PromoBanner
+   */
+
+  export type AggregatePromoBanner = {
+    _count: PromoBannerCountAggregateOutputType | null
+    _avg: PromoBannerAvgAggregateOutputType | null
+    _sum: PromoBannerSumAggregateOutputType | null
+    _min: PromoBannerMinAggregateOutputType | null
+    _max: PromoBannerMaxAggregateOutputType | null
+  }
+
+  export type PromoBannerAvgAggregateOutputType = {
+    id: number | null
+    carouselId: number | null
+  }
+
+  export type PromoBannerSumAggregateOutputType = {
+    id: number | null
+    carouselId: number | null
+  }
+
+  export type PromoBannerMinAggregateOutputType = {
+    id: number | null
+    name: string | null
+    description: string | null
+    prodId: string | null
+    image: string | null
+    publicId: string | null
+    carouselId: number | null
+  }
+
+  export type PromoBannerMaxAggregateOutputType = {
+    id: number | null
+    name: string | null
+    description: string | null
+    prodId: string | null
+    image: string | null
+    publicId: string | null
+    carouselId: number | null
+  }
+
+  export type PromoBannerCountAggregateOutputType = {
+    id: number
+    name: number
+    description: number
+    prodId: number
+    image: number
+    publicId: number
+    carouselId: number
+    _all: number
+  }
+
+
+  export type PromoBannerAvgAggregateInputType = {
+    id?: true
+    carouselId?: true
+  }
+
+  export type PromoBannerSumAggregateInputType = {
+    id?: true
+    carouselId?: true
+  }
+
+  export type PromoBannerMinAggregateInputType = {
+    id?: true
+    name?: true
+    description?: true
+    prodId?: true
+    image?: true
+    publicId?: true
+    carouselId?: true
+  }
+
+  export type PromoBannerMaxAggregateInputType = {
+    id?: true
+    name?: true
+    description?: true
+    prodId?: true
+    image?: true
+    publicId?: true
+    carouselId?: true
+  }
+
+  export type PromoBannerCountAggregateInputType = {
+    id?: true
+    name?: true
+    description?: true
+    prodId?: true
+    image?: true
+    publicId?: true
+    carouselId?: true
+    _all?: true
+  }
+
+  export type PromoBannerAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PromoBanner to aggregate.
+     */
+    where?: PromoBannerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PromoBanners to fetch.
+     */
+    orderBy?: PromoBannerOrderByWithRelationInput | PromoBannerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: PromoBannerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PromoBanners from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PromoBanners.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned PromoBanners
+    **/
+    _count?: true | PromoBannerCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: PromoBannerAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: PromoBannerSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: PromoBannerMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: PromoBannerMaxAggregateInputType
+  }
+
+  export type GetPromoBannerAggregateType<T extends PromoBannerAggregateArgs> = {
+        [P in keyof T & keyof AggregatePromoBanner]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePromoBanner[P]>
+      : GetScalarType<T[P], AggregatePromoBanner[P]>
+  }
+
+
+
+
+  export type PromoBannerGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PromoBannerWhereInput
+    orderBy?: PromoBannerOrderByWithAggregationInput | PromoBannerOrderByWithAggregationInput[]
+    by: PromoBannerScalarFieldEnum[] | PromoBannerScalarFieldEnum
+    having?: PromoBannerScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: PromoBannerCountAggregateInputType | true
+    _avg?: PromoBannerAvgAggregateInputType
+    _sum?: PromoBannerSumAggregateInputType
+    _min?: PromoBannerMinAggregateInputType
+    _max?: PromoBannerMaxAggregateInputType
+  }
+
+  export type PromoBannerGroupByOutputType = {
+    id: number
+    name: string
+    description: string
+    prodId: string
+    image: string
+    publicId: string | null
+    carouselId: number
+    _count: PromoBannerCountAggregateOutputType | null
+    _avg: PromoBannerAvgAggregateOutputType | null
+    _sum: PromoBannerSumAggregateOutputType | null
+    _min: PromoBannerMinAggregateOutputType | null
+    _max: PromoBannerMaxAggregateOutputType | null
+  }
+
+  type GetPromoBannerGroupByPayload<T extends PromoBannerGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PromoBannerGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof PromoBannerGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], PromoBannerGroupByOutputType[P]>
+            : GetScalarType<T[P], PromoBannerGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type PromoBannerSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    description?: boolean
+    prodId?: boolean
+    image?: boolean
+    publicId?: boolean
+    carouselId?: boolean
+    product?: boolean | SpecificProductDefaultArgs<ExtArgs>
+    carousel?: boolean | CarouselDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["promoBanner"]>
+
+
+
+  export type PromoBannerSelectScalar = {
+    id?: boolean
+    name?: boolean
+    description?: boolean
+    prodId?: boolean
+    image?: boolean
+    publicId?: boolean
+    carouselId?: boolean
+  }
+
+  export type PromoBannerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "prodId" | "image" | "publicId" | "carouselId", ExtArgs["result"]["promoBanner"]>
+  export type PromoBannerInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    product?: boolean | SpecificProductDefaultArgs<ExtArgs>
+    carousel?: boolean | CarouselDefaultArgs<ExtArgs>
+  }
+
+  export type $PromoBannerPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "PromoBanner"
+    objects: {
+      product: Prisma.$SpecificProductPayload<ExtArgs>
+      carousel: Prisma.$CarouselPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      name: string
+      description: string
+      prodId: string
+      image: string
+      publicId: string | null
+      carouselId: number
+    }, ExtArgs["result"]["promoBanner"]>
+    composites: {}
+  }
+
+  type PromoBannerGetPayload<S extends boolean | null | undefined | PromoBannerDefaultArgs> = $Result.GetResult<Prisma.$PromoBannerPayload, S>
+
+  type PromoBannerCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<PromoBannerFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: PromoBannerCountAggregateInputType | true
+    }
+
+  export interface PromoBannerDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['PromoBanner'], meta: { name: 'PromoBanner' } }
+    /**
+     * Find zero or one PromoBanner that matches the filter.
+     * @param {PromoBannerFindUniqueArgs} args - Arguments to find a PromoBanner
+     * @example
+     * // Get one PromoBanner
+     * const promoBanner = await prisma.promoBanner.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends PromoBannerFindUniqueArgs>(args: SelectSubset<T, PromoBannerFindUniqueArgs<ExtArgs>>): Prisma__PromoBannerClient<$Result.GetResult<Prisma.$PromoBannerPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one PromoBanner that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {PromoBannerFindUniqueOrThrowArgs} args - Arguments to find a PromoBanner
+     * @example
+     * // Get one PromoBanner
+     * const promoBanner = await prisma.promoBanner.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends PromoBannerFindUniqueOrThrowArgs>(args: SelectSubset<T, PromoBannerFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PromoBannerClient<$Result.GetResult<Prisma.$PromoBannerPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first PromoBanner that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PromoBannerFindFirstArgs} args - Arguments to find a PromoBanner
+     * @example
+     * // Get one PromoBanner
+     * const promoBanner = await prisma.promoBanner.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends PromoBannerFindFirstArgs>(args?: SelectSubset<T, PromoBannerFindFirstArgs<ExtArgs>>): Prisma__PromoBannerClient<$Result.GetResult<Prisma.$PromoBannerPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first PromoBanner that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PromoBannerFindFirstOrThrowArgs} args - Arguments to find a PromoBanner
+     * @example
+     * // Get one PromoBanner
+     * const promoBanner = await prisma.promoBanner.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends PromoBannerFindFirstOrThrowArgs>(args?: SelectSubset<T, PromoBannerFindFirstOrThrowArgs<ExtArgs>>): Prisma__PromoBannerClient<$Result.GetResult<Prisma.$PromoBannerPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more PromoBanners that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PromoBannerFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all PromoBanners
+     * const promoBanners = await prisma.promoBanner.findMany()
+     * 
+     * // Get first 10 PromoBanners
+     * const promoBanners = await prisma.promoBanner.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const promoBannerWithIdOnly = await prisma.promoBanner.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends PromoBannerFindManyArgs>(args?: SelectSubset<T, PromoBannerFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PromoBannerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a PromoBanner.
+     * @param {PromoBannerCreateArgs} args - Arguments to create a PromoBanner.
+     * @example
+     * // Create one PromoBanner
+     * const PromoBanner = await prisma.promoBanner.create({
+     *   data: {
+     *     // ... data to create a PromoBanner
+     *   }
+     * })
+     * 
+     */
+    create<T extends PromoBannerCreateArgs>(args: SelectSubset<T, PromoBannerCreateArgs<ExtArgs>>): Prisma__PromoBannerClient<$Result.GetResult<Prisma.$PromoBannerPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many PromoBanners.
+     * @param {PromoBannerCreateManyArgs} args - Arguments to create many PromoBanners.
+     * @example
+     * // Create many PromoBanners
+     * const promoBanner = await prisma.promoBanner.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends PromoBannerCreateManyArgs>(args?: SelectSubset<T, PromoBannerCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a PromoBanner.
+     * @param {PromoBannerDeleteArgs} args - Arguments to delete one PromoBanner.
+     * @example
+     * // Delete one PromoBanner
+     * const PromoBanner = await prisma.promoBanner.delete({
+     *   where: {
+     *     // ... filter to delete one PromoBanner
+     *   }
+     * })
+     * 
+     */
+    delete<T extends PromoBannerDeleteArgs>(args: SelectSubset<T, PromoBannerDeleteArgs<ExtArgs>>): Prisma__PromoBannerClient<$Result.GetResult<Prisma.$PromoBannerPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one PromoBanner.
+     * @param {PromoBannerUpdateArgs} args - Arguments to update one PromoBanner.
+     * @example
+     * // Update one PromoBanner
+     * const promoBanner = await prisma.promoBanner.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends PromoBannerUpdateArgs>(args: SelectSubset<T, PromoBannerUpdateArgs<ExtArgs>>): Prisma__PromoBannerClient<$Result.GetResult<Prisma.$PromoBannerPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more PromoBanners.
+     * @param {PromoBannerDeleteManyArgs} args - Arguments to filter PromoBanners to delete.
+     * @example
+     * // Delete a few PromoBanners
+     * const { count } = await prisma.promoBanner.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends PromoBannerDeleteManyArgs>(args?: SelectSubset<T, PromoBannerDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PromoBanners.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PromoBannerUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many PromoBanners
+     * const promoBanner = await prisma.promoBanner.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends PromoBannerUpdateManyArgs>(args: SelectSubset<T, PromoBannerUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one PromoBanner.
+     * @param {PromoBannerUpsertArgs} args - Arguments to update or create a PromoBanner.
+     * @example
+     * // Update or create a PromoBanner
+     * const promoBanner = await prisma.promoBanner.upsert({
+     *   create: {
+     *     // ... data to create a PromoBanner
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the PromoBanner we want to update
+     *   }
+     * })
+     */
+    upsert<T extends PromoBannerUpsertArgs>(args: SelectSubset<T, PromoBannerUpsertArgs<ExtArgs>>): Prisma__PromoBannerClient<$Result.GetResult<Prisma.$PromoBannerPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of PromoBanners.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PromoBannerCountArgs} args - Arguments to filter PromoBanners to count.
+     * @example
+     * // Count the number of PromoBanners
+     * const count = await prisma.promoBanner.count({
+     *   where: {
+     *     // ... the filter for the PromoBanners we want to count
+     *   }
+     * })
+    **/
+    count<T extends PromoBannerCountArgs>(
+      args?: Subset<T, PromoBannerCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PromoBannerCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a PromoBanner.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PromoBannerAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends PromoBannerAggregateArgs>(args: Subset<T, PromoBannerAggregateArgs>): Prisma.PrismaPromise<GetPromoBannerAggregateType<T>>
+
+    /**
+     * Group by PromoBanner.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PromoBannerGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends PromoBannerGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: PromoBannerGroupByArgs['orderBy'] }
+        : { orderBy?: PromoBannerGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, PromoBannerGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPromoBannerGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the PromoBanner model
+   */
+  readonly fields: PromoBannerFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for PromoBanner.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__PromoBannerClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    product<T extends SpecificProductDefaultArgs<ExtArgs> = {}>(args?: Subset<T, SpecificProductDefaultArgs<ExtArgs>>): Prisma__SpecificProductClient<$Result.GetResult<Prisma.$SpecificProductPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    carousel<T extends CarouselDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CarouselDefaultArgs<ExtArgs>>): Prisma__CarouselClient<$Result.GetResult<Prisma.$CarouselPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the PromoBanner model
+   */
+  interface PromoBannerFieldRefs {
+    readonly id: FieldRef<"PromoBanner", 'Int'>
+    readonly name: FieldRef<"PromoBanner", 'String'>
+    readonly description: FieldRef<"PromoBanner", 'String'>
+    readonly prodId: FieldRef<"PromoBanner", 'String'>
+    readonly image: FieldRef<"PromoBanner", 'String'>
+    readonly publicId: FieldRef<"PromoBanner", 'String'>
+    readonly carouselId: FieldRef<"PromoBanner", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * PromoBanner findUnique
+   */
+  export type PromoBannerFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PromoBanner
+     */
+    select?: PromoBannerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PromoBanner
+     */
+    omit?: PromoBannerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PromoBannerInclude<ExtArgs> | null
+    /**
+     * Filter, which PromoBanner to fetch.
+     */
+    where: PromoBannerWhereUniqueInput
+  }
+
+  /**
+   * PromoBanner findUniqueOrThrow
+   */
+  export type PromoBannerFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PromoBanner
+     */
+    select?: PromoBannerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PromoBanner
+     */
+    omit?: PromoBannerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PromoBannerInclude<ExtArgs> | null
+    /**
+     * Filter, which PromoBanner to fetch.
+     */
+    where: PromoBannerWhereUniqueInput
+  }
+
+  /**
+   * PromoBanner findFirst
+   */
+  export type PromoBannerFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PromoBanner
+     */
+    select?: PromoBannerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PromoBanner
+     */
+    omit?: PromoBannerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PromoBannerInclude<ExtArgs> | null
+    /**
+     * Filter, which PromoBanner to fetch.
+     */
+    where?: PromoBannerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PromoBanners to fetch.
+     */
+    orderBy?: PromoBannerOrderByWithRelationInput | PromoBannerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PromoBanners.
+     */
+    cursor?: PromoBannerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PromoBanners from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PromoBanners.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PromoBanners.
+     */
+    distinct?: PromoBannerScalarFieldEnum | PromoBannerScalarFieldEnum[]
+  }
+
+  /**
+   * PromoBanner findFirstOrThrow
+   */
+  export type PromoBannerFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PromoBanner
+     */
+    select?: PromoBannerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PromoBanner
+     */
+    omit?: PromoBannerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PromoBannerInclude<ExtArgs> | null
+    /**
+     * Filter, which PromoBanner to fetch.
+     */
+    where?: PromoBannerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PromoBanners to fetch.
+     */
+    orderBy?: PromoBannerOrderByWithRelationInput | PromoBannerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PromoBanners.
+     */
+    cursor?: PromoBannerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PromoBanners from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PromoBanners.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PromoBanners.
+     */
+    distinct?: PromoBannerScalarFieldEnum | PromoBannerScalarFieldEnum[]
+  }
+
+  /**
+   * PromoBanner findMany
+   */
+  export type PromoBannerFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PromoBanner
+     */
+    select?: PromoBannerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PromoBanner
+     */
+    omit?: PromoBannerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PromoBannerInclude<ExtArgs> | null
+    /**
+     * Filter, which PromoBanners to fetch.
+     */
+    where?: PromoBannerWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PromoBanners to fetch.
+     */
+    orderBy?: PromoBannerOrderByWithRelationInput | PromoBannerOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing PromoBanners.
+     */
+    cursor?: PromoBannerWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PromoBanners from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PromoBanners.
+     */
+    skip?: number
+    distinct?: PromoBannerScalarFieldEnum | PromoBannerScalarFieldEnum[]
+  }
+
+  /**
+   * PromoBanner create
+   */
+  export type PromoBannerCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PromoBanner
+     */
+    select?: PromoBannerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PromoBanner
+     */
+    omit?: PromoBannerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PromoBannerInclude<ExtArgs> | null
+    /**
+     * The data needed to create a PromoBanner.
+     */
+    data: XOR<PromoBannerCreateInput, PromoBannerUncheckedCreateInput>
+  }
+
+  /**
+   * PromoBanner createMany
+   */
+  export type PromoBannerCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many PromoBanners.
+     */
+    data: PromoBannerCreateManyInput | PromoBannerCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * PromoBanner update
+   */
+  export type PromoBannerUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PromoBanner
+     */
+    select?: PromoBannerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PromoBanner
+     */
+    omit?: PromoBannerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PromoBannerInclude<ExtArgs> | null
+    /**
+     * The data needed to update a PromoBanner.
+     */
+    data: XOR<PromoBannerUpdateInput, PromoBannerUncheckedUpdateInput>
+    /**
+     * Choose, which PromoBanner to update.
+     */
+    where: PromoBannerWhereUniqueInput
+  }
+
+  /**
+   * PromoBanner updateMany
+   */
+  export type PromoBannerUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update PromoBanners.
+     */
+    data: XOR<PromoBannerUpdateManyMutationInput, PromoBannerUncheckedUpdateManyInput>
+    /**
+     * Filter which PromoBanners to update
+     */
+    where?: PromoBannerWhereInput
+    /**
+     * Limit how many PromoBanners to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * PromoBanner upsert
+   */
+  export type PromoBannerUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PromoBanner
+     */
+    select?: PromoBannerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PromoBanner
+     */
+    omit?: PromoBannerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PromoBannerInclude<ExtArgs> | null
+    /**
+     * The filter to search for the PromoBanner to update in case it exists.
+     */
+    where: PromoBannerWhereUniqueInput
+    /**
+     * In case the PromoBanner found by the `where` argument doesn't exist, create a new PromoBanner with this data.
+     */
+    create: XOR<PromoBannerCreateInput, PromoBannerUncheckedCreateInput>
+    /**
+     * In case the PromoBanner was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<PromoBannerUpdateInput, PromoBannerUncheckedUpdateInput>
+  }
+
+  /**
+   * PromoBanner delete
+   */
+  export type PromoBannerDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PromoBanner
+     */
+    select?: PromoBannerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PromoBanner
+     */
+    omit?: PromoBannerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PromoBannerInclude<ExtArgs> | null
+    /**
+     * Filter which PromoBanner to delete.
+     */
+    where: PromoBannerWhereUniqueInput
+  }
+
+  /**
+   * PromoBanner deleteMany
+   */
+  export type PromoBannerDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PromoBanners to delete
+     */
+    where?: PromoBannerWhereInput
+    /**
+     * Limit how many PromoBanners to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * PromoBanner without action
+   */
+  export type PromoBannerDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PromoBanner
+     */
+    select?: PromoBannerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PromoBanner
+     */
+    omit?: PromoBannerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PromoBannerInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Carousel
+   */
+
+  export type AggregateCarousel = {
+    _count: CarouselCountAggregateOutputType | null
+    _avg: CarouselAvgAggregateOutputType | null
+    _sum: CarouselSumAggregateOutputType | null
+    _min: CarouselMinAggregateOutputType | null
+    _max: CarouselMaxAggregateOutputType | null
+  }
+
+  export type CarouselAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type CarouselSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type CarouselMinAggregateOutputType = {
+    id: number | null
+    name: string | null
+  }
+
+  export type CarouselMaxAggregateOutputType = {
+    id: number | null
+    name: string | null
+  }
+
+  export type CarouselCountAggregateOutputType = {
+    id: number
+    name: number
+    _all: number
+  }
+
+
+  export type CarouselAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type CarouselSumAggregateInputType = {
+    id?: true
+  }
+
+  export type CarouselMinAggregateInputType = {
+    id?: true
+    name?: true
+  }
+
+  export type CarouselMaxAggregateInputType = {
+    id?: true
+    name?: true
+  }
+
+  export type CarouselCountAggregateInputType = {
+    id?: true
+    name?: true
+    _all?: true
+  }
+
+  export type CarouselAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Carousel to aggregate.
+     */
+    where?: CarouselWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Carousels to fetch.
+     */
+    orderBy?: CarouselOrderByWithRelationInput | CarouselOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: CarouselWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Carousels from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Carousels.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Carousels
+    **/
+    _count?: true | CarouselCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: CarouselAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: CarouselSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: CarouselMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: CarouselMaxAggregateInputType
+  }
+
+  export type GetCarouselAggregateType<T extends CarouselAggregateArgs> = {
+        [P in keyof T & keyof AggregateCarousel]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCarousel[P]>
+      : GetScalarType<T[P], AggregateCarousel[P]>
+  }
+
+
+
+
+  export type CarouselGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: CarouselWhereInput
+    orderBy?: CarouselOrderByWithAggregationInput | CarouselOrderByWithAggregationInput[]
+    by: CarouselScalarFieldEnum[] | CarouselScalarFieldEnum
+    having?: CarouselScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: CarouselCountAggregateInputType | true
+    _avg?: CarouselAvgAggregateInputType
+    _sum?: CarouselSumAggregateInputType
+    _min?: CarouselMinAggregateInputType
+    _max?: CarouselMaxAggregateInputType
+  }
+
+  export type CarouselGroupByOutputType = {
+    id: number
+    name: string
+    _count: CarouselCountAggregateOutputType | null
+    _avg: CarouselAvgAggregateOutputType | null
+    _sum: CarouselSumAggregateOutputType | null
+    _min: CarouselMinAggregateOutputType | null
+    _max: CarouselMaxAggregateOutputType | null
+  }
+
+  type GetCarouselGroupByPayload<T extends CarouselGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<CarouselGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof CarouselGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], CarouselGroupByOutputType[P]>
+            : GetScalarType<T[P], CarouselGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type CarouselSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    banners?: boolean | Carousel$bannersArgs<ExtArgs>
+    _count?: boolean | CarouselCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["carousel"]>
+
+
+
+  export type CarouselSelectScalar = {
+    id?: boolean
+    name?: boolean
+  }
+
+  export type CarouselOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name", ExtArgs["result"]["carousel"]>
+  export type CarouselInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    banners?: boolean | Carousel$bannersArgs<ExtArgs>
+    _count?: boolean | CarouselCountOutputTypeDefaultArgs<ExtArgs>
+  }
+
+  export type $CarouselPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Carousel"
+    objects: {
+      banners: Prisma.$PromoBannerPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      name: string
+    }, ExtArgs["result"]["carousel"]>
+    composites: {}
+  }
+
+  type CarouselGetPayload<S extends boolean | null | undefined | CarouselDefaultArgs> = $Result.GetResult<Prisma.$CarouselPayload, S>
+
+  type CarouselCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<CarouselFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: CarouselCountAggregateInputType | true
+    }
+
+  export interface CarouselDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Carousel'], meta: { name: 'Carousel' } }
+    /**
+     * Find zero or one Carousel that matches the filter.
+     * @param {CarouselFindUniqueArgs} args - Arguments to find a Carousel
+     * @example
+     * // Get one Carousel
+     * const carousel = await prisma.carousel.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends CarouselFindUniqueArgs>(args: SelectSubset<T, CarouselFindUniqueArgs<ExtArgs>>): Prisma__CarouselClient<$Result.GetResult<Prisma.$CarouselPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Carousel that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {CarouselFindUniqueOrThrowArgs} args - Arguments to find a Carousel
+     * @example
+     * // Get one Carousel
+     * const carousel = await prisma.carousel.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends CarouselFindUniqueOrThrowArgs>(args: SelectSubset<T, CarouselFindUniqueOrThrowArgs<ExtArgs>>): Prisma__CarouselClient<$Result.GetResult<Prisma.$CarouselPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Carousel that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CarouselFindFirstArgs} args - Arguments to find a Carousel
+     * @example
+     * // Get one Carousel
+     * const carousel = await prisma.carousel.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends CarouselFindFirstArgs>(args?: SelectSubset<T, CarouselFindFirstArgs<ExtArgs>>): Prisma__CarouselClient<$Result.GetResult<Prisma.$CarouselPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Carousel that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CarouselFindFirstOrThrowArgs} args - Arguments to find a Carousel
+     * @example
+     * // Get one Carousel
+     * const carousel = await prisma.carousel.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends CarouselFindFirstOrThrowArgs>(args?: SelectSubset<T, CarouselFindFirstOrThrowArgs<ExtArgs>>): Prisma__CarouselClient<$Result.GetResult<Prisma.$CarouselPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Carousels that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CarouselFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Carousels
+     * const carousels = await prisma.carousel.findMany()
+     * 
+     * // Get first 10 Carousels
+     * const carousels = await prisma.carousel.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const carouselWithIdOnly = await prisma.carousel.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends CarouselFindManyArgs>(args?: SelectSubset<T, CarouselFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$CarouselPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Carousel.
+     * @param {CarouselCreateArgs} args - Arguments to create a Carousel.
+     * @example
+     * // Create one Carousel
+     * const Carousel = await prisma.carousel.create({
+     *   data: {
+     *     // ... data to create a Carousel
+     *   }
+     * })
+     * 
+     */
+    create<T extends CarouselCreateArgs>(args: SelectSubset<T, CarouselCreateArgs<ExtArgs>>): Prisma__CarouselClient<$Result.GetResult<Prisma.$CarouselPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Carousels.
+     * @param {CarouselCreateManyArgs} args - Arguments to create many Carousels.
+     * @example
+     * // Create many Carousels
+     * const carousel = await prisma.carousel.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends CarouselCreateManyArgs>(args?: SelectSubset<T, CarouselCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Carousel.
+     * @param {CarouselDeleteArgs} args - Arguments to delete one Carousel.
+     * @example
+     * // Delete one Carousel
+     * const Carousel = await prisma.carousel.delete({
+     *   where: {
+     *     // ... filter to delete one Carousel
+     *   }
+     * })
+     * 
+     */
+    delete<T extends CarouselDeleteArgs>(args: SelectSubset<T, CarouselDeleteArgs<ExtArgs>>): Prisma__CarouselClient<$Result.GetResult<Prisma.$CarouselPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Carousel.
+     * @param {CarouselUpdateArgs} args - Arguments to update one Carousel.
+     * @example
+     * // Update one Carousel
+     * const carousel = await prisma.carousel.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends CarouselUpdateArgs>(args: SelectSubset<T, CarouselUpdateArgs<ExtArgs>>): Prisma__CarouselClient<$Result.GetResult<Prisma.$CarouselPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Carousels.
+     * @param {CarouselDeleteManyArgs} args - Arguments to filter Carousels to delete.
+     * @example
+     * // Delete a few Carousels
+     * const { count } = await prisma.carousel.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends CarouselDeleteManyArgs>(args?: SelectSubset<T, CarouselDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Carousels.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CarouselUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Carousels
+     * const carousel = await prisma.carousel.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends CarouselUpdateManyArgs>(args: SelectSubset<T, CarouselUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Carousel.
+     * @param {CarouselUpsertArgs} args - Arguments to update or create a Carousel.
+     * @example
+     * // Update or create a Carousel
+     * const carousel = await prisma.carousel.upsert({
+     *   create: {
+     *     // ... data to create a Carousel
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Carousel we want to update
+     *   }
+     * })
+     */
+    upsert<T extends CarouselUpsertArgs>(args: SelectSubset<T, CarouselUpsertArgs<ExtArgs>>): Prisma__CarouselClient<$Result.GetResult<Prisma.$CarouselPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Carousels.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CarouselCountArgs} args - Arguments to filter Carousels to count.
+     * @example
+     * // Count the number of Carousels
+     * const count = await prisma.carousel.count({
+     *   where: {
+     *     // ... the filter for the Carousels we want to count
+     *   }
+     * })
+    **/
+    count<T extends CarouselCountArgs>(
+      args?: Subset<T, CarouselCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], CarouselCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Carousel.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CarouselAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends CarouselAggregateArgs>(args: Subset<T, CarouselAggregateArgs>): Prisma.PrismaPromise<GetCarouselAggregateType<T>>
+
+    /**
+     * Group by Carousel.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {CarouselGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends CarouselGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: CarouselGroupByArgs['orderBy'] }
+        : { orderBy?: CarouselGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, CarouselGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCarouselGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Carousel model
+   */
+  readonly fields: CarouselFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Carousel.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__CarouselClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    banners<T extends Carousel$bannersArgs<ExtArgs> = {}>(args?: Subset<T, Carousel$bannersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PromoBannerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Carousel model
+   */
+  interface CarouselFieldRefs {
+    readonly id: FieldRef<"Carousel", 'Int'>
+    readonly name: FieldRef<"Carousel", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Carousel findUnique
+   */
+  export type CarouselFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Carousel
+     */
+    select?: CarouselSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Carousel
+     */
+    omit?: CarouselOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CarouselInclude<ExtArgs> | null
+    /**
+     * Filter, which Carousel to fetch.
+     */
+    where: CarouselWhereUniqueInput
+  }
+
+  /**
+   * Carousel findUniqueOrThrow
+   */
+  export type CarouselFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Carousel
+     */
+    select?: CarouselSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Carousel
+     */
+    omit?: CarouselOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CarouselInclude<ExtArgs> | null
+    /**
+     * Filter, which Carousel to fetch.
+     */
+    where: CarouselWhereUniqueInput
+  }
+
+  /**
+   * Carousel findFirst
+   */
+  export type CarouselFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Carousel
+     */
+    select?: CarouselSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Carousel
+     */
+    omit?: CarouselOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CarouselInclude<ExtArgs> | null
+    /**
+     * Filter, which Carousel to fetch.
+     */
+    where?: CarouselWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Carousels to fetch.
+     */
+    orderBy?: CarouselOrderByWithRelationInput | CarouselOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Carousels.
+     */
+    cursor?: CarouselWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Carousels from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Carousels.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Carousels.
+     */
+    distinct?: CarouselScalarFieldEnum | CarouselScalarFieldEnum[]
+  }
+
+  /**
+   * Carousel findFirstOrThrow
+   */
+  export type CarouselFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Carousel
+     */
+    select?: CarouselSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Carousel
+     */
+    omit?: CarouselOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CarouselInclude<ExtArgs> | null
+    /**
+     * Filter, which Carousel to fetch.
+     */
+    where?: CarouselWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Carousels to fetch.
+     */
+    orderBy?: CarouselOrderByWithRelationInput | CarouselOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Carousels.
+     */
+    cursor?: CarouselWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Carousels from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Carousels.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Carousels.
+     */
+    distinct?: CarouselScalarFieldEnum | CarouselScalarFieldEnum[]
+  }
+
+  /**
+   * Carousel findMany
+   */
+  export type CarouselFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Carousel
+     */
+    select?: CarouselSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Carousel
+     */
+    omit?: CarouselOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CarouselInclude<ExtArgs> | null
+    /**
+     * Filter, which Carousels to fetch.
+     */
+    where?: CarouselWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Carousels to fetch.
+     */
+    orderBy?: CarouselOrderByWithRelationInput | CarouselOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Carousels.
+     */
+    cursor?: CarouselWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Carousels from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Carousels.
+     */
+    skip?: number
+    distinct?: CarouselScalarFieldEnum | CarouselScalarFieldEnum[]
+  }
+
+  /**
+   * Carousel create
+   */
+  export type CarouselCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Carousel
+     */
+    select?: CarouselSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Carousel
+     */
+    omit?: CarouselOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CarouselInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Carousel.
+     */
+    data: XOR<CarouselCreateInput, CarouselUncheckedCreateInput>
+  }
+
+  /**
+   * Carousel createMany
+   */
+  export type CarouselCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Carousels.
+     */
+    data: CarouselCreateManyInput | CarouselCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Carousel update
+   */
+  export type CarouselUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Carousel
+     */
+    select?: CarouselSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Carousel
+     */
+    omit?: CarouselOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CarouselInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Carousel.
+     */
+    data: XOR<CarouselUpdateInput, CarouselUncheckedUpdateInput>
+    /**
+     * Choose, which Carousel to update.
+     */
+    where: CarouselWhereUniqueInput
+  }
+
+  /**
+   * Carousel updateMany
+   */
+  export type CarouselUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Carousels.
+     */
+    data: XOR<CarouselUpdateManyMutationInput, CarouselUncheckedUpdateManyInput>
+    /**
+     * Filter which Carousels to update
+     */
+    where?: CarouselWhereInput
+    /**
+     * Limit how many Carousels to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Carousel upsert
+   */
+  export type CarouselUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Carousel
+     */
+    select?: CarouselSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Carousel
+     */
+    omit?: CarouselOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CarouselInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Carousel to update in case it exists.
+     */
+    where: CarouselWhereUniqueInput
+    /**
+     * In case the Carousel found by the `where` argument doesn't exist, create a new Carousel with this data.
+     */
+    create: XOR<CarouselCreateInput, CarouselUncheckedCreateInput>
+    /**
+     * In case the Carousel was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<CarouselUpdateInput, CarouselUncheckedUpdateInput>
+  }
+
+  /**
+   * Carousel delete
+   */
+  export type CarouselDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Carousel
+     */
+    select?: CarouselSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Carousel
+     */
+    omit?: CarouselOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CarouselInclude<ExtArgs> | null
+    /**
+     * Filter which Carousel to delete.
+     */
+    where: CarouselWhereUniqueInput
+  }
+
+  /**
+   * Carousel deleteMany
+   */
+  export type CarouselDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Carousels to delete
+     */
+    where?: CarouselWhereInput
+    /**
+     * Limit how many Carousels to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Carousel.banners
+   */
+  export type Carousel$bannersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PromoBanner
+     */
+    select?: PromoBannerSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PromoBanner
+     */
+    omit?: PromoBannerOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PromoBannerInclude<ExtArgs> | null
+    where?: PromoBannerWhereInput
+    orderBy?: PromoBannerOrderByWithRelationInput | PromoBannerOrderByWithRelationInput[]
+    cursor?: PromoBannerWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PromoBannerScalarFieldEnum | PromoBannerScalarFieldEnum[]
+  }
+
+  /**
+   * Carousel without action
+   */
+  export type CarouselDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Carousel
+     */
+    select?: CarouselSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Carousel
+     */
+    omit?: CarouselOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: CarouselInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -16917,13 +20168,22 @@ export namespace Prisma {
 
   export const PromotionScalarFieldEnum: {
     promo_id: 'promo_id',
-    code: 'code',
     startDate: 'startDate',
     endDate: 'endDate',
-    isActive: 'isActive'
+    name: 'name',
+    discountType: 'discountType',
+    Type: 'Type'
   };
 
   export type PromotionScalarFieldEnum = (typeof PromotionScalarFieldEnum)[keyof typeof PromotionScalarFieldEnum]
+
+
+  export const CategoryforPromoScalarFieldEnum: {
+    promoId: 'promoId',
+    categoryId: 'categoryId'
+  };
+
+  export type CategoryforPromoScalarFieldEnum = (typeof CategoryforPromoScalarFieldEnum)[keyof typeof CategoryforPromoScalarFieldEnum]
 
 
   export const ProductForPromotionScalarFieldEnum: {
@@ -16932,6 +20192,27 @@ export namespace Prisma {
   };
 
   export type ProductForPromotionScalarFieldEnum = (typeof ProductForPromotionScalarFieldEnum)[keyof typeof ProductForPromotionScalarFieldEnum]
+
+
+  export const PromoBannerScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    description: 'description',
+    prodId: 'prodId',
+    image: 'image',
+    publicId: 'publicId',
+    carouselId: 'carouselId'
+  };
+
+  export type PromoBannerScalarFieldEnum = (typeof PromoBannerScalarFieldEnum)[keyof typeof PromoBannerScalarFieldEnum]
+
+
+  export const CarouselScalarFieldEnum: {
+    id: 'id',
+    name: 'name'
+  };
+
+  export type CarouselScalarFieldEnum = (typeof CarouselScalarFieldEnum)[keyof typeof CarouselScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -17087,10 +20368,20 @@ export namespace Prisma {
 
   export const PromotionOrderByRelevanceFieldEnum: {
     promo_id: 'promo_id',
-    code: 'code'
+    name: 'name',
+    discountType: 'discountType',
+    Type: 'Type'
   };
 
   export type PromotionOrderByRelevanceFieldEnum = (typeof PromotionOrderByRelevanceFieldEnum)[keyof typeof PromotionOrderByRelevanceFieldEnum]
+
+
+  export const CategoryforPromoOrderByRelevanceFieldEnum: {
+    promoId: 'promoId',
+    categoryId: 'categoryId'
+  };
+
+  export type CategoryforPromoOrderByRelevanceFieldEnum = (typeof CategoryforPromoOrderByRelevanceFieldEnum)[keyof typeof CategoryforPromoOrderByRelevanceFieldEnum]
 
 
   export const ProductForPromotionOrderByRelevanceFieldEnum: {
@@ -17099,6 +20390,24 @@ export namespace Prisma {
   };
 
   export type ProductForPromotionOrderByRelevanceFieldEnum = (typeof ProductForPromotionOrderByRelevanceFieldEnum)[keyof typeof ProductForPromotionOrderByRelevanceFieldEnum]
+
+
+  export const PromoBannerOrderByRelevanceFieldEnum: {
+    name: 'name',
+    description: 'description',
+    prodId: 'prodId',
+    image: 'image',
+    publicId: 'publicId'
+  };
+
+  export type PromoBannerOrderByRelevanceFieldEnum = (typeof PromoBannerOrderByRelevanceFieldEnum)[keyof typeof PromoBannerOrderByRelevanceFieldEnum]
+
+
+  export const CarouselOrderByRelevanceFieldEnum: {
+    name: 'name'
+  };
+
+  export type CarouselOrderByRelevanceFieldEnum = (typeof CarouselOrderByRelevanceFieldEnum)[keyof typeof CarouselOrderByRelevanceFieldEnum]
 
 
   /**
@@ -17466,12 +20775,14 @@ export namespace Prisma {
     id?: StringFilter<"Category"> | string
     nombre?: StringFilter<"Category"> | string
     productos?: GenericProductListRelationFilter
+    CategoryforPromo?: CategoryforPromoListRelationFilter
   }
 
   export type CategoryOrderByWithRelationInput = {
     id?: SortOrder
     nombre?: SortOrder
     productos?: GenericProductOrderByRelationAggregateInput
+    CategoryforPromo?: CategoryforPromoOrderByRelationAggregateInput
     _relevance?: CategoryOrderByRelevanceInput
   }
 
@@ -17482,6 +20793,7 @@ export namespace Prisma {
     OR?: CategoryWhereInput[]
     NOT?: CategoryWhereInput | CategoryWhereInput[]
     productos?: GenericProductListRelationFilter
+    CategoryforPromo?: CategoryforPromoListRelationFilter
   }, "id" | "nombre">
 
   export type CategoryOrderByWithAggregationInput = {
@@ -17661,6 +20973,7 @@ export namespace Prisma {
     images?: ImagesListRelationFilter
     ProductForCart?: ProductForCartListRelationFilter
     color?: XOR<ColorScalarRelationFilter, ColorWhereInput>
+    PromoBanner?: PromoBannerListRelationFilter
   }
 
   export type SpecificProductOrderByWithRelationInput = {
@@ -17676,6 +20989,7 @@ export namespace Prisma {
     images?: ImagesOrderByRelationAggregateInput
     ProductForCart?: ProductForCartOrderByRelationAggregateInput
     color?: ColorOrderByWithRelationInput
+    PromoBanner?: PromoBannerOrderByRelationAggregateInput
     _relevance?: SpecificProductOrderByRelevanceInput
   }
 
@@ -17695,6 +21009,7 @@ export namespace Prisma {
     images?: ImagesListRelationFilter
     ProductForCart?: ProductForCartListRelationFilter
     color?: XOR<ColorScalarRelationFilter, ColorWhereInput>
+    PromoBanner?: PromoBannerListRelationFilter
   }, "id">
 
   export type SpecificProductOrderByWithAggregationInput = {
@@ -17942,41 +21257,48 @@ export namespace Prisma {
     OR?: PromotionWhereInput[]
     NOT?: PromotionWhereInput | PromotionWhereInput[]
     promo_id?: StringFilter<"Promotion"> | string
-    code?: StringFilter<"Promotion"> | string
     startDate?: DateTimeFilter<"Promotion"> | Date | string
     endDate?: DateTimeFilter<"Promotion"> | Date | string
-    isActive?: BoolFilter<"Promotion"> | boolean
+    name?: StringFilter<"Promotion"> | string
+    discountType?: StringFilter<"Promotion"> | string
+    Type?: StringFilter<"Promotion"> | string
     products?: ProductForPromotionListRelationFilter
+    categories?: CategoryforPromoListRelationFilter
   }
 
   export type PromotionOrderByWithRelationInput = {
     promo_id?: SortOrder
-    code?: SortOrder
     startDate?: SortOrder
     endDate?: SortOrder
-    isActive?: SortOrder
+    name?: SortOrder
+    discountType?: SortOrder
+    Type?: SortOrder
     products?: ProductForPromotionOrderByRelationAggregateInput
+    categories?: CategoryforPromoOrderByRelationAggregateInput
     _relevance?: PromotionOrderByRelevanceInput
   }
 
   export type PromotionWhereUniqueInput = Prisma.AtLeast<{
     promo_id?: string
-    code?: string
     AND?: PromotionWhereInput | PromotionWhereInput[]
     OR?: PromotionWhereInput[]
     NOT?: PromotionWhereInput | PromotionWhereInput[]
     startDate?: DateTimeFilter<"Promotion"> | Date | string
     endDate?: DateTimeFilter<"Promotion"> | Date | string
-    isActive?: BoolFilter<"Promotion"> | boolean
+    name?: StringFilter<"Promotion"> | string
+    discountType?: StringFilter<"Promotion"> | string
+    Type?: StringFilter<"Promotion"> | string
     products?: ProductForPromotionListRelationFilter
-  }, "promo_id" | "code">
+    categories?: CategoryforPromoListRelationFilter
+  }, "promo_id">
 
   export type PromotionOrderByWithAggregationInput = {
     promo_id?: SortOrder
-    code?: SortOrder
     startDate?: SortOrder
     endDate?: SortOrder
-    isActive?: SortOrder
+    name?: SortOrder
+    discountType?: SortOrder
+    Type?: SortOrder
     _count?: PromotionCountOrderByAggregateInput
     _max?: PromotionMaxOrderByAggregateInput
     _min?: PromotionMinOrderByAggregateInput
@@ -17987,10 +21309,56 @@ export namespace Prisma {
     OR?: PromotionScalarWhereWithAggregatesInput[]
     NOT?: PromotionScalarWhereWithAggregatesInput | PromotionScalarWhereWithAggregatesInput[]
     promo_id?: StringWithAggregatesFilter<"Promotion"> | string
-    code?: StringWithAggregatesFilter<"Promotion"> | string
     startDate?: DateTimeWithAggregatesFilter<"Promotion"> | Date | string
     endDate?: DateTimeWithAggregatesFilter<"Promotion"> | Date | string
-    isActive?: BoolWithAggregatesFilter<"Promotion"> | boolean
+    name?: StringWithAggregatesFilter<"Promotion"> | string
+    discountType?: StringWithAggregatesFilter<"Promotion"> | string
+    Type?: StringWithAggregatesFilter<"Promotion"> | string
+  }
+
+  export type CategoryforPromoWhereInput = {
+    AND?: CategoryforPromoWhereInput | CategoryforPromoWhereInput[]
+    OR?: CategoryforPromoWhereInput[]
+    NOT?: CategoryforPromoWhereInput | CategoryforPromoWhereInput[]
+    promoId?: StringFilter<"CategoryforPromo"> | string
+    categoryId?: StringFilter<"CategoryforPromo"> | string
+    promo?: XOR<PromotionScalarRelationFilter, PromotionWhereInput>
+    category?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
+  }
+
+  export type CategoryforPromoOrderByWithRelationInput = {
+    promoId?: SortOrder
+    categoryId?: SortOrder
+    promo?: PromotionOrderByWithRelationInput
+    category?: CategoryOrderByWithRelationInput
+    _relevance?: CategoryforPromoOrderByRelevanceInput
+  }
+
+  export type CategoryforPromoWhereUniqueInput = Prisma.AtLeast<{
+    promoId_categoryId?: CategoryforPromoPromoIdCategoryIdCompoundUniqueInput
+    AND?: CategoryforPromoWhereInput | CategoryforPromoWhereInput[]
+    OR?: CategoryforPromoWhereInput[]
+    NOT?: CategoryforPromoWhereInput | CategoryforPromoWhereInput[]
+    promoId?: StringFilter<"CategoryforPromo"> | string
+    categoryId?: StringFilter<"CategoryforPromo"> | string
+    promo?: XOR<PromotionScalarRelationFilter, PromotionWhereInput>
+    category?: XOR<CategoryScalarRelationFilter, CategoryWhereInput>
+  }, "promoId_categoryId">
+
+  export type CategoryforPromoOrderByWithAggregationInput = {
+    promoId?: SortOrder
+    categoryId?: SortOrder
+    _count?: CategoryforPromoCountOrderByAggregateInput
+    _max?: CategoryforPromoMaxOrderByAggregateInput
+    _min?: CategoryforPromoMinOrderByAggregateInput
+  }
+
+  export type CategoryforPromoScalarWhereWithAggregatesInput = {
+    AND?: CategoryforPromoScalarWhereWithAggregatesInput | CategoryforPromoScalarWhereWithAggregatesInput[]
+    OR?: CategoryforPromoScalarWhereWithAggregatesInput[]
+    NOT?: CategoryforPromoScalarWhereWithAggregatesInput | CategoryforPromoScalarWhereWithAggregatesInput[]
+    promoId?: StringWithAggregatesFilter<"CategoryforPromo"> | string
+    categoryId?: StringWithAggregatesFilter<"CategoryforPromo"> | string
   }
 
   export type ProductForPromotionWhereInput = {
@@ -18036,6 +21404,120 @@ export namespace Prisma {
     NOT?: ProductForPromotionScalarWhereWithAggregatesInput | ProductForPromotionScalarWhereWithAggregatesInput[]
     productId?: StringWithAggregatesFilter<"ProductForPromotion"> | string
     promotionId?: StringWithAggregatesFilter<"ProductForPromotion"> | string
+  }
+
+  export type PromoBannerWhereInput = {
+    AND?: PromoBannerWhereInput | PromoBannerWhereInput[]
+    OR?: PromoBannerWhereInput[]
+    NOT?: PromoBannerWhereInput | PromoBannerWhereInput[]
+    id?: IntFilter<"PromoBanner"> | number
+    name?: StringFilter<"PromoBanner"> | string
+    description?: StringFilter<"PromoBanner"> | string
+    prodId?: StringFilter<"PromoBanner"> | string
+    image?: StringFilter<"PromoBanner"> | string
+    publicId?: StringNullableFilter<"PromoBanner"> | string | null
+    carouselId?: IntFilter<"PromoBanner"> | number
+    product?: XOR<SpecificProductScalarRelationFilter, SpecificProductWhereInput>
+    carousel?: XOR<CarouselScalarRelationFilter, CarouselWhereInput>
+  }
+
+  export type PromoBannerOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    prodId?: SortOrder
+    image?: SortOrder
+    publicId?: SortOrderInput | SortOrder
+    carouselId?: SortOrder
+    product?: SpecificProductOrderByWithRelationInput
+    carousel?: CarouselOrderByWithRelationInput
+    _relevance?: PromoBannerOrderByRelevanceInput
+  }
+
+  export type PromoBannerWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: PromoBannerWhereInput | PromoBannerWhereInput[]
+    OR?: PromoBannerWhereInput[]
+    NOT?: PromoBannerWhereInput | PromoBannerWhereInput[]
+    name?: StringFilter<"PromoBanner"> | string
+    description?: StringFilter<"PromoBanner"> | string
+    prodId?: StringFilter<"PromoBanner"> | string
+    image?: StringFilter<"PromoBanner"> | string
+    publicId?: StringNullableFilter<"PromoBanner"> | string | null
+    carouselId?: IntFilter<"PromoBanner"> | number
+    product?: XOR<SpecificProductScalarRelationFilter, SpecificProductWhereInput>
+    carousel?: XOR<CarouselScalarRelationFilter, CarouselWhereInput>
+  }, "id">
+
+  export type PromoBannerOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    prodId?: SortOrder
+    image?: SortOrder
+    publicId?: SortOrderInput | SortOrder
+    carouselId?: SortOrder
+    _count?: PromoBannerCountOrderByAggregateInput
+    _avg?: PromoBannerAvgOrderByAggregateInput
+    _max?: PromoBannerMaxOrderByAggregateInput
+    _min?: PromoBannerMinOrderByAggregateInput
+    _sum?: PromoBannerSumOrderByAggregateInput
+  }
+
+  export type PromoBannerScalarWhereWithAggregatesInput = {
+    AND?: PromoBannerScalarWhereWithAggregatesInput | PromoBannerScalarWhereWithAggregatesInput[]
+    OR?: PromoBannerScalarWhereWithAggregatesInput[]
+    NOT?: PromoBannerScalarWhereWithAggregatesInput | PromoBannerScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"PromoBanner"> | number
+    name?: StringWithAggregatesFilter<"PromoBanner"> | string
+    description?: StringWithAggregatesFilter<"PromoBanner"> | string
+    prodId?: StringWithAggregatesFilter<"PromoBanner"> | string
+    image?: StringWithAggregatesFilter<"PromoBanner"> | string
+    publicId?: StringNullableWithAggregatesFilter<"PromoBanner"> | string | null
+    carouselId?: IntWithAggregatesFilter<"PromoBanner"> | number
+  }
+
+  export type CarouselWhereInput = {
+    AND?: CarouselWhereInput | CarouselWhereInput[]
+    OR?: CarouselWhereInput[]
+    NOT?: CarouselWhereInput | CarouselWhereInput[]
+    id?: IntFilter<"Carousel"> | number
+    name?: StringFilter<"Carousel"> | string
+    banners?: PromoBannerListRelationFilter
+  }
+
+  export type CarouselOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    banners?: PromoBannerOrderByRelationAggregateInput
+    _relevance?: CarouselOrderByRelevanceInput
+  }
+
+  export type CarouselWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    name?: string
+    AND?: CarouselWhereInput | CarouselWhereInput[]
+    OR?: CarouselWhereInput[]
+    NOT?: CarouselWhereInput | CarouselWhereInput[]
+    banners?: PromoBannerListRelationFilter
+  }, "id" | "name">
+
+  export type CarouselOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    _count?: CarouselCountOrderByAggregateInput
+    _avg?: CarouselAvgOrderByAggregateInput
+    _max?: CarouselMaxOrderByAggregateInput
+    _min?: CarouselMinOrderByAggregateInput
+    _sum?: CarouselSumOrderByAggregateInput
+  }
+
+  export type CarouselScalarWhereWithAggregatesInput = {
+    AND?: CarouselScalarWhereWithAggregatesInput | CarouselScalarWhereWithAggregatesInput[]
+    OR?: CarouselScalarWhereWithAggregatesInput[]
+    NOT?: CarouselScalarWhereWithAggregatesInput | CarouselScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"Carousel"> | number
+    name?: StringWithAggregatesFilter<"Carousel"> | string
   }
 
   export type UserCreateInput = {
@@ -18364,24 +21846,28 @@ export namespace Prisma {
     id?: string
     nombre: string
     productos?: GenericProductCreateNestedManyWithoutCategoryInput
+    CategoryforPromo?: CategoryforPromoCreateNestedManyWithoutCategoryInput
   }
 
   export type CategoryUncheckedCreateInput = {
     id?: string
     nombre: string
     productos?: GenericProductUncheckedCreateNestedManyWithoutCategoryInput
+    CategoryforPromo?: CategoryforPromoUncheckedCreateNestedManyWithoutCategoryInput
   }
 
   export type CategoryUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     nombre?: StringFieldUpdateOperationsInput | string
     productos?: GenericProductUpdateManyWithoutCategoryNestedInput
+    CategoryforPromo?: CategoryforPromoUpdateManyWithoutCategoryNestedInput
   }
 
   export type CategoryUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     nombre?: StringFieldUpdateOperationsInput | string
     productos?: GenericProductUncheckedUpdateManyWithoutCategoryNestedInput
+    CategoryforPromo?: CategoryforPromoUncheckedUpdateManyWithoutCategoryNestedInput
   }
 
   export type CategoryCreateManyInput = {
@@ -18553,6 +22039,7 @@ export namespace Prisma {
     images?: ImagesCreateNestedManyWithoutProductInput
     ProductForCart?: ProductForCartCreateNestedManyWithoutProductInput
     color: ColorCreateNestedOneWithoutProductsInput
+    PromoBanner?: PromoBannerCreateNestedManyWithoutProductInput
   }
 
   export type SpecificProductUncheckedCreateInput = {
@@ -18566,6 +22053,7 @@ export namespace Prisma {
     promotions?: ProductForPromotionUncheckedCreateNestedManyWithoutProductInput
     images?: ImagesUncheckedCreateNestedManyWithoutProductInput
     ProductForCart?: ProductForCartUncheckedCreateNestedManyWithoutProductInput
+    PromoBanner?: PromoBannerUncheckedCreateNestedManyWithoutProductInput
   }
 
   export type SpecificProductUpdateInput = {
@@ -18579,6 +22067,7 @@ export namespace Prisma {
     images?: ImagesUpdateManyWithoutProductNestedInput
     ProductForCart?: ProductForCartUpdateManyWithoutProductNestedInput
     color?: ColorUpdateOneRequiredWithoutProductsNestedInput
+    PromoBanner?: PromoBannerUpdateManyWithoutProductNestedInput
   }
 
   export type SpecificProductUncheckedUpdateInput = {
@@ -18592,6 +22081,7 @@ export namespace Prisma {
     promotions?: ProductForPromotionUncheckedUpdateManyWithoutProductNestedInput
     images?: ImagesUncheckedUpdateManyWithoutProductNestedInput
     ProductForCart?: ProductForCartUncheckedUpdateManyWithoutProductNestedInput
+    PromoBanner?: PromoBannerUncheckedUpdateManyWithoutProductNestedInput
   }
 
   export type SpecificProductCreateManyInput = {
@@ -18838,62 +22328,107 @@ export namespace Prisma {
 
   export type PromotionCreateInput = {
     promo_id?: string
-    code: string
     startDate: Date | string
     endDate: Date | string
-    isActive?: boolean
+    name: string
+    discountType: string
+    Type: string
     products?: ProductForPromotionCreateNestedManyWithoutPromotionInput
+    categories?: CategoryforPromoCreateNestedManyWithoutPromoInput
   }
 
   export type PromotionUncheckedCreateInput = {
     promo_id?: string
-    code: string
     startDate: Date | string
     endDate: Date | string
-    isActive?: boolean
+    name: string
+    discountType: string
+    Type: string
     products?: ProductForPromotionUncheckedCreateNestedManyWithoutPromotionInput
+    categories?: CategoryforPromoUncheckedCreateNestedManyWithoutPromoInput
   }
 
   export type PromotionUpdateInput = {
     promo_id?: StringFieldUpdateOperationsInput | string
-    code?: StringFieldUpdateOperationsInput | string
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    isActive?: BoolFieldUpdateOperationsInput | boolean
+    name?: StringFieldUpdateOperationsInput | string
+    discountType?: StringFieldUpdateOperationsInput | string
+    Type?: StringFieldUpdateOperationsInput | string
     products?: ProductForPromotionUpdateManyWithoutPromotionNestedInput
+    categories?: CategoryforPromoUpdateManyWithoutPromoNestedInput
   }
 
   export type PromotionUncheckedUpdateInput = {
     promo_id?: StringFieldUpdateOperationsInput | string
-    code?: StringFieldUpdateOperationsInput | string
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    isActive?: BoolFieldUpdateOperationsInput | boolean
+    name?: StringFieldUpdateOperationsInput | string
+    discountType?: StringFieldUpdateOperationsInput | string
+    Type?: StringFieldUpdateOperationsInput | string
     products?: ProductForPromotionUncheckedUpdateManyWithoutPromotionNestedInput
+    categories?: CategoryforPromoUncheckedUpdateManyWithoutPromoNestedInput
   }
 
   export type PromotionCreateManyInput = {
     promo_id?: string
-    code: string
     startDate: Date | string
     endDate: Date | string
-    isActive?: boolean
+    name: string
+    discountType: string
+    Type: string
   }
 
   export type PromotionUpdateManyMutationInput = {
     promo_id?: StringFieldUpdateOperationsInput | string
-    code?: StringFieldUpdateOperationsInput | string
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    isActive?: BoolFieldUpdateOperationsInput | boolean
+    name?: StringFieldUpdateOperationsInput | string
+    discountType?: StringFieldUpdateOperationsInput | string
+    Type?: StringFieldUpdateOperationsInput | string
   }
 
   export type PromotionUncheckedUpdateManyInput = {
     promo_id?: StringFieldUpdateOperationsInput | string
-    code?: StringFieldUpdateOperationsInput | string
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    isActive?: BoolFieldUpdateOperationsInput | boolean
+    name?: StringFieldUpdateOperationsInput | string
+    discountType?: StringFieldUpdateOperationsInput | string
+    Type?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CategoryforPromoCreateInput = {
+    promo: PromotionCreateNestedOneWithoutCategoriesInput
+    category: CategoryCreateNestedOneWithoutCategoryforPromoInput
+  }
+
+  export type CategoryforPromoUncheckedCreateInput = {
+    promoId: string
+    categoryId: string
+  }
+
+  export type CategoryforPromoUpdateInput = {
+    promo?: PromotionUpdateOneRequiredWithoutCategoriesNestedInput
+    category?: CategoryUpdateOneRequiredWithoutCategoryforPromoNestedInput
+  }
+
+  export type CategoryforPromoUncheckedUpdateInput = {
+    promoId?: StringFieldUpdateOperationsInput | string
+    categoryId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CategoryforPromoCreateManyInput = {
+    promoId: string
+    categoryId: string
+  }
+
+  export type CategoryforPromoUpdateManyMutationInput = {
+
+  }
+
+  export type CategoryforPromoUncheckedUpdateManyInput = {
+    promoId?: StringFieldUpdateOperationsInput | string
+    categoryId?: StringFieldUpdateOperationsInput | string
   }
 
   export type ProductForPromotionCreateInput = {
@@ -18928,6 +22463,107 @@ export namespace Prisma {
   export type ProductForPromotionUncheckedUpdateManyInput = {
     productId?: StringFieldUpdateOperationsInput | string
     promotionId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type PromoBannerCreateInput = {
+    name: string
+    description: string
+    image: string
+    publicId?: string | null
+    product: SpecificProductCreateNestedOneWithoutPromoBannerInput
+    carousel: CarouselCreateNestedOneWithoutBannersInput
+  }
+
+  export type PromoBannerUncheckedCreateInput = {
+    id?: number
+    name: string
+    description: string
+    prodId: string
+    image: string
+    publicId?: string | null
+    carouselId: number
+  }
+
+  export type PromoBannerUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    publicId?: NullableStringFieldUpdateOperationsInput | string | null
+    product?: SpecificProductUpdateOneRequiredWithoutPromoBannerNestedInput
+    carousel?: CarouselUpdateOneRequiredWithoutBannersNestedInput
+  }
+
+  export type PromoBannerUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    prodId?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    publicId?: NullableStringFieldUpdateOperationsInput | string | null
+    carouselId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type PromoBannerCreateManyInput = {
+    id?: number
+    name: string
+    description: string
+    prodId: string
+    image: string
+    publicId?: string | null
+    carouselId: number
+  }
+
+  export type PromoBannerUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    publicId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type PromoBannerUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    prodId?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    publicId?: NullableStringFieldUpdateOperationsInput | string | null
+    carouselId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type CarouselCreateInput = {
+    name: string
+    banners?: PromoBannerCreateNestedManyWithoutCarouselInput
+  }
+
+  export type CarouselUncheckedCreateInput = {
+    id?: number
+    name: string
+    banners?: PromoBannerUncheckedCreateNestedManyWithoutCarouselInput
+  }
+
+  export type CarouselUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    banners?: PromoBannerUpdateManyWithoutCarouselNestedInput
+  }
+
+  export type CarouselUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    banners?: PromoBannerUncheckedUpdateManyWithoutCarouselNestedInput
+  }
+
+  export type CarouselCreateManyInput = {
+    id?: number
+    name: string
+  }
+
+  export type CarouselUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CarouselUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -19289,7 +22925,17 @@ export namespace Prisma {
     none?: GenericProductWhereInput
   }
 
+  export type CategoryforPromoListRelationFilter = {
+    every?: CategoryforPromoWhereInput
+    some?: CategoryforPromoWhereInput
+    none?: CategoryforPromoWhereInput
+  }
+
   export type GenericProductOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type CategoryforPromoOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -19437,6 +23083,12 @@ export namespace Prisma {
     isNot?: ColorWhereInput
   }
 
+  export type PromoBannerListRelationFilter = {
+    every?: PromoBannerWhereInput
+    some?: PromoBannerWhereInput
+    none?: PromoBannerWhereInput
+  }
+
   export type ProductForOrderOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -19446,6 +23098,10 @@ export namespace Prisma {
   }
 
   export type ImagesOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type PromoBannerOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -19671,31 +23327,60 @@ export namespace Prisma {
 
   export type PromotionCountOrderByAggregateInput = {
     promo_id?: SortOrder
-    code?: SortOrder
     startDate?: SortOrder
     endDate?: SortOrder
-    isActive?: SortOrder
+    name?: SortOrder
+    discountType?: SortOrder
+    Type?: SortOrder
   }
 
   export type PromotionMaxOrderByAggregateInput = {
     promo_id?: SortOrder
-    code?: SortOrder
     startDate?: SortOrder
     endDate?: SortOrder
-    isActive?: SortOrder
+    name?: SortOrder
+    discountType?: SortOrder
+    Type?: SortOrder
   }
 
   export type PromotionMinOrderByAggregateInput = {
     promo_id?: SortOrder
-    code?: SortOrder
     startDate?: SortOrder
     endDate?: SortOrder
-    isActive?: SortOrder
+    name?: SortOrder
+    discountType?: SortOrder
+    Type?: SortOrder
   }
 
   export type PromotionScalarRelationFilter = {
     is?: PromotionWhereInput
     isNot?: PromotionWhereInput
+  }
+
+  export type CategoryforPromoOrderByRelevanceInput = {
+    fields: CategoryforPromoOrderByRelevanceFieldEnum | CategoryforPromoOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type CategoryforPromoPromoIdCategoryIdCompoundUniqueInput = {
+    promoId: string
+    categoryId: string
+  }
+
+  export type CategoryforPromoCountOrderByAggregateInput = {
+    promoId?: SortOrder
+    categoryId?: SortOrder
+  }
+
+  export type CategoryforPromoMaxOrderByAggregateInput = {
+    promoId?: SortOrder
+    categoryId?: SortOrder
+  }
+
+  export type CategoryforPromoMinOrderByAggregateInput = {
+    promoId?: SortOrder
+    categoryId?: SortOrder
   }
 
   export type ProductForPromotionOrderByRelevanceInput = {
@@ -19722,6 +23407,86 @@ export namespace Prisma {
   export type ProductForPromotionMinOrderByAggregateInput = {
     productId?: SortOrder
     promotionId?: SortOrder
+  }
+
+  export type CarouselScalarRelationFilter = {
+    is?: CarouselWhereInput
+    isNot?: CarouselWhereInput
+  }
+
+  export type PromoBannerOrderByRelevanceInput = {
+    fields: PromoBannerOrderByRelevanceFieldEnum | PromoBannerOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type PromoBannerCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    prodId?: SortOrder
+    image?: SortOrder
+    publicId?: SortOrder
+    carouselId?: SortOrder
+  }
+
+  export type PromoBannerAvgOrderByAggregateInput = {
+    id?: SortOrder
+    carouselId?: SortOrder
+  }
+
+  export type PromoBannerMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    prodId?: SortOrder
+    image?: SortOrder
+    publicId?: SortOrder
+    carouselId?: SortOrder
+  }
+
+  export type PromoBannerMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    description?: SortOrder
+    prodId?: SortOrder
+    image?: SortOrder
+    publicId?: SortOrder
+    carouselId?: SortOrder
+  }
+
+  export type PromoBannerSumOrderByAggregateInput = {
+    id?: SortOrder
+    carouselId?: SortOrder
+  }
+
+  export type CarouselOrderByRelevanceInput = {
+    fields: CarouselOrderByRelevanceFieldEnum | CarouselOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type CarouselCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+  }
+
+  export type CarouselAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type CarouselMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+  }
+
+  export type CarouselMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+  }
+
+  export type CarouselSumOrderByAggregateInput = {
+    id?: SortOrder
   }
 
   export type ProductForCartCreateNestedManyWithoutUserInput = {
@@ -20069,11 +23834,25 @@ export namespace Prisma {
     connect?: GenericProductWhereUniqueInput | GenericProductWhereUniqueInput[]
   }
 
+  export type CategoryforPromoCreateNestedManyWithoutCategoryInput = {
+    create?: XOR<CategoryforPromoCreateWithoutCategoryInput, CategoryforPromoUncheckedCreateWithoutCategoryInput> | CategoryforPromoCreateWithoutCategoryInput[] | CategoryforPromoUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: CategoryforPromoCreateOrConnectWithoutCategoryInput | CategoryforPromoCreateOrConnectWithoutCategoryInput[]
+    createMany?: CategoryforPromoCreateManyCategoryInputEnvelope
+    connect?: CategoryforPromoWhereUniqueInput | CategoryforPromoWhereUniqueInput[]
+  }
+
   export type GenericProductUncheckedCreateNestedManyWithoutCategoryInput = {
     create?: XOR<GenericProductCreateWithoutCategoryInput, GenericProductUncheckedCreateWithoutCategoryInput> | GenericProductCreateWithoutCategoryInput[] | GenericProductUncheckedCreateWithoutCategoryInput[]
     connectOrCreate?: GenericProductCreateOrConnectWithoutCategoryInput | GenericProductCreateOrConnectWithoutCategoryInput[]
     createMany?: GenericProductCreateManyCategoryInputEnvelope
     connect?: GenericProductWhereUniqueInput | GenericProductWhereUniqueInput[]
+  }
+
+  export type CategoryforPromoUncheckedCreateNestedManyWithoutCategoryInput = {
+    create?: XOR<CategoryforPromoCreateWithoutCategoryInput, CategoryforPromoUncheckedCreateWithoutCategoryInput> | CategoryforPromoCreateWithoutCategoryInput[] | CategoryforPromoUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: CategoryforPromoCreateOrConnectWithoutCategoryInput | CategoryforPromoCreateOrConnectWithoutCategoryInput[]
+    createMany?: CategoryforPromoCreateManyCategoryInputEnvelope
+    connect?: CategoryforPromoWhereUniqueInput | CategoryforPromoWhereUniqueInput[]
   }
 
   export type GenericProductUpdateManyWithoutCategoryNestedInput = {
@@ -20090,6 +23869,20 @@ export namespace Prisma {
     deleteMany?: GenericProductScalarWhereInput | GenericProductScalarWhereInput[]
   }
 
+  export type CategoryforPromoUpdateManyWithoutCategoryNestedInput = {
+    create?: XOR<CategoryforPromoCreateWithoutCategoryInput, CategoryforPromoUncheckedCreateWithoutCategoryInput> | CategoryforPromoCreateWithoutCategoryInput[] | CategoryforPromoUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: CategoryforPromoCreateOrConnectWithoutCategoryInput | CategoryforPromoCreateOrConnectWithoutCategoryInput[]
+    upsert?: CategoryforPromoUpsertWithWhereUniqueWithoutCategoryInput | CategoryforPromoUpsertWithWhereUniqueWithoutCategoryInput[]
+    createMany?: CategoryforPromoCreateManyCategoryInputEnvelope
+    set?: CategoryforPromoWhereUniqueInput | CategoryforPromoWhereUniqueInput[]
+    disconnect?: CategoryforPromoWhereUniqueInput | CategoryforPromoWhereUniqueInput[]
+    delete?: CategoryforPromoWhereUniqueInput | CategoryforPromoWhereUniqueInput[]
+    connect?: CategoryforPromoWhereUniqueInput | CategoryforPromoWhereUniqueInput[]
+    update?: CategoryforPromoUpdateWithWhereUniqueWithoutCategoryInput | CategoryforPromoUpdateWithWhereUniqueWithoutCategoryInput[]
+    updateMany?: CategoryforPromoUpdateManyWithWhereWithoutCategoryInput | CategoryforPromoUpdateManyWithWhereWithoutCategoryInput[]
+    deleteMany?: CategoryforPromoScalarWhereInput | CategoryforPromoScalarWhereInput[]
+  }
+
   export type GenericProductUncheckedUpdateManyWithoutCategoryNestedInput = {
     create?: XOR<GenericProductCreateWithoutCategoryInput, GenericProductUncheckedCreateWithoutCategoryInput> | GenericProductCreateWithoutCategoryInput[] | GenericProductUncheckedCreateWithoutCategoryInput[]
     connectOrCreate?: GenericProductCreateOrConnectWithoutCategoryInput | GenericProductCreateOrConnectWithoutCategoryInput[]
@@ -20102,6 +23895,20 @@ export namespace Prisma {
     update?: GenericProductUpdateWithWhereUniqueWithoutCategoryInput | GenericProductUpdateWithWhereUniqueWithoutCategoryInput[]
     updateMany?: GenericProductUpdateManyWithWhereWithoutCategoryInput | GenericProductUpdateManyWithWhereWithoutCategoryInput[]
     deleteMany?: GenericProductScalarWhereInput | GenericProductScalarWhereInput[]
+  }
+
+  export type CategoryforPromoUncheckedUpdateManyWithoutCategoryNestedInput = {
+    create?: XOR<CategoryforPromoCreateWithoutCategoryInput, CategoryforPromoUncheckedCreateWithoutCategoryInput> | CategoryforPromoCreateWithoutCategoryInput[] | CategoryforPromoUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: CategoryforPromoCreateOrConnectWithoutCategoryInput | CategoryforPromoCreateOrConnectWithoutCategoryInput[]
+    upsert?: CategoryforPromoUpsertWithWhereUniqueWithoutCategoryInput | CategoryforPromoUpsertWithWhereUniqueWithoutCategoryInput[]
+    createMany?: CategoryforPromoCreateManyCategoryInputEnvelope
+    set?: CategoryforPromoWhereUniqueInput | CategoryforPromoWhereUniqueInput[]
+    disconnect?: CategoryforPromoWhereUniqueInput | CategoryforPromoWhereUniqueInput[]
+    delete?: CategoryforPromoWhereUniqueInput | CategoryforPromoWhereUniqueInput[]
+    connect?: CategoryforPromoWhereUniqueInput | CategoryforPromoWhereUniqueInput[]
+    update?: CategoryforPromoUpdateWithWhereUniqueWithoutCategoryInput | CategoryforPromoUpdateWithWhereUniqueWithoutCategoryInput[]
+    updateMany?: CategoryforPromoUpdateManyWithWhereWithoutCategoryInput | CategoryforPromoUpdateManyWithWhereWithoutCategoryInput[]
+    deleteMany?: CategoryforPromoScalarWhereInput | CategoryforPromoScalarWhereInput[]
   }
 
   export type GenericProductCreateNestedOneWithoutDetailsInput = {
@@ -20200,6 +24007,13 @@ export namespace Prisma {
     connect?: ColorWhereUniqueInput
   }
 
+  export type PromoBannerCreateNestedManyWithoutProductInput = {
+    create?: XOR<PromoBannerCreateWithoutProductInput, PromoBannerUncheckedCreateWithoutProductInput> | PromoBannerCreateWithoutProductInput[] | PromoBannerUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: PromoBannerCreateOrConnectWithoutProductInput | PromoBannerCreateOrConnectWithoutProductInput[]
+    createMany?: PromoBannerCreateManyProductInputEnvelope
+    connect?: PromoBannerWhereUniqueInput | PromoBannerWhereUniqueInput[]
+  }
+
   export type ProductForOrderUncheckedCreateNestedManyWithoutProductInput = {
     create?: XOR<ProductForOrderCreateWithoutProductInput, ProductForOrderUncheckedCreateWithoutProductInput> | ProductForOrderCreateWithoutProductInput[] | ProductForOrderUncheckedCreateWithoutProductInput[]
     connectOrCreate?: ProductForOrderCreateOrConnectWithoutProductInput | ProductForOrderCreateOrConnectWithoutProductInput[]
@@ -20226,6 +24040,13 @@ export namespace Prisma {
     connectOrCreate?: ProductForCartCreateOrConnectWithoutProductInput | ProductForCartCreateOrConnectWithoutProductInput[]
     createMany?: ProductForCartCreateManyProductInputEnvelope
     connect?: ProductForCartWhereUniqueInput | ProductForCartWhereUniqueInput[]
+  }
+
+  export type PromoBannerUncheckedCreateNestedManyWithoutProductInput = {
+    create?: XOR<PromoBannerCreateWithoutProductInput, PromoBannerUncheckedCreateWithoutProductInput> | PromoBannerCreateWithoutProductInput[] | PromoBannerUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: PromoBannerCreateOrConnectWithoutProductInput | PromoBannerCreateOrConnectWithoutProductInput[]
+    createMany?: PromoBannerCreateManyProductInputEnvelope
+    connect?: PromoBannerWhereUniqueInput | PromoBannerWhereUniqueInput[]
   }
 
   export type FloatFieldUpdateOperationsInput = {
@@ -20316,6 +24137,20 @@ export namespace Prisma {
     update?: XOR<XOR<ColorUpdateToOneWithWhereWithoutProductsInput, ColorUpdateWithoutProductsInput>, ColorUncheckedUpdateWithoutProductsInput>
   }
 
+  export type PromoBannerUpdateManyWithoutProductNestedInput = {
+    create?: XOR<PromoBannerCreateWithoutProductInput, PromoBannerUncheckedCreateWithoutProductInput> | PromoBannerCreateWithoutProductInput[] | PromoBannerUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: PromoBannerCreateOrConnectWithoutProductInput | PromoBannerCreateOrConnectWithoutProductInput[]
+    upsert?: PromoBannerUpsertWithWhereUniqueWithoutProductInput | PromoBannerUpsertWithWhereUniqueWithoutProductInput[]
+    createMany?: PromoBannerCreateManyProductInputEnvelope
+    set?: PromoBannerWhereUniqueInput | PromoBannerWhereUniqueInput[]
+    disconnect?: PromoBannerWhereUniqueInput | PromoBannerWhereUniqueInput[]
+    delete?: PromoBannerWhereUniqueInput | PromoBannerWhereUniqueInput[]
+    connect?: PromoBannerWhereUniqueInput | PromoBannerWhereUniqueInput[]
+    update?: PromoBannerUpdateWithWhereUniqueWithoutProductInput | PromoBannerUpdateWithWhereUniqueWithoutProductInput[]
+    updateMany?: PromoBannerUpdateManyWithWhereWithoutProductInput | PromoBannerUpdateManyWithWhereWithoutProductInput[]
+    deleteMany?: PromoBannerScalarWhereInput | PromoBannerScalarWhereInput[]
+  }
+
   export type ProductForOrderUncheckedUpdateManyWithoutProductNestedInput = {
     create?: XOR<ProductForOrderCreateWithoutProductInput, ProductForOrderUncheckedCreateWithoutProductInput> | ProductForOrderCreateWithoutProductInput[] | ProductForOrderUncheckedCreateWithoutProductInput[]
     connectOrCreate?: ProductForOrderCreateOrConnectWithoutProductInput | ProductForOrderCreateOrConnectWithoutProductInput[]
@@ -20370,6 +24205,20 @@ export namespace Prisma {
     update?: ProductForCartUpdateWithWhereUniqueWithoutProductInput | ProductForCartUpdateWithWhereUniqueWithoutProductInput[]
     updateMany?: ProductForCartUpdateManyWithWhereWithoutProductInput | ProductForCartUpdateManyWithWhereWithoutProductInput[]
     deleteMany?: ProductForCartScalarWhereInput | ProductForCartScalarWhereInput[]
+  }
+
+  export type PromoBannerUncheckedUpdateManyWithoutProductNestedInput = {
+    create?: XOR<PromoBannerCreateWithoutProductInput, PromoBannerUncheckedCreateWithoutProductInput> | PromoBannerCreateWithoutProductInput[] | PromoBannerUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: PromoBannerCreateOrConnectWithoutProductInput | PromoBannerCreateOrConnectWithoutProductInput[]
+    upsert?: PromoBannerUpsertWithWhereUniqueWithoutProductInput | PromoBannerUpsertWithWhereUniqueWithoutProductInput[]
+    createMany?: PromoBannerCreateManyProductInputEnvelope
+    set?: PromoBannerWhereUniqueInput | PromoBannerWhereUniqueInput[]
+    disconnect?: PromoBannerWhereUniqueInput | PromoBannerWhereUniqueInput[]
+    delete?: PromoBannerWhereUniqueInput | PromoBannerWhereUniqueInput[]
+    connect?: PromoBannerWhereUniqueInput | PromoBannerWhereUniqueInput[]
+    update?: PromoBannerUpdateWithWhereUniqueWithoutProductInput | PromoBannerUpdateWithWhereUniqueWithoutProductInput[]
+    updateMany?: PromoBannerUpdateManyWithWhereWithoutProductInput | PromoBannerUpdateManyWithWhereWithoutProductInput[]
+    deleteMany?: PromoBannerScalarWhereInput | PromoBannerScalarWhereInput[]
   }
 
   export type SpecificProductCreateNestedOneWithoutImagesInput = {
@@ -20477,11 +24326,25 @@ export namespace Prisma {
     connect?: ProductForPromotionWhereUniqueInput | ProductForPromotionWhereUniqueInput[]
   }
 
+  export type CategoryforPromoCreateNestedManyWithoutPromoInput = {
+    create?: XOR<CategoryforPromoCreateWithoutPromoInput, CategoryforPromoUncheckedCreateWithoutPromoInput> | CategoryforPromoCreateWithoutPromoInput[] | CategoryforPromoUncheckedCreateWithoutPromoInput[]
+    connectOrCreate?: CategoryforPromoCreateOrConnectWithoutPromoInput | CategoryforPromoCreateOrConnectWithoutPromoInput[]
+    createMany?: CategoryforPromoCreateManyPromoInputEnvelope
+    connect?: CategoryforPromoWhereUniqueInput | CategoryforPromoWhereUniqueInput[]
+  }
+
   export type ProductForPromotionUncheckedCreateNestedManyWithoutPromotionInput = {
     create?: XOR<ProductForPromotionCreateWithoutPromotionInput, ProductForPromotionUncheckedCreateWithoutPromotionInput> | ProductForPromotionCreateWithoutPromotionInput[] | ProductForPromotionUncheckedCreateWithoutPromotionInput[]
     connectOrCreate?: ProductForPromotionCreateOrConnectWithoutPromotionInput | ProductForPromotionCreateOrConnectWithoutPromotionInput[]
     createMany?: ProductForPromotionCreateManyPromotionInputEnvelope
     connect?: ProductForPromotionWhereUniqueInput | ProductForPromotionWhereUniqueInput[]
+  }
+
+  export type CategoryforPromoUncheckedCreateNestedManyWithoutPromoInput = {
+    create?: XOR<CategoryforPromoCreateWithoutPromoInput, CategoryforPromoUncheckedCreateWithoutPromoInput> | CategoryforPromoCreateWithoutPromoInput[] | CategoryforPromoUncheckedCreateWithoutPromoInput[]
+    connectOrCreate?: CategoryforPromoCreateOrConnectWithoutPromoInput | CategoryforPromoCreateOrConnectWithoutPromoInput[]
+    createMany?: CategoryforPromoCreateManyPromoInputEnvelope
+    connect?: CategoryforPromoWhereUniqueInput | CategoryforPromoWhereUniqueInput[]
   }
 
   export type ProductForPromotionUpdateManyWithoutPromotionNestedInput = {
@@ -20498,6 +24361,20 @@ export namespace Prisma {
     deleteMany?: ProductForPromotionScalarWhereInput | ProductForPromotionScalarWhereInput[]
   }
 
+  export type CategoryforPromoUpdateManyWithoutPromoNestedInput = {
+    create?: XOR<CategoryforPromoCreateWithoutPromoInput, CategoryforPromoUncheckedCreateWithoutPromoInput> | CategoryforPromoCreateWithoutPromoInput[] | CategoryforPromoUncheckedCreateWithoutPromoInput[]
+    connectOrCreate?: CategoryforPromoCreateOrConnectWithoutPromoInput | CategoryforPromoCreateOrConnectWithoutPromoInput[]
+    upsert?: CategoryforPromoUpsertWithWhereUniqueWithoutPromoInput | CategoryforPromoUpsertWithWhereUniqueWithoutPromoInput[]
+    createMany?: CategoryforPromoCreateManyPromoInputEnvelope
+    set?: CategoryforPromoWhereUniqueInput | CategoryforPromoWhereUniqueInput[]
+    disconnect?: CategoryforPromoWhereUniqueInput | CategoryforPromoWhereUniqueInput[]
+    delete?: CategoryforPromoWhereUniqueInput | CategoryforPromoWhereUniqueInput[]
+    connect?: CategoryforPromoWhereUniqueInput | CategoryforPromoWhereUniqueInput[]
+    update?: CategoryforPromoUpdateWithWhereUniqueWithoutPromoInput | CategoryforPromoUpdateWithWhereUniqueWithoutPromoInput[]
+    updateMany?: CategoryforPromoUpdateManyWithWhereWithoutPromoInput | CategoryforPromoUpdateManyWithWhereWithoutPromoInput[]
+    deleteMany?: CategoryforPromoScalarWhereInput | CategoryforPromoScalarWhereInput[]
+  }
+
   export type ProductForPromotionUncheckedUpdateManyWithoutPromotionNestedInput = {
     create?: XOR<ProductForPromotionCreateWithoutPromotionInput, ProductForPromotionUncheckedCreateWithoutPromotionInput> | ProductForPromotionCreateWithoutPromotionInput[] | ProductForPromotionUncheckedCreateWithoutPromotionInput[]
     connectOrCreate?: ProductForPromotionCreateOrConnectWithoutPromotionInput | ProductForPromotionCreateOrConnectWithoutPromotionInput[]
@@ -20510,6 +24387,48 @@ export namespace Prisma {
     update?: ProductForPromotionUpdateWithWhereUniqueWithoutPromotionInput | ProductForPromotionUpdateWithWhereUniqueWithoutPromotionInput[]
     updateMany?: ProductForPromotionUpdateManyWithWhereWithoutPromotionInput | ProductForPromotionUpdateManyWithWhereWithoutPromotionInput[]
     deleteMany?: ProductForPromotionScalarWhereInput | ProductForPromotionScalarWhereInput[]
+  }
+
+  export type CategoryforPromoUncheckedUpdateManyWithoutPromoNestedInput = {
+    create?: XOR<CategoryforPromoCreateWithoutPromoInput, CategoryforPromoUncheckedCreateWithoutPromoInput> | CategoryforPromoCreateWithoutPromoInput[] | CategoryforPromoUncheckedCreateWithoutPromoInput[]
+    connectOrCreate?: CategoryforPromoCreateOrConnectWithoutPromoInput | CategoryforPromoCreateOrConnectWithoutPromoInput[]
+    upsert?: CategoryforPromoUpsertWithWhereUniqueWithoutPromoInput | CategoryforPromoUpsertWithWhereUniqueWithoutPromoInput[]
+    createMany?: CategoryforPromoCreateManyPromoInputEnvelope
+    set?: CategoryforPromoWhereUniqueInput | CategoryforPromoWhereUniqueInput[]
+    disconnect?: CategoryforPromoWhereUniqueInput | CategoryforPromoWhereUniqueInput[]
+    delete?: CategoryforPromoWhereUniqueInput | CategoryforPromoWhereUniqueInput[]
+    connect?: CategoryforPromoWhereUniqueInput | CategoryforPromoWhereUniqueInput[]
+    update?: CategoryforPromoUpdateWithWhereUniqueWithoutPromoInput | CategoryforPromoUpdateWithWhereUniqueWithoutPromoInput[]
+    updateMany?: CategoryforPromoUpdateManyWithWhereWithoutPromoInput | CategoryforPromoUpdateManyWithWhereWithoutPromoInput[]
+    deleteMany?: CategoryforPromoScalarWhereInput | CategoryforPromoScalarWhereInput[]
+  }
+
+  export type PromotionCreateNestedOneWithoutCategoriesInput = {
+    create?: XOR<PromotionCreateWithoutCategoriesInput, PromotionUncheckedCreateWithoutCategoriesInput>
+    connectOrCreate?: PromotionCreateOrConnectWithoutCategoriesInput
+    connect?: PromotionWhereUniqueInput
+  }
+
+  export type CategoryCreateNestedOneWithoutCategoryforPromoInput = {
+    create?: XOR<CategoryCreateWithoutCategoryforPromoInput, CategoryUncheckedCreateWithoutCategoryforPromoInput>
+    connectOrCreate?: CategoryCreateOrConnectWithoutCategoryforPromoInput
+    connect?: CategoryWhereUniqueInput
+  }
+
+  export type PromotionUpdateOneRequiredWithoutCategoriesNestedInput = {
+    create?: XOR<PromotionCreateWithoutCategoriesInput, PromotionUncheckedCreateWithoutCategoriesInput>
+    connectOrCreate?: PromotionCreateOrConnectWithoutCategoriesInput
+    upsert?: PromotionUpsertWithoutCategoriesInput
+    connect?: PromotionWhereUniqueInput
+    update?: XOR<XOR<PromotionUpdateToOneWithWhereWithoutCategoriesInput, PromotionUpdateWithoutCategoriesInput>, PromotionUncheckedUpdateWithoutCategoriesInput>
+  }
+
+  export type CategoryUpdateOneRequiredWithoutCategoryforPromoNestedInput = {
+    create?: XOR<CategoryCreateWithoutCategoryforPromoInput, CategoryUncheckedCreateWithoutCategoryforPromoInput>
+    connectOrCreate?: CategoryCreateOrConnectWithoutCategoryforPromoInput
+    upsert?: CategoryUpsertWithoutCategoryforPromoInput
+    connect?: CategoryWhereUniqueInput
+    update?: XOR<XOR<CategoryUpdateToOneWithWhereWithoutCategoryforPromoInput, CategoryUpdateWithoutCategoryforPromoInput>, CategoryUncheckedUpdateWithoutCategoryforPromoInput>
   }
 
   export type SpecificProductCreateNestedOneWithoutPromotionsInput = {
@@ -20538,6 +24457,76 @@ export namespace Prisma {
     upsert?: PromotionUpsertWithoutProductsInput
     connect?: PromotionWhereUniqueInput
     update?: XOR<XOR<PromotionUpdateToOneWithWhereWithoutProductsInput, PromotionUpdateWithoutProductsInput>, PromotionUncheckedUpdateWithoutProductsInput>
+  }
+
+  export type SpecificProductCreateNestedOneWithoutPromoBannerInput = {
+    create?: XOR<SpecificProductCreateWithoutPromoBannerInput, SpecificProductUncheckedCreateWithoutPromoBannerInput>
+    connectOrCreate?: SpecificProductCreateOrConnectWithoutPromoBannerInput
+    connect?: SpecificProductWhereUniqueInput
+  }
+
+  export type CarouselCreateNestedOneWithoutBannersInput = {
+    create?: XOR<CarouselCreateWithoutBannersInput, CarouselUncheckedCreateWithoutBannersInput>
+    connectOrCreate?: CarouselCreateOrConnectWithoutBannersInput
+    connect?: CarouselWhereUniqueInput
+  }
+
+  export type SpecificProductUpdateOneRequiredWithoutPromoBannerNestedInput = {
+    create?: XOR<SpecificProductCreateWithoutPromoBannerInput, SpecificProductUncheckedCreateWithoutPromoBannerInput>
+    connectOrCreate?: SpecificProductCreateOrConnectWithoutPromoBannerInput
+    upsert?: SpecificProductUpsertWithoutPromoBannerInput
+    connect?: SpecificProductWhereUniqueInput
+    update?: XOR<XOR<SpecificProductUpdateToOneWithWhereWithoutPromoBannerInput, SpecificProductUpdateWithoutPromoBannerInput>, SpecificProductUncheckedUpdateWithoutPromoBannerInput>
+  }
+
+  export type CarouselUpdateOneRequiredWithoutBannersNestedInput = {
+    create?: XOR<CarouselCreateWithoutBannersInput, CarouselUncheckedCreateWithoutBannersInput>
+    connectOrCreate?: CarouselCreateOrConnectWithoutBannersInput
+    upsert?: CarouselUpsertWithoutBannersInput
+    connect?: CarouselWhereUniqueInput
+    update?: XOR<XOR<CarouselUpdateToOneWithWhereWithoutBannersInput, CarouselUpdateWithoutBannersInput>, CarouselUncheckedUpdateWithoutBannersInput>
+  }
+
+  export type PromoBannerCreateNestedManyWithoutCarouselInput = {
+    create?: XOR<PromoBannerCreateWithoutCarouselInput, PromoBannerUncheckedCreateWithoutCarouselInput> | PromoBannerCreateWithoutCarouselInput[] | PromoBannerUncheckedCreateWithoutCarouselInput[]
+    connectOrCreate?: PromoBannerCreateOrConnectWithoutCarouselInput | PromoBannerCreateOrConnectWithoutCarouselInput[]
+    createMany?: PromoBannerCreateManyCarouselInputEnvelope
+    connect?: PromoBannerWhereUniqueInput | PromoBannerWhereUniqueInput[]
+  }
+
+  export type PromoBannerUncheckedCreateNestedManyWithoutCarouselInput = {
+    create?: XOR<PromoBannerCreateWithoutCarouselInput, PromoBannerUncheckedCreateWithoutCarouselInput> | PromoBannerCreateWithoutCarouselInput[] | PromoBannerUncheckedCreateWithoutCarouselInput[]
+    connectOrCreate?: PromoBannerCreateOrConnectWithoutCarouselInput | PromoBannerCreateOrConnectWithoutCarouselInput[]
+    createMany?: PromoBannerCreateManyCarouselInputEnvelope
+    connect?: PromoBannerWhereUniqueInput | PromoBannerWhereUniqueInput[]
+  }
+
+  export type PromoBannerUpdateManyWithoutCarouselNestedInput = {
+    create?: XOR<PromoBannerCreateWithoutCarouselInput, PromoBannerUncheckedCreateWithoutCarouselInput> | PromoBannerCreateWithoutCarouselInput[] | PromoBannerUncheckedCreateWithoutCarouselInput[]
+    connectOrCreate?: PromoBannerCreateOrConnectWithoutCarouselInput | PromoBannerCreateOrConnectWithoutCarouselInput[]
+    upsert?: PromoBannerUpsertWithWhereUniqueWithoutCarouselInput | PromoBannerUpsertWithWhereUniqueWithoutCarouselInput[]
+    createMany?: PromoBannerCreateManyCarouselInputEnvelope
+    set?: PromoBannerWhereUniqueInput | PromoBannerWhereUniqueInput[]
+    disconnect?: PromoBannerWhereUniqueInput | PromoBannerWhereUniqueInput[]
+    delete?: PromoBannerWhereUniqueInput | PromoBannerWhereUniqueInput[]
+    connect?: PromoBannerWhereUniqueInput | PromoBannerWhereUniqueInput[]
+    update?: PromoBannerUpdateWithWhereUniqueWithoutCarouselInput | PromoBannerUpdateWithWhereUniqueWithoutCarouselInput[]
+    updateMany?: PromoBannerUpdateManyWithWhereWithoutCarouselInput | PromoBannerUpdateManyWithWhereWithoutCarouselInput[]
+    deleteMany?: PromoBannerScalarWhereInput | PromoBannerScalarWhereInput[]
+  }
+
+  export type PromoBannerUncheckedUpdateManyWithoutCarouselNestedInput = {
+    create?: XOR<PromoBannerCreateWithoutCarouselInput, PromoBannerUncheckedCreateWithoutCarouselInput> | PromoBannerCreateWithoutCarouselInput[] | PromoBannerUncheckedCreateWithoutCarouselInput[]
+    connectOrCreate?: PromoBannerCreateOrConnectWithoutCarouselInput | PromoBannerCreateOrConnectWithoutCarouselInput[]
+    upsert?: PromoBannerUpsertWithWhereUniqueWithoutCarouselInput | PromoBannerUpsertWithWhereUniqueWithoutCarouselInput[]
+    createMany?: PromoBannerCreateManyCarouselInputEnvelope
+    set?: PromoBannerWhereUniqueInput | PromoBannerWhereUniqueInput[]
+    disconnect?: PromoBannerWhereUniqueInput | PromoBannerWhereUniqueInput[]
+    delete?: PromoBannerWhereUniqueInput | PromoBannerWhereUniqueInput[]
+    connect?: PromoBannerWhereUniqueInput | PromoBannerWhereUniqueInput[]
+    update?: PromoBannerUpdateWithWhereUniqueWithoutCarouselInput | PromoBannerUpdateWithWhereUniqueWithoutCarouselInput[]
+    updateMany?: PromoBannerUpdateManyWithWhereWithoutCarouselInput | PromoBannerUpdateManyWithWhereWithoutCarouselInput[]
+    deleteMany?: PromoBannerScalarWhereInput | PromoBannerScalarWhereInput[]
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -21033,6 +25022,7 @@ export namespace Prisma {
     genericProd: GenericProductCreateNestedOneWithoutVariantsInput
     images?: ImagesCreateNestedManyWithoutProductInput
     color: ColorCreateNestedOneWithoutProductsInput
+    PromoBanner?: PromoBannerCreateNestedManyWithoutProductInput
   }
 
   export type SpecificProductUncheckedCreateWithoutProductForCartInput = {
@@ -21045,6 +25035,7 @@ export namespace Prisma {
     order?: ProductForOrderUncheckedCreateNestedManyWithoutProductInput
     promotions?: ProductForPromotionUncheckedCreateNestedManyWithoutProductInput
     images?: ImagesUncheckedCreateNestedManyWithoutProductInput
+    PromoBanner?: PromoBannerUncheckedCreateNestedManyWithoutProductInput
   }
 
   export type SpecificProductCreateOrConnectWithoutProductForCartInput = {
@@ -21118,6 +25109,7 @@ export namespace Prisma {
     genericProd?: GenericProductUpdateOneRequiredWithoutVariantsNestedInput
     images?: ImagesUpdateManyWithoutProductNestedInput
     color?: ColorUpdateOneRequiredWithoutProductsNestedInput
+    PromoBanner?: PromoBannerUpdateManyWithoutProductNestedInput
   }
 
   export type SpecificProductUncheckedUpdateWithoutProductForCartInput = {
@@ -21130,6 +25122,7 @@ export namespace Prisma {
     order?: ProductForOrderUncheckedUpdateManyWithoutProductNestedInput
     promotions?: ProductForPromotionUncheckedUpdateManyWithoutProductNestedInput
     images?: ImagesUncheckedUpdateManyWithoutProductNestedInput
+    PromoBanner?: PromoBannerUncheckedUpdateManyWithoutProductNestedInput
   }
 
   export type SpecificProductCreateWithoutGenericProdInput = {
@@ -21142,6 +25135,7 @@ export namespace Prisma {
     images?: ImagesCreateNestedManyWithoutProductInput
     ProductForCart?: ProductForCartCreateNestedManyWithoutProductInput
     color: ColorCreateNestedOneWithoutProductsInput
+    PromoBanner?: PromoBannerCreateNestedManyWithoutProductInput
   }
 
   export type SpecificProductUncheckedCreateWithoutGenericProdInput = {
@@ -21154,6 +25148,7 @@ export namespace Prisma {
     promotions?: ProductForPromotionUncheckedCreateNestedManyWithoutProductInput
     images?: ImagesUncheckedCreateNestedManyWithoutProductInput
     ProductForCart?: ProductForCartUncheckedCreateNestedManyWithoutProductInput
+    PromoBanner?: PromoBannerUncheckedCreateNestedManyWithoutProductInput
   }
 
   export type SpecificProductCreateOrConnectWithoutGenericProdInput = {
@@ -21189,11 +25184,13 @@ export namespace Prisma {
   export type CategoryCreateWithoutProductosInput = {
     id?: string
     nombre: string
+    CategoryforPromo?: CategoryforPromoCreateNestedManyWithoutCategoryInput
   }
 
   export type CategoryUncheckedCreateWithoutProductosInput = {
     id?: string
     nombre: string
+    CategoryforPromo?: CategoryforPromoUncheckedCreateNestedManyWithoutCategoryInput
   }
 
   export type CategoryCreateOrConnectWithoutProductosInput = {
@@ -21286,11 +25283,13 @@ export namespace Prisma {
   export type CategoryUpdateWithoutProductosInput = {
     id?: StringFieldUpdateOperationsInput | string
     nombre?: StringFieldUpdateOperationsInput | string
+    CategoryforPromo?: CategoryforPromoUpdateManyWithoutCategoryNestedInput
   }
 
   export type CategoryUncheckedUpdateWithoutProductosInput = {
     id?: StringFieldUpdateOperationsInput | string
     nombre?: StringFieldUpdateOperationsInput | string
+    CategoryforPromo?: CategoryforPromoUncheckedUpdateManyWithoutCategoryNestedInput
   }
 
   export type finishForProductsUpsertWithWhereUniqueWithoutProductInput = {
@@ -21343,6 +25342,24 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type CategoryforPromoCreateWithoutCategoryInput = {
+    promo: PromotionCreateNestedOneWithoutCategoriesInput
+  }
+
+  export type CategoryforPromoUncheckedCreateWithoutCategoryInput = {
+    promoId: string
+  }
+
+  export type CategoryforPromoCreateOrConnectWithoutCategoryInput = {
+    where: CategoryforPromoWhereUniqueInput
+    create: XOR<CategoryforPromoCreateWithoutCategoryInput, CategoryforPromoUncheckedCreateWithoutCategoryInput>
+  }
+
+  export type CategoryforPromoCreateManyCategoryInputEnvelope = {
+    data: CategoryforPromoCreateManyCategoryInput | CategoryforPromoCreateManyCategoryInput[]
+    skipDuplicates?: boolean
+  }
+
   export type GenericProductUpsertWithWhereUniqueWithoutCategoryInput = {
     where: GenericProductWhereUniqueInput
     update: XOR<GenericProductUpdateWithoutCategoryInput, GenericProductUncheckedUpdateWithoutCategoryInput>
@@ -21370,6 +25387,30 @@ export namespace Prisma {
     typology?: StringFilter<"GenericProduct"> | string
     vector?: StringFilter<"GenericProduct"> | string
     categoryId?: StringFilter<"GenericProduct"> | string
+  }
+
+  export type CategoryforPromoUpsertWithWhereUniqueWithoutCategoryInput = {
+    where: CategoryforPromoWhereUniqueInput
+    update: XOR<CategoryforPromoUpdateWithoutCategoryInput, CategoryforPromoUncheckedUpdateWithoutCategoryInput>
+    create: XOR<CategoryforPromoCreateWithoutCategoryInput, CategoryforPromoUncheckedCreateWithoutCategoryInput>
+  }
+
+  export type CategoryforPromoUpdateWithWhereUniqueWithoutCategoryInput = {
+    where: CategoryforPromoWhereUniqueInput
+    data: XOR<CategoryforPromoUpdateWithoutCategoryInput, CategoryforPromoUncheckedUpdateWithoutCategoryInput>
+  }
+
+  export type CategoryforPromoUpdateManyWithWhereWithoutCategoryInput = {
+    where: CategoryforPromoScalarWhereInput
+    data: XOR<CategoryforPromoUpdateManyMutationInput, CategoryforPromoUncheckedUpdateManyWithoutCategoryInput>
+  }
+
+  export type CategoryforPromoScalarWhereInput = {
+    AND?: CategoryforPromoScalarWhereInput | CategoryforPromoScalarWhereInput[]
+    OR?: CategoryforPromoScalarWhereInput[]
+    NOT?: CategoryforPromoScalarWhereInput | CategoryforPromoScalarWhereInput[]
+    promoId?: StringFilter<"CategoryforPromo"> | string
+    categoryId?: StringFilter<"CategoryforPromo"> | string
   }
 
   export type GenericProductCreateWithoutDetailsInput = {
@@ -21446,6 +25487,7 @@ export namespace Prisma {
     genericProd: GenericProductCreateNestedOneWithoutVariantsInput
     images?: ImagesCreateNestedManyWithoutProductInput
     ProductForCart?: ProductForCartCreateNestedManyWithoutProductInput
+    PromoBanner?: PromoBannerCreateNestedManyWithoutProductInput
   }
 
   export type SpecificProductUncheckedCreateWithoutColorInput = {
@@ -21458,6 +25500,7 @@ export namespace Prisma {
     promotions?: ProductForPromotionUncheckedCreateNestedManyWithoutProductInput
     images?: ImagesUncheckedCreateNestedManyWithoutProductInput
     ProductForCart?: ProductForCartUncheckedCreateNestedManyWithoutProductInput
+    PromoBanner?: PromoBannerUncheckedCreateNestedManyWithoutProductInput
   }
 
   export type SpecificProductCreateOrConnectWithoutColorInput = {
@@ -21612,6 +25655,33 @@ export namespace Prisma {
     create: XOR<ColorCreateWithoutProductsInput, ColorUncheckedCreateWithoutProductsInput>
   }
 
+  export type PromoBannerCreateWithoutProductInput = {
+    name: string
+    description: string
+    image: string
+    publicId?: string | null
+    carousel: CarouselCreateNestedOneWithoutBannersInput
+  }
+
+  export type PromoBannerUncheckedCreateWithoutProductInput = {
+    id?: number
+    name: string
+    description: string
+    image: string
+    publicId?: string | null
+    carouselId: number
+  }
+
+  export type PromoBannerCreateOrConnectWithoutProductInput = {
+    where: PromoBannerWhereUniqueInput
+    create: XOR<PromoBannerCreateWithoutProductInput, PromoBannerUncheckedCreateWithoutProductInput>
+  }
+
+  export type PromoBannerCreateManyProductInputEnvelope = {
+    data: PromoBannerCreateManyProductInput | PromoBannerCreateManyProductInput[]
+    skipDuplicates?: boolean
+  }
+
   export type ProductForOrderUpsertWithWhereUniqueWithoutProductInput = {
     where: ProductForOrderWhereUniqueInput
     update: XOR<ProductForOrderUpdateWithoutProductInput, ProductForOrderUncheckedUpdateWithoutProductInput>
@@ -21763,6 +25833,35 @@ export namespace Prisma {
     publicId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
+  export type PromoBannerUpsertWithWhereUniqueWithoutProductInput = {
+    where: PromoBannerWhereUniqueInput
+    update: XOR<PromoBannerUpdateWithoutProductInput, PromoBannerUncheckedUpdateWithoutProductInput>
+    create: XOR<PromoBannerCreateWithoutProductInput, PromoBannerUncheckedCreateWithoutProductInput>
+  }
+
+  export type PromoBannerUpdateWithWhereUniqueWithoutProductInput = {
+    where: PromoBannerWhereUniqueInput
+    data: XOR<PromoBannerUpdateWithoutProductInput, PromoBannerUncheckedUpdateWithoutProductInput>
+  }
+
+  export type PromoBannerUpdateManyWithWhereWithoutProductInput = {
+    where: PromoBannerScalarWhereInput
+    data: XOR<PromoBannerUpdateManyMutationInput, PromoBannerUncheckedUpdateManyWithoutProductInput>
+  }
+
+  export type PromoBannerScalarWhereInput = {
+    AND?: PromoBannerScalarWhereInput | PromoBannerScalarWhereInput[]
+    OR?: PromoBannerScalarWhereInput[]
+    NOT?: PromoBannerScalarWhereInput | PromoBannerScalarWhereInput[]
+    id?: IntFilter<"PromoBanner"> | number
+    name?: StringFilter<"PromoBanner"> | string
+    description?: StringFilter<"PromoBanner"> | string
+    prodId?: StringFilter<"PromoBanner"> | string
+    image?: StringFilter<"PromoBanner"> | string
+    publicId?: StringNullableFilter<"PromoBanner"> | string | null
+    carouselId?: IntFilter<"PromoBanner"> | number
+  }
+
   export type SpecificProductCreateWithoutImagesInput = {
     id?: string
     image: string
@@ -21773,6 +25872,7 @@ export namespace Prisma {
     genericProd: GenericProductCreateNestedOneWithoutVariantsInput
     ProductForCart?: ProductForCartCreateNestedManyWithoutProductInput
     color: ColorCreateNestedOneWithoutProductsInput
+    PromoBanner?: PromoBannerCreateNestedManyWithoutProductInput
   }
 
   export type SpecificProductUncheckedCreateWithoutImagesInput = {
@@ -21785,6 +25885,7 @@ export namespace Prisma {
     order?: ProductForOrderUncheckedCreateNestedManyWithoutProductInput
     promotions?: ProductForPromotionUncheckedCreateNestedManyWithoutProductInput
     ProductForCart?: ProductForCartUncheckedCreateNestedManyWithoutProductInput
+    PromoBanner?: PromoBannerUncheckedCreateNestedManyWithoutProductInput
   }
 
   export type SpecificProductCreateOrConnectWithoutImagesInput = {
@@ -21813,6 +25914,7 @@ export namespace Prisma {
     genericProd?: GenericProductUpdateOneRequiredWithoutVariantsNestedInput
     ProductForCart?: ProductForCartUpdateManyWithoutProductNestedInput
     color?: ColorUpdateOneRequiredWithoutProductsNestedInput
+    PromoBanner?: PromoBannerUpdateManyWithoutProductNestedInput
   }
 
   export type SpecificProductUncheckedUpdateWithoutImagesInput = {
@@ -21825,6 +25927,7 @@ export namespace Prisma {
     order?: ProductForOrderUncheckedUpdateManyWithoutProductNestedInput
     promotions?: ProductForPromotionUncheckedUpdateManyWithoutProductNestedInput
     ProductForCart?: ProductForCartUncheckedUpdateManyWithoutProductNestedInput
+    PromoBanner?: PromoBannerUncheckedUpdateManyWithoutProductNestedInput
   }
 
   export type UserCreateWithoutOrdersInput = {
@@ -21998,6 +26101,7 @@ export namespace Prisma {
     images?: ImagesCreateNestedManyWithoutProductInput
     ProductForCart?: ProductForCartCreateNestedManyWithoutProductInput
     color: ColorCreateNestedOneWithoutProductsInput
+    PromoBanner?: PromoBannerCreateNestedManyWithoutProductInput
   }
 
   export type SpecificProductUncheckedCreateWithoutOrderInput = {
@@ -22010,6 +26114,7 @@ export namespace Prisma {
     promotions?: ProductForPromotionUncheckedCreateNestedManyWithoutProductInput
     images?: ImagesUncheckedCreateNestedManyWithoutProductInput
     ProductForCart?: ProductForCartUncheckedCreateNestedManyWithoutProductInput
+    PromoBanner?: PromoBannerUncheckedCreateNestedManyWithoutProductInput
   }
 
   export type SpecificProductCreateOrConnectWithoutOrderInput = {
@@ -22085,6 +26190,7 @@ export namespace Prisma {
     images?: ImagesUpdateManyWithoutProductNestedInput
     ProductForCart?: ProductForCartUpdateManyWithoutProductNestedInput
     color?: ColorUpdateOneRequiredWithoutProductsNestedInput
+    PromoBanner?: PromoBannerUpdateManyWithoutProductNestedInput
   }
 
   export type SpecificProductUncheckedUpdateWithoutOrderInput = {
@@ -22097,6 +26203,7 @@ export namespace Prisma {
     promotions?: ProductForPromotionUncheckedUpdateManyWithoutProductNestedInput
     images?: ImagesUncheckedUpdateManyWithoutProductNestedInput
     ProductForCart?: ProductForCartUncheckedUpdateManyWithoutProductNestedInput
+    PromoBanner?: PromoBannerUncheckedUpdateManyWithoutProductNestedInput
   }
 
   export type ProductForPromotionCreateWithoutPromotionInput = {
@@ -22117,6 +26224,24 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type CategoryforPromoCreateWithoutPromoInput = {
+    category: CategoryCreateNestedOneWithoutCategoryforPromoInput
+  }
+
+  export type CategoryforPromoUncheckedCreateWithoutPromoInput = {
+    categoryId: string
+  }
+
+  export type CategoryforPromoCreateOrConnectWithoutPromoInput = {
+    where: CategoryforPromoWhereUniqueInput
+    create: XOR<CategoryforPromoCreateWithoutPromoInput, CategoryforPromoUncheckedCreateWithoutPromoInput>
+  }
+
+  export type CategoryforPromoCreateManyPromoInputEnvelope = {
+    data: CategoryforPromoCreateManyPromoInput | CategoryforPromoCreateManyPromoInput[]
+    skipDuplicates?: boolean
+  }
+
   export type ProductForPromotionUpsertWithWhereUniqueWithoutPromotionInput = {
     where: ProductForPromotionWhereUniqueInput
     update: XOR<ProductForPromotionUpdateWithoutPromotionInput, ProductForPromotionUncheckedUpdateWithoutPromotionInput>
@@ -22133,6 +26258,118 @@ export namespace Prisma {
     data: XOR<ProductForPromotionUpdateManyMutationInput, ProductForPromotionUncheckedUpdateManyWithoutPromotionInput>
   }
 
+  export type CategoryforPromoUpsertWithWhereUniqueWithoutPromoInput = {
+    where: CategoryforPromoWhereUniqueInput
+    update: XOR<CategoryforPromoUpdateWithoutPromoInput, CategoryforPromoUncheckedUpdateWithoutPromoInput>
+    create: XOR<CategoryforPromoCreateWithoutPromoInput, CategoryforPromoUncheckedCreateWithoutPromoInput>
+  }
+
+  export type CategoryforPromoUpdateWithWhereUniqueWithoutPromoInput = {
+    where: CategoryforPromoWhereUniqueInput
+    data: XOR<CategoryforPromoUpdateWithoutPromoInput, CategoryforPromoUncheckedUpdateWithoutPromoInput>
+  }
+
+  export type CategoryforPromoUpdateManyWithWhereWithoutPromoInput = {
+    where: CategoryforPromoScalarWhereInput
+    data: XOR<CategoryforPromoUpdateManyMutationInput, CategoryforPromoUncheckedUpdateManyWithoutPromoInput>
+  }
+
+  export type PromotionCreateWithoutCategoriesInput = {
+    promo_id?: string
+    startDate: Date | string
+    endDate: Date | string
+    name: string
+    discountType: string
+    Type: string
+    products?: ProductForPromotionCreateNestedManyWithoutPromotionInput
+  }
+
+  export type PromotionUncheckedCreateWithoutCategoriesInput = {
+    promo_id?: string
+    startDate: Date | string
+    endDate: Date | string
+    name: string
+    discountType: string
+    Type: string
+    products?: ProductForPromotionUncheckedCreateNestedManyWithoutPromotionInput
+  }
+
+  export type PromotionCreateOrConnectWithoutCategoriesInput = {
+    where: PromotionWhereUniqueInput
+    create: XOR<PromotionCreateWithoutCategoriesInput, PromotionUncheckedCreateWithoutCategoriesInput>
+  }
+
+  export type CategoryCreateWithoutCategoryforPromoInput = {
+    id?: string
+    nombre: string
+    productos?: GenericProductCreateNestedManyWithoutCategoryInput
+  }
+
+  export type CategoryUncheckedCreateWithoutCategoryforPromoInput = {
+    id?: string
+    nombre: string
+    productos?: GenericProductUncheckedCreateNestedManyWithoutCategoryInput
+  }
+
+  export type CategoryCreateOrConnectWithoutCategoryforPromoInput = {
+    where: CategoryWhereUniqueInput
+    create: XOR<CategoryCreateWithoutCategoryforPromoInput, CategoryUncheckedCreateWithoutCategoryforPromoInput>
+  }
+
+  export type PromotionUpsertWithoutCategoriesInput = {
+    update: XOR<PromotionUpdateWithoutCategoriesInput, PromotionUncheckedUpdateWithoutCategoriesInput>
+    create: XOR<PromotionCreateWithoutCategoriesInput, PromotionUncheckedCreateWithoutCategoriesInput>
+    where?: PromotionWhereInput
+  }
+
+  export type PromotionUpdateToOneWithWhereWithoutCategoriesInput = {
+    where?: PromotionWhereInput
+    data: XOR<PromotionUpdateWithoutCategoriesInput, PromotionUncheckedUpdateWithoutCategoriesInput>
+  }
+
+  export type PromotionUpdateWithoutCategoriesInput = {
+    promo_id?: StringFieldUpdateOperationsInput | string
+    startDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    endDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: StringFieldUpdateOperationsInput | string
+    discountType?: StringFieldUpdateOperationsInput | string
+    Type?: StringFieldUpdateOperationsInput | string
+    products?: ProductForPromotionUpdateManyWithoutPromotionNestedInput
+  }
+
+  export type PromotionUncheckedUpdateWithoutCategoriesInput = {
+    promo_id?: StringFieldUpdateOperationsInput | string
+    startDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    endDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    name?: StringFieldUpdateOperationsInput | string
+    discountType?: StringFieldUpdateOperationsInput | string
+    Type?: StringFieldUpdateOperationsInput | string
+    products?: ProductForPromotionUncheckedUpdateManyWithoutPromotionNestedInput
+  }
+
+  export type CategoryUpsertWithoutCategoryforPromoInput = {
+    update: XOR<CategoryUpdateWithoutCategoryforPromoInput, CategoryUncheckedUpdateWithoutCategoryforPromoInput>
+    create: XOR<CategoryCreateWithoutCategoryforPromoInput, CategoryUncheckedCreateWithoutCategoryforPromoInput>
+    where?: CategoryWhereInput
+  }
+
+  export type CategoryUpdateToOneWithWhereWithoutCategoryforPromoInput = {
+    where?: CategoryWhereInput
+    data: XOR<CategoryUpdateWithoutCategoryforPromoInput, CategoryUncheckedUpdateWithoutCategoryforPromoInput>
+  }
+
+  export type CategoryUpdateWithoutCategoryforPromoInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    nombre?: StringFieldUpdateOperationsInput | string
+    productos?: GenericProductUpdateManyWithoutCategoryNestedInput
+  }
+
+  export type CategoryUncheckedUpdateWithoutCategoryforPromoInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    nombre?: StringFieldUpdateOperationsInput | string
+    productos?: GenericProductUncheckedUpdateManyWithoutCategoryNestedInput
+  }
+
   export type SpecificProductCreateWithoutPromotionsInput = {
     id?: string
     image: string
@@ -22143,6 +26380,7 @@ export namespace Prisma {
     images?: ImagesCreateNestedManyWithoutProductInput
     ProductForCart?: ProductForCartCreateNestedManyWithoutProductInput
     color: ColorCreateNestedOneWithoutProductsInput
+    PromoBanner?: PromoBannerCreateNestedManyWithoutProductInput
   }
 
   export type SpecificProductUncheckedCreateWithoutPromotionsInput = {
@@ -22155,6 +26393,7 @@ export namespace Prisma {
     order?: ProductForOrderUncheckedCreateNestedManyWithoutProductInput
     images?: ImagesUncheckedCreateNestedManyWithoutProductInput
     ProductForCart?: ProductForCartUncheckedCreateNestedManyWithoutProductInput
+    PromoBanner?: PromoBannerUncheckedCreateNestedManyWithoutProductInput
   }
 
   export type SpecificProductCreateOrConnectWithoutPromotionsInput = {
@@ -22164,18 +26403,22 @@ export namespace Prisma {
 
   export type PromotionCreateWithoutProductsInput = {
     promo_id?: string
-    code: string
     startDate: Date | string
     endDate: Date | string
-    isActive?: boolean
+    name: string
+    discountType: string
+    Type: string
+    categories?: CategoryforPromoCreateNestedManyWithoutPromoInput
   }
 
   export type PromotionUncheckedCreateWithoutProductsInput = {
     promo_id?: string
-    code: string
     startDate: Date | string
     endDate: Date | string
-    isActive?: boolean
+    name: string
+    discountType: string
+    Type: string
+    categories?: CategoryforPromoUncheckedCreateNestedManyWithoutPromoInput
   }
 
   export type PromotionCreateOrConnectWithoutProductsInput = {
@@ -22204,6 +26447,7 @@ export namespace Prisma {
     images?: ImagesUpdateManyWithoutProductNestedInput
     ProductForCart?: ProductForCartUpdateManyWithoutProductNestedInput
     color?: ColorUpdateOneRequiredWithoutProductsNestedInput
+    PromoBanner?: PromoBannerUpdateManyWithoutProductNestedInput
   }
 
   export type SpecificProductUncheckedUpdateWithoutPromotionsInput = {
@@ -22216,6 +26460,7 @@ export namespace Prisma {
     order?: ProductForOrderUncheckedUpdateManyWithoutProductNestedInput
     images?: ImagesUncheckedUpdateManyWithoutProductNestedInput
     ProductForCart?: ProductForCartUncheckedUpdateManyWithoutProductNestedInput
+    PromoBanner?: PromoBannerUncheckedUpdateManyWithoutProductNestedInput
   }
 
   export type PromotionUpsertWithoutProductsInput = {
@@ -22231,18 +26476,167 @@ export namespace Prisma {
 
   export type PromotionUpdateWithoutProductsInput = {
     promo_id?: StringFieldUpdateOperationsInput | string
-    code?: StringFieldUpdateOperationsInput | string
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    isActive?: BoolFieldUpdateOperationsInput | boolean
+    name?: StringFieldUpdateOperationsInput | string
+    discountType?: StringFieldUpdateOperationsInput | string
+    Type?: StringFieldUpdateOperationsInput | string
+    categories?: CategoryforPromoUpdateManyWithoutPromoNestedInput
   }
 
   export type PromotionUncheckedUpdateWithoutProductsInput = {
     promo_id?: StringFieldUpdateOperationsInput | string
-    code?: StringFieldUpdateOperationsInput | string
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
-    isActive?: BoolFieldUpdateOperationsInput | boolean
+    name?: StringFieldUpdateOperationsInput | string
+    discountType?: StringFieldUpdateOperationsInput | string
+    Type?: StringFieldUpdateOperationsInput | string
+    categories?: CategoryforPromoUncheckedUpdateManyWithoutPromoNestedInput
+  }
+
+  export type SpecificProductCreateWithoutPromoBannerInput = {
+    id?: string
+    image: string
+    price: number
+    stock?: number
+    order?: ProductForOrderCreateNestedManyWithoutProductInput
+    promotions?: ProductForPromotionCreateNestedManyWithoutProductInput
+    genericProd: GenericProductCreateNestedOneWithoutVariantsInput
+    images?: ImagesCreateNestedManyWithoutProductInput
+    ProductForCart?: ProductForCartCreateNestedManyWithoutProductInput
+    color: ColorCreateNestedOneWithoutProductsInput
+  }
+
+  export type SpecificProductUncheckedCreateWithoutPromoBannerInput = {
+    genericId: string
+    id?: string
+    image: string
+    price: number
+    colorId: string
+    stock?: number
+    order?: ProductForOrderUncheckedCreateNestedManyWithoutProductInput
+    promotions?: ProductForPromotionUncheckedCreateNestedManyWithoutProductInput
+    images?: ImagesUncheckedCreateNestedManyWithoutProductInput
+    ProductForCart?: ProductForCartUncheckedCreateNestedManyWithoutProductInput
+  }
+
+  export type SpecificProductCreateOrConnectWithoutPromoBannerInput = {
+    where: SpecificProductWhereUniqueInput
+    create: XOR<SpecificProductCreateWithoutPromoBannerInput, SpecificProductUncheckedCreateWithoutPromoBannerInput>
+  }
+
+  export type CarouselCreateWithoutBannersInput = {
+    name: string
+  }
+
+  export type CarouselUncheckedCreateWithoutBannersInput = {
+    id?: number
+    name: string
+  }
+
+  export type CarouselCreateOrConnectWithoutBannersInput = {
+    where: CarouselWhereUniqueInput
+    create: XOR<CarouselCreateWithoutBannersInput, CarouselUncheckedCreateWithoutBannersInput>
+  }
+
+  export type SpecificProductUpsertWithoutPromoBannerInput = {
+    update: XOR<SpecificProductUpdateWithoutPromoBannerInput, SpecificProductUncheckedUpdateWithoutPromoBannerInput>
+    create: XOR<SpecificProductCreateWithoutPromoBannerInput, SpecificProductUncheckedCreateWithoutPromoBannerInput>
+    where?: SpecificProductWhereInput
+  }
+
+  export type SpecificProductUpdateToOneWithWhereWithoutPromoBannerInput = {
+    where?: SpecificProductWhereInput
+    data: XOR<SpecificProductUpdateWithoutPromoBannerInput, SpecificProductUncheckedUpdateWithoutPromoBannerInput>
+  }
+
+  export type SpecificProductUpdateWithoutPromoBannerInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    price?: FloatFieldUpdateOperationsInput | number
+    stock?: IntFieldUpdateOperationsInput | number
+    order?: ProductForOrderUpdateManyWithoutProductNestedInput
+    promotions?: ProductForPromotionUpdateManyWithoutProductNestedInput
+    genericProd?: GenericProductUpdateOneRequiredWithoutVariantsNestedInput
+    images?: ImagesUpdateManyWithoutProductNestedInput
+    ProductForCart?: ProductForCartUpdateManyWithoutProductNestedInput
+    color?: ColorUpdateOneRequiredWithoutProductsNestedInput
+  }
+
+  export type SpecificProductUncheckedUpdateWithoutPromoBannerInput = {
+    genericId?: StringFieldUpdateOperationsInput | string
+    id?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    price?: FloatFieldUpdateOperationsInput | number
+    colorId?: StringFieldUpdateOperationsInput | string
+    stock?: IntFieldUpdateOperationsInput | number
+    order?: ProductForOrderUncheckedUpdateManyWithoutProductNestedInput
+    promotions?: ProductForPromotionUncheckedUpdateManyWithoutProductNestedInput
+    images?: ImagesUncheckedUpdateManyWithoutProductNestedInput
+    ProductForCart?: ProductForCartUncheckedUpdateManyWithoutProductNestedInput
+  }
+
+  export type CarouselUpsertWithoutBannersInput = {
+    update: XOR<CarouselUpdateWithoutBannersInput, CarouselUncheckedUpdateWithoutBannersInput>
+    create: XOR<CarouselCreateWithoutBannersInput, CarouselUncheckedCreateWithoutBannersInput>
+    where?: CarouselWhereInput
+  }
+
+  export type CarouselUpdateToOneWithWhereWithoutBannersInput = {
+    where?: CarouselWhereInput
+    data: XOR<CarouselUpdateWithoutBannersInput, CarouselUncheckedUpdateWithoutBannersInput>
+  }
+
+  export type CarouselUpdateWithoutBannersInput = {
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CarouselUncheckedUpdateWithoutBannersInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type PromoBannerCreateWithoutCarouselInput = {
+    name: string
+    description: string
+    image: string
+    publicId?: string | null
+    product: SpecificProductCreateNestedOneWithoutPromoBannerInput
+  }
+
+  export type PromoBannerUncheckedCreateWithoutCarouselInput = {
+    id?: number
+    name: string
+    description: string
+    prodId: string
+    image: string
+    publicId?: string | null
+  }
+
+  export type PromoBannerCreateOrConnectWithoutCarouselInput = {
+    where: PromoBannerWhereUniqueInput
+    create: XOR<PromoBannerCreateWithoutCarouselInput, PromoBannerUncheckedCreateWithoutCarouselInput>
+  }
+
+  export type PromoBannerCreateManyCarouselInputEnvelope = {
+    data: PromoBannerCreateManyCarouselInput | PromoBannerCreateManyCarouselInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type PromoBannerUpsertWithWhereUniqueWithoutCarouselInput = {
+    where: PromoBannerWhereUniqueInput
+    update: XOR<PromoBannerUpdateWithoutCarouselInput, PromoBannerUncheckedUpdateWithoutCarouselInput>
+    create: XOR<PromoBannerCreateWithoutCarouselInput, PromoBannerUncheckedCreateWithoutCarouselInput>
+  }
+
+  export type PromoBannerUpdateWithWhereUniqueWithoutCarouselInput = {
+    where: PromoBannerWhereUniqueInput
+    data: XOR<PromoBannerUpdateWithoutCarouselInput, PromoBannerUncheckedUpdateWithoutCarouselInput>
+  }
+
+  export type PromoBannerUpdateManyWithWhereWithoutCarouselInput = {
+    where: PromoBannerScalarWhereInput
+    data: XOR<PromoBannerUpdateManyMutationInput, PromoBannerUncheckedUpdateManyWithoutCarouselInput>
   }
 
   export type ProductForCartCreateManyUserInput = {
@@ -22374,6 +26768,7 @@ export namespace Prisma {
     images?: ImagesUpdateManyWithoutProductNestedInput
     ProductForCart?: ProductForCartUpdateManyWithoutProductNestedInput
     color?: ColorUpdateOneRequiredWithoutProductsNestedInput
+    PromoBanner?: PromoBannerUpdateManyWithoutProductNestedInput
   }
 
   export type SpecificProductUncheckedUpdateWithoutGenericProdInput = {
@@ -22386,6 +26781,7 @@ export namespace Prisma {
     promotions?: ProductForPromotionUncheckedUpdateManyWithoutProductNestedInput
     images?: ImagesUncheckedUpdateManyWithoutProductNestedInput
     ProductForCart?: ProductForCartUncheckedUpdateManyWithoutProductNestedInput
+    PromoBanner?: PromoBannerUncheckedUpdateManyWithoutProductNestedInput
   }
 
   export type SpecificProductUncheckedUpdateManyWithoutGenericProdInput = {
@@ -22432,6 +26828,10 @@ export namespace Prisma {
     vector?: string
   }
 
+  export type CategoryforPromoCreateManyCategoryInput = {
+    promoId: string
+  }
+
   export type GenericProductUpdateWithoutCategoryInput = {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
@@ -22465,6 +26865,18 @@ export namespace Prisma {
     vector?: StringFieldUpdateOperationsInput | string
   }
 
+  export type CategoryforPromoUpdateWithoutCategoryInput = {
+    promo?: PromotionUpdateOneRequiredWithoutCategoriesNestedInput
+  }
+
+  export type CategoryforPromoUncheckedUpdateWithoutCategoryInput = {
+    promoId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CategoryforPromoUncheckedUpdateManyWithoutCategoryInput = {
+    promoId?: StringFieldUpdateOperationsInput | string
+  }
+
   export type SpecificProductCreateManyColorInput = {
     genericId: string
     id?: string
@@ -22483,6 +26895,7 @@ export namespace Prisma {
     genericProd?: GenericProductUpdateOneRequiredWithoutVariantsNestedInput
     images?: ImagesUpdateManyWithoutProductNestedInput
     ProductForCart?: ProductForCartUpdateManyWithoutProductNestedInput
+    PromoBanner?: PromoBannerUpdateManyWithoutProductNestedInput
   }
 
   export type SpecificProductUncheckedUpdateWithoutColorInput = {
@@ -22495,6 +26908,7 @@ export namespace Prisma {
     promotions?: ProductForPromotionUncheckedUpdateManyWithoutProductNestedInput
     images?: ImagesUncheckedUpdateManyWithoutProductNestedInput
     ProductForCart?: ProductForCartUncheckedUpdateManyWithoutProductNestedInput
+    PromoBanner?: PromoBannerUncheckedUpdateManyWithoutProductNestedInput
   }
 
   export type SpecificProductUncheckedUpdateManyWithoutColorInput = {
@@ -22522,6 +26936,15 @@ export namespace Prisma {
 
   export type ProductForCartCreateManyProductInput = {
     userId: string
+  }
+
+  export type PromoBannerCreateManyProductInput = {
+    id?: number
+    name: string
+    description: string
+    image: string
+    publicId?: string | null
+    carouselId: number
   }
 
   export type ProductForOrderUpdateWithoutProductInput = {
@@ -22581,6 +27004,32 @@ export namespace Prisma {
     userId?: StringFieldUpdateOperationsInput | string
   }
 
+  export type PromoBannerUpdateWithoutProductInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    publicId?: NullableStringFieldUpdateOperationsInput | string | null
+    carousel?: CarouselUpdateOneRequiredWithoutBannersNestedInput
+  }
+
+  export type PromoBannerUncheckedUpdateWithoutProductInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    publicId?: NullableStringFieldUpdateOperationsInput | string | null
+    carouselId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type PromoBannerUncheckedUpdateManyWithoutProductInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    publicId?: NullableStringFieldUpdateOperationsInput | string | null
+    carouselId?: IntFieldUpdateOperationsInput | number
+  }
+
   export type ProductForOrderCreateManyOrderInput = {
     productId: string
     count?: number
@@ -22605,6 +27054,10 @@ export namespace Prisma {
     productId: string
   }
 
+  export type CategoryforPromoCreateManyPromoInput = {
+    categoryId: string
+  }
+
   export type ProductForPromotionUpdateWithoutPromotionInput = {
     product?: SpecificProductUpdateOneRequiredWithoutPromotionsNestedInput
   }
@@ -22615,6 +27068,53 @@ export namespace Prisma {
 
   export type ProductForPromotionUncheckedUpdateManyWithoutPromotionInput = {
     productId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CategoryforPromoUpdateWithoutPromoInput = {
+    category?: CategoryUpdateOneRequiredWithoutCategoryforPromoNestedInput
+  }
+
+  export type CategoryforPromoUncheckedUpdateWithoutPromoInput = {
+    categoryId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type CategoryforPromoUncheckedUpdateManyWithoutPromoInput = {
+    categoryId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type PromoBannerCreateManyCarouselInput = {
+    id?: number
+    name: string
+    description: string
+    prodId: string
+    image: string
+    publicId?: string | null
+  }
+
+  export type PromoBannerUpdateWithoutCarouselInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    publicId?: NullableStringFieldUpdateOperationsInput | string | null
+    product?: SpecificProductUpdateOneRequiredWithoutPromoBannerNestedInput
+  }
+
+  export type PromoBannerUncheckedUpdateWithoutCarouselInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    prodId?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    publicId?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type PromoBannerUncheckedUpdateManyWithoutCarouselInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
+    prodId?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    publicId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
 
