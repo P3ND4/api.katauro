@@ -1,9 +1,11 @@
 import { PrismaService } from "src/prisma/prisma.service";
-import { CatEntity, Color, Finish } from "./entities/product.entity";
+import { Categories, CatEntity, Color, Finish } from "./entities/product.entity";
 import { IPropiertiesRepository } from "./repositorys/IPropiertiesRepository";
 export declare class propRepository implements IPropiertiesRepository {
     private prisma;
     constructor(prisma: PrismaService);
+    readonly baseCategories: Categories[];
+    seedBaseCategories(): Promise<void>;
     findColors(): Promise<Color[]>;
     addColor(data: {
         image: string;

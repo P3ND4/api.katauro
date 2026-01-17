@@ -7,7 +7,7 @@ export class User {
     lastName: string;
     password: string;
     image: string;
-    phone: number;
+    phone: string;
     orders?: Order[];
     emailVerified: boolean;
     emailVerificationCode: string;

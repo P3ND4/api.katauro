@@ -13,4 +13,5 @@ export interface IPropiertiesRepository {
         name: string;
     }): Promise<Color>;
     deleteColor(id: string): Promise<Color>;
+    seedBaseCategories(): Promise<void>;
 }

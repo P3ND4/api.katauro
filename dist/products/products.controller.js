@@ -20,7 +20,6 @@ const update_product_dto_1 = require("./dto/update-product.dto");
 const create_sproduct_dto_1 = require("./dto/create-sproduct.dto");
 const spec_product_service_1 = require("./spec-product/spec-product.service");
 const update_sproduct_dto_1 = require("./dto/update-sproduct.dto");
-const console_1 = require("console");
 let ProductsController = class ProductsController {
     productsService;
     specProdService;
@@ -55,22 +54,15 @@ let ProductsController = class ProductsController {
     createColor(data) {
         return this.productsService.createColor(data);
     }
-    findAll(page, cat) {
-        try {
-            if (page && !cat) {
-                return this.productsService.findPage(+page);
-            }
-            else if (cat) {
-                return page ? this.productsService.getProductByCategory(cat, +page) : this.productsService.getProductByCategory(cat);
-            }
-            return this.productsService.findAll();
-        }
-        catch (err) {
-            return console_1.error;
-        }
+    findAll(page, cat, search) {
+        return page ? this.productsService.findAll({ category: cat, page: +page, search: search }) : this.productsService.findAll({ category: cat, search: search });
     }
-    findPage(cat) {
-        return cat ? this.productsService.getPages(cat) : this.productsService.getPages();
+    findPage(cat, search) {
+        const options = {
+            categories: cat,
+            search: search,
+        };
+        return cat ? this.productsService.getPages(options) : this.productsService.getPages();
     }
     createVariant(createSpecProductDTO) {
         return this.specProdService.create(createSpecProductDTO);
@@ -162,15 +154,17 @@ __decorate([
     (0, common_1.Get)(),
     __param(0, (0, common_1.Query)('page')),
     __param(1, (0, common_1.Query)('category')),
+    __param(2, (0, common_1.Query)('search')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, String]),
+    __metadata("design:paramtypes", [String, String, String]),
     __metadata("design:returntype", void 0)
 ], ProductsController.prototype, "findAll", null);
 __decorate([
     (0, common_1.Get)('pages'),
     __param(0, (0, common_1.Query)('category')),
+    __param(1, (0, common_1.Query)('search')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
+    __metadata("design:paramtypes", [String, String]),
     __metadata("design:returntype", void 0)
 ], ProductsController.prototype, "findPage", null);
 __decorate([

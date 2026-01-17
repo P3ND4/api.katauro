@@ -1,4 +1,4 @@
-import { BadRequestException, Injectable, UnauthorizedException } from '@nestjs/common';
+import { BadRequestException, HttpException, Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { CreateUserDto } from 'src/users/dto/create-user.dto';
 import { UsersService } from 'src/users/users.service';
@@ -16,9 +16,6 @@ export class AuthService {
         private readonly mailService: MailService
     ) { }
     async register(createUserDto: CreateUserDto): Promise<any> {
-
-        const userExists = await this.userService.findUserByEmail(createUserDto.email).catch(() => null);
-        if (userExists) throw new BadRequestException('User already exists');
         return this.userService.create(createUserDto);
     }
 
@@ -26,10 +23,10 @@ export class AuthService {
         const { email, password } = credentials;
         const user = await this.userService.findUserByEmail(email);
         if (!user) {
-            throw new BadRequestException('User not found');
+            throw new UnauthorizedException('No existe usuario con ese email');
         }
         if (!user || !(await bcrypt.compare(password, user.password))) {
-            throw new UnauthorizedException('Invalid credentials');
+            throw new UnauthorizedException('Contraseña incorrecta');
         }
         return this.createToken(user);
     }
@@ -100,13 +97,13 @@ export class AuthService {
         if (!user) throw new BadRequestException('User not found');
 
         if (!user.emailVerificationCode || !user.emailVerificationExpires)
-            throw new Error('No hay código pendiente');
+            throw new BadRequestException('No hay código pendiente');
 
         if (user.emailVerificationExpires < new Date())
-            throw new Error('Código expirado');
+            throw new BadRequestException('Código expirado');
 
         if (user.emailVerificationCode !== code)
-            throw new Error('Código incorrecto');
+            throw new BadRequestException('Código incorrecto');
 
         await this.userService.update(user.id,
             {

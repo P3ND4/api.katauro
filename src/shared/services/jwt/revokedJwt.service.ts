@@ -1,6 +1,7 @@
 import { Injectable } from "@nestjs/common";
+import { Cron } from "@nestjs/schedule";
 import { TokenBlacklist } from "generated/prisma";
-import { PrismaService } from "src/prisma/prisma.service";
+import { PrismaService } from "src/shared/services/prisma/prisma.service";
 
 @Injectable()
 export class RevokedJwtService {
@@ -25,6 +26,18 @@ export class RevokedJwtService {
         //    where: { token: token }
         //});
         return !!record;
+    }
+
+    @Cron('0 0 * * *') // Corre todos los días a medianoche
+    async cleanExpiredTokens() {
+        const now = new Date();
+        await this.prisma.tokenBlacklist.deleteMany({
+            where: {
+                expiresAt: {
+                    lt: now
+                }
+            }
+        });
     }
 }
 

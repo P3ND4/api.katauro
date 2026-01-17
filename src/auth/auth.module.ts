@@ -6,7 +6,7 @@ import { JwtStrategy } from '../shared/services/jwt/jwt.strategy';
 import { UsersService } from 'src/users/users.service';
 import { JwtModule, JwtService } from '@nestjs/jwt';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { PrismaService } from 'src/prisma/prisma.service';
+import { PrismaService } from 'src/shared/services/prisma/prisma.service';
 import { UsersRepository } from 'src/users/users.repository';
 import { RevokedJwtService } from '../shared/services/jwt/revokedJwt.service';
 import { MailService } from 'src/shared/services/mail/mail.service';

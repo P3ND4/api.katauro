@@ -30,7 +30,17 @@ let SpecProductRepository = class SpecProductRepository {
         return this.prismaService.specificProduct.findUnique({ where: { id }, include: { images: true, genericProd: true, color: true } });
     }
     updateProduct(id, data) {
-        return this.prismaService.specificProduct.update({ where: { id }, data: { stock: data.stock, price: data.price, image: data.image, genericId: '', images: { create: data.images?.map(x => ({ link: x })) }, colorId: data.colorId } });
+        return this.prismaService.specificProduct.update({
+            where: { id },
+            data: {
+                stock: data.setStock ? { increment: data.setStock > 0 ? data.setStock : 0, decrement: data.setStock < 0 ? Math.abs(data.setStock) : 0 } : data.stock,
+                price: data.price,
+                image: data.image,
+                genericId: '',
+                images: { create: data.images?.map(x => ({ link: x })) },
+                colorId: data.colorId
+            }
+        });
     }
     deleteProduct(id) {
         return this.prismaService.specificProduct.delete({ where: { id }, include: { images: true } });

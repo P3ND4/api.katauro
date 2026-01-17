@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, OnModuleInit } from '@nestjs/common';
 import { CreateProductDto } from './dto/create-product.dto';
 import { UpdateProductDto } from './dto/update-product.dto';
 import { ProductRepository } from './products.repository';
@@ -6,7 +6,7 @@ import { Categories, Product } from './entities/product.entity';
 import { propRepository } from './CatRepository';
 
 @Injectable()
-export class ProductsService {
+export class ProductsService implements OnModuleInit {
 
   readonly CatParser = [
     Categories.footLumin,
@@ -16,14 +16,24 @@ export class ProductsService {
     Categories.wallLumin
   ]
   constructor(private productRepository: ProductRepository, private propRep: propRepository) { }
+  onModuleInit() {
+    this.propRep.seedBaseCategories();
+  }
 
   async create(createProductDto: CreateProductDto) {
 
     return this.productRepository.createProduct(createProductDto);
   }
 
-  findAll() {
-    return this.productRepository.findAllProducts();
+  async findAll(options?: { category?: string, search?: string, page?: number }) {
+    var products = (await this.productRepository.findAllProducts()) as Product[];
+    const catList = options?.category ? options.category.split('-') : null;
+    const categories = catList ? catList.map((cat) => this.CatParser[+cat]) : null;
+
+    products = categories ? products.filter((p) => categories.includes((p as Product).category?.nombre as Categories)) : products;
+    products = options?.search ? products.filter(p => p.name.toLowerCase().includes(options.search!.toLowerCase())) : products;
+    return options?.page ? products.slice((options.page - 1) * 9, (options.page - 1) * 9 + 9) : products;
+
   }
 
   async findPage(page: number) {
@@ -32,12 +42,14 @@ export class ProductsService {
   }
 
   //TODO: esto hay que mejorarlo para cualquier filtrado
-  async getPages(category?: string) {
-    const products = await this.productRepository.findAllProducts()
-
-    const catList = category ? category.split('-') : null;
+  async getPages(options?: { category?: string, search?: string }) {
+    var products = (await this.productRepository.findAllProducts()) as Product[];
+    const catList = options?.category ? options.category.split('-') : null;
     const categories = catList ? catList.map((cat) => this.CatParser[+cat]) : null;
-    return !categories ? Math.ceil(products.length / 9) : Math.ceil(products.filter((p) => categories.includes((p as Product).category?.nombre as Categories)).length / 9);
+
+    products = categories ? products.filter((p) => categories.includes((p as Product).category?.nombre as Categories)) : products;
+    products = options?.search ? products.filter(p => p.name.toLowerCase().includes(options.search!.toLowerCase())) : products;
+    return products.length / 9 > 0 ? Math.ceil(products.length / 9) : 1;
   }
 
   findOne(id: string) {

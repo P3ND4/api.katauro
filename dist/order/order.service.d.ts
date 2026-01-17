@@ -2,9 +2,11 @@ import { CreateOrderDto } from './dto/create-order.dto';
 import { UpdateOrderDto } from './dto/update-order.dto';
 import { OrderRepository } from './order.repository';
 import { OrderState } from './entities/order.entity';
+import { SpecProductService } from 'src/products/spec-product/spec-product.service';
 export declare class OrderService {
     private orderRepository;
-    constructor(orderRepository: OrderRepository);
+    private variantService;
+    constructor(orderRepository: OrderRepository, variantService: SpecProductService);
     stateParser: OrderState[];
     create(createOrderDto: CreateOrderDto): Promise<{
         email: string;
@@ -13,8 +15,8 @@ export declare class OrderService {
         phone: string;
         id: string;
         createdAt: Date;
-        price: number;
         userId: string;
+        price: number;
         delivery: boolean;
         state: string;
         delPrice: number;
@@ -34,8 +36,8 @@ export declare class OrderService {
         phone: string;
         id: string;
         createdAt: Date;
-        price: number;
         userId: string;
+        price: number;
         delivery: boolean;
         state: string;
         delPrice: number;
@@ -51,8 +53,8 @@ export declare class OrderService {
         phone: string;
         id: string;
         createdAt: Date;
-        price: number;
         userId: string;
+        price: number;
         delivery: boolean;
         state: string;
         delPrice: number;
@@ -68,8 +70,8 @@ export declare class OrderService {
         phone: string;
         id: string;
         createdAt: Date;
-        price: number;
         userId: string;
+        price: number;
         delivery: boolean;
         state: string;
         delPrice: number;
@@ -85,8 +87,8 @@ export declare class OrderService {
         phone: string;
         id: string;
         createdAt: Date;
-        price: number;
         userId: string;
+        price: number;
         delivery: boolean;
         state: string;
         delPrice: number;

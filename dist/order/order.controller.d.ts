@@ -11,8 +11,8 @@ export declare class OrderController {
         phone: string;
         id: string;
         createdAt: Date;
-        price: number;
         userId: string;
+        price: number;
         delivery: boolean;
         state: string;
         delPrice: number;
@@ -28,8 +28,8 @@ export declare class OrderController {
         phone: string;
         id: string;
         createdAt: Date;
-        price: number;
         userId: string;
+        price: number;
         delivery: boolean;
         state: string;
         delPrice: number;
@@ -45,8 +45,8 @@ export declare class OrderController {
         phone: string;
         id: string;
         createdAt: Date;
-        price: number;
         userId: string;
+        price: number;
         delivery: boolean;
         state: string;
         delPrice: number;
@@ -62,8 +62,8 @@ export declare class OrderController {
         phone: string;
         id: string;
         createdAt: Date;
-        price: number;
         userId: string;
+        price: number;
         delivery: boolean;
         state: string;
         delPrice: number;
@@ -79,8 +79,8 @@ export declare class OrderController {
         phone: string;
         id: string;
         createdAt: Date;
-        price: number;
         userId: string;
+        price: number;
         delivery: boolean;
         state: string;
         delPrice: number;

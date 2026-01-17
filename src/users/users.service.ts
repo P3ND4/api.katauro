@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
-import { PrismaService } from 'src/prisma/prisma.service';
+import { PrismaService } from 'src/shared/services/prisma/prisma.service';
 import { UsersRepository } from './users.repository';
 import * as bcrypt from 'bcrypt';
 
@@ -12,7 +12,8 @@ export class UsersService {
 
   async create(createUserDto: CreateUserDto) {
     createUserDto.password = await bcrypt.hash(createUserDto.password, 10);
-    createUserDto.image = 'https://res.cloudinary.com/dmhadvchw/image/upload/q_auto,f_auto/v1761761487/avatardefault_92824_sqhmie.png'
+    const defaultImage = 'https://res.cloudinary.com/dmhadvchw/image/upload/q_auto,f_auto/v1768320360/Avatar_shj8gn.png';
+    createUserDto.image = defaultImage;
     return await this.usersRepository.createUser(createUserDto);
   };
 

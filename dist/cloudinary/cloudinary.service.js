@@ -60,7 +60,7 @@ let CloudinaryService = CloudinaryService_1 = class CloudinaryService {
         const api_secret = process.env.CLOUDINARY_API_SECRET;
         const cloud_name = process.env.CLOUDINARY_CLOUD_NAME;
         const upload_preset = 'katauroPresetSigned';
-        const folder = 'katauro';
+        const folder = 'temp';
         const signatureString = `folder=${folder}&timestamp=${timestamp}&upload_preset=${upload_preset}${api_secret}`;
         const signature = crypto.createHash('sha1').update(signatureString).digest('hex');
         return { timestamp, signature, api_key, cloud_name, upload_preset, folder };

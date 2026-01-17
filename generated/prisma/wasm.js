@@ -128,6 +128,7 @@ exports.Prisma.UserScalarFieldEnum = {
   password: 'password',
   phone: 'phone',
   image: 'image',
+  publicId: 'publicId',
   emailVerified: 'emailVerified',
   emailVerificationCode: 'emailVerificationCode',
   emailVerificationExpires: 'emailVerificationExpires',
@@ -143,7 +144,8 @@ exports.Prisma.FinishForProductsScalarFieldEnum = {
 exports.Prisma.FinishScalarFieldEnum = {
   id: 'id',
   text: 'text',
-  image: 'image'
+  image: 'image',
+  publicId: 'publicId'
 };
 
 exports.Prisma.ProductForCartScalarFieldEnum = {
@@ -182,7 +184,8 @@ exports.Prisma.TokenBlacklistScalarFieldEnum = {
 exports.Prisma.ColorScalarFieldEnum = {
   id: 'id',
   name: 'name',
-  image: 'image'
+  image: 'image',
+  publicId: 'publicId'
 };
 
 exports.Prisma.SpecificProductScalarFieldEnum = {
@@ -197,7 +200,8 @@ exports.Prisma.SpecificProductScalarFieldEnum = {
 exports.Prisma.ImagesScalarFieldEnum = {
   id: 'id',
   link: 'link',
-  prodId: 'prodId'
+  prodId: 'prodId',
+  publicId: 'publicId'
 };
 
 exports.Prisma.OrderScalarFieldEnum = {
@@ -226,10 +230,16 @@ exports.Prisma.ProductForOrderScalarFieldEnum = {
 
 exports.Prisma.PromotionScalarFieldEnum = {
   promo_id: 'promo_id',
-  code: 'code',
   startDate: 'startDate',
   endDate: 'endDate',
-  isActive: 'isActive'
+  name: 'name',
+  discountType: 'discountType',
+  Type: 'Type'
+};
+
+exports.Prisma.CategoryforPromoScalarFieldEnum = {
+  promoId: 'promoId',
+  categoryId: 'categoryId'
 };
 
 exports.Prisma.ProductForPromotionScalarFieldEnum = {
@@ -237,9 +247,29 @@ exports.Prisma.ProductForPromotionScalarFieldEnum = {
   promotionId: 'promotionId'
 };
 
+exports.Prisma.PromoBannerScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  description: 'description',
+  prodId: 'prodId',
+  image: 'image',
+  publicId: 'publicId',
+  carouselId: 'carouselId'
+};
+
+exports.Prisma.CarouselScalarFieldEnum = {
+  id: 'id',
+  name: 'name'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
+};
+
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
 };
 
 exports.Prisma.UserOrderByRelevanceFieldEnum = {
@@ -248,7 +278,9 @@ exports.Prisma.UserOrderByRelevanceFieldEnum = {
   name: 'name',
   lastName: 'lastName',
   password: 'password',
+  phone: 'phone',
   image: 'image',
+  publicId: 'publicId',
   emailVerificationCode: 'emailVerificationCode'
 };
 
@@ -260,7 +292,8 @@ exports.Prisma.finishForProductsOrderByRelevanceFieldEnum = {
 exports.Prisma.finishOrderByRelevanceFieldEnum = {
   id: 'id',
   text: 'text',
-  image: 'image'
+  image: 'image',
+  publicId: 'publicId'
 };
 
 exports.Prisma.ProductForCartOrderByRelevanceFieldEnum = {
@@ -298,7 +331,8 @@ exports.Prisma.TokenBlacklistOrderByRelevanceFieldEnum = {
 exports.Prisma.ColorOrderByRelevanceFieldEnum = {
   id: 'id',
   name: 'name',
-  image: 'image'
+  image: 'image',
+  publicId: 'publicId'
 };
 
 exports.Prisma.SpecificProductOrderByRelevanceFieldEnum = {
@@ -311,7 +345,8 @@ exports.Prisma.SpecificProductOrderByRelevanceFieldEnum = {
 exports.Prisma.ImagesOrderByRelevanceFieldEnum = {
   id: 'id',
   link: 'link',
-  prodId: 'prodId'
+  prodId: 'prodId',
+  publicId: 'publicId'
 };
 
 exports.Prisma.OrderOrderByRelevanceFieldEnum = {
@@ -335,12 +370,31 @@ exports.Prisma.ProductForOrderOrderByRelevanceFieldEnum = {
 
 exports.Prisma.PromotionOrderByRelevanceFieldEnum = {
   promo_id: 'promo_id',
-  code: 'code'
+  name: 'name',
+  discountType: 'discountType',
+  Type: 'Type'
+};
+
+exports.Prisma.CategoryforPromoOrderByRelevanceFieldEnum = {
+  promoId: 'promoId',
+  categoryId: 'categoryId'
 };
 
 exports.Prisma.ProductForPromotionOrderByRelevanceFieldEnum = {
   productId: 'productId',
   promotionId: 'promotionId'
+};
+
+exports.Prisma.PromoBannerOrderByRelevanceFieldEnum = {
+  name: 'name',
+  description: 'description',
+  prodId: 'prodId',
+  image: 'image',
+  publicId: 'publicId'
+};
+
+exports.Prisma.CarouselOrderByRelevanceFieldEnum = {
+  name: 'name'
 };
 
 
@@ -359,7 +413,10 @@ exports.Prisma.ModelName = {
   Order: 'Order',
   ProductForOrder: 'ProductForOrder',
   Promotion: 'Promotion',
-  ProductForPromotion: 'ProductForPromotion'
+  CategoryforPromo: 'CategoryforPromo',
+  ProductForPromotion: 'ProductForPromotion',
+  PromoBanner: 'PromoBanner',
+  Carousel: 'Carousel'
 };
 
 /**

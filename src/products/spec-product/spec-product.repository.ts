@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
-import { ISpecificProductRepository } from "../repositorys/ISpecificProductRepository";
-import { PrismaService } from "src/prisma/prisma.service";
+import { ISpecificProductRepository } from "../repositories/ISpecificProductRepository";
+import { PrismaService } from "src/shared/services/prisma/prisma.service";
 import { SpecificProduct } from "generated/prisma";
 import { CreateSpecProductDTO } from "../dto/create-sproduct.dto";
 import { UpdateSpecProductDto } from "../dto/update-sproduct.dto";
@@ -25,11 +25,24 @@ export class SpecProductRepository implements ISpecificProductRepository {
     findProductById(id: string): Promise<SpecificProduct | null> {
         return this.prismaService.specificProduct.findUnique({ where: { id }, include: { images: true, genericProd: true, color: true } })
     }
+
+    //TODO: Problemon al actualizar stock, pudiera hacerse negativo
     updateProduct(id: string, data: UpdateSpecProductDto): Promise<SpecificProduct> {
-        return this.prismaService.specificProduct.update({ where: { id }, data: { stock: data.stock, price: data.price, image: data.image, genericId: '', images: { create: data.images?.map(x => ({ link: x })) }, colorId: data.colorId } })
+        return this.prismaService.specificProduct.update({
+            where: { id },
+            data:
+            {
+                stock: data.setStock ? { increment: data.setStock > 0 ? data.setStock : 0, decrement: data.setStock < 0 ? Math.abs(data.setStock) : 0 } : data.stock,
+                price: data.price,
+                image: data.image,
+                genericId: '',
+                images: { create: data.images?.map(x => ({ link: x })) },
+                colorId: data.colorId
+            }
+        })
     }
     deleteProduct(id: string): Promise<SpecificProduct> {
-        return this.prismaService.specificProduct.delete({ where: { id }, include: { images: true}})
+        return this.prismaService.specificProduct.delete({ where: { id }, include: { images: true } })
     }
 
 }

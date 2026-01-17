@@ -14,4 +14,6 @@ export interface IPropiertiesRepository {
     addColor(data: { image: string, name: string }): Promise<Color>
 
     deleteColor(id: string): Promise<Color>
+
+    seedBaseCategories(): Promise<void>;
 }

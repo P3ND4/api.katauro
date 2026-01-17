@@ -1,6 +1,6 @@
-import { PrismaService } from "src/prisma/prisma.service";
+import { PrismaService } from "src/shared/services/prisma/prisma.service";
 import { CreateUserDto } from "./dto/create-user.dto";
-import { IUserRepository } from "./repositorys/IUserRepository";
+import { IUserRepository } from "./repositories/IUserRepository";
 import { User } from "generated/prisma";
 import { UpdateUserDto } from "./dto/update-user.dto";
 import { Injectable } from "@nestjs/common";
@@ -83,7 +83,7 @@ export class UsersRepository implements IUserRepository {
                 email: data.email,
                 password: data.password,
                 phone: data.phone,
-                cart: { create: data.updateCart?.map(variantId => ({ productId: variantId })) },
+                cart: { create: data.updateCart?.map(variantId => ({ productId: variantId })), delete: data.deleteFromCArt?.map(prod => ({ userId_productId: { productId: prod, userId: id } })) },
                 image: data.image,
                 emailVerificationCode: data.emailVerificationCode,
                 emailVerificationExpires: data.emailVerificationExpires,
