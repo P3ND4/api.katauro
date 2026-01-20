@@ -15268,8 +15268,18 @@ export namespace Prisma {
 
   export type AggregatePromotion = {
     _count: PromotionCountAggregateOutputType | null
+    _avg: PromotionAvgAggregateOutputType | null
+    _sum: PromotionSumAggregateOutputType | null
     _min: PromotionMinAggregateOutputType | null
     _max: PromotionMaxAggregateOutputType | null
+  }
+
+  export type PromotionAvgAggregateOutputType = {
+    discount: number | null
+  }
+
+  export type PromotionSumAggregateOutputType = {
+    discount: number | null
   }
 
   export type PromotionMinAggregateOutputType = {
@@ -15278,6 +15288,7 @@ export namespace Prisma {
     endDate: Date | null
     name: string | null
     discountType: string | null
+    discount: number | null
     Type: string | null
   }
 
@@ -15287,6 +15298,7 @@ export namespace Prisma {
     endDate: Date | null
     name: string | null
     discountType: string | null
+    discount: number | null
     Type: string | null
   }
 
@@ -15296,10 +15308,19 @@ export namespace Prisma {
     endDate: number
     name: number
     discountType: number
+    discount: number
     Type: number
     _all: number
   }
 
+
+  export type PromotionAvgAggregateInputType = {
+    discount?: true
+  }
+
+  export type PromotionSumAggregateInputType = {
+    discount?: true
+  }
 
   export type PromotionMinAggregateInputType = {
     promo_id?: true
@@ -15307,6 +15328,7 @@ export namespace Prisma {
     endDate?: true
     name?: true
     discountType?: true
+    discount?: true
     Type?: true
   }
 
@@ -15316,6 +15338,7 @@ export namespace Prisma {
     endDate?: true
     name?: true
     discountType?: true
+    discount?: true
     Type?: true
   }
 
@@ -15325,6 +15348,7 @@ export namespace Prisma {
     endDate?: true
     name?: true
     discountType?: true
+    discount?: true
     Type?: true
     _all?: true
   }
@@ -15367,6 +15391,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: PromotionAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: PromotionSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: PromotionMinAggregateInputType
@@ -15397,6 +15433,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: PromotionCountAggregateInputType | true
+    _avg?: PromotionAvgAggregateInputType
+    _sum?: PromotionSumAggregateInputType
     _min?: PromotionMinAggregateInputType
     _max?: PromotionMaxAggregateInputType
   }
@@ -15407,8 +15445,11 @@ export namespace Prisma {
     endDate: Date
     name: string
     discountType: string
+    discount: number
     Type: string
     _count: PromotionCountAggregateOutputType | null
+    _avg: PromotionAvgAggregateOutputType | null
+    _sum: PromotionSumAggregateOutputType | null
     _min: PromotionMinAggregateOutputType | null
     _max: PromotionMaxAggregateOutputType | null
   }
@@ -15433,6 +15474,7 @@ export namespace Prisma {
     endDate?: boolean
     name?: boolean
     discountType?: boolean
+    discount?: boolean
     Type?: boolean
     products?: boolean | Promotion$productsArgs<ExtArgs>
     categories?: boolean | Promotion$categoriesArgs<ExtArgs>
@@ -15447,10 +15489,11 @@ export namespace Prisma {
     endDate?: boolean
     name?: boolean
     discountType?: boolean
+    discount?: boolean
     Type?: boolean
   }
 
-  export type PromotionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"promo_id" | "startDate" | "endDate" | "name" | "discountType" | "Type", ExtArgs["result"]["promotion"]>
+  export type PromotionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"promo_id" | "startDate" | "endDate" | "name" | "discountType" | "discount" | "Type", ExtArgs["result"]["promotion"]>
   export type PromotionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     products?: boolean | Promotion$productsArgs<ExtArgs>
     categories?: boolean | Promotion$categoriesArgs<ExtArgs>
@@ -15469,6 +15512,7 @@ export namespace Prisma {
       endDate: Date
       name: string
       discountType: string
+      discount: number
       Type: string
     }, ExtArgs["result"]["promotion"]>
     composites: {}
@@ -15846,6 +15890,7 @@ export namespace Prisma {
     readonly endDate: FieldRef<"Promotion", 'DateTime'>
     readonly name: FieldRef<"Promotion", 'String'>
     readonly discountType: FieldRef<"Promotion", 'String'>
+    readonly discount: FieldRef<"Promotion", 'Float'>
     readonly Type: FieldRef<"Promotion", 'String'>
   }
     
@@ -20172,6 +20217,7 @@ export namespace Prisma {
     endDate: 'endDate',
     name: 'name',
     discountType: 'discountType',
+    discount: 'discount',
     Type: 'Type'
   };
 
@@ -21261,6 +21307,7 @@ export namespace Prisma {
     endDate?: DateTimeFilter<"Promotion"> | Date | string
     name?: StringFilter<"Promotion"> | string
     discountType?: StringFilter<"Promotion"> | string
+    discount?: FloatFilter<"Promotion"> | number
     Type?: StringFilter<"Promotion"> | string
     products?: ProductForPromotionListRelationFilter
     categories?: CategoryforPromoListRelationFilter
@@ -21272,6 +21319,7 @@ export namespace Prisma {
     endDate?: SortOrder
     name?: SortOrder
     discountType?: SortOrder
+    discount?: SortOrder
     Type?: SortOrder
     products?: ProductForPromotionOrderByRelationAggregateInput
     categories?: CategoryforPromoOrderByRelationAggregateInput
@@ -21287,6 +21335,7 @@ export namespace Prisma {
     endDate?: DateTimeFilter<"Promotion"> | Date | string
     name?: StringFilter<"Promotion"> | string
     discountType?: StringFilter<"Promotion"> | string
+    discount?: FloatFilter<"Promotion"> | number
     Type?: StringFilter<"Promotion"> | string
     products?: ProductForPromotionListRelationFilter
     categories?: CategoryforPromoListRelationFilter
@@ -21298,10 +21347,13 @@ export namespace Prisma {
     endDate?: SortOrder
     name?: SortOrder
     discountType?: SortOrder
+    discount?: SortOrder
     Type?: SortOrder
     _count?: PromotionCountOrderByAggregateInput
+    _avg?: PromotionAvgOrderByAggregateInput
     _max?: PromotionMaxOrderByAggregateInput
     _min?: PromotionMinOrderByAggregateInput
+    _sum?: PromotionSumOrderByAggregateInput
   }
 
   export type PromotionScalarWhereWithAggregatesInput = {
@@ -21313,6 +21365,7 @@ export namespace Prisma {
     endDate?: DateTimeWithAggregatesFilter<"Promotion"> | Date | string
     name?: StringWithAggregatesFilter<"Promotion"> | string
     discountType?: StringWithAggregatesFilter<"Promotion"> | string
+    discount?: FloatWithAggregatesFilter<"Promotion"> | number
     Type?: StringWithAggregatesFilter<"Promotion"> | string
   }
 
@@ -22332,6 +22385,7 @@ export namespace Prisma {
     endDate: Date | string
     name: string
     discountType: string
+    discount: number
     Type: string
     products?: ProductForPromotionCreateNestedManyWithoutPromotionInput
     categories?: CategoryforPromoCreateNestedManyWithoutPromoInput
@@ -22343,6 +22397,7 @@ export namespace Prisma {
     endDate: Date | string
     name: string
     discountType: string
+    discount: number
     Type: string
     products?: ProductForPromotionUncheckedCreateNestedManyWithoutPromotionInput
     categories?: CategoryforPromoUncheckedCreateNestedManyWithoutPromoInput
@@ -22354,6 +22409,7 @@ export namespace Prisma {
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
     discountType?: StringFieldUpdateOperationsInput | string
+    discount?: FloatFieldUpdateOperationsInput | number
     Type?: StringFieldUpdateOperationsInput | string
     products?: ProductForPromotionUpdateManyWithoutPromotionNestedInput
     categories?: CategoryforPromoUpdateManyWithoutPromoNestedInput
@@ -22365,6 +22421,7 @@ export namespace Prisma {
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
     discountType?: StringFieldUpdateOperationsInput | string
+    discount?: FloatFieldUpdateOperationsInput | number
     Type?: StringFieldUpdateOperationsInput | string
     products?: ProductForPromotionUncheckedUpdateManyWithoutPromotionNestedInput
     categories?: CategoryforPromoUncheckedUpdateManyWithoutPromoNestedInput
@@ -22376,6 +22433,7 @@ export namespace Prisma {
     endDate: Date | string
     name: string
     discountType: string
+    discount: number
     Type: string
   }
 
@@ -22385,6 +22443,7 @@ export namespace Prisma {
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
     discountType?: StringFieldUpdateOperationsInput | string
+    discount?: FloatFieldUpdateOperationsInput | number
     Type?: StringFieldUpdateOperationsInput | string
   }
 
@@ -22394,6 +22453,7 @@ export namespace Prisma {
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
     discountType?: StringFieldUpdateOperationsInput | string
+    discount?: FloatFieldUpdateOperationsInput | number
     Type?: StringFieldUpdateOperationsInput | string
   }
 
@@ -23331,7 +23391,12 @@ export namespace Prisma {
     endDate?: SortOrder
     name?: SortOrder
     discountType?: SortOrder
+    discount?: SortOrder
     Type?: SortOrder
+  }
+
+  export type PromotionAvgOrderByAggregateInput = {
+    discount?: SortOrder
   }
 
   export type PromotionMaxOrderByAggregateInput = {
@@ -23340,6 +23405,7 @@ export namespace Prisma {
     endDate?: SortOrder
     name?: SortOrder
     discountType?: SortOrder
+    discount?: SortOrder
     Type?: SortOrder
   }
 
@@ -23349,7 +23415,12 @@ export namespace Prisma {
     endDate?: SortOrder
     name?: SortOrder
     discountType?: SortOrder
+    discount?: SortOrder
     Type?: SortOrder
+  }
+
+  export type PromotionSumOrderByAggregateInput = {
+    discount?: SortOrder
   }
 
   export type PromotionScalarRelationFilter = {
@@ -26280,6 +26351,7 @@ export namespace Prisma {
     endDate: Date | string
     name: string
     discountType: string
+    discount: number
     Type: string
     products?: ProductForPromotionCreateNestedManyWithoutPromotionInput
   }
@@ -26290,6 +26362,7 @@ export namespace Prisma {
     endDate: Date | string
     name: string
     discountType: string
+    discount: number
     Type: string
     products?: ProductForPromotionUncheckedCreateNestedManyWithoutPromotionInput
   }
@@ -26333,6 +26406,7 @@ export namespace Prisma {
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
     discountType?: StringFieldUpdateOperationsInput | string
+    discount?: FloatFieldUpdateOperationsInput | number
     Type?: StringFieldUpdateOperationsInput | string
     products?: ProductForPromotionUpdateManyWithoutPromotionNestedInput
   }
@@ -26343,6 +26417,7 @@ export namespace Prisma {
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
     discountType?: StringFieldUpdateOperationsInput | string
+    discount?: FloatFieldUpdateOperationsInput | number
     Type?: StringFieldUpdateOperationsInput | string
     products?: ProductForPromotionUncheckedUpdateManyWithoutPromotionNestedInput
   }
@@ -26407,6 +26482,7 @@ export namespace Prisma {
     endDate: Date | string
     name: string
     discountType: string
+    discount: number
     Type: string
     categories?: CategoryforPromoCreateNestedManyWithoutPromoInput
   }
@@ -26417,6 +26493,7 @@ export namespace Prisma {
     endDate: Date | string
     name: string
     discountType: string
+    discount: number
     Type: string
     categories?: CategoryforPromoUncheckedCreateNestedManyWithoutPromoInput
   }
@@ -26480,6 +26557,7 @@ export namespace Prisma {
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
     discountType?: StringFieldUpdateOperationsInput | string
+    discount?: FloatFieldUpdateOperationsInput | number
     Type?: StringFieldUpdateOperationsInput | string
     categories?: CategoryforPromoUpdateManyWithoutPromoNestedInput
   }
@@ -26490,6 +26568,7 @@ export namespace Prisma {
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
     discountType?: StringFieldUpdateOperationsInput | string
+    discount?: FloatFieldUpdateOperationsInput | number
     Type?: StringFieldUpdateOperationsInput | string
     categories?: CategoryforPromoUncheckedUpdateManyWithoutPromoNestedInput
   }

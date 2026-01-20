@@ -8,6 +8,7 @@ class Promotion {
     name;
     discountType;
     Type;
+    discount;
     categories;
     products;
 }

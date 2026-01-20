@@ -5,7 +5,8 @@ import { UpdateBannerDto } from "../dto/update-banner.dto";
 import { IBannerRepository } from "../repositories/IBanner.repository";
 import { PromoBanner as Banner } from "generated/prisma";
 import { create } from "domain";
-
+import { Injectable } from "@nestjs/common";
+@Injectable()
 export class BannerRepository implements IBannerRepository {
     constructor(private prisma: PrismaService) { }
     FindAllBanners(): Promise<Banner[]> {

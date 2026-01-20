@@ -4,7 +4,8 @@ import { UpdateCarouselDto } from "../dto/update-carousel.dto";
 
 import { ICarouselRepository } from "../repositories/ICarousel.repository";
 import { Carousel } from "generated/prisma";
-
+import { Injectable } from "@nestjs/common";
+@Injectable()
 export class CarouselRepository implements ICarouselRepository {
 
     constructor(private prisma: PrismaService) { }

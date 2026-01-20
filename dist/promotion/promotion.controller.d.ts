@@ -13,6 +13,7 @@ export declare class PromotionController {
         endDate: Date;
         discountType: string;
         Type: string;
+        discount: number;
     }>;
     findAll(): Promise<{
         name: string;
@@ -21,6 +22,7 @@ export declare class PromotionController {
         endDate: Date;
         discountType: string;
         Type: string;
+        discount: number;
     }[]>;
     findBanner(id: string): Promise<{
         name: string;
@@ -56,6 +58,7 @@ export declare class PromotionController {
         endDate: Date;
         discountType: string;
         Type: string;
+        discount: number;
     } | null>;
     update(id: string, updatePromotionDto: UpdatePromotionDto): Promise<{
         name: string;
@@ -64,6 +67,7 @@ export declare class PromotionController {
         endDate: Date;
         discountType: string;
         Type: string;
+        discount: number;
     }>;
     remove(id: string): Promise<{
         name: string;
@@ -72,5 +76,6 @@ export declare class PromotionController {
         endDate: Date;
         discountType: string;
         Type: string;
+        discount: number;
     }>;
 }

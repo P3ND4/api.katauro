@@ -234,6 +234,7 @@ exports.Prisma.PromotionScalarFieldEnum = {
   endDate: 'endDate',
   name: 'name',
   discountType: 'discountType',
+  discount: 'discount',
   Type: 'Type'
 };
 

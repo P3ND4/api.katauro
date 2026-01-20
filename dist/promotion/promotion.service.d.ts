@@ -17,6 +17,7 @@ export declare class PromotionService implements OnModuleInit {
         endDate: Date;
         discountType: string;
         Type: string;
+        discount: number;
     }>;
     findAll(): Promise<{
         name: string;
@@ -25,6 +26,7 @@ export declare class PromotionService implements OnModuleInit {
         endDate: Date;
         discountType: string;
         Type: string;
+        discount: number;
     }[]>;
     findOne(id: string): Promise<{
         name: string;
@@ -33,6 +35,7 @@ export declare class PromotionService implements OnModuleInit {
         endDate: Date;
         discountType: string;
         Type: string;
+        discount: number;
     } | null>;
     update(id: string, updatePromotionDto: UpdatePromotionDto): Promise<{
         name: string;
@@ -41,6 +44,7 @@ export declare class PromotionService implements OnModuleInit {
         endDate: Date;
         discountType: string;
         Type: string;
+        discount: number;
     }>;
     remove(id: string): Promise<{
         name: string;
@@ -49,6 +53,7 @@ export declare class PromotionService implements OnModuleInit {
         endDate: Date;
         discountType: string;
         Type: string;
+        discount: number;
     }>;
     findBanner(id: number): Promise<{
         name: string;

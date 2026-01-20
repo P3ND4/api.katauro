@@ -10,6 +10,7 @@ class CreatePromotionDto {
     Type;
     categories;
     products;
+    discount;
 }
 exports.CreatePromotionDto = CreatePromotionDto;
 //# sourceMappingURL=create-promotion.dto.js.map

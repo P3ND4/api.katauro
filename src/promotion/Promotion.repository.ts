@@ -3,7 +3,9 @@ import { CreatePromotionDto } from "./dto/create-promotion.dto";
 import { UpdatePromotionDto } from "./dto/update-promotion.dto";
 import { IPromoRepository } from "./repositories/IPromo.repository";
 import { PrismaService } from "src/shared/services/prisma/prisma.service";
+import { Injectable } from "@nestjs/common";
 
+@Injectable()
 export class PromotionRepository implements IPromoRepository {
 
     constructor(private prisma: PrismaService) { }
@@ -29,6 +31,7 @@ export class PromotionRepository implements IPromoRepository {
         return this.prisma.promotion.update({
             where: { promo_id: id }, data:
             {
+                discount: data.discount,
                 promo_id: data.promo_id,
                 startDate: data.startDate,
                 endDate: data.endDate,
@@ -47,6 +50,7 @@ export class PromotionRepository implements IPromoRepository {
         return this.prisma.promotion.create({
             data:
             {
+                discount: data.discount,
                 promo_id: data.promo_id,
                 startDate: data.startDate,
                 endDate: data.endDate,

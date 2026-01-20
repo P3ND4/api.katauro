@@ -7,6 +7,7 @@ export class Promotion {
     name: string
     discountType: string
     Type: string
+    discount: number
     categories: {
         promoId: string,
         categoryId: string,

@@ -164,6 +164,7 @@ model Promotion {
   endDate      DateTime
   name         String
   discountType String
+  discount     Float
   Type         String
   products     ProductForPromotion[]
   categories   CategoryforPromo[]    @relation()

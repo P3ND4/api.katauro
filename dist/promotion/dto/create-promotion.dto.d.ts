@@ -7,4 +7,5 @@ export declare class CreatePromotionDto {
     Type: string;
     categories: string[];
     products: string[];
+    discount: number;
 }
