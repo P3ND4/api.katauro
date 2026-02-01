@@ -1,4 +1,5 @@
 export class CreateBannerDto {
+    id?: number
     name: string
     description: string
     prodId: string

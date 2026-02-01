@@ -14,6 +14,7 @@ const common_1 = require("@nestjs/common");
 const Promotion_repository_1 = require("./Promotion.repository");
 const Banner_repository_1 = require("./utils/Banner.repository");
 const Carousel_repository_1 = require("./utils/Carousel.repository");
+const promotion_entity_1 = require("./entities/promotion.entity");
 let PromotionService = class PromotionService {
     promoRep;
     bannerRep;
@@ -23,7 +24,10 @@ let PromotionService = class PromotionService {
         this.bannerRep = bannerRep;
         this.carouselRep = carouselRep;
     }
-    onModuleInit() {
+    async onModuleInit() {
+        await this.carouselRep.seedBaseCarousel(promotion_entity_1.CarouselNames.primary);
+        await this.carouselRep.seedBaseCarousel(promotion_entity_1.CarouselNames.secundary);
+        await this.bannerRep.bannerSeeds();
     }
     create(createPromotionDto) {
         return this.promoRep.CreatePromotion(createPromotionDto);

@@ -34,3 +34,7 @@ export declare class Carousel {
     name: string;
     banners: Banner[];
 }
+export declare enum CarouselNames {
+    primary = "primary",
+    secundary = "secundary"
+}

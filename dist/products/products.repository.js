@@ -18,7 +18,7 @@ let ProductRepository = class ProductRepository {
         this.prismaService = prismaService;
     }
     findAllProducts() {
-        return this.prismaService.genericProduct.findMany({ include: { variants: { include: { images: true, color: true } }, details: true, category: true, finish: true } });
+        return this.prismaService.genericProduct.findMany({ include: { variants: { include: { genericProd: { include: { category: true } }, images: true, color: true, promotions: { include: { promotion: true } } } }, details: true, category: true, finish: true } });
     }
     createProduct(data) {
         return this.prismaService.genericProduct.create({
@@ -44,7 +44,7 @@ let ProductRepository = class ProductRepository {
         });
     }
     findProductById(id) {
-        return this.prismaService.genericProduct.findUnique({ where: { id }, include: { variants: { include: { images: true, color: true } }, details: true, category: true, finish: true } });
+        return this.prismaService.genericProduct.findUnique({ where: { id }, include: { variants: { include: { images: true, color: true, promotions: { include: { promotion: true } } } }, details: true, category: true, finish: true } });
     }
     async updateProduct(id, data) {
         await this.prismaService.genericProduct.update({

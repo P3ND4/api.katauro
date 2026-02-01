@@ -36,7 +36,6 @@ let PromotionRepository = class PromotionRepository {
         return this.prisma.promotion.update({
             where: { promo_id: id }, data: {
                 discount: data.discount,
-                promo_id: data.promo_id,
                 startDate: data.startDate,
                 endDate: data.endDate,
                 name: data.name,
@@ -54,7 +53,6 @@ let PromotionRepository = class PromotionRepository {
         return this.prisma.promotion.create({
             data: {
                 discount: data.discount,
-                promo_id: data.promo_id,
                 startDate: data.startDate,
                 endDate: data.endDate,
                 name: data.name,

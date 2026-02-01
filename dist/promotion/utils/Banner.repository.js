@@ -32,6 +32,23 @@ let BannerRepository = class BannerRepository {
     CreateBanner(data) {
         return this.prisma.promoBanner.create({ data: data });
     }
+    async bannerSeeds() {
+        const carIds = [1, 1, 1, 2, 2, 2];
+        var banners = [];
+        let id = 1;
+        carIds.forEach(async (i) => {
+            const bann = {
+                id: id,
+                name: '',
+                description: '',
+                prodId: null,
+                image: "",
+                carouselId: i
+            };
+            id += 1;
+            await this.prisma.promoBanner.upsert({ create: bann, update: {}, where: { id: bann.id } });
+        });
+    }
 };
 exports.BannerRepository = BannerRepository;
 exports.BannerRepository = BannerRepository = __decorate([

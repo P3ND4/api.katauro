@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreateCarouselDto = void 0;
 class CreateCarouselDto {
+    id;
     name;
 }
 exports.CreateCarouselDto = CreateCarouselDto;

@@ -11,4 +11,5 @@ export declare class BannerRepository implements IBannerRepository {
     DeleteBanner(id: number): Promise<Banner>;
     UpdateBanner(id: number, data: UpdateBannerDto): Promise<Banner>;
     CreateBanner(data: CreateBannerDto): Promise<Banner>;
+    bannerSeeds(): Promise<void>;
 }

@@ -32,7 +32,6 @@ export class PromotionRepository implements IPromoRepository {
             where: { promo_id: id }, data:
             {
                 discount: data.discount,
-                promo_id: data.promo_id,
                 startDate: data.startDate,
                 endDate: data.endDate,
                 name: data.name,
@@ -51,7 +50,6 @@ export class PromotionRepository implements IPromoRepository {
             data:
             {
                 discount: data.discount,
-                promo_id: data.promo_id,
                 startDate: data.startDate,
                 endDate: data.endDate,
                 name: data.name,

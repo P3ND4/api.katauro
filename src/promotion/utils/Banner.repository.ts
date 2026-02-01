@@ -6,6 +6,7 @@ import { IBannerRepository } from "../repositories/IBanner.repository";
 import { PromoBanner as Banner } from "generated/prisma";
 import { create } from "domain";
 import { Injectable } from "@nestjs/common";
+import { CarouselNames } from "../entities/promotion.entity";
 @Injectable()
 export class BannerRepository implements IBannerRepository {
     constructor(private prisma: PrismaService) { }
@@ -23,6 +24,28 @@ export class BannerRepository implements IBannerRepository {
     }
     CreateBanner(data: CreateBannerDto): Promise<Banner> {
         return this.prisma.promoBanner.create({ data: data })
+    }
+
+    async bannerSeeds() {
+
+        const carIds = [1, 1, 1, 2, 2, 2]
+
+        var banners = []
+        let id = 1
+        carIds.forEach(async i => {
+            const bann =
+            {
+                id: id,
+                name: '',
+                description: '',
+                prodId: null,
+                image: "",
+                carouselId: i
+            }
+            id += 1
+            await this.prisma.promoBanner.upsert({ create: bann, update: {}, where: { id: bann.id } })
+
+        })
     }
 
 }

@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreatePromotionDto = void 0;
 class CreatePromotionDto {
-    promo_id;
     startDate;
     endDate;
     name;

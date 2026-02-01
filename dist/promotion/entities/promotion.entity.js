@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Carousel = exports.Banner = exports.Promotion = void 0;
+exports.CarouselNames = exports.Carousel = exports.Banner = exports.Promotion = void 0;
 class Promotion {
     promo_id;
     startDate;
@@ -31,4 +31,9 @@ class Carousel {
     banners;
 }
 exports.Carousel = Carousel;
+var CarouselNames;
+(function (CarouselNames) {
+    CarouselNames["primary"] = "primary";
+    CarouselNames["secundary"] = "secundary";
+})(CarouselNames || (exports.CarouselNames = CarouselNames = {}));
 //# sourceMappingURL=promotion.entity.js.map

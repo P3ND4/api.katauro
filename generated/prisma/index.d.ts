@@ -18286,7 +18286,7 @@ export namespace Prisma {
     id: number
     name: string
     description: string
-    prodId: string
+    prodId: string | null
     image: string
     publicId: string | null
     carouselId: number
@@ -18319,7 +18319,7 @@ export namespace Prisma {
     image?: boolean
     publicId?: boolean
     carouselId?: boolean
-    product?: boolean | SpecificProductDefaultArgs<ExtArgs>
+    product?: boolean | PromoBanner$productArgs<ExtArgs>
     carousel?: boolean | CarouselDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["promoBanner"]>
 
@@ -18337,21 +18337,21 @@ export namespace Prisma {
 
   export type PromoBannerOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "description" | "prodId" | "image" | "publicId" | "carouselId", ExtArgs["result"]["promoBanner"]>
   export type PromoBannerInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    product?: boolean | SpecificProductDefaultArgs<ExtArgs>
+    product?: boolean | PromoBanner$productArgs<ExtArgs>
     carousel?: boolean | CarouselDefaultArgs<ExtArgs>
   }
 
   export type $PromoBannerPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "PromoBanner"
     objects: {
-      product: Prisma.$SpecificProductPayload<ExtArgs>
+      product: Prisma.$SpecificProductPayload<ExtArgs> | null
       carousel: Prisma.$CarouselPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       name: string
       description: string
-      prodId: string
+      prodId: string | null
       image: string
       publicId: string | null
       carouselId: number
@@ -18695,7 +18695,7 @@ export namespace Prisma {
    */
   export interface Prisma__PromoBannerClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    product<T extends SpecificProductDefaultArgs<ExtArgs> = {}>(args?: Subset<T, SpecificProductDefaultArgs<ExtArgs>>): Prisma__SpecificProductClient<$Result.GetResult<Prisma.$SpecificProductPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    product<T extends PromoBanner$productArgs<ExtArgs> = {}>(args?: Subset<T, PromoBanner$productArgs<ExtArgs>>): Prisma__SpecificProductClient<$Result.GetResult<Prisma.$SpecificProductPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     carousel<T extends CarouselDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CarouselDefaultArgs<ExtArgs>>): Prisma__CarouselClient<$Result.GetResult<Prisma.$CarouselPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -19073,6 +19073,25 @@ export namespace Prisma {
      * Limit how many PromoBanners to delete.
      */
     limit?: number
+  }
+
+  /**
+   * PromoBanner.product
+   */
+  export type PromoBanner$productArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SpecificProduct
+     */
+    select?: SpecificProductSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SpecificProduct
+     */
+    omit?: SpecificProductOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SpecificProductInclude<ExtArgs> | null
+    where?: SpecificProductWhereInput
   }
 
   /**
@@ -21466,11 +21485,11 @@ export namespace Prisma {
     id?: IntFilter<"PromoBanner"> | number
     name?: StringFilter<"PromoBanner"> | string
     description?: StringFilter<"PromoBanner"> | string
-    prodId?: StringFilter<"PromoBanner"> | string
+    prodId?: StringNullableFilter<"PromoBanner"> | string | null
     image?: StringFilter<"PromoBanner"> | string
     publicId?: StringNullableFilter<"PromoBanner"> | string | null
     carouselId?: IntFilter<"PromoBanner"> | number
-    product?: XOR<SpecificProductScalarRelationFilter, SpecificProductWhereInput>
+    product?: XOR<SpecificProductNullableScalarRelationFilter, SpecificProductWhereInput> | null
     carousel?: XOR<CarouselScalarRelationFilter, CarouselWhereInput>
   }
 
@@ -21478,7 +21497,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     description?: SortOrder
-    prodId?: SortOrder
+    prodId?: SortOrderInput | SortOrder
     image?: SortOrder
     publicId?: SortOrderInput | SortOrder
     carouselId?: SortOrder
@@ -21494,11 +21513,11 @@ export namespace Prisma {
     NOT?: PromoBannerWhereInput | PromoBannerWhereInput[]
     name?: StringFilter<"PromoBanner"> | string
     description?: StringFilter<"PromoBanner"> | string
-    prodId?: StringFilter<"PromoBanner"> | string
+    prodId?: StringNullableFilter<"PromoBanner"> | string | null
     image?: StringFilter<"PromoBanner"> | string
     publicId?: StringNullableFilter<"PromoBanner"> | string | null
     carouselId?: IntFilter<"PromoBanner"> | number
-    product?: XOR<SpecificProductScalarRelationFilter, SpecificProductWhereInput>
+    product?: XOR<SpecificProductNullableScalarRelationFilter, SpecificProductWhereInput> | null
     carousel?: XOR<CarouselScalarRelationFilter, CarouselWhereInput>
   }, "id">
 
@@ -21506,7 +21525,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     description?: SortOrder
-    prodId?: SortOrder
+    prodId?: SortOrderInput | SortOrder
     image?: SortOrder
     publicId?: SortOrderInput | SortOrder
     carouselId?: SortOrder
@@ -21524,7 +21543,7 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"PromoBanner"> | number
     name?: StringWithAggregatesFilter<"PromoBanner"> | string
     description?: StringWithAggregatesFilter<"PromoBanner"> | string
-    prodId?: StringWithAggregatesFilter<"PromoBanner"> | string
+    prodId?: StringNullableWithAggregatesFilter<"PromoBanner"> | string | null
     image?: StringWithAggregatesFilter<"PromoBanner"> | string
     publicId?: StringNullableWithAggregatesFilter<"PromoBanner"> | string | null
     carouselId?: IntWithAggregatesFilter<"PromoBanner"> | number
@@ -22530,7 +22549,7 @@ export namespace Prisma {
     description: string
     image: string
     publicId?: string | null
-    product: SpecificProductCreateNestedOneWithoutPromoBannerInput
+    product?: SpecificProductCreateNestedOneWithoutPromoBannerInput
     carousel: CarouselCreateNestedOneWithoutBannersInput
   }
 
@@ -22538,7 +22557,7 @@ export namespace Prisma {
     id?: number
     name: string
     description: string
-    prodId: string
+    prodId?: string | null
     image: string
     publicId?: string | null
     carouselId: number
@@ -22549,7 +22568,7 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
     publicId?: NullableStringFieldUpdateOperationsInput | string | null
-    product?: SpecificProductUpdateOneRequiredWithoutPromoBannerNestedInput
+    product?: SpecificProductUpdateOneWithoutPromoBannerNestedInput
     carousel?: CarouselUpdateOneRequiredWithoutBannersNestedInput
   }
 
@@ -22557,7 +22576,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    prodId?: StringFieldUpdateOperationsInput | string
+    prodId?: NullableStringFieldUpdateOperationsInput | string | null
     image?: StringFieldUpdateOperationsInput | string
     publicId?: NullableStringFieldUpdateOperationsInput | string | null
     carouselId?: IntFieldUpdateOperationsInput | number
@@ -22567,7 +22586,7 @@ export namespace Prisma {
     id?: number
     name: string
     description: string
-    prodId: string
+    prodId?: string | null
     image: string
     publicId?: string | null
     carouselId: number
@@ -22584,7 +22603,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    prodId?: StringFieldUpdateOperationsInput | string
+    prodId?: NullableStringFieldUpdateOperationsInput | string | null
     image?: StringFieldUpdateOperationsInput | string
     publicId?: NullableStringFieldUpdateOperationsInput | string | null
     carouselId?: IntFieldUpdateOperationsInput | number
@@ -23478,6 +23497,11 @@ export namespace Prisma {
   export type ProductForPromotionMinOrderByAggregateInput = {
     productId?: SortOrder
     promotionId?: SortOrder
+  }
+
+  export type SpecificProductNullableScalarRelationFilter = {
+    is?: SpecificProductWhereInput | null
+    isNot?: SpecificProductWhereInput | null
   }
 
   export type CarouselScalarRelationFilter = {
@@ -24542,10 +24566,12 @@ export namespace Prisma {
     connect?: CarouselWhereUniqueInput
   }
 
-  export type SpecificProductUpdateOneRequiredWithoutPromoBannerNestedInput = {
+  export type SpecificProductUpdateOneWithoutPromoBannerNestedInput = {
     create?: XOR<SpecificProductCreateWithoutPromoBannerInput, SpecificProductUncheckedCreateWithoutPromoBannerInput>
     connectOrCreate?: SpecificProductCreateOrConnectWithoutPromoBannerInput
     upsert?: SpecificProductUpsertWithoutPromoBannerInput
+    disconnect?: SpecificProductWhereInput | boolean
+    delete?: SpecificProductWhereInput | boolean
     connect?: SpecificProductWhereUniqueInput
     update?: XOR<XOR<SpecificProductUpdateToOneWithWhereWithoutPromoBannerInput, SpecificProductUpdateWithoutPromoBannerInput>, SpecificProductUncheckedUpdateWithoutPromoBannerInput>
   }
@@ -25927,7 +25953,7 @@ export namespace Prisma {
     id?: IntFilter<"PromoBanner"> | number
     name?: StringFilter<"PromoBanner"> | string
     description?: StringFilter<"PromoBanner"> | string
-    prodId?: StringFilter<"PromoBanner"> | string
+    prodId?: StringNullableFilter<"PromoBanner"> | string | null
     image?: StringFilter<"PromoBanner"> | string
     publicId?: StringNullableFilter<"PromoBanner"> | string | null
     carouselId?: IntFilter<"PromoBanner"> | number
@@ -26680,14 +26706,14 @@ export namespace Prisma {
     description: string
     image: string
     publicId?: string | null
-    product: SpecificProductCreateNestedOneWithoutPromoBannerInput
+    product?: SpecificProductCreateNestedOneWithoutPromoBannerInput
   }
 
   export type PromoBannerUncheckedCreateWithoutCarouselInput = {
     id?: number
     name: string
     description: string
-    prodId: string
+    prodId?: string | null
     image: string
     publicId?: string | null
   }
@@ -27165,7 +27191,7 @@ export namespace Prisma {
     id?: number
     name: string
     description: string
-    prodId: string
+    prodId?: string | null
     image: string
     publicId?: string | null
   }
@@ -27175,14 +27201,14 @@ export namespace Prisma {
     description?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
     publicId?: NullableStringFieldUpdateOperationsInput | string | null
-    product?: SpecificProductUpdateOneRequiredWithoutPromoBannerNestedInput
+    product?: SpecificProductUpdateOneWithoutPromoBannerNestedInput
   }
 
   export type PromoBannerUncheckedUpdateWithoutCarouselInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    prodId?: StringFieldUpdateOperationsInput | string
+    prodId?: NullableStringFieldUpdateOperationsInput | string | null
     image?: StringFieldUpdateOperationsInput | string
     publicId?: NullableStringFieldUpdateOperationsInput | string | null
   }
@@ -27191,7 +27217,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
-    prodId?: StringFieldUpdateOperationsInput | string
+    prodId?: NullableStringFieldUpdateOperationsInput | string | null
     image?: StringFieldUpdateOperationsInput | string
     publicId?: NullableStringFieldUpdateOperationsInput | string | null
   }

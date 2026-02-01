@@ -12,8 +12,8 @@ export declare class PromotionController {
         startDate: Date;
         endDate: Date;
         discountType: string;
-        Type: string;
         discount: number;
+        Type: string;
     }>;
     findAll(): Promise<{
         name: string;
@@ -21,16 +21,16 @@ export declare class PromotionController {
         startDate: Date;
         endDate: Date;
         discountType: string;
-        Type: string;
         discount: number;
+        Type: string;
     }[]>;
     findBanner(id: string): Promise<{
         name: string;
-        image: string;
         id: number;
-        publicId: string | null;
-        prodId: string;
         description: string;
+        prodId: string | null;
+        image: string;
+        publicId: string | null;
         carouselId: number;
     } | null>;
     findCarousel(id: string): Promise<{
@@ -43,11 +43,11 @@ export declare class PromotionController {
     }[]>;
     updateBanner(id: string, data: UpdateBannerDto): Promise<{
         name: string;
-        image: string;
         id: number;
-        publicId: string | null;
-        prodId: string;
         description: string;
+        prodId: string | null;
+        image: string;
+        publicId: string | null;
         carouselId: number;
     }>;
     updateCarousel(id: string, data: UpdateCarouselDto): void;
@@ -57,8 +57,8 @@ export declare class PromotionController {
         startDate: Date;
         endDate: Date;
         discountType: string;
-        Type: string;
         discount: number;
+        Type: string;
     } | null>;
     update(id: string, updatePromotionDto: UpdatePromotionDto): Promise<{
         name: string;
@@ -66,8 +66,8 @@ export declare class PromotionController {
         startDate: Date;
         endDate: Date;
         discountType: string;
-        Type: string;
         discount: number;
+        Type: string;
     }>;
     remove(id: string): Promise<{
         name: string;
@@ -75,7 +75,7 @@ export declare class PromotionController {
         startDate: Date;
         endDate: Date;
         discountType: string;
-        Type: string;
         discount: number;
+        Type: string;
     }>;
 }

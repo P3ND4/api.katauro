@@ -4,13 +4,17 @@ import { UpdatePromotionDto } from './dto/update-promotion.dto';
 import { PromotionRepository } from './Promotion.repository';
 import { BannerRepository } from './utils/Banner.repository';
 import { CarouselRepository } from './utils/Carousel.repository';
+import { CarouselNames } from './entities/promotion.entity';
+
 
 @Injectable()
 export class PromotionService implements OnModuleInit {
 
   constructor(private promoRep: PromotionRepository, private bannerRep: BannerRepository, private carouselRep: CarouselRepository) { }
-  onModuleInit() {
-  
+  async onModuleInit() {
+    await this.carouselRep.seedBaseCarousel(CarouselNames.primary)
+    await this.carouselRep.seedBaseCarousel(CarouselNames.secundary)
+    await this.bannerRep.bannerSeeds();
   }
 
   create(createPromotionDto: CreatePromotionDto) {
@@ -49,5 +53,5 @@ export class PromotionService implements OnModuleInit {
     return this.bannerRep.UpdateBanner(id, data);
   }
 
-  
+
 }

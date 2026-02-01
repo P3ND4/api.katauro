@@ -14,7 +14,7 @@ export class ProductRepository implements IProductRepository {
     constructor(private prismaService: PrismaService) { }
 
     findAllProducts(): Promise<GenericProduct[]> {
-        return this.prismaService.genericProduct.findMany({ include: { variants: { include: { images: true, color: true } }, details: true, category: true, finish: true } });
+        return this.prismaService.genericProduct.findMany({ include: { variants: { include: { genericProd: { include: { category: true } }, images: true, color: true, promotions: { include: { promotion: true } } } }, details: true, category: true, finish: true } });
     }
     createProduct(data: CreateProductDto): Promise<GenericProduct> {
         return this.prismaService.genericProduct.create({
@@ -40,7 +40,7 @@ export class ProductRepository implements IProductRepository {
         });
     }
     findProductById(id: string): Promise<GenericProduct | null> {
-        return this.prismaService.genericProduct.findUnique({ where: { id }, include: { variants: { include: { images: true, color: true } }, details: true, category: true, finish: true } })
+        return this.prismaService.genericProduct.findUnique({ where: { id }, include: { variants: { include: { images: true, color: true, promotions: { include: { promotion: true } } } }, details: true, category: true, finish: true } })
     }
     async updateProduct(id: string, data: UpdateProductDto): Promise<GenericProduct> {
 
@@ -78,7 +78,7 @@ export class ProductRepository implements IProductRepository {
         })
     }
     deleteProduct(id: string): Promise<GenericProduct> {
-        return this.prismaService.genericProduct.delete({ where: { id }, include: { variants: { include: { images: true } } }});
+        return this.prismaService.genericProduct.delete({ where: { id }, include: { variants: { include: { images: true } } } });
     }
 
 }

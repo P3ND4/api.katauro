@@ -7,16 +7,16 @@ export declare class SpecProductService {
     private cloudy;
     constructor(variantRep: SpecProductRepository, cloudy: CloudinaryService);
     create(createSpecProductDTO: CreateSpecProductDTO): Promise<{
-        image: string;
         id: string;
+        image: string;
         price: number;
         stock: number;
         colorId: string;
         genericId: string;
     }>;
     update(id: string, updateSpecProductDto: UpdateSpecProductDto): Promise<{
-        image: string;
         id: string;
+        image: string;
         price: number;
         stock: number;
         colorId: string;
@@ -24,16 +24,16 @@ export declare class SpecProductService {
     }>;
     delete(id: string): Promise<void>;
     findById(id: string): Promise<{
-        image: string;
         id: string;
+        image: string;
         price: number;
         stock: number;
         colorId: string;
         genericId: string;
     } | null>;
     findByGeneric(id: string): Promise<{
-        image: string;
         id: string;
+        image: string;
         price: number;
         stock: number;
         colorId: string;

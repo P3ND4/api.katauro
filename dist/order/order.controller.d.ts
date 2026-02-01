@@ -5,11 +5,11 @@ export declare class OrderController {
     private readonly orderService;
     constructor(orderService: OrderService);
     create(createOrderDto: CreateOrderDto): Promise<{
-        email: string;
         name: string;
+        id: string;
+        email: string;
         lastName: string;
         phone: string;
-        id: string;
         createdAt: Date;
         userId: string;
         price: number;
@@ -22,11 +22,11 @@ export declare class OrderController {
         note: string;
     }>;
     findAll(search: string, state: string, orderBy: string): Promise<{
-        email: string;
         name: string;
+        id: string;
+        email: string;
         lastName: string;
         phone: string;
-        id: string;
         createdAt: Date;
         userId: string;
         price: number;
@@ -39,11 +39,11 @@ export declare class OrderController {
         note: string;
     }[]>;
     findOne(id: string): Promise<{
-        email: string;
         name: string;
+        id: string;
+        email: string;
         lastName: string;
         phone: string;
-        id: string;
         createdAt: Date;
         userId: string;
         price: number;
@@ -56,11 +56,11 @@ export declare class OrderController {
         note: string;
     } | null>;
     update(id: string, updateOrderDto: UpdateOrderDto): Promise<{
-        email: string;
         name: string;
+        id: string;
+        email: string;
         lastName: string;
         phone: string;
-        id: string;
         createdAt: Date;
         userId: string;
         price: number;
@@ -73,11 +73,11 @@ export declare class OrderController {
         note: string;
     }>;
     remove(id: string): Promise<{
-        email: string;
         name: string;
+        id: string;
+        email: string;
         lastName: string;
         phone: string;
-        id: string;
         createdAt: Date;
         userId: string;
         price: number;

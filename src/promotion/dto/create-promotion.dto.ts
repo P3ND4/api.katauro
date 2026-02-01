@@ -1,5 +1,4 @@
 export class CreatePromotionDto {
-    promo_id: string
     startDate: Date
     endDate: Date
     name: string

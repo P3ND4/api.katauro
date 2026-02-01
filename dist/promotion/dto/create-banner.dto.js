@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreateBannerDto = void 0;
 class CreateBannerDto {
+    id;
     name;
     description;
     prodId;

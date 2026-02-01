@@ -9,15 +9,15 @@ export declare class PromotionService implements OnModuleInit {
     private bannerRep;
     private carouselRep;
     constructor(promoRep: PromotionRepository, bannerRep: BannerRepository, carouselRep: CarouselRepository);
-    onModuleInit(): void;
+    onModuleInit(): Promise<void>;
     create(createPromotionDto: CreatePromotionDto): Promise<{
         name: string;
         promo_id: string;
         startDate: Date;
         endDate: Date;
         discountType: string;
-        Type: string;
         discount: number;
+        Type: string;
     }>;
     findAll(): Promise<{
         name: string;
@@ -25,8 +25,8 @@ export declare class PromotionService implements OnModuleInit {
         startDate: Date;
         endDate: Date;
         discountType: string;
-        Type: string;
         discount: number;
+        Type: string;
     }[]>;
     findOne(id: string): Promise<{
         name: string;
@@ -34,8 +34,8 @@ export declare class PromotionService implements OnModuleInit {
         startDate: Date;
         endDate: Date;
         discountType: string;
-        Type: string;
         discount: number;
+        Type: string;
     } | null>;
     update(id: string, updatePromotionDto: UpdatePromotionDto): Promise<{
         name: string;
@@ -43,8 +43,8 @@ export declare class PromotionService implements OnModuleInit {
         startDate: Date;
         endDate: Date;
         discountType: string;
-        Type: string;
         discount: number;
+        Type: string;
     }>;
     remove(id: string): Promise<{
         name: string;
@@ -52,16 +52,16 @@ export declare class PromotionService implements OnModuleInit {
         startDate: Date;
         endDate: Date;
         discountType: string;
-        Type: string;
         discount: number;
+        Type: string;
     }>;
     findBanner(id: number): Promise<{
         name: string;
-        image: string;
         id: number;
-        publicId: string | null;
-        prodId: string;
         description: string;
+        prodId: string | null;
+        image: string;
+        publicId: string | null;
         carouselId: number;
     } | null>;
     findCarousel(id: number): Promise<{
@@ -74,11 +74,11 @@ export declare class PromotionService implements OnModuleInit {
     }[]>;
     updateBanner(id: number, data: any): Promise<{
         name: string;
-        image: string;
         id: number;
-        publicId: string | null;
-        prodId: string;
         description: string;
+        prodId: string | null;
+        image: string;
+        publicId: string | null;
         carouselId: number;
     }>;
 }

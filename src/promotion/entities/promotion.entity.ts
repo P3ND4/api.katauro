@@ -40,3 +40,8 @@ export class Carousel {
     name: string
     banners: Banner[]
 }
+
+export enum CarouselNames{
+    primary = 'primary',
+    secundary = 'secundary'
+}
