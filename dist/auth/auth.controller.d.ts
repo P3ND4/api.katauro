@@ -13,7 +13,7 @@ export declare class AuthController {
     }>;
     sendCode(user: {
         email: string;
-    }): Promise<void>;
+    }): Promise<any>;
     verifyCode(user: {
         email: string;
         code: string;
@@ -21,33 +21,6 @@ export declare class AuthController {
     changePassword(body: {
         newPassword: string;
         email: string;
-    }): Promise<{
-        name: string;
-        id: string;
-        email: string;
-        lastName: string;
-        password: string;
-        phone: string;
-        image: string;
-        publicId: string | null;
-        emailVerified: boolean;
-        emailVerificationCode: string;
-        emailVerificationExpires: Date;
-        createdAt: Date;
-        updatedAt: Date;
-    }>;
-    getMe(req: any): Promise<{
-        name: string;
-        id: string;
-        email: string;
-        lastName: string;
-        phone: string;
-        image: string;
-        publicId: string | null;
-        emailVerified: boolean;
-        emailVerificationCode: string;
-        emailVerificationExpires: Date;
-        createdAt: Date;
-        updatedAt: Date;
-    }>;
+    }): Promise<any>;
+    getMe(req: any): Promise<any>;
 }

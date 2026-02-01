@@ -10,75 +10,13 @@ export declare class PromotionService implements OnModuleInit {
     private carouselRep;
     constructor(promoRep: PromotionRepository, bannerRep: BannerRepository, carouselRep: CarouselRepository);
     onModuleInit(): Promise<void>;
-    create(createPromotionDto: CreatePromotionDto): Promise<{
-        name: string;
-        promo_id: string;
-        startDate: Date;
-        endDate: Date;
-        discountType: string;
-        discount: number;
-        Type: string;
-    }>;
-    findAll(): Promise<{
-        name: string;
-        promo_id: string;
-        startDate: Date;
-        endDate: Date;
-        discountType: string;
-        discount: number;
-        Type: string;
-    }[]>;
-    findOne(id: string): Promise<{
-        name: string;
-        promo_id: string;
-        startDate: Date;
-        endDate: Date;
-        discountType: string;
-        discount: number;
-        Type: string;
-    } | null>;
-    update(id: string, updatePromotionDto: UpdatePromotionDto): Promise<{
-        name: string;
-        promo_id: string;
-        startDate: Date;
-        endDate: Date;
-        discountType: string;
-        discount: number;
-        Type: string;
-    }>;
-    remove(id: string): Promise<{
-        name: string;
-        promo_id: string;
-        startDate: Date;
-        endDate: Date;
-        discountType: string;
-        discount: number;
-        Type: string;
-    }>;
-    findBanner(id: number): Promise<{
-        name: string;
-        id: number;
-        description: string;
-        prodId: string | null;
-        image: string;
-        publicId: string | null;
-        carouselId: number;
-    } | null>;
-    findCarousel(id: number): Promise<{
-        name: string;
-        id: number;
-    } | null>;
-    findAllCarousels(): Promise<{
-        name: string;
-        id: number;
-    }[]>;
-    updateBanner(id: number, data: any): Promise<{
-        name: string;
-        id: number;
-        description: string;
-        prodId: string | null;
-        image: string;
-        publicId: string | null;
-        carouselId: number;
-    }>;
+    create(createPromotionDto: CreatePromotionDto): Promise<Promotion>;
+    findAll(): Promise<Promotion[]>;
+    findOne(id: string): Promise<any>;
+    update(id: string, updatePromotionDto: UpdatePromotionDto): Promise<Promotion>;
+    remove(id: string): Promise<Promotion>;
+    findBanner(id: number): Promise<any>;
+    findCarousel(id: number): Promise<any>;
+    findAllCarousels(): Promise<Carousel[]>;
+    updateBanner(id: number, data: any): Promise<Banner>;
 }

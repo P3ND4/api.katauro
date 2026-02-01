@@ -6,76 +6,14 @@ import { UpdateCarouselDto } from './dto/update-carousel.dto';
 export declare class PromotionController {
     private readonly promotionService;
     constructor(promotionService: PromotionService);
-    create(createPromotionDto: CreatePromotionDto): Promise<{
-        name: string;
-        promo_id: string;
-        startDate: Date;
-        endDate: Date;
-        discountType: string;
-        discount: number;
-        Type: string;
-    }>;
-    findAll(): Promise<{
-        name: string;
-        promo_id: string;
-        startDate: Date;
-        endDate: Date;
-        discountType: string;
-        discount: number;
-        Type: string;
-    }[]>;
-    findBanner(id: string): Promise<{
-        name: string;
-        id: number;
-        description: string;
-        prodId: string | null;
-        image: string;
-        publicId: string | null;
-        carouselId: number;
-    } | null>;
-    findCarousel(id: string): Promise<{
-        name: string;
-        id: number;
-    } | null>;
-    findAllCarousel(): Promise<{
-        name: string;
-        id: number;
-    }[]>;
-    updateBanner(id: string, data: UpdateBannerDto): Promise<{
-        name: string;
-        id: number;
-        description: string;
-        prodId: string | null;
-        image: string;
-        publicId: string | null;
-        carouselId: number;
-    }>;
+    create(createPromotionDto: CreatePromotionDto): Promise<Promotion>;
+    findAll(): Promise<Promotion[]>;
+    findBanner(id: string): Promise<any>;
+    findCarousel(id: string): Promise<any>;
+    findAllCarousel(): Promise<Carousel[]>;
+    updateBanner(id: string, data: UpdateBannerDto): Promise<Banner>;
     updateCarousel(id: string, data: UpdateCarouselDto): void;
-    findOne(id: string): Promise<{
-        name: string;
-        promo_id: string;
-        startDate: Date;
-        endDate: Date;
-        discountType: string;
-        discount: number;
-        Type: string;
-    } | null>;
-    update(id: string, updatePromotionDto: UpdatePromotionDto): Promise<{
-        name: string;
-        promo_id: string;
-        startDate: Date;
-        endDate: Date;
-        discountType: string;
-        discount: number;
-        Type: string;
-    }>;
-    remove(id: string): Promise<{
-        name: string;
-        promo_id: string;
-        startDate: Date;
-        endDate: Date;
-        discountType: string;
-        discount: number;
-        Type: string;
-    }>;
+    findOne(id: string): Promise<any>;
+    update(id: string, updatePromotionDto: UpdatePromotionDto): Promise<Promotion>;
+    remove(id: string): Promise<Promotion>;
 }

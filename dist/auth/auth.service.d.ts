@@ -14,40 +14,13 @@ export declare class AuthService {
     login(credentials: LoginDto): Promise<any>;
     private createToken;
     validateUser(email: string, password: string): Promise<any>;
-    getLoggedUser(token: string): Promise<{
-        name: string;
-        id: string;
-        email: string;
-        lastName: string;
-        phone: string;
-        image: string;
-        publicId: string | null;
-        emailVerified: boolean;
-        emailVerificationCode: string;
-        emailVerificationExpires: Date;
-        createdAt: Date;
-        updatedAt: Date;
-    }>;
+    getLoggedUser(token: string): Promise<any>;
     logout(token: string): Promise<{
         message: string;
     }>;
-    sendCode(email: string): Promise<void>;
+    sendCode(email: string): Promise<any>;
     verifyCode(email: string, code: string): Promise<string>;
-    changePassword(email: string, newPassword: string): Promise<{
-        name: string;
-        id: string;
-        email: string;
-        lastName: string;
-        password: string;
-        phone: string;
-        image: string;
-        publicId: string | null;
-        emailVerified: boolean;
-        emailVerificationCode: string;
-        emailVerificationExpires: Date;
-        createdAt: Date;
-        updatedAt: Date;
-    }>;
+    changePassword(email: string, newPassword: string): Promise<any>;
     private generateOTP;
     private generateResetToken;
 }
