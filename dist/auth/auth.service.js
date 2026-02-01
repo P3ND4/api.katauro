@@ -41,16 +41,15 @@ var __importStar = (this && this.__importStar) || (function () {
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var _a, _b;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AuthService = void 0;
 const common_1 = require("@nestjs/common");
 const jwt_1 = require("@nestjs/jwt");
-const users_service_1 = require("../../../../../../../../src/users/users.service");
+const users_service_1 = require("../users/users.service");
 const bcrypt = __importStar(require("bcrypt"));
 const crypto_1 = require("crypto");
 const revokedJwt_service_1 = require("../shared/services/jwt/revokedJwt.service");
-const mail_service_1 = require("../../../../../../../../src/shared/services/mail/mail.service");
+const mail_service_1 = require("../shared/services/mail/mail.service");
 let AuthService = class AuthService {
     userService;
     jwtService;
@@ -172,6 +171,7 @@ let AuthService = class AuthService {
 exports.AuthService = AuthService;
 exports.AuthService = AuthService = __decorate([
     (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [typeof (_a = typeof users_service_1.UsersService !== "undefined" && users_service_1.UsersService) === "function" ? _a : Object, jwt_1.JwtService, revokedJwt_service_1.RevokedJwtService, typeof (_b = typeof mail_service_1.MailService !== "undefined" && mail_service_1.MailService) === "function" ? _b : Object])
+    __metadata("design:paramtypes", [users_service_1.UsersService, jwt_1.JwtService, revokedJwt_service_1.RevokedJwtService,
+        mail_service_1.MailService])
 ], AuthService);
 //# sourceMappingURL=auth.service.js.map

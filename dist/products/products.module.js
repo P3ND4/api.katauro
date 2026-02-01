@@ -10,12 +10,12 @@ exports.ProductsModule = void 0;
 const common_1 = require("@nestjs/common");
 const products_service_1 = require("./products.service");
 const products_controller_1 = require("./products.controller");
-const prisma_service_1 = require("../../../../../../../../src/shared/services/prisma/prisma.service");
+const prisma_service_1 = require("../shared/services/prisma/prisma.service");
 const products_repository_1 = require("./products.repository");
 const spec_product_service_1 = require("./spec-product/spec-product.service");
 const spec_product_repository_1 = require("./spec-product/spec-product.repository");
 const CatRepository_1 = require("./CatRepository");
-const cloudinary_service_1 = require("../../../../../../../../src/cloudinary/cloudinary.service");
+const cloudinary_service_1 = require("../cloudinary/cloudinary.service");
 let ProductsModule = class ProductsModule {
 };
 exports.ProductsModule = ProductsModule;

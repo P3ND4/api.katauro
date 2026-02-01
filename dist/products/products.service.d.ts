@@ -10,20 +10,60 @@ export declare class ProductsService implements OnModuleInit {
     readonly CatParser: Categories[];
     constructor(productRepository: ProductRepository, propRep: propRepository);
     onModuleInit(): void;
-    create(createProductDto: CreateProductDto): Promise<GenericProduct>;
+    create(createProductDto: CreateProductDto): Promise<{
+        name: string;
+        id: string;
+        description: string;
+        subtitle: string;
+        categoryId: string;
+        typology: string;
+        vector: string;
+    }>;
     findAll(options?: {
         category?: string;
         search?: string;
         page?: number;
     }): Promise<Product[]>;
-    findPage(page: number): Promise<GenericProduct[]>;
+    findPage(page: number): Promise<{
+        name: string;
+        id: string;
+        description: string;
+        subtitle: string;
+        categoryId: string;
+        typology: string;
+        vector: string;
+    }[]>;
     getPages(options?: {
         category?: string;
         search?: string;
     }): Promise<number>;
-    findOne(id: string): Promise<any>;
-    update(id: string, updateProductDto: UpdateProductDto): Promise<GenericProduct>;
-    remove(id: string): Promise<GenericProduct>;
+    findOne(id: string): Promise<{
+        name: string;
+        id: string;
+        description: string;
+        subtitle: string;
+        categoryId: string;
+        typology: string;
+        vector: string;
+    } | null>;
+    update(id: string, updateProductDto: UpdateProductDto): Promise<{
+        name: string;
+        id: string;
+        description: string;
+        subtitle: string;
+        categoryId: string;
+        typology: string;
+        vector: string;
+    }>;
+    remove(id: string): Promise<{
+        name: string;
+        id: string;
+        description: string;
+        subtitle: string;
+        categoryId: string;
+        typology: string;
+        vector: string;
+    }>;
     getProductByCategory(name: string, page?: number): Promise<Product[]>;
     getCatByName(name: string): Promise<import("./entities/product.entity").CatEntity[]>;
     getCats(): Promise<import("./entities/product.entity").CatEntity[]>;

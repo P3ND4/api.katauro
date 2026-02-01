@@ -41,11 +41,10 @@ var __importStar = (this && this.__importStar) || (function () {
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.UsersService = void 0;
 const common_1 = require("@nestjs/common");
-const prisma_service_1 = require("../../../../../../../../src/shared/services/prisma/prisma.service");
+const prisma_service_1 = require("../shared/services/prisma/prisma.service");
 const users_repository_1 = require("./users.repository");
 const bcrypt = __importStar(require("bcrypt"));
 let UsersService = class UsersService {
@@ -83,6 +82,6 @@ let UsersService = class UsersService {
 exports.UsersService = UsersService;
 exports.UsersService = UsersService = __decorate([
     (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [typeof (_a = typeof prisma_service_1.PrismaService !== "undefined" && prisma_service_1.PrismaService) === "function" ? _a : Object, users_repository_1.UsersRepository])
+    __metadata("design:paramtypes", [prisma_service_1.PrismaService, users_repository_1.UsersRepository])
 ], UsersService);
 //# sourceMappingURL=users.service.js.map

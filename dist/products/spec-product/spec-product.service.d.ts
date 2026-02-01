@@ -6,9 +6,37 @@ export declare class SpecProductService {
     private variantRep;
     private cloudy;
     constructor(variantRep: SpecProductRepository, cloudy: CloudinaryService);
-    create(createSpecProductDTO: CreateSpecProductDTO): Promise<SpecificProduct>;
-    update(id: string, updateSpecProductDto: UpdateSpecProductDto): Promise<SpecificProduct>;
+    create(createSpecProductDTO: CreateSpecProductDTO): Promise<{
+        id: string;
+        image: string;
+        price: number;
+        stock: number;
+        colorId: string;
+        genericId: string;
+    }>;
+    update(id: string, updateSpecProductDto: UpdateSpecProductDto): Promise<{
+        id: string;
+        image: string;
+        price: number;
+        stock: number;
+        colorId: string;
+        genericId: string;
+    }>;
     delete(id: string): Promise<void>;
-    findById(id: string): Promise<any>;
-    findByGeneric(id: string): Promise<SpecificProduct[]>;
+    findById(id: string): Promise<{
+        id: string;
+        image: string;
+        price: number;
+        stock: number;
+        colorId: string;
+        genericId: string;
+    } | null>;
+    findByGeneric(id: string): Promise<{
+        id: string;
+        image: string;
+        price: number;
+        stock: number;
+        colorId: string;
+        genericId: string;
+    }[]>;
 }

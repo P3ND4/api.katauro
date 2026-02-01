@@ -8,7 +8,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.PrismaExceptionFilter = void 0;
 const common_1 = require("@nestjs/common");
-const prisma_1 = require("generated/prisma");
+const prisma_1 = require("../../../generated/prisma/index.js");
 let PrismaExceptionFilter = class PrismaExceptionFilter {
     catch(exception, host) {
         const response = host.switchToHttp().getResponse();

@@ -8,13 +8,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var _a;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.OrderService = void 0;
 const common_1 = require("@nestjs/common");
 const order_repository_1 = require("./order.repository");
 const order_entity_1 = require("./entities/order.entity");
-const spec_product_service_1 = require("../../../../../../../../src/products/spec-product/spec-product.service");
+const spec_product_service_1 = require("../products/spec-product/spec-product.service");
 let OrderService = class OrderService {
     orderRepository;
     variantService;
@@ -60,6 +59,6 @@ let OrderService = class OrderService {
 exports.OrderService = OrderService;
 exports.OrderService = OrderService = __decorate([
     (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [order_repository_1.OrderRepository, typeof (_a = typeof spec_product_service_1.SpecProductService !== "undefined" && spec_product_service_1.SpecProductService) === "function" ? _a : Object])
+    __metadata("design:paramtypes", [order_repository_1.OrderRepository, spec_product_service_1.SpecProductService])
 ], OrderService);
 //# sourceMappingURL=order.service.js.map
