@@ -9,11 +9,11 @@ export declare class OrderService {
     constructor(orderRepository: OrderRepository, variantService: SpecProductService);
     stateParser: OrderState[];
     create(createOrderDto: CreateOrderDto): Promise<{
-        name: string;
-        id: string;
         email: string;
+        name: string;
         lastName: string;
         phone: string;
+        id: string;
         createdAt: Date;
         userId: string;
         price: number;
@@ -30,11 +30,11 @@ export declare class OrderService {
         state?: string;
         order?: string;
     }): Promise<{
-        name: string;
-        id: string;
         email: string;
+        name: string;
         lastName: string;
         phone: string;
+        id: string;
         createdAt: Date;
         userId: string;
         price: number;
@@ -47,11 +47,11 @@ export declare class OrderService {
         note: string;
     }[]>;
     findOne(id: string): Promise<{
-        name: string;
-        id: string;
         email: string;
+        name: string;
         lastName: string;
         phone: string;
+        id: string;
         createdAt: Date;
         userId: string;
         price: number;
@@ -64,11 +64,11 @@ export declare class OrderService {
         note: string;
     } | null>;
     update(id: string, updateOrderDto: UpdateOrderDto): Promise<{
-        name: string;
-        id: string;
         email: string;
+        name: string;
         lastName: string;
         phone: string;
+        id: string;
         createdAt: Date;
         userId: string;
         price: number;
@@ -81,11 +81,11 @@ export declare class OrderService {
         note: string;
     }>;
     remove(id: string): Promise<{
-        name: string;
-        id: string;
         email: string;
+        name: string;
         lastName: string;
         phone: string;
+        id: string;
         createdAt: Date;
         userId: string;
         price: number;

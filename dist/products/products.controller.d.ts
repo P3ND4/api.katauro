@@ -31,24 +31,24 @@ export declare class ProductsController {
     findAll(page: string, cat: string, search: string): Promise<import("./entities/product.entity").Product[]>;
     findPage(cat: string, search: string): Promise<number>;
     createVariant(createSpecProductDTO: CreateSpecProductDTO): Promise<{
-        id: string;
         image: string;
+        id: string;
         price: number;
         stock: number;
         colorId: string;
         genericId: string;
     }>;
     getVatiansForProduct(id: string): Promise<{
-        id: string;
         image: string;
+        id: string;
         price: number;
         stock: number;
         colorId: string;
         genericId: string;
     }[]>;
     getVariant(id: string): Promise<{
-        id: string;
         image: string;
+        id: string;
         price: number;
         stock: number;
         colorId: string;
@@ -56,8 +56,8 @@ export declare class ProductsController {
     } | null>;
     deleteVaiant(id: string): Promise<void>;
     updateVariant(id: string, data: UpdateSpecProductDto): Promise<{
-        id: string;
         image: string;
+        id: string;
         price: number;
         stock: number;
         colorId: string;
