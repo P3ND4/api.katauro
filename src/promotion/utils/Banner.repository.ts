@@ -14,7 +14,7 @@ export class BannerRepository implements IBannerRepository {
         return this.prisma.promoBanner.findMany({ include: { product: { include: { promotions: { include: { promotion: true } } } } } })
     }
     FindBannerById(id: number): Promise<Banner | null> {
-        return this.prisma.promoBanner.findUnique({ where: { id }, include: { product: { include: { promotions: { include: { promotion: true } } } } } })
+        return this.prisma.promoBanner.findUnique({ where: { id }, include: { product: { include: {genericProd: true , promotions: { include: { promotion: true } } } } } })
     }
     DeleteBanner(id: number): Promise<Banner> {
         return this.prisma.promoBanner.delete({ where: { id } });
