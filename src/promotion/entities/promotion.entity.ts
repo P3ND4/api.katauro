@@ -5,6 +5,7 @@ export class Promotion {
     startDate: Date
     endDate: Date
     name: string
+    description: string
     discountType: string
     Type: string
     discount: number
@@ -41,7 +42,7 @@ export class Carousel {
     banners: Banner[]
 }
 
-export enum CarouselNames{
+export enum CarouselNames {
     primary = 'primary',
     secundary = 'secundary'
 }

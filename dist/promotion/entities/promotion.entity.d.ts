@@ -4,6 +4,7 @@ export declare class Promotion {
     startDate: Date;
     endDate: Date;
     name: string;
+    description: string;
     discountType: string;
     Type: string;
     discount: number;

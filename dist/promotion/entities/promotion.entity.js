@@ -6,6 +6,7 @@ class Promotion {
     startDate;
     endDate;
     name;
+    description;
     discountType;
     Type;
     discount;

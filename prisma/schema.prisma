@@ -163,6 +163,7 @@ model Promotion {
   startDate    DateTime
   endDate      DateTime
   name         String
+  description  String                @default("")
   discountType String
   discount     Float
   Type         String

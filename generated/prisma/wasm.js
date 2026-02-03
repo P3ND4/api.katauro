@@ -233,6 +233,7 @@ exports.Prisma.PromotionScalarFieldEnum = {
   startDate: 'startDate',
   endDate: 'endDate',
   name: 'name',
+  description: 'description',
   discountType: 'discountType',
   discount: 'discount',
   Type: 'Type'
@@ -372,6 +373,7 @@ exports.Prisma.ProductForOrderOrderByRelevanceFieldEnum = {
 exports.Prisma.PromotionOrderByRelevanceFieldEnum = {
   promo_id: 'promo_id',
   name: 'name',
+  description: 'description',
   discountType: 'discountType',
   Type: 'Type'
 };

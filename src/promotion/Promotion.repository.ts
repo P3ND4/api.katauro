@@ -35,6 +35,7 @@ export class PromotionRepository implements IPromoRepository {
                 startDate: data.startDate,
                 endDate: data.endDate,
                 name: data.name,
+                description: data.description,
                 discountType: data.discountType,
                 Type: data.Type,
                 products: data.products ? {
@@ -52,6 +53,7 @@ export class PromotionRepository implements IPromoRepository {
                 discount: data.discount,
                 startDate: data.startDate,
                 endDate: data.endDate,
+                description: data.description,
                 name: data.name,
                 discountType: data.discountType,
                 Type: data.Type,

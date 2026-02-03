@@ -15287,6 +15287,7 @@ export namespace Prisma {
     startDate: Date | null
     endDate: Date | null
     name: string | null
+    description: string | null
     discountType: string | null
     discount: number | null
     Type: string | null
@@ -15297,6 +15298,7 @@ export namespace Prisma {
     startDate: Date | null
     endDate: Date | null
     name: string | null
+    description: string | null
     discountType: string | null
     discount: number | null
     Type: string | null
@@ -15307,6 +15309,7 @@ export namespace Prisma {
     startDate: number
     endDate: number
     name: number
+    description: number
     discountType: number
     discount: number
     Type: number
@@ -15327,6 +15330,7 @@ export namespace Prisma {
     startDate?: true
     endDate?: true
     name?: true
+    description?: true
     discountType?: true
     discount?: true
     Type?: true
@@ -15337,6 +15341,7 @@ export namespace Prisma {
     startDate?: true
     endDate?: true
     name?: true
+    description?: true
     discountType?: true
     discount?: true
     Type?: true
@@ -15347,6 +15352,7 @@ export namespace Prisma {
     startDate?: true
     endDate?: true
     name?: true
+    description?: true
     discountType?: true
     discount?: true
     Type?: true
@@ -15444,6 +15450,7 @@ export namespace Prisma {
     startDate: Date
     endDate: Date
     name: string
+    description: string
     discountType: string
     discount: number
     Type: string
@@ -15473,6 +15480,7 @@ export namespace Prisma {
     startDate?: boolean
     endDate?: boolean
     name?: boolean
+    description?: boolean
     discountType?: boolean
     discount?: boolean
     Type?: boolean
@@ -15488,12 +15496,13 @@ export namespace Prisma {
     startDate?: boolean
     endDate?: boolean
     name?: boolean
+    description?: boolean
     discountType?: boolean
     discount?: boolean
     Type?: boolean
   }
 
-  export type PromotionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"promo_id" | "startDate" | "endDate" | "name" | "discountType" | "discount" | "Type", ExtArgs["result"]["promotion"]>
+  export type PromotionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"promo_id" | "startDate" | "endDate" | "name" | "description" | "discountType" | "discount" | "Type", ExtArgs["result"]["promotion"]>
   export type PromotionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     products?: boolean | Promotion$productsArgs<ExtArgs>
     categories?: boolean | Promotion$categoriesArgs<ExtArgs>
@@ -15511,6 +15520,7 @@ export namespace Prisma {
       startDate: Date
       endDate: Date
       name: string
+      description: string
       discountType: string
       discount: number
       Type: string
@@ -15889,6 +15899,7 @@ export namespace Prisma {
     readonly startDate: FieldRef<"Promotion", 'DateTime'>
     readonly endDate: FieldRef<"Promotion", 'DateTime'>
     readonly name: FieldRef<"Promotion", 'String'>
+    readonly description: FieldRef<"Promotion", 'String'>
     readonly discountType: FieldRef<"Promotion", 'String'>
     readonly discount: FieldRef<"Promotion", 'Float'>
     readonly Type: FieldRef<"Promotion", 'String'>
@@ -20235,6 +20246,7 @@ export namespace Prisma {
     startDate: 'startDate',
     endDate: 'endDate',
     name: 'name',
+    description: 'description',
     discountType: 'discountType',
     discount: 'discount',
     Type: 'Type'
@@ -20434,6 +20446,7 @@ export namespace Prisma {
   export const PromotionOrderByRelevanceFieldEnum: {
     promo_id: 'promo_id',
     name: 'name',
+    description: 'description',
     discountType: 'discountType',
     Type: 'Type'
   };
@@ -21325,6 +21338,7 @@ export namespace Prisma {
     startDate?: DateTimeFilter<"Promotion"> | Date | string
     endDate?: DateTimeFilter<"Promotion"> | Date | string
     name?: StringFilter<"Promotion"> | string
+    description?: StringFilter<"Promotion"> | string
     discountType?: StringFilter<"Promotion"> | string
     discount?: FloatFilter<"Promotion"> | number
     Type?: StringFilter<"Promotion"> | string
@@ -21337,6 +21351,7 @@ export namespace Prisma {
     startDate?: SortOrder
     endDate?: SortOrder
     name?: SortOrder
+    description?: SortOrder
     discountType?: SortOrder
     discount?: SortOrder
     Type?: SortOrder
@@ -21353,6 +21368,7 @@ export namespace Prisma {
     startDate?: DateTimeFilter<"Promotion"> | Date | string
     endDate?: DateTimeFilter<"Promotion"> | Date | string
     name?: StringFilter<"Promotion"> | string
+    description?: StringFilter<"Promotion"> | string
     discountType?: StringFilter<"Promotion"> | string
     discount?: FloatFilter<"Promotion"> | number
     Type?: StringFilter<"Promotion"> | string
@@ -21365,6 +21381,7 @@ export namespace Prisma {
     startDate?: SortOrder
     endDate?: SortOrder
     name?: SortOrder
+    description?: SortOrder
     discountType?: SortOrder
     discount?: SortOrder
     Type?: SortOrder
@@ -21383,6 +21400,7 @@ export namespace Prisma {
     startDate?: DateTimeWithAggregatesFilter<"Promotion"> | Date | string
     endDate?: DateTimeWithAggregatesFilter<"Promotion"> | Date | string
     name?: StringWithAggregatesFilter<"Promotion"> | string
+    description?: StringWithAggregatesFilter<"Promotion"> | string
     discountType?: StringWithAggregatesFilter<"Promotion"> | string
     discount?: FloatWithAggregatesFilter<"Promotion"> | number
     Type?: StringWithAggregatesFilter<"Promotion"> | string
@@ -22403,6 +22421,7 @@ export namespace Prisma {
     startDate: Date | string
     endDate: Date | string
     name: string
+    description?: string
     discountType: string
     discount: number
     Type: string
@@ -22415,6 +22434,7 @@ export namespace Prisma {
     startDate: Date | string
     endDate: Date | string
     name: string
+    description?: string
     discountType: string
     discount: number
     Type: string
@@ -22427,6 +22447,7 @@ export namespace Prisma {
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
     discountType?: StringFieldUpdateOperationsInput | string
     discount?: FloatFieldUpdateOperationsInput | number
     Type?: StringFieldUpdateOperationsInput | string
@@ -22439,6 +22460,7 @@ export namespace Prisma {
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
     discountType?: StringFieldUpdateOperationsInput | string
     discount?: FloatFieldUpdateOperationsInput | number
     Type?: StringFieldUpdateOperationsInput | string
@@ -22451,6 +22473,7 @@ export namespace Prisma {
     startDate: Date | string
     endDate: Date | string
     name: string
+    description?: string
     discountType: string
     discount: number
     Type: string
@@ -22461,6 +22484,7 @@ export namespace Prisma {
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
     discountType?: StringFieldUpdateOperationsInput | string
     discount?: FloatFieldUpdateOperationsInput | number
     Type?: StringFieldUpdateOperationsInput | string
@@ -22471,6 +22495,7 @@ export namespace Prisma {
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
     discountType?: StringFieldUpdateOperationsInput | string
     discount?: FloatFieldUpdateOperationsInput | number
     Type?: StringFieldUpdateOperationsInput | string
@@ -23409,6 +23434,7 @@ export namespace Prisma {
     startDate?: SortOrder
     endDate?: SortOrder
     name?: SortOrder
+    description?: SortOrder
     discountType?: SortOrder
     discount?: SortOrder
     Type?: SortOrder
@@ -23423,6 +23449,7 @@ export namespace Prisma {
     startDate?: SortOrder
     endDate?: SortOrder
     name?: SortOrder
+    description?: SortOrder
     discountType?: SortOrder
     discount?: SortOrder
     Type?: SortOrder
@@ -23433,6 +23460,7 @@ export namespace Prisma {
     startDate?: SortOrder
     endDate?: SortOrder
     name?: SortOrder
+    description?: SortOrder
     discountType?: SortOrder
     discount?: SortOrder
     Type?: SortOrder
@@ -26376,6 +26404,7 @@ export namespace Prisma {
     startDate: Date | string
     endDate: Date | string
     name: string
+    description?: string
     discountType: string
     discount: number
     Type: string
@@ -26387,6 +26416,7 @@ export namespace Prisma {
     startDate: Date | string
     endDate: Date | string
     name: string
+    description?: string
     discountType: string
     discount: number
     Type: string
@@ -26431,6 +26461,7 @@ export namespace Prisma {
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
     discountType?: StringFieldUpdateOperationsInput | string
     discount?: FloatFieldUpdateOperationsInput | number
     Type?: StringFieldUpdateOperationsInput | string
@@ -26442,6 +26473,7 @@ export namespace Prisma {
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
     discountType?: StringFieldUpdateOperationsInput | string
     discount?: FloatFieldUpdateOperationsInput | number
     Type?: StringFieldUpdateOperationsInput | string
@@ -26507,6 +26539,7 @@ export namespace Prisma {
     startDate: Date | string
     endDate: Date | string
     name: string
+    description?: string
     discountType: string
     discount: number
     Type: string
@@ -26518,6 +26551,7 @@ export namespace Prisma {
     startDate: Date | string
     endDate: Date | string
     name: string
+    description?: string
     discountType: string
     discount: number
     Type: string
@@ -26582,6 +26616,7 @@ export namespace Prisma {
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
     discountType?: StringFieldUpdateOperationsInput | string
     discount?: FloatFieldUpdateOperationsInput | number
     Type?: StringFieldUpdateOperationsInput | string
@@ -26593,6 +26628,7 @@ export namespace Prisma {
     startDate?: DateTimeFieldUpdateOperationsInput | Date | string
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
     name?: StringFieldUpdateOperationsInput | string
+    description?: StringFieldUpdateOperationsInput | string
     discountType?: StringFieldUpdateOperationsInput | string
     discount?: FloatFieldUpdateOperationsInput | number
     Type?: StringFieldUpdateOperationsInput | string
