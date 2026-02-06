@@ -11,7 +11,7 @@ export class PromotionRepository implements IPromoRepository {
     constructor(private prisma: PrismaService) { }
 
     FindAllPromotions(): Promise<Promotion[]> {
-        return this.prisma.promotion.findMany({ include: { products: true } });
+        return this.prisma.promotion.findMany({ include: { products: { include: { product: { include: { genericProd: true } } } }, categories: { include: { category: true } } } });
     }
     FindPromoById(id: string): Promise<Promotion | null> {
         return this.prisma.promotion.findUnique({ where: { promo_id: id }, include: { products: { include: { product: { include: { genericProd: true } } } }, categories: { include: { category: true } } } });
