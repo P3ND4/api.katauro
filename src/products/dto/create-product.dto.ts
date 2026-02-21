@@ -8,6 +8,7 @@ export class CreateProductDto {
     categoryId: string;
     typology: Typology
     vector: string;
+    vPublicId?: string;
     finishId: string[]
     variants: CreateSpecProductDTO[]
     details: string[]

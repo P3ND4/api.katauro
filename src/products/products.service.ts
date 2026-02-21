@@ -4,6 +4,7 @@ import { UpdateProductDto } from './dto/update-product.dto';
 import { ProductRepository } from './products.repository';
 import { Categories, Product } from './entities/product.entity';
 import { propRepository } from './CatRepository';
+import { CloudinaryService } from 'src/cloudinary/cloudinary.service';
 
 @Injectable()
 export class ProductsService implements OnModuleInit {
@@ -15,13 +16,22 @@ export class ProductsService implements OnModuleInit {
     Categories.tableLumin,
     Categories.wallLumin
   ]
-  constructor(private productRepository: ProductRepository, private propRep: propRepository) { }
+  constructor(private productRepository: ProductRepository, private propRep: propRepository, private cloudyService: CloudinaryService) { }
   onModuleInit() {
     this.propRep.seedBaseCategories();
   }
 
   async create(createProductDto: CreateProductDto) {
+    createProductDto.variants = await Promise.all(createProductDto.variants.map(async x => {
+      let varian = x
+      varian.images = await Promise.all(x.images.map(async y => y.public_id ? await this.cloudyService.moveImage(y.public_id, y.link) : y))
+      varian.image = varian.images[0].link;
+      return varian
+    }));
 
+    let vector = createProductDto.vPublicId ? await this.cloudyService.moveImage(createProductDto.vPublicId, createProductDto.vector) : { link: createProductDto.vector, public_id: undefined }
+    createProductDto.vector = vector.link
+    createProductDto.vPublicId = vector.public_id
     return this.productRepository.createProduct(createProductDto);
   }
 
@@ -56,7 +66,17 @@ export class ProductsService implements OnModuleInit {
     return this.productRepository.findProductById(id);
   }
 
-  update(id: string, updateProductDto: UpdateProductDto) {
+  async update(id: string, updateProductDto: UpdateProductDto) {
+    updateProductDto.variants = await Promise.all(updateProductDto.variants ? updateProductDto.variants.map(async x => {
+      let varian = x
+      varian.images = await Promise.all(x.images.map(async y => y.public_id ? await this.cloudyService.moveImage(y.public_id, y.link) : y))
+      varian.image = varian.images[0].link;
+      return varian
+    }) : [])
+
+    let vector = updateProductDto.vPublicId && updateProductDto.vector ? await this.cloudyService.moveImage(updateProductDto.vPublicId, updateProductDto.vector) : { link: updateProductDto.vector, public_id: undefined }
+    updateProductDto.vector = vector.link
+    updateProductDto.vPublicId = vector.public_id
     return this.productRepository.updateProduct(id, updateProductDto);
   }
 
@@ -83,7 +103,10 @@ export class ProductsService implements OnModuleInit {
     return this.propRep.findFinishes();
   }
 
-  createFinish(data: any) {
+  async createFinish(data: { image: string, text: string, public_id?: string }) {
+    let cloudUpdate = data.public_id ? await this.cloudyService.moveImage(data.public_id, data.image) : { link: data.image, public_id: undefined };
+    data.image = cloudUpdate.link;
+    data.public_id = cloudUpdate.public_id;
     return this.propRep.addFinish(data);
   }
 
@@ -95,7 +118,10 @@ export class ProductsService implements OnModuleInit {
     return this.propRep.findColors();
   }
 
-  createColor(data: { image: string, name: string }) {
+  async createColor(data: { image: string, name: string, public_id?: string }) {
+    let cloudUpdate = data.public_id ? await this.cloudyService.moveImage(data.public_id, data.image) : { link: data.image, public_id: undefined };
+    data.image = cloudUpdate.link;
+    data.public_id = cloudUpdate.public_id;
     return this.propRep.addColor(data);
   }
 

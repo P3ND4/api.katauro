@@ -8,31 +8,31 @@ export declare class PromotionController {
     constructor(promotionService: PromotionService);
     create(createPromotionDto: CreatePromotionDto): Promise<{
         name: string;
-        promo_id: string;
+        description: string;
         startDate: Date;
         endDate: Date;
-        description: string;
         discountType: string;
-        discount: number;
         Type: string;
+        discount: number;
+        promo_id: string;
     }>;
     findAll(): Promise<{
         name: string;
-        promo_id: string;
+        description: string;
         startDate: Date;
         endDate: Date;
-        description: string;
         discountType: string;
-        discount: number;
         Type: string;
+        discount: number;
+        promo_id: string;
     }[]>;
     findBanner(id: string): Promise<{
         name: string;
-        description: string;
-        id: number;
-        prodId: string | null;
         image: string;
         publicId: string | null;
+        id: number;
+        prodId: string | null;
+        description: string;
         carouselId: number;
     } | null>;
     findCarousel(id: string): Promise<{
@@ -45,42 +45,42 @@ export declare class PromotionController {
     }[]>;
     updateBanner(id: string, data: UpdateBannerDto): Promise<{
         name: string;
-        description: string;
-        id: number;
-        prodId: string | null;
         image: string;
         publicId: string | null;
+        id: number;
+        prodId: string | null;
+        description: string;
         carouselId: number;
     }>;
     updateCarousel(id: string, data: UpdateCarouselDto): void;
     findOne(id: string): Promise<{
         name: string;
-        promo_id: string;
+        description: string;
         startDate: Date;
         endDate: Date;
-        description: string;
         discountType: string;
-        discount: number;
         Type: string;
+        discount: number;
+        promo_id: string;
     } | null>;
     update(id: string, updatePromotionDto: UpdatePromotionDto): Promise<{
         name: string;
-        promo_id: string;
+        description: string;
         startDate: Date;
         endDate: Date;
-        description: string;
         discountType: string;
-        discount: number;
         Type: string;
+        discount: number;
+        promo_id: string;
     }>;
     remove(id: string): Promise<{
         name: string;
-        promo_id: string;
+        description: string;
         startDate: Date;
         endDate: Date;
-        description: string;
         discountType: string;
-        discount: number;
         Type: string;
+        discount: number;
+        promo_id: string;
     }>;
 }

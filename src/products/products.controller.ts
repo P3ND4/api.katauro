@@ -48,7 +48,7 @@ export class ProductsController {
     return this.productsService.getColors();
   }
   @Post('colors')
-  createColor(@Body() data: { image: string, name: string }) {
+  createColor(@Body() data: { image: string, name: string, public_id?: string }) {
     return this.productsService.createColor(data);
   }
 

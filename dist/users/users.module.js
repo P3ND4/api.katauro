@@ -17,6 +17,7 @@ const auth_guard_1 = require("../shared/guards/auth.guard");
 const config_1 = require("@nestjs/config");
 const jwt_owner_strategy_1 = require("../shared/services/jwt/jwt-owner.strategy");
 const owner_guard_1 = require("../shared/guards/owner.guard");
+const cloudinary_service_1 = require("../cloudinary/cloudinary.service");
 let UsersModule = class UsersModule {
 };
 exports.UsersModule = UsersModule;
@@ -24,7 +25,7 @@ exports.UsersModule = UsersModule = __decorate([
     (0, common_1.Module)({
         controllers: [users_controller_1.UsersController],
         imports: [],
-        providers: [config_1.ConfigService, users_service_1.UsersService, prisma_service_1.PrismaService, users_repository_1.UsersRepository, jwt_strategy_1.JwtStrategy, auth_guard_1.JwtAuthGuard, jwt_owner_strategy_1.JwtOwnerStrategy, owner_guard_1.OwnerGuard],
+        providers: [cloudinary_service_1.CloudinaryService, config_1.ConfigService, users_service_1.UsersService, prisma_service_1.PrismaService, users_repository_1.UsersRepository, jwt_strategy_1.JwtStrategy, auth_guard_1.JwtAuthGuard, jwt_owner_strategy_1.JwtOwnerStrategy, owner_guard_1.OwnerGuard],
     })
 ], UsersModule);
 //# sourceMappingURL=users.module.js.map

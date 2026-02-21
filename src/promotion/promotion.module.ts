@@ -5,9 +5,10 @@ import { PrismaService } from 'src/shared/services/prisma/prisma.service';
 import { PromotionRepository } from './Promotion.repository';
 import { BannerRepository } from './utils/Banner.repository';
 import { CarouselRepository } from './utils/Carousel.repository';
+import { CloudinaryService } from 'src/cloudinary/cloudinary.service';
 
 @Module({
   controllers: [PromotionController],
-  providers: [PromotionService, PrismaService, PromotionRepository, BannerRepository, CarouselRepository],
+  providers: [PromotionService, PrismaService, PromotionRepository, BannerRepository, CarouselRepository, CloudinaryService],
 })
 export class PromotionModule { }

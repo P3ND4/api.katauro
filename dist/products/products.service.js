@@ -14,9 +14,11 @@ const common_1 = require("@nestjs/common");
 const products_repository_1 = require("./products.repository");
 const product_entity_1 = require("./entities/product.entity");
 const CatRepository_1 = require("./CatRepository");
+const cloudinary_service_1 = require("../cloudinary/cloudinary.service");
 let ProductsService = class ProductsService {
     productRepository;
     propRep;
+    cloudyService;
     CatParser = [
         product_entity_1.Categories.footLumin,
         product_entity_1.Categories.lightBulb,
@@ -24,14 +26,24 @@ let ProductsService = class ProductsService {
         product_entity_1.Categories.tableLumin,
         product_entity_1.Categories.wallLumin
     ];
-    constructor(productRepository, propRep) {
+    constructor(productRepository, propRep, cloudyService) {
         this.productRepository = productRepository;
         this.propRep = propRep;
+        this.cloudyService = cloudyService;
     }
     onModuleInit() {
         this.propRep.seedBaseCategories();
     }
     async create(createProductDto) {
+        createProductDto.variants = await Promise.all(createProductDto.variants.map(async (x) => {
+            let varian = x;
+            varian.images = await Promise.all(x.images.map(async (y) => y.public_id ? await this.cloudyService.moveImage(y.public_id, y.link) : y));
+            varian.image = varian.images[0].link;
+            return varian;
+        }));
+        let vector = createProductDto.vPublicId ? await this.cloudyService.moveImage(createProductDto.vPublicId, createProductDto.vector) : { link: createProductDto.vector, public_id: undefined };
+        createProductDto.vector = vector.link;
+        createProductDto.vPublicId = vector.public_id;
         return this.productRepository.createProduct(createProductDto);
     }
     async findAll(options) {
@@ -57,7 +69,16 @@ let ProductsService = class ProductsService {
     findOne(id) {
         return this.productRepository.findProductById(id);
     }
-    update(id, updateProductDto) {
+    async update(id, updateProductDto) {
+        updateProductDto.variants = await Promise.all(updateProductDto.variants ? updateProductDto.variants.map(async (x) => {
+            let varian = x;
+            varian.images = await Promise.all(x.images.map(async (y) => y.public_id ? await this.cloudyService.moveImage(y.public_id, y.link) : y));
+            varian.image = varian.images[0].link;
+            return varian;
+        }) : []);
+        let vector = updateProductDto.vPublicId && updateProductDto.vector ? await this.cloudyService.moveImage(updateProductDto.vPublicId, updateProductDto.vector) : { link: updateProductDto.vector, public_id: undefined };
+        updateProductDto.vector = vector.link;
+        updateProductDto.vPublicId = vector.public_id;
         return this.productRepository.updateProduct(id, updateProductDto);
     }
     remove(id) {
@@ -78,7 +99,10 @@ let ProductsService = class ProductsService {
     getFinishes() {
         return this.propRep.findFinishes();
     }
-    createFinish(data) {
+    async createFinish(data) {
+        let cloudUpdate = data.public_id ? await this.cloudyService.moveImage(data.public_id, data.image) : { link: data.image, public_id: undefined };
+        data.image = cloudUpdate.link;
+        data.public_id = cloudUpdate.public_id;
         return this.propRep.addFinish(data);
     }
     deleteFinish(id) {
@@ -87,7 +111,10 @@ let ProductsService = class ProductsService {
     getColors() {
         return this.propRep.findColors();
     }
-    createColor(data) {
+    async createColor(data) {
+        let cloudUpdate = data.public_id ? await this.cloudyService.moveImage(data.public_id, data.image) : { link: data.image, public_id: undefined };
+        data.image = cloudUpdate.link;
+        data.public_id = cloudUpdate.public_id;
         return this.propRep.addColor(data);
     }
     deleteColor(id) {
@@ -97,6 +124,6 @@ let ProductsService = class ProductsService {
 exports.ProductsService = ProductsService;
 exports.ProductsService = ProductsService = __decorate([
     (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [products_repository_1.ProductRepository, CatRepository_1.propRepository])
+    __metadata("design:paramtypes", [products_repository_1.ProductRepository, CatRepository_1.propRepository, cloudinary_service_1.CloudinaryService])
 ], ProductsService);
 //# sourceMappingURL=products.service.js.map

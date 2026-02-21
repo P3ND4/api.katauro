@@ -11,6 +11,8 @@ import { UsersRepository } from 'src/users/users.repository';
 import { RevokedJwtService } from '../shared/services/jwt/revokedJwt.service';
 import { MailService } from 'src/shared/services/mail/mail.service';
 import { JwtResetStrategy } from 'src/shared/services/jwt/jwt-reset.strategy';
+import { UsersModule } from 'src/users/users.module';
+import { CloudinaryService } from 'src/cloudinary/cloudinary.service';
 
 @Module({
   controllers: [AuthController],
@@ -28,6 +30,6 @@ import { JwtResetStrategy } from 'src/shared/services/jwt/jwt-reset.strategy';
   providers: [AuthService, JwtAuthGuard,
     UsersService, JwtStrategy, JwtResetStrategy,
     ConfigService, PrismaService, UsersRepository,
-    RevokedJwtService, MailService],
+    RevokedJwtService, MailService, CloudinaryService],
 })
 export class AuthModule { }

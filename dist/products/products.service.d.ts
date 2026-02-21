@@ -4,11 +4,13 @@ import { UpdateProductDto } from './dto/update-product.dto';
 import { ProductRepository } from './products.repository';
 import { Categories, Product } from './entities/product.entity';
 import { propRepository } from './CatRepository';
+import { CloudinaryService } from 'src/cloudinary/cloudinary.service';
 export declare class ProductsService implements OnModuleInit {
     private productRepository;
     private propRep;
+    private cloudyService;
     readonly CatParser: Categories[];
-    constructor(productRepository: ProductRepository, propRep: propRepository);
+    constructor(productRepository: ProductRepository, propRep: propRepository, cloudyService: CloudinaryService);
     onModuleInit(): void;
     create(createProductDto: CreateProductDto): Promise<{
         name: string;
@@ -18,6 +20,7 @@ export declare class ProductsService implements OnModuleInit {
         categoryId: string;
         typology: string;
         vector: string;
+        vPublicId: string | null;
     }>;
     findAll(options?: {
         category?: string;
@@ -32,6 +35,7 @@ export declare class ProductsService implements OnModuleInit {
         categoryId: string;
         typology: string;
         vector: string;
+        vPublicId: string | null;
     }[]>;
     getPages(options?: {
         category?: string;
@@ -45,6 +49,7 @@ export declare class ProductsService implements OnModuleInit {
         categoryId: string;
         typology: string;
         vector: string;
+        vPublicId: string | null;
     } | null>;
     update(id: string, updateProductDto: UpdateProductDto): Promise<{
         name: string;
@@ -54,6 +59,7 @@ export declare class ProductsService implements OnModuleInit {
         categoryId: string;
         typology: string;
         vector: string;
+        vPublicId: string | null;
     }>;
     remove(id: string): Promise<{
         name: string;
@@ -63,17 +69,23 @@ export declare class ProductsService implements OnModuleInit {
         categoryId: string;
         typology: string;
         vector: string;
+        vPublicId: string | null;
     }>;
     getProductByCategory(name: string, page?: number): Promise<Product[]>;
     getCatByName(name: string): Promise<import("./entities/product.entity").CatEntity[]>;
     getCats(): Promise<import("./entities/product.entity").CatEntity[]>;
     getFinishes(): Promise<import("./entities/product.entity").Finish[]>;
-    createFinish(data: any): Promise<import("./entities/product.entity").Finish>;
+    createFinish(data: {
+        image: string;
+        text: string;
+        public_id?: string;
+    }): Promise<import("./entities/product.entity").Finish>;
     deleteFinish(id: string): Promise<import("./entities/product.entity").Finish>;
     getColors(): Promise<import("./entities/product.entity").Color[]>;
     createColor(data: {
         image: string;
         name: string;
+        public_id?: string;
     }): Promise<import("./entities/product.entity").Color>;
     deleteColor(id: string): Promise<import("./entities/product.entity").Color>;
 }

@@ -40,7 +40,7 @@ let propRepository = class propRepository {
         return this.prisma.color.findMany();
     }
     addColor(data) {
-        return this.prisma.color.create({ data });
+        return this.prisma.color.create({ data: { name: data.name, image: data.image, publicId: data.public_id } });
     }
     deleteColor(id) {
         return this.prisma.color.delete({ where: { id: id } });
@@ -49,7 +49,7 @@ let propRepository = class propRepository {
         return this.prisma.finish.findMany();
     }
     addFinish(data) {
-        return this.prisma.finish.create({ data });
+        return this.prisma.finish.create({ data: { text: data.text, image: data.image, publicId: data.public_id } });
     }
     deleteFinish(id) {
         return this.prisma.finish.delete({ where: { id: id } });

@@ -10,12 +10,14 @@ export declare class propRepository implements IPropiertiesRepository {
     addColor(data: {
         image: string;
         name: string;
+        public_id?: string;
     }): Promise<Color>;
     deleteColor(id: string): Promise<Color>;
     findFinishes(): Promise<Finish[]>;
     addFinish(data: {
         text: string;
         image: string;
+        public_id?: string;
     }): Promise<Finish>;
     deleteFinish(id: string): Promise<Finish>;
     findCategories(): Promise<CatEntity[]>;

@@ -10,6 +10,7 @@ export class Product {
     description?: string;
     subtitle: string
     vector?: string
+    vPublicId?: string
     category?: CatEntity;
     variants?: Variant[];
     typology: Typology;

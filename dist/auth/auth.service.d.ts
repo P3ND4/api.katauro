@@ -19,12 +19,12 @@ export declare class AuthService {
         name: string;
         lastName: string;
         image: string;
+        publicId: string | null;
         phone: string;
         emailVerified: boolean;
         emailVerificationCode: string;
         emailVerificationExpires: Date;
         id: string;
-        publicId: string | null;
         createdAt: Date;
         updatedAt: Date;
     }>;
@@ -39,12 +39,12 @@ export declare class AuthService {
         lastName: string;
         password: string;
         image: string;
+        publicId: string | null;
         phone: string;
         emailVerified: boolean;
         emailVerificationCode: string;
         emailVerificationExpires: Date;
         id: string;
-        publicId: string | null;
         createdAt: Date;
         updatedAt: Date;
     }>;

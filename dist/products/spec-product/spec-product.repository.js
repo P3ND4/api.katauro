@@ -24,7 +24,7 @@ let SpecProductRepository = class SpecProductRepository {
         return this.prismaService.specificProduct.findMany({ include: { images: true, genericProd: true, color: true } });
     }
     createProduct(data) {
-        return this.prismaService.specificProduct.create({ data: { stock: data.stock, price: data.price, image: data.image, genericId: '', images: { create: data.images.map(x => ({ link: x })) }, colorId: data.colorId } });
+        return this.prismaService.specificProduct.create({ data: { stock: data.stock, price: data.price, image: data.image, genericId: '', images: { create: data.images.map(x => ({ link: x.link, publicId: x.public_id })) }, colorId: data.colorId } });
     }
     findProductById(id) {
         return this.prismaService.specificProduct.findUnique({ where: { id }, include: { images: true, genericProd: true, color: true } });
@@ -37,7 +37,7 @@ let SpecProductRepository = class SpecProductRepository {
                 price: data.price,
                 image: data.image,
                 genericId: '',
-                images: { create: data.images?.map(x => ({ link: x })) },
+                images: { create: data.images?.map(x => ({ link: x.link, publicId: x.public_id })) },
                 colorId: data.colorId
             }
         });

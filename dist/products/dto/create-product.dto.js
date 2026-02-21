@@ -8,6 +8,7 @@ class CreateProductDto {
     categoryId;
     typology;
     vector;
+    vPublicId;
     finishId;
     variants;
     details;

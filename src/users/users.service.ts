@@ -4,10 +4,11 @@ import { UpdateUserDto } from './dto/update-user.dto';
 import { PrismaService } from 'src/shared/services/prisma/prisma.service';
 import { UsersRepository } from './users.repository';
 import * as bcrypt from 'bcrypt';
+import { CloudinaryService } from 'src/cloudinary/cloudinary.service';
 
 @Injectable()
 export class UsersService {
-  constructor(private prismaService: PrismaService, private usersRepository: UsersRepository) { }
+  constructor(private prismaService: PrismaService, private usersRepository: UsersRepository, private cloudyServ: CloudinaryService) { }
 
 
   async create(createUserDto: CreateUserDto) {
@@ -26,6 +27,9 @@ export class UsersService {
   }
 
   async update(id: string, updateUserDto: UpdateUserDto) {
+    let cloudyUpdate = updateUserDto.publicId && updateUserDto.image ? await this.cloudyServ.moveImage(updateUserDto.publicId, updateUserDto.image) : { link: updateUserDto.image, public_id: undefined };
+    [updateUserDto.image, updateUserDto.publicId] = [cloudyUpdate.link, cloudyUpdate.public_id]
+
     if (updateUserDto.password) updateUserDto.password = await bcrypt.hash(updateUserDto.password, 10);
     return this.usersRepository.updateUser(id, updateUserDto);
   }

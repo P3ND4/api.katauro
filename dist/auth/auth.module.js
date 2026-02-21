@@ -20,6 +20,7 @@ const users_repository_1 = require("../users/users.repository");
 const revokedJwt_service_1 = require("../shared/services/jwt/revokedJwt.service");
 const mail_service_1 = require("../shared/services/mail/mail.service");
 const jwt_reset_strategy_1 = require("../shared/services/jwt/jwt-reset.strategy");
+const cloudinary_service_1 = require("../cloudinary/cloudinary.service");
 let AuthModule = class AuthModule {
 };
 exports.AuthModule = AuthModule;
@@ -40,7 +41,7 @@ exports.AuthModule = AuthModule = __decorate([
         providers: [auth_service_1.AuthService, auth_guard_1.JwtAuthGuard,
             users_service_1.UsersService, jwt_strategy_1.JwtStrategy, jwt_reset_strategy_1.JwtResetStrategy,
             config_1.ConfigService, prisma_service_1.PrismaService, users_repository_1.UsersRepository,
-            revokedJwt_service_1.RevokedJwtService, mail_service_1.MailService],
+            revokedJwt_service_1.RevokedJwtService, mail_service_1.MailService, cloudinary_service_1.CloudinaryService],
     })
 ], AuthModule);
 //# sourceMappingURL=auth.module.js.map

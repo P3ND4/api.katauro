@@ -9,6 +9,7 @@ class Product {
     description;
     subtitle;
     vector;
+    vPublicId;
     category;
     variants;
     typology;

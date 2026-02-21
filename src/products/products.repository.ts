@@ -26,6 +26,7 @@ export class ProductRepository implements IProductRepository {
                 typology: data.typology,
                 subtitle: data.subtitle,
                 vector: data.vector,
+                vPublicId: data.vPublicId,
                 finish: { create: data.finishId.map(x => ({ finishId: x })) },
                 variants: {
                     create: data.variants.map((x: CreateSpecProductDTO) => ({
@@ -33,7 +34,7 @@ export class ProductRepository implements IProductRepository {
                         stock: x.stock,
                         image: x.image,
                         price: x.price,
-                        images: { create: x.images.map(y => ({ link: y })) }
+                        images: { create: x.images.map(y => ({ link: y.link, public_id: y.public_id })) }
                     }))
                 }
             }
@@ -62,8 +63,12 @@ export class ProductRepository implements IProductRepository {
             where: { id }, data: {
                 name: data.name,
                 description: data.description,
+                categoryId: data.categoryId,
+                typology: data.typology,
                 subtitle: data.subtitle,
                 details: { create: data.details?.map(x => ({ text: x })) },
+                vector: data.vector,
+                vPublicId: data.vPublicId,
                 finish: { create: data.finishId?.map(x => ({ finishId: x })) },
                 variants: {
                     create: data.variants?.map((x: CreateSpecProductDTO) => ({
@@ -71,7 +76,7 @@ export class ProductRepository implements IProductRepository {
                         stock: x.stock,
                         image: x.image,
                         price: x.price,
-                        images: { create: x.images.map(y => ({ link: y })) }
+                        images: { create: x.images.map(y => ({ link: y.link, publicId: y.public_id })) }
                     }))
                 }
             }

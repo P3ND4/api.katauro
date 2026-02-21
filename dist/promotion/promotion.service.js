@@ -15,14 +15,17 @@ const Promotion_repository_1 = require("./Promotion.repository");
 const Banner_repository_1 = require("./utils/Banner.repository");
 const Carousel_repository_1 = require("./utils/Carousel.repository");
 const promotion_entity_1 = require("./entities/promotion.entity");
+const cloudinary_service_1 = require("../cloudinary/cloudinary.service");
 let PromotionService = class PromotionService {
     promoRep;
     bannerRep;
     carouselRep;
-    constructor(promoRep, bannerRep, carouselRep) {
+    cloudyServ;
+    constructor(promoRep, bannerRep, carouselRep, cloudyServ) {
         this.promoRep = promoRep;
         this.bannerRep = bannerRep;
         this.carouselRep = carouselRep;
+        this.cloudyServ = cloudyServ;
     }
     async onModuleInit() {
         await this.carouselRep.seedBaseCarousel(promotion_entity_1.CarouselNames.primary);
@@ -53,13 +56,15 @@ let PromotionService = class PromotionService {
     findAllCarousels() {
         return this.carouselRep.FindAllCarousel();
     }
-    updateBanner(id, data) {
+    async updateBanner(id, data) {
+        let cloudyUpdate = data.publicId && data.image ? await this.cloudyServ.moveImage(data.publicId, data.image) : { link: data.image, public_id: undefined };
+        [data.publicId, data.image] = [cloudyUpdate.public_id, cloudyUpdate.link];
         return this.bannerRep.UpdateBanner(id, data);
     }
 };
 exports.PromotionService = PromotionService;
 exports.PromotionService = PromotionService = __decorate([
     (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [Promotion_repository_1.PromotionRepository, Banner_repository_1.BannerRepository, Carousel_repository_1.CarouselRepository])
+    __metadata("design:paramtypes", [Promotion_repository_1.PromotionRepository, Banner_repository_1.BannerRepository, Carousel_repository_1.CarouselRepository, cloudinary_service_1.CloudinaryService])
 ], PromotionService);
 //# sourceMappingURL=promotion.service.js.map

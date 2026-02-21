@@ -16,6 +16,7 @@ export declare class ProductsController {
         categoryId: string;
         typology: string;
         vector: string;
+        vPublicId: string | null;
     }>;
     productByCategoryName(name: string): Promise<import("./entities/product.entity").Product[]>;
     getFinishes(): Promise<import("./entities/product.entity").Finish[]>;
@@ -27,6 +28,7 @@ export declare class ProductsController {
     createColor(data: {
         image: string;
         name: string;
+        public_id?: string;
     }): Promise<import("./entities/product.entity").Color>;
     findAll(page: string, cat: string, search: string): Promise<import("./entities/product.entity").Product[]>;
     findPage(cat: string, search: string): Promise<number>;
@@ -71,6 +73,7 @@ export declare class ProductsController {
         categoryId: string;
         typology: string;
         vector: string;
+        vPublicId: string | null;
     } | null>;
     update(id: string, updateProductDto: UpdateProductDto): Promise<{
         name: string;
@@ -80,6 +83,7 @@ export declare class ProductsController {
         categoryId: string;
         typology: string;
         vector: string;
+        vPublicId: string | null;
     }>;
     remove(id: string): Promise<{
         name: string;
@@ -89,5 +93,6 @@ export declare class ProductsController {
         categoryId: string;
         typology: string;
         vector: string;
+        vPublicId: string | null;
     }>;
 }

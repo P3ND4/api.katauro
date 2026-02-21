@@ -20,7 +20,7 @@ export class SpecProductRepository implements ISpecificProductRepository {
         return this.prismaService.specificProduct.findMany({ include: { images: true, genericProd: true, color: true } });
     }
     createProduct(data: CreateSpecProductDTO): Promise<SpecificProduct> {
-        return this.prismaService.specificProduct.create({ data: { stock: data.stock, price: data.price, image: data.image, genericId: '', images: { create: data.images.map(x => ({ link: x })) }, colorId: data.colorId } });
+        return this.prismaService.specificProduct.create({ data: { stock: data.stock, price: data.price, image: data.image, genericId: '', images: { create: data.images.map(x => ({ link: x.link, publicId: x.public_id })) }, colorId: data.colorId } });
     }
     findProductById(id: string): Promise<SpecificProduct | null> {
         return this.prismaService.specificProduct.findUnique({ where: { id }, include: { images: true, genericProd: true, color: true } })
@@ -36,7 +36,7 @@ export class SpecProductRepository implements ISpecificProductRepository {
                 price: data.price,
                 image: data.image,
                 genericId: '',
-                images: { create: data.images?.map(x => ({ link: x })) },
+                images: { create: data.images?.map(x => ({ link: x.link, publicId: x.public_id })) },
                 colorId: data.colorId
             }
         })

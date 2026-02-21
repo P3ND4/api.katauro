@@ -13,6 +13,18 @@ export class CloudinaryService {
 
     }
 
+    async moveImage(publicId: string, url: string): Promise<{ link: string, public_id: string }> {
+        const segments = publicId.split('/');
+        if (segments.includes('temp')) {
+            const newPublicId = publicId.replace('temp/', 'production/');
+            const res = await cloudinary.uploader.rename(publicId, newPublicId, {
+                overwrite: true
+            });
+            return { link: res.secure_url.replace('/upload/', '/upload/q_auto,f_auto/'), public_id: res.public_id };
+        }
+        return { link: url, public_id: publicId };
+
+    }
 
     async generateSignature() {
         const timestamp = Math.floor(Date.now() / 1000);

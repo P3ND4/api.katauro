@@ -8,11 +8,12 @@ import { JwtAuthGuard } from 'src/shared/guards/auth.guard';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { JwtOwnerStrategy } from 'src/shared/services/jwt/jwt-owner.strategy';
 import { OwnerGuard } from 'src/shared/guards/owner.guard';
+import { CloudinaryService } from 'src/cloudinary/cloudinary.service';
 
 @Module({
   controllers: [UsersController],
   imports: [
   ],
-  providers: [ConfigService, UsersService, PrismaService, UsersRepository, JwtStrategy, JwtAuthGuard, JwtOwnerStrategy, OwnerGuard],
+  providers: [CloudinaryService, ConfigService, UsersService, PrismaService, UsersRepository, JwtStrategy, JwtAuthGuard, JwtOwnerStrategy, OwnerGuard],
 })
 export class UsersModule { }

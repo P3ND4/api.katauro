@@ -67,6 +67,7 @@ model GenericProduct {
   subtitle    String
   typology    String              @default("Variable")
   vector      String              @default("")
+  vPublicId   String?
   categoryId  String              @default("2b11c629-841f-11f0-8f51-02006ca180b4")
   variants    SpecificProduct[]   @relation()
   details     Details[]           @relation()

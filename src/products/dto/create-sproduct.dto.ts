@@ -3,5 +3,5 @@ export class CreateSpecProductDTO {
     stock: number;
     colorId: string
     image: string;
-    images: string[]
+    images: { link: string, public_id?: string }[]
 }

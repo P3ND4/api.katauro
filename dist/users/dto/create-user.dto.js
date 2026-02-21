@@ -7,6 +7,7 @@ class CreateUserDto {
     lastName;
     password;
     image;
+    publicId;
     phone;
     emailVerified;
     emailVerificationCode;

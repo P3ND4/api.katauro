@@ -47,12 +47,15 @@ const common_1 = require("@nestjs/common");
 const prisma_service_1 = require("../shared/services/prisma/prisma.service");
 const users_repository_1 = require("./users.repository");
 const bcrypt = __importStar(require("bcrypt"));
+const cloudinary_service_1 = require("../cloudinary/cloudinary.service");
 let UsersService = class UsersService {
     prismaService;
     usersRepository;
-    constructor(prismaService, usersRepository) {
+    cloudyServ;
+    constructor(prismaService, usersRepository, cloudyServ) {
         this.prismaService = prismaService;
         this.usersRepository = usersRepository;
+        this.cloudyServ = cloudyServ;
     }
     async create(createUserDto) {
         createUserDto.password = await bcrypt.hash(createUserDto.password, 10);
@@ -68,6 +71,8 @@ let UsersService = class UsersService {
         return this.usersRepository.findUserById(id);
     }
     async update(id, updateUserDto) {
+        let cloudyUpdate = updateUserDto.publicId && updateUserDto.image ? await this.cloudyServ.moveImage(updateUserDto.publicId, updateUserDto.image) : { link: updateUserDto.image, public_id: undefined };
+        [updateUserDto.image, updateUserDto.publicId] = [cloudyUpdate.link, cloudyUpdate.public_id];
         if (updateUserDto.password)
             updateUserDto.password = await bcrypt.hash(updateUserDto.password, 10);
         return this.usersRepository.updateUser(id, updateUserDto);
@@ -82,6 +87,6 @@ let UsersService = class UsersService {
 exports.UsersService = UsersService;
 exports.UsersService = UsersService = __decorate([
     (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [prisma_service_1.PrismaService, users_repository_1.UsersRepository])
+    __metadata("design:paramtypes", [prisma_service_1.PrismaService, users_repository_1.UsersRepository, cloudinary_service_1.CloudinaryService])
 ], UsersService);
 //# sourceMappingURL=users.service.js.map

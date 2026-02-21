@@ -27,12 +27,12 @@ export declare class AuthController {
         lastName: string;
         password: string;
         image: string;
+        publicId: string | null;
         phone: string;
         emailVerified: boolean;
         emailVerificationCode: string;
         emailVerificationExpires: Date;
         id: string;
-        publicId: string | null;
         createdAt: Date;
         updatedAt: Date;
     }>;
@@ -41,12 +41,12 @@ export declare class AuthController {
         name: string;
         lastName: string;
         image: string;
+        publicId: string | null;
         phone: string;
         emailVerified: boolean;
         emailVerificationCode: string;
         emailVerificationExpires: Date;
         id: string;
-        publicId: string | null;
         createdAt: Date;
         updatedAt: Date;
     }>;

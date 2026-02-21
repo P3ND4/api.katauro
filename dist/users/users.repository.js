@@ -85,13 +85,15 @@ let UsersRepository = class UsersRepository {
             data: {
                 name: data.name,
                 email: data.email,
+                lastName: data.lastName,
                 password: data.password,
+                publicId: data.publicId,
                 phone: data.phone,
                 cart: { create: data.updateCart?.map(variantId => ({ productId: variantId })), delete: data.deleteFromCArt?.map(prod => ({ userId_productId: { productId: prod, userId: id } })) },
                 image: data.image,
                 emailVerificationCode: data.emailVerificationCode,
                 emailVerificationExpires: data.emailVerificationExpires,
-                emailVerified: data.emailVerified
+                emailVerified: data.emailVerified,
             },
         });
     }

@@ -30,8 +30,8 @@ export class propRepository implements IPropiertiesRepository {
         return this.prisma.color.findMany();
     }
 
-    addColor(data: { image: string; name: string; }): Promise<Color> {
-        return this.prisma.color.create({ data });
+    addColor(data: { image: string; name: string; public_id?: string }): Promise<Color> {
+        return this.prisma.color.create({ data: { name: data.name, image: data.image, publicId: data.public_id } });
     }
 
     deleteColor(id: string): Promise<Color> {
@@ -42,8 +42,8 @@ export class propRepository implements IPropiertiesRepository {
         return this.prisma.finish.findMany();
     }
 
-    addFinish(data: { text: string, image: string }): Promise<Finish> {
-        return this.prisma.finish.create({ data });
+    addFinish(data: { text: string, image: string, public_id?: string }): Promise<Finish> {
+        return this.prisma.finish.create({ data: { text: data.text, image: data.image, publicId: data.public_id } });
     }
 
     deleteFinish(id: string): Promise<Finish> {
