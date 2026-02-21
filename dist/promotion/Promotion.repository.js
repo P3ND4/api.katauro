@@ -18,7 +18,7 @@ let PromotionRepository = class PromotionRepository {
         this.prisma = prisma;
     }
     FindAllPromotions() {
-        return this.prisma.promotion.findMany({ include: { products: true } });
+        return this.prisma.promotion.findMany({ include: { products: { include: { product: { include: { genericProd: true } } } }, categories: { include: { category: true } } } });
     }
     FindPromoById(id) {
         return this.prisma.promotion.findUnique({ where: { promo_id: id }, include: { products: { include: { product: { include: { genericProd: true } } } }, categories: { include: { category: true } } } });
