@@ -26,6 +26,10 @@ export class SpecProductRepository implements ISpecificProductRepository {
         return this.prismaService.specificProduct.findUnique({ where: { id }, include: { images: true, genericProd: true, color: true } })
     }
 
+    findManyById(ids: string[]) {
+        return this.prismaService.specificProduct.findMany({ where: { id: { in: ids } }, include: { promotions: { include: { promotion: true } } } });
+    }
+
     //TODO: Problemon al actualizar stock, pudiera hacerse negativo
     updateProduct(id: string, data: UpdateSpecProductDto): Promise<SpecificProduct> {
         return this.prismaService.specificProduct.update({

@@ -8,9 +8,11 @@ import { SpecProductRepository } from 'src/products/spec-product/spec-product.re
 import { ProductsModule } from 'src/products/products.module';
 import cloudinary from 'src/cloudinary/cloudinary.config';
 import { CloudinaryService } from 'src/cloudinary/cloudinary.service';
+import { AuthModule } from 'src/auth/auth.module';
 
 @Module({
   controllers: [OrderController],
+  imports: [AuthModule],
   providers: [OrderService, PrismaService, OrderRepository, ProductsModule, SpecProductService, SpecProductRepository, CloudinaryService],
 })
 export class OrderModule { }

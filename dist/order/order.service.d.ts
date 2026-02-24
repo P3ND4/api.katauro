@@ -25,6 +25,7 @@ export declare class OrderService {
         city: string;
         note: string;
     }>;
+    private filterPromoByDate;
     findAll(option: {
         search?: string;
         state?: string;

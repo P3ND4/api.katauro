@@ -20,6 +20,7 @@ const update_product_dto_1 = require("./dto/update-product.dto");
 const create_sproduct_dto_1 = require("./dto/create-sproduct.dto");
 const spec_product_service_1 = require("./spec-product/spec-product.service");
 const update_sproduct_dto_1 = require("./dto/update-sproduct.dto");
+const admin_guard_1 = require("../shared/guards/admin/admin.guard");
 let ProductsController = class ProductsController {
     productsService;
     specProdService;
@@ -91,6 +92,7 @@ let ProductsController = class ProductsController {
 };
 exports.ProductsController = ProductsController;
 __decorate([
+    (0, common_1.UseGuards)(admin_guard_1.AdminGuard),
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
@@ -111,6 +113,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], ProductsController.prototype, "getFinishes", null);
 __decorate([
+    (0, common_1.UseGuards)(admin_guard_1.AdminGuard),
     (0, common_1.Delete)('finish/:id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
@@ -118,6 +121,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], ProductsController.prototype, "deleteFinish", null);
 __decorate([
+    (0, common_1.UseGuards)(admin_guard_1.AdminGuard),
     (0, common_1.Delete)('colors/:id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
@@ -125,6 +129,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], ProductsController.prototype, "deleteColor", null);
 __decorate([
+    (0, common_1.UseGuards)(admin_guard_1.AdminGuard),
     (0, common_1.Post)('finish'),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
@@ -144,6 +149,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], ProductsController.prototype, "getColors", null);
 __decorate([
+    (0, common_1.UseGuards)(admin_guard_1.AdminGuard),
     (0, common_1.Post)('colors'),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
@@ -168,6 +174,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], ProductsController.prototype, "findPage", null);
 __decorate([
+    (0, common_1.UseGuards)(admin_guard_1.AdminGuard),
     (0, common_1.Post)('add-variant'),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
@@ -189,6 +196,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], ProductsController.prototype, "getVariant", null);
 __decorate([
+    (0, common_1.UseGuards)(admin_guard_1.AdminGuard),
     (0, common_1.Get)('delete-variant/:id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
@@ -211,6 +219,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], ProductsController.prototype, "findOne", null);
 __decorate([
+    (0, common_1.UseGuards)(admin_guard_1.AdminGuard),
     (0, common_1.Patch)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Body)()),
@@ -219,6 +228,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], ProductsController.prototype, "update", null);
 __decorate([
+    (0, common_1.UseGuards)(admin_guard_1.AdminGuard),
     (0, common_1.Delete)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),

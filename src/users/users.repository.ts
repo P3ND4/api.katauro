@@ -22,7 +22,8 @@ export class UsersRepository implements IUserRepository {
                                     include: {
                                         finish: true, details: true, category: true
                                     }
-                                }
+                                }, promotions: { include: { promotion: true } }
+
                             }
                         }
                     }
@@ -66,7 +67,7 @@ export class UsersRepository implements IUserRepository {
                                     include: {
                                         finish: true, details: true, category: true
                                     }
-                                }
+                                }, promotions: { include: { promotion: true } }
                             }
                         }
                     }
@@ -90,7 +91,7 @@ export class UsersRepository implements IUserRepository {
                 emailVerificationCode: data.emailVerificationCode,
                 emailVerificationExpires: data.emailVerificationExpires,
                 emailVerified: data.emailVerified,
-                
+
             },
         });
     }

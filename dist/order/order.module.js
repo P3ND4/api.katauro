@@ -16,12 +16,14 @@ const spec_product_service_1 = require("../products/spec-product/spec-product.se
 const spec_product_repository_1 = require("../products/spec-product/spec-product.repository");
 const products_module_1 = require("../products/products.module");
 const cloudinary_service_1 = require("../cloudinary/cloudinary.service");
+const auth_module_1 = require("../auth/auth.module");
 let OrderModule = class OrderModule {
 };
 exports.OrderModule = OrderModule;
 exports.OrderModule = OrderModule = __decorate([
     (0, common_1.Module)({
         controllers: [order_controller_1.OrderController],
+        imports: [auth_module_1.AuthModule],
         providers: [order_service_1.OrderService, prisma_service_1.PrismaService, order_repository_1.OrderRepository, products_module_1.ProductsModule, spec_product_service_1.SpecProductService, spec_product_repository_1.SpecProductRepository, cloudinary_service_1.CloudinaryService],
     })
 ], OrderModule);

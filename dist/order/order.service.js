@@ -23,8 +23,23 @@ let OrderService = class OrderService {
     }
     stateParser = [order_entity_1.OrderState.canceled, order_entity_1.OrderState.completed, order_entity_1.OrderState.pending];
     async create(createOrderDto) {
-        createOrderDto.productsID.forEach(x => this.variantService.update(x.productId, { setStock: -x.count }));
+        let count = {};
+        let prods = await this.variantService.findManyById(createOrderDto.productsID.map(x => x.productId));
+        createOrderDto.productsID.forEach(x => {
+            count[x.productId] = x.count;
+            this.variantService.update(x.productId, { setStock: -x.count });
+        });
+        let correctedPrice = 0;
+        prods.forEach(prod => {
+            let discounts = prod.promotions.filter(x => this.filterPromoByDate(x.promotion)).map(x => x.promotion.discount * 0.01).reduce((a, b) => a + b, 0);
+            correctedPrice += (prod.price - (prod.price * discounts)) * count[prod.id];
+        });
+        createOrderDto.price = correctedPrice;
         return this.orderRepository.createOrder(createOrderDto);
+    }
+    filterPromoByDate(promotion) {
+        let now = new Date();
+        return new Date(promotion.startDate) < now && new Date(promotion.endDate) > now;
     }
     async findAll(option) {
         var orders = await this.orderRepository.findAllOrders();

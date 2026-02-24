@@ -31,6 +31,30 @@ export declare class SpecProductService {
         colorId: string;
         genericId: string;
     } | null>;
+    findManyById(ids: string[]): import("generated/prisma").Prisma.PrismaPromise<({
+        promotions: ({
+            promotion: {
+                name: string;
+                description: string;
+                promo_id: string;
+                startDate: Date;
+                endDate: Date;
+                discountType: string;
+                discount: number;
+                Type: string;
+            };
+        } & {
+            productId: string;
+            promotionId: string;
+        })[];
+    } & {
+        image: string;
+        id: string;
+        price: number;
+        stock: number;
+        colorId: string;
+        genericId: string;
+    })[]>;
     findByGeneric(id: string): Promise<{
         image: string;
         id: string;

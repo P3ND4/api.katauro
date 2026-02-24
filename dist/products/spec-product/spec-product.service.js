@@ -37,6 +37,9 @@ let SpecProductService = class SpecProductService {
     findById(id) {
         return this.variantRep.findProductById(id);
     }
+    findManyById(ids) {
+        return this.variantRep.findManyById(ids);
+    }
     findByGeneric(id) {
         return this.variantRep.findByGeneric(id);
     }

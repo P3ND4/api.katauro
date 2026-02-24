@@ -64,6 +64,13 @@ let AuthService = class AuthService {
     async register(createUserDto) {
         return this.userService.create(createUserDto);
     }
+    async logAdmin(password) {
+        let adminEmail = process.env.ADMIN_EMAIL;
+        if (adminEmail)
+            return this.login({ email: adminEmail, password: password });
+        else
+            throw new common_1.UnauthorizedException('Correo de admin no proporcionado en el servidor');
+    }
     async login(credentials) {
         const { email, password } = credentials;
         const user = await this.userService.findUserByEmail(email);

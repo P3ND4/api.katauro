@@ -8,19 +8,19 @@ import { CloudinaryService } from 'src/cloudinary/cloudinary.service';
 @Injectable()
 export class SpecProductService {
 
-    constructor(private variantRep: SpecProductRepository, private cloudy: CloudinaryService){
+    constructor(private variantRep: SpecProductRepository, private cloudy: CloudinaryService) {
 
     }
 
-    create(createSpecProductDTO: CreateSpecProductDTO){
+    create(createSpecProductDTO: CreateSpecProductDTO) {
         return this.variantRep.createProduct(createSpecProductDTO);
     }
 
-    update(id: string,updateSpecProductDto: UpdateSpecProductDto){
+    update(id: string, updateSpecProductDto: UpdateSpecProductDto) {
         return this.variantRep.updateProduct(id, updateSpecProductDto);
     }
 
-    async delete(id: string){
+    async delete(id: string) {
         const deleted = await this.variantRep.deleteProduct(id) as Variant;
         if (deleted) {
             deleted.images?.forEach(async (img) => {
@@ -29,15 +29,19 @@ export class SpecProductService {
         }
     }
 
-    findById(id: string){
-       return this.variantRep.findProductById(id);
+    findById(id: string) {
+        return this.variantRep.findProductById(id);
     }
 
-    findByGeneric(id: string){
+    findManyById(ids: string[]) {
+        return this.variantRep.findManyById(ids);
+    }
+
+    findByGeneric(id: string) {
         return this.variantRep.findByGeneric(id);
 
     }
 
-    
+
 
 }

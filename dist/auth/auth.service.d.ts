@@ -11,6 +11,7 @@ export declare class AuthService {
     private readonly mailService;
     constructor(userService: UsersService, jwtService: JwtService, revokedJwtService: RevokedJwtService, mailService: MailService);
     register(createUserDto: CreateUserDto): Promise<any>;
+    logAdmin(password: string): Promise<any>;
     login(credentials: LoginDto): Promise<any>;
     private createToken;
     validateUser(email: string, password: string): Promise<any>;

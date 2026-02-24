@@ -11,6 +11,9 @@ export declare class AuthController {
     logout(req: any): Promise<{
         message: string;
     }>;
+    logAdmin(data: {
+        password: string;
+    }, res: Response): Promise<void>;
     sendCode(user: {
         email: string;
     }): Promise<void>;

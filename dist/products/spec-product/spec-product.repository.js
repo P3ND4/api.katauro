@@ -29,6 +29,9 @@ let SpecProductRepository = class SpecProductRepository {
     findProductById(id) {
         return this.prismaService.specificProduct.findUnique({ where: { id }, include: { images: true, genericProd: true, color: true } });
     }
+    findManyById(ids) {
+        return this.prismaService.specificProduct.findMany({ where: { id: { in: ids } }, include: { promotions: { include: { promotion: true } } } });
+    }
     updateProduct(id, data) {
         return this.prismaService.specificProduct.update({
             where: { id },

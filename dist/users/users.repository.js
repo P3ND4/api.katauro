@@ -29,7 +29,7 @@ let UsersRepository = class UsersRepository {
                                     include: {
                                         finish: true, details: true, category: true
                                     }
-                                }
+                                }, promotions: { include: { promotion: true } }
                             }
                         }
                     }
@@ -71,7 +71,7 @@ let UsersRepository = class UsersRepository {
                                     include: {
                                         finish: true, details: true, category: true
                                     }
-                                }
+                                }, promotions: { include: { promotion: true } }
                             }
                         }
                     }

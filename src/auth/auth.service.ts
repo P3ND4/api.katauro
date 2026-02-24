@@ -19,6 +19,12 @@ export class AuthService {
         return this.userService.create(createUserDto);
     }
 
+    async logAdmin(password: string) {
+        let adminEmail = process.env.ADMIN_EMAIL;
+        if (adminEmail) return this.login({ email: adminEmail, password: password });
+        else throw new UnauthorizedException('Correo de admin no proporcionado en el servidor');
+    }
+
     async login(credentials: LoginDto): Promise<any> {
         const { email, password } = credentials;
         const user = await this.userService.findUserByEmail(email);

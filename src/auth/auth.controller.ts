@@ -3,8 +3,8 @@ import { AuthService } from './auth.service';
 import { CreateUserDto } from 'src/users/dto/create-user.dto';
 import { LoginDto } from './dto/loginDto';
 import type { Response } from 'express';
-import { JwtAuthGuard } from '../shared/guards/auth.guard';
-import { ResetGuard } from '../shared/guards/reset.guard';
+import { JwtAuthGuard } from '../shared/guards/auth/auth.guard';
+import { ResetGuard } from '../shared/guards/reset/reset.guard';
 
 
 @Controller('auth')
@@ -39,6 +39,13 @@ export class AuthController {
   async logout(@Req() req: any) {
     const token = req.cookies['jwt'];
     return this.authService.logout(token);
+  }
+
+  @Post('admin')
+  async logAdmin(@Body() data: { password: string }, @Res() res: Response) {
+    const { access_token } = await this.authService.logAdmin(data.password)
+    this.createCookie(access_token, res);
+    res.json({ message: 'Login successful' });
   }
 
   @Patch('sendCode')

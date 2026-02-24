@@ -15,12 +15,14 @@ const Promotion_repository_1 = require("./Promotion.repository");
 const Banner_repository_1 = require("./utils/Banner.repository");
 const Carousel_repository_1 = require("./utils/Carousel.repository");
 const cloudinary_service_1 = require("../cloudinary/cloudinary.service");
+const auth_module_1 = require("../auth/auth.module");
 let PromotionModule = class PromotionModule {
 };
 exports.PromotionModule = PromotionModule;
 exports.PromotionModule = PromotionModule = __decorate([
     (0, common_1.Module)({
         controllers: [promotion_controller_1.PromotionController],
+        imports: [auth_module_1.AuthModule],
         providers: [promotion_service_1.PromotionService, prisma_service_1.PrismaService, Promotion_repository_1.PromotionRepository, Banner_repository_1.BannerRepository, Carousel_repository_1.CarouselRepository, cloudinary_service_1.CloudinaryService],
     })
 ], PromotionModule);

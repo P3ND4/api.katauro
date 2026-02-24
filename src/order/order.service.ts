@@ -4,20 +4,38 @@ import { UpdateOrderDto } from './dto/update-order.dto';
 import { OrderRepository } from './order.repository';
 import { Order, OrderState } from './entities/order.entity';
 import { SpecProductService } from 'src/products/spec-product/spec-product.service';
+import { Promotion } from 'generated/prisma';
 
 @Injectable()
 export class OrderService {
   constructor(private orderRepository: OrderRepository, private variantService: SpecProductService) { }
   stateParser = [OrderState.canceled, OrderState.completed, OrderState.pending]
   async create(createOrderDto: CreateOrderDto) {
-    createOrderDto.productsID.forEach(x => this.variantService.update(x.productId, { setStock: - x.count }));
+    let count: { [key: string]: number } = {}
+    let prods = await this.variantService.findManyById(createOrderDto.productsID.map(x => x.productId));
+    createOrderDto.productsID.forEach(x => {
+      count[x.productId] = x.count
+      this.variantService.update(x.productId, { setStock: - x.count });
+    });
+    let correctedPrice = 0
+    prods.forEach(prod => {
+      let discounts = prod.promotions.filter(x => this.filterPromoByDate(x.promotion)).map(x => x.promotion.discount * 0.01).reduce((a, b) => a + b, 0);
+      correctedPrice += (prod.price - (prod.price * discounts)) * count[prod.id];
+    })
+
+    createOrderDto.price = correctedPrice;
     return this.orderRepository.createOrder(createOrderDto);
   }
 
+  private filterPromoByDate(promotion: Promotion) {
+    let now = new Date()
+    return new Date(promotion.startDate) < now && new Date(promotion.endDate) > now;
+  }
+
   async findAll(option: { search?: string, state?: string, order?: string }) {
-    var orders = await this.orderRepository.findAllOrders()
+    var orders = await this.orderRepository.findAllOrders();
     if (option.search) {
-      orders = orders.filter(x => x.id.includes(option.search!))
+      orders = orders.filter(x => x.id.includes(option.search!));
     }
     if (option.state) {
       const states = option.state.split('-').map(x => this.stateParser[((x as any) as number) ?? 0]);

@@ -12,11 +12,11 @@ const users_service_1 = require("./users.service");
 const users_controller_1 = require("./users.controller");
 const prisma_service_1 = require("../shared/services/prisma/prisma.service");
 const users_repository_1 = require("./users.repository");
-const jwt_strategy_1 = require("../shared/services/jwt/jwt.strategy");
-const auth_guard_1 = require("../shared/guards/auth.guard");
+const jwt_strategy_1 = require("../shared/guards/auth/jwt.strategy");
+const auth_guard_1 = require("../shared/guards/auth/auth.guard");
 const config_1 = require("@nestjs/config");
-const jwt_owner_strategy_1 = require("../shared/services/jwt/jwt-owner.strategy");
-const owner_guard_1 = require("../shared/guards/owner.guard");
+const jwt_owner_strategy_1 = require("../shared/guards/ouwner/jwt-owner.strategy");
+const owner_guard_1 = require("../shared/guards/ouwner/owner.guard");
 const cloudinary_service_1 = require("../cloudinary/cloudinary.service");
 let UsersModule = class UsersModule {
 };

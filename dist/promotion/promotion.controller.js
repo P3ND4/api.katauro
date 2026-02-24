@@ -19,6 +19,7 @@ const create_promotion_dto_1 = require("./dto/create-promotion.dto");
 const update_promotion_dto_1 = require("./dto/update-promotion.dto");
 const update_banner_dto_1 = require("./dto/update-banner.dto");
 const update_carousel_dto_1 = require("./dto/update-carousel.dto");
+const admin_guard_1 = require("../shared/guards/admin/admin.guard");
 let PromotionController = class PromotionController {
     promotionService;
     constructor(promotionService) {
@@ -55,6 +56,7 @@ let PromotionController = class PromotionController {
 };
 exports.PromotionController = PromotionController;
 __decorate([
+    (0, common_1.UseGuards)(admin_guard_1.AdminGuard),
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
@@ -88,6 +90,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], PromotionController.prototype, "findAllCarousel", null);
 __decorate([
+    (0, common_1.UseGuards)(admin_guard_1.AdminGuard),
     (0, common_1.Patch)('banner/:id'),
     __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Body)()),
@@ -96,6 +99,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], PromotionController.prototype, "updateBanner", null);
 __decorate([
+    (0, common_1.UseGuards)(admin_guard_1.AdminGuard),
     (0, common_1.Patch)('carousel/:id'),
     __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Body)()),
@@ -111,6 +115,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], PromotionController.prototype, "findOne", null);
 __decorate([
+    (0, common_1.UseGuards)(admin_guard_1.AdminGuard),
     (0, common_1.Patch)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Body)()),
@@ -119,6 +124,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], PromotionController.prototype, "update", null);
 __decorate([
+    (0, common_1.UseGuards)(admin_guard_1.AdminGuard),
     (0, common_1.Delete)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),

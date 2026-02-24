@@ -15,61 +15,61 @@ export declare class PromotionService implements OnModuleInit {
     onModuleInit(): Promise<void>;
     create(createPromotionDto: CreatePromotionDto): Promise<{
         name: string;
+        description: string;
         promo_id: string;
         startDate: Date;
         endDate: Date;
-        description: string;
         discountType: string;
         discount: number;
         Type: string;
     }>;
     findAll(): Promise<{
         name: string;
+        description: string;
         promo_id: string;
         startDate: Date;
         endDate: Date;
-        description: string;
         discountType: string;
         discount: number;
         Type: string;
     }[]>;
     findOne(id: string): Promise<{
         name: string;
+        description: string;
         promo_id: string;
         startDate: Date;
         endDate: Date;
-        description: string;
         discountType: string;
         discount: number;
         Type: string;
     } | null>;
     update(id: string, updatePromotionDto: UpdatePromotionDto): Promise<{
         name: string;
+        description: string;
         promo_id: string;
         startDate: Date;
         endDate: Date;
-        description: string;
         discountType: string;
         discount: number;
         Type: string;
     }>;
     remove(id: string): Promise<{
         name: string;
+        description: string;
         promo_id: string;
         startDate: Date;
         endDate: Date;
-        description: string;
         discountType: string;
         discount: number;
         Type: string;
     }>;
     findBanner(id: number): Promise<{
         name: string;
-        description: string;
-        id: number;
-        prodId: string | null;
         image: string;
         publicId: string | null;
+        id: number;
+        prodId: string | null;
+        description: string;
         carouselId: number;
     } | null>;
     findCarousel(id: number): Promise<{
@@ -82,11 +82,11 @@ export declare class PromotionService implements OnModuleInit {
     }[]>;
     updateBanner(id: number, data: UpdateBannerDto): Promise<{
         name: string;
-        description: string;
-        id: number;
-        prodId: string | null;
         image: string;
         publicId: string | null;
+        id: number;
+        prodId: string | null;
+        description: string;
         carouselId: number;
     }>;
 }
