@@ -21,6 +21,12 @@ export class ProductsService implements OnModuleInit {
     this.propRep.seedBaseCategories();
   }
 
+  async findRandom(num: number) {
+    const products = await this.productRepository.findAllProducts() as Product[];
+    const shuffled = products.sort(() => 0.5 - Math.random());
+    return shuffled.slice(0, num);
+  }
+
   async create(createProductDto: CreateProductDto) {
     createProductDto.variants = await Promise.all(createProductDto.variants.map(async x => {
       let varian = x
