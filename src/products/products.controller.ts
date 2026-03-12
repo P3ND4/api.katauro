@@ -20,6 +20,11 @@ export class ProductsController {
     return this.productsService.create(createProductDto);
   }
 
+  @Get('rnd/:num')
+  findRandom(@Param('num') num: string) {
+    return this.productsService.findRandom(+num);
+  }
+
   @Get('productcat/:name')
   productByCategoryName(@Param('name') name: string) {
     return this.productsService.getProductByCategory(name)

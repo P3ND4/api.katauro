@@ -31,6 +31,9 @@ let ProductsController = class ProductsController {
     create(createProductDto) {
         return this.productsService.create(createProductDto);
     }
+    findRandom(num) {
+        return this.productsService.findRandom(+num);
+    }
     productByCategoryName(name) {
         return this.productsService.getProductByCategory(name);
     }
@@ -99,6 +102,13 @@ __decorate([
     __metadata("design:paramtypes", [create_product_dto_1.CreateProductDto]),
     __metadata("design:returntype", void 0)
 ], ProductsController.prototype, "create", null);
+__decorate([
+    (0, common_1.Get)('rnd/:num'),
+    __param(0, (0, common_1.Param)('num')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], ProductsController.prototype, "findRandom", null);
 __decorate([
     (0, common_1.Get)('productcat/:name'),
     __param(0, (0, common_1.Param)('name')),

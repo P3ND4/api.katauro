@@ -18,6 +18,7 @@ export declare class ProductsController {
         vector: string;
         vPublicId: string | null;
     }>;
+    findRandom(num: string): Promise<import("./entities/product.entity").Product[]>;
     productByCategoryName(name: string): Promise<import("./entities/product.entity").Product[]>;
     getFinishes(): Promise<import("./entities/product.entity").Finish[]>;
     deleteFinish(id: string): Promise<import("./entities/product.entity").Finish>;

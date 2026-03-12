@@ -12,6 +12,7 @@ export declare class ProductsService implements OnModuleInit {
     readonly CatParser: Categories[];
     constructor(productRepository: ProductRepository, propRep: propRepository, cloudyService: CloudinaryService);
     onModuleInit(): void;
+    findRandom(num: number): Promise<Product[]>;
     create(createProductDto: CreateProductDto): Promise<{
         name: string;
         id: string;
