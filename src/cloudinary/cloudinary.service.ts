@@ -17,7 +17,8 @@ export class CloudinaryService {
         const segments = publicId.split('/');
         if (segments.includes('temp')) {
             const newPublicId = publicId.replace('temp/', 'production/');
-            const res = await cloudinary.uploader.rename(publicId, newPublicId, {
+            const res = await cloudinary.uploader.upload(url, {
+                public_id: newPublicId,
                 overwrite: true
             });
             return { link: res.secure_url.replace('/upload/', '/upload/q_auto,f_auto/'), public_id: res.public_id };

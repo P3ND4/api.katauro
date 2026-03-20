@@ -27,12 +27,12 @@ export declare class PromotionController {
         Type: string;
     }[]>;
     findBanner(id: string): Promise<{
-        name: string;
         image: string;
-        publicId: string | null;
+        name: string;
         id: number;
-        prodId: string | null;
+        publicId: string | null;
         description: string;
+        prodId: string | null;
         carouselId: number;
     } | null>;
     findCarousel(id: string): Promise<{
@@ -44,12 +44,12 @@ export declare class PromotionController {
         id: number;
     }[]>;
     updateBanner(id: string, data: UpdateBannerDto): Promise<{
-        name: string;
         image: string;
-        publicId: string | null;
+        name: string;
         id: number;
-        prodId: string | null;
+        publicId: string | null;
         description: string;
+        prodId: string | null;
         carouselId: number;
     }>;
     updateCarousel(id: string, data: UpdateCarouselDto): void;

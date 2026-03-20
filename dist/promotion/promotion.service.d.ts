@@ -64,12 +64,12 @@ export declare class PromotionService implements OnModuleInit {
         Type: string;
     }>;
     findBanner(id: number): Promise<{
-        name: string;
         image: string;
-        publicId: string | null;
+        name: string;
         id: number;
-        prodId: string | null;
+        publicId: string | null;
         description: string;
+        prodId: string | null;
         carouselId: number;
     } | null>;
     findCarousel(id: number): Promise<{
@@ -81,12 +81,12 @@ export declare class PromotionService implements OnModuleInit {
         id: number;
     }[]>;
     updateBanner(id: number, data: UpdateBannerDto): Promise<{
-        name: string;
         image: string;
-        publicId: string | null;
+        name: string;
         id: number;
-        prodId: string | null;
+        publicId: string | null;
         description: string;
+        prodId: string | null;
         carouselId: number;
     }>;
 }
