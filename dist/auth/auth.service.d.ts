@@ -16,16 +16,16 @@ export declare class AuthService {
     private createToken;
     validateUser(email: string, password: string): Promise<any>;
     getLoggedUser(token: string): Promise<{
-        email: string;
-        name: string;
-        lastName: string;
         image: string;
-        publicId: string | null;
+        name: string;
+        id: string;
+        email: string;
+        lastName: string;
         phone: string;
+        publicId: string | null;
         emailVerified: boolean;
         emailVerificationCode: string;
         emailVerificationExpires: Date;
-        id: string;
         createdAt: Date;
         updatedAt: Date;
     }>;
@@ -35,17 +35,17 @@ export declare class AuthService {
     sendCode(email: string): Promise<void>;
     verifyCode(email: string, code: string): Promise<string>;
     changePassword(email: string, newPassword: string): Promise<{
-        email: string;
+        image: string;
         name: string;
+        id: string;
+        email: string;
         lastName: string;
         password: string;
-        image: string;
-        publicId: string | null;
         phone: string;
+        publicId: string | null;
         emailVerified: boolean;
         emailVerificationCode: string;
         emailVerificationExpires: Date;
-        id: string;
         createdAt: Date;
         updatedAt: Date;
     }>;

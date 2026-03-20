@@ -34,7 +34,7 @@ export class ProductRepository implements IProductRepository {
                         stock: x.stock,
                         image: x.image,
                         price: x.price,
-                        images: { create: x.images.map(y => ({ link: y.link, public_id: y.public_id })) }
+                        images: { create: x.images.map(y => ({ link: y.link, publicId: y.public_id })) }
                     }))
                 }
             }

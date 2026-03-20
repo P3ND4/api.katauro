@@ -13,10 +13,10 @@ export declare class ProductsController {
         id: string;
         description: string;
         subtitle: string;
-        categoryId: string;
         typology: string;
         vector: string;
         vPublicId: string | null;
+        categoryId: string;
     }>;
     findRandom(num: string): Promise<import("./entities/product.entity").Product[]>;
     productByCategoryName(name: string): Promise<import("./entities/product.entity").Product[]>;
@@ -36,64 +36,64 @@ export declare class ProductsController {
     createVariant(createSpecProductDTO: CreateSpecProductDTO): Promise<{
         image: string;
         id: string;
-        price: number;
-        stock: number;
-        colorId: string;
         genericId: string;
+        price: number;
+        colorId: string;
+        stock: number;
     }>;
     getVatiansForProduct(id: string): Promise<{
         image: string;
         id: string;
-        price: number;
-        stock: number;
-        colorId: string;
         genericId: string;
+        price: number;
+        colorId: string;
+        stock: number;
     }[]>;
     getVariant(id: string): Promise<{
         image: string;
         id: string;
-        price: number;
-        stock: number;
-        colorId: string;
         genericId: string;
+        price: number;
+        colorId: string;
+        stock: number;
     } | null>;
     deleteVaiant(id: string): Promise<void>;
     updateVariant(id: string, data: UpdateSpecProductDto): Promise<{
         image: string;
         id: string;
-        price: number;
-        stock: number;
-        colorId: string;
         genericId: string;
+        price: number;
+        colorId: string;
+        stock: number;
     }>;
     findOne(id: string): Promise<{
         name: string;
         id: string;
         description: string;
         subtitle: string;
-        categoryId: string;
         typology: string;
         vector: string;
         vPublicId: string | null;
+        categoryId: string;
     } | null>;
     update(id: string, updateProductDto: UpdateProductDto): Promise<{
         name: string;
         id: string;
         description: string;
         subtitle: string;
-        categoryId: string;
         typology: string;
         vector: string;
         vPublicId: string | null;
+        categoryId: string;
     }>;
     remove(id: string): Promise<{
         name: string;
         id: string;
         description: string;
         subtitle: string;
-        categoryId: string;
         typology: string;
         vector: string;
         vPublicId: string | null;
+        categoryId: string;
     }>;
 }
