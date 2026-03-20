@@ -9,27 +9,27 @@ export declare class SpecProductService {
     create(createSpecProductDTO: CreateSpecProductDTO): Promise<{
         image: string;
         id: string;
-        genericId: string;
         price: number;
-        colorId: string;
         stock: number;
+        colorId: string;
+        genericId: string;
     }>;
     update(id: string, updateSpecProductDto: UpdateSpecProductDto): Promise<{
         image: string;
         id: string;
-        genericId: string;
         price: number;
-        colorId: string;
         stock: number;
+        colorId: string;
+        genericId: string;
     }>;
     delete(id: string): Promise<void>;
     findById(id: string): Promise<{
         image: string;
         id: string;
-        genericId: string;
         price: number;
-        colorId: string;
         stock: number;
+        colorId: string;
+        genericId: string;
     } | null>;
     findManyById(ids: string[]): import("generated/prisma").Prisma.PrismaPromise<({
         promotions: ({
@@ -50,17 +50,17 @@ export declare class SpecProductService {
     } & {
         image: string;
         id: string;
-        genericId: string;
         price: number;
-        colorId: string;
         stock: number;
+        colorId: string;
+        genericId: string;
     })[]>;
     findByGeneric(id: string): Promise<{
         image: string;
         id: string;
-        genericId: string;
         price: number;
-        colorId: string;
         stock: number;
+        colorId: string;
+        genericId: string;
     }[]>;
 }
