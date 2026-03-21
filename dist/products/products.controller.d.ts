@@ -36,10 +36,7 @@ export declare class ProductsController {
     createVariant(createSpecProductDTO: CreateSpecProductDTO): Promise<{
         image: string;
         id: string;
-<<<<<<< HEAD
-=======
         position: number;
->>>>>>> dev
         price: number;
         stock: number;
         colorId: string;
@@ -48,10 +45,7 @@ export declare class ProductsController {
     getVatiansForProduct(id: string): Promise<{
         image: string;
         id: string;
-<<<<<<< HEAD
-=======
         position: number;
->>>>>>> dev
         price: number;
         stock: number;
         colorId: string;
@@ -60,10 +54,7 @@ export declare class ProductsController {
     getVariant(id: string): Promise<{
         image: string;
         id: string;
-<<<<<<< HEAD
-=======
         position: number;
->>>>>>> dev
         price: number;
         stock: number;
         colorId: string;
@@ -73,10 +64,7 @@ export declare class ProductsController {
     updateVariant(id: string, data: UpdateSpecProductDto): Promise<{
         image: string;
         id: string;
-<<<<<<< HEAD
-=======
         position: number;
->>>>>>> dev
         price: number;
         stock: number;
         colorId: string;
