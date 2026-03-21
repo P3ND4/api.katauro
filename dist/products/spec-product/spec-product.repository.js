@@ -32,18 +32,24 @@ let SpecProductRepository = class SpecProductRepository {
     findManyById(ids) {
         return this.prismaService.specificProduct.findMany({ where: { id: { in: ids } }, include: { promotions: { include: { promotion: true } } } });
     }
-    updateProduct(id, data) {
-        return this.prismaService.specificProduct.update({
-            where: { id },
+    async updateProduct(id, data) {
+        const result = await this.prismaService.specificProduct.updateMany({
+            where: { id, stock: { gte: data.setStock ? Math.abs(data.setStock) : 0 } },
             data: {
-                stock: data.setStock ? { increment: data.setStock > 0 ? data.setStock : 0, decrement: data.setStock < 0 ? Math.abs(data.setStock) : 0 } : data.stock,
+                stock: data.setStock !== undefined
+                    ? data.setStock > 0
+                        ? { increment: data.setStock }
+                        : { decrement: Math.abs(data.setStock) }
+                    : data.stock !== undefined
+                        ? data.stock
+                        : undefined,
                 price: data.price,
                 image: data.image,
-                genericId: '',
-                images: { create: data.images?.map(x => ({ link: x.link, publicId: x.public_id })) },
+                genericId: data.genericId,
                 colorId: data.colorId
             }
         });
+        return result;
     }
     deleteProduct(id) {
         return this.prismaService.specificProduct.delete({ where: { id }, include: { images: true } });

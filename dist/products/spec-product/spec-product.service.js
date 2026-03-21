@@ -23,8 +23,9 @@ let SpecProductService = class SpecProductService {
     create(createSpecProductDTO) {
         return this.variantRep.createProduct(createSpecProductDTO);
     }
-    update(id, updateSpecProductDto) {
-        return this.variantRep.updateProduct(id, updateSpecProductDto);
+    async update(id, updateSpecProductDto) {
+        const result = await this.variantRep.updateProduct(id, updateSpecProductDto);
+        return result;
     }
     async delete(id) {
         const deleted = await this.variantRep.deleteProduct(id);

@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { ConflictException, Injectable } from '@nestjs/common';
 import { SpecProductRepository } from './spec-product.repository';
 import { CreateSpecProductDTO } from '../dto/create-sproduct.dto';
 import { UpdateSpecProductDto } from '../dto/update-sproduct.dto';
@@ -16,8 +16,9 @@ export class SpecProductService {
         return this.variantRep.createProduct(createSpecProductDTO);
     }
 
-    update(id: string, updateSpecProductDto: UpdateSpecProductDto) {
-        return this.variantRep.updateProduct(id, updateSpecProductDto);
+    async update(id: string, updateSpecProductDto: UpdateSpecProductDto) {
+        const result = await this.variantRep.updateProduct(id, updateSpecProductDto) as { count: number };
+        return result;
     }
 
     async delete(id: string) {

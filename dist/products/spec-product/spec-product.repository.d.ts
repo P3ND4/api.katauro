@@ -35,6 +35,6 @@ export declare class SpecProductRepository implements ISpecificProductRepository
         colorId: string;
         genericId: string;
     })[]>;
-    updateProduct(id: string, data: UpdateSpecProductDto): Promise<SpecificProduct>;
+    updateProduct(id: string, data: UpdateSpecProductDto): Promise<any>;
     deleteProduct(id: string): Promise<SpecificProduct>;
 }

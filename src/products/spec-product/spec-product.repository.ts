@@ -1,4 +1,4 @@
-import { Injectable } from "@nestjs/common";
+import { ConflictException, Injectable, UnauthorizedException } from "@nestjs/common";
 import { ISpecificProductRepository } from "../repositories/ISpecificProductRepository";
 import { PrismaService } from "src/shared/services/prisma/prisma.service";
 import { SpecificProduct } from "generated/prisma";
@@ -31,19 +31,27 @@ export class SpecProductRepository implements ISpecificProductRepository {
     }
 
     //TODO: Problemon al actualizar stock, pudiera hacerse negativo
-    updateProduct(id: string, data: UpdateSpecProductDto): Promise<SpecificProduct> {
-        return this.prismaService.specificProduct.update({
-            where: { id },
+    async updateProduct(id: string, data: UpdateSpecProductDto): Promise<any> {
+        const result = await this.prismaService.specificProduct.updateMany({
+            where: { id, stock: { gte: data.setStock ? Math.abs(data.setStock) : 0 } },
             data:
             {
-                stock: data.setStock ? { increment: data.setStock > 0 ? data.setStock : 0, decrement: data.setStock < 0 ? Math.abs(data.setStock) : 0 } : data.stock,
+                stock: data.setStock !== undefined
+                    ? data.setStock > 0
+                        ? { increment: data.setStock }
+                        : { decrement: Math.abs(data.setStock) }
+                    : data.stock !== undefined
+                        ? data.stock
+                        : undefined,
                 price: data.price,
                 image: data.image,
-                genericId: '',
-                images: { create: data.images?.map(x => ({ link: x.link, publicId: x.public_id })) },
+                genericId: data.genericId,
+                //images: { create: data.images?.map(x => ({ link: x.link, publicId: x.public_id })) },
                 colorId: data.colorId
             }
-        })
+        });
+
+        return result
     }
     deleteProduct(id: string): Promise<SpecificProduct> {
         return this.prismaService.specificProduct.delete({ where: { id }, include: { images: true } })
