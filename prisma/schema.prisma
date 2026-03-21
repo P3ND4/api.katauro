@@ -110,6 +110,7 @@ model SpecificProduct {
   image          String
   price          Float
   colorId        String
+  position       Int                   @default(0)
   stock          Int                   @default(0)
   order          ProductForOrder[]     @relation()
   promotions     ProductForPromotion[] @relation()
@@ -123,6 +124,7 @@ model SpecificProduct {
 //TODO: Hacer el publicId obligatorio en Images, Users, Color y finish
 model Images {
   id       String          @id @default(ulid())
+  position Int             @default(0)
   link     String
   prodId   String
   publicId String?         @unique

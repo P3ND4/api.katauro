@@ -1,4 +1,5 @@
 export class CreateSpecProductDTO {
+    id?: string;
     price: number;
     stock: number;
     colorId: string

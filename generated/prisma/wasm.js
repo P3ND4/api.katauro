@@ -195,11 +195,13 @@ exports.Prisma.SpecificProductScalarFieldEnum = {
   image: 'image',
   price: 'price',
   colorId: 'colorId',
+  position: 'position',
   stock: 'stock'
 };
 
 exports.Prisma.ImagesScalarFieldEnum = {
   id: 'id',
+  position: 'position',
   link: 'link',
   prodId: 'prodId',
   publicId: 'publicId'

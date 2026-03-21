@@ -14,7 +14,7 @@ export class ProductRepository implements IProductRepository {
     constructor(private prismaService: PrismaService) { }
 
     findAllProducts(): Promise<GenericProduct[]> {
-        return this.prismaService.genericProduct.findMany({ include: { variants: { include: { genericProd: { include: { category: true } }, images: true, color: true, promotions: { include: { promotion: true } } } }, details: true, category: true, finish: true } });
+        return this.prismaService.genericProduct.findMany({ include: { variants: { include: { genericProd: { include: { category: true } }, images: { orderBy: { position: "asc" } }, color: true, promotions: { include: { promotion: true } } }, orderBy: { position: "asc" } }, details: true, category: true, finish: true } });
     }
     createProduct(data: CreateProductDto): Promise<GenericProduct> {
         return this.prismaService.genericProduct.create({
@@ -34,14 +34,15 @@ export class ProductRepository implements IProductRepository {
                         stock: x.stock,
                         image: x.image,
                         price: x.price,
-                        images: { create: x.images.map(y => ({ link: y.link, publicId: y.public_id })) }
+                        position: data.variants.indexOf(x),
+                        images: { create: x.images.map(y => ({ position: x.images.indexOf(y), link: y.link, publicId: y.public_id })) }
                     }))
                 }
             }
         });
     }
     findProductById(id: string): Promise<GenericProduct | null> {
-        return this.prismaService.genericProduct.findUnique({ where: { id }, include: { variants: { include: { images: true, color: true, promotions: { include: { promotion: true } } } }, details: true, category: true, finish: true } })
+        return this.prismaService.genericProduct.findUnique({ where: { id }, include: { variants: { orderBy: { position: "asc" }, include: { images: { orderBy: { position: "asc" } }, color: true, promotions: { include: { promotion: true } } } }, details: true, category: true, finish: true } })
     }
     async updateProduct(id: string, data: UpdateProductDto): Promise<GenericProduct> {
 
@@ -51,9 +52,6 @@ export class ProductRepository implements IProductRepository {
                 // Eliminar relaciones existentes
                 details: { deleteMany: {} },
                 finish: { deleteMany: {} },
-                variants: {
-                    deleteMany: {},
-                },
             },
         });
 
@@ -71,15 +69,18 @@ export class ProductRepository implements IProductRepository {
                 vPublicId: data.vPublicId,
                 finish: { create: data.finishId?.map(x => ({ finishId: x })) },
                 variants: {
-                    create: data.variants?.map((x: CreateSpecProductDTO) => ({
-                        colorId: x.colorId,
-                        stock: x.stock,
-                        image: x.image,
-                        price: x.price,
-                        images: { create: x.images.map(y => ({ link: y.link, publicId: y.public_id })) }
+                    update: data.variants?.map((x: CreateSpecProductDTO) => ({
+                        where: { id: x.id }, data: {
+                            colorId: x.colorId,
+                            stock: x.stock,
+                            image: x.image,
+                            price: x.price,
+                            images: { deleteMany: {}, create: x.images.map(y => ({ position: x.images.indexOf(y), link: y.link, publicId: y.public_id })) }
+                        }
                     }))
                 }
             }
+
         })
     }
     deleteProduct(id: string): Promise<GenericProduct> {
