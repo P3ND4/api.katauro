@@ -19,6 +19,7 @@ class Variant {
     id;
     colorId;
     price;
+    position;
     stock;
     image;
     images;

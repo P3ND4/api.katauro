@@ -29,6 +29,7 @@ export declare class SpecProductRepository implements ISpecificProductRepository
     } & {
         image: string;
         id: string;
+        position: number;
         price: number;
         stock: number;
         colorId: string;

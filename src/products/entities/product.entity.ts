@@ -20,6 +20,7 @@ export class Variant {
     id: string;
     colorId: string;
     price: number;
+    position: number;
     stock: number;
     image?: string;
     images: Images[]

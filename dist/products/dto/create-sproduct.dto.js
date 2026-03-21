@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreateSpecProductDTO = void 0;
 class CreateSpecProductDTO {
+    id;
     price;
     stock;
     colorId;

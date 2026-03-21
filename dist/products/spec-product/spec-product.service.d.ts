@@ -9,6 +9,10 @@ export declare class SpecProductService {
     create(createSpecProductDTO: CreateSpecProductDTO): Promise<{
         image: string;
         id: string;
+<<<<<<< HEAD
+=======
+        position: number;
+>>>>>>> dev
         price: number;
         stock: number;
         colorId: string;
@@ -17,6 +21,10 @@ export declare class SpecProductService {
     update(id: string, updateSpecProductDto: UpdateSpecProductDto): Promise<{
         image: string;
         id: string;
+<<<<<<< HEAD
+=======
+        position: number;
+>>>>>>> dev
         price: number;
         stock: number;
         colorId: string;
@@ -26,6 +34,10 @@ export declare class SpecProductService {
     findById(id: string): Promise<{
         image: string;
         id: string;
+<<<<<<< HEAD
+=======
+        position: number;
+>>>>>>> dev
         price: number;
         stock: number;
         colorId: string;
@@ -50,6 +62,10 @@ export declare class SpecProductService {
     } & {
         image: string;
         id: string;
+<<<<<<< HEAD
+=======
+        position: number;
+>>>>>>> dev
         price: number;
         stock: number;
         colorId: string;
@@ -58,6 +74,10 @@ export declare class SpecProductService {
     findByGeneric(id: string): Promise<{
         image: string;
         id: string;
+<<<<<<< HEAD
+=======
+        position: number;
+>>>>>>> dev
         price: number;
         stock: number;
         colorId: string;
