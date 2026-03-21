@@ -45,6 +45,7 @@ async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
     const allowedOrigins = [
         'http://localhost:4200',
+        'http://localhost:3200',
         'https://katauro.com',
         `https://www.katauro.com`,
         'https://admin.katauro.com',

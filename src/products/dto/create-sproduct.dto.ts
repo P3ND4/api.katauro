@@ -4,5 +4,6 @@ export class CreateSpecProductDTO {
     stock: number;
     colorId: string
     image: string;
-    images: { link: string, public_id?: string }[]
+    images: { link: string, public_id?: string }[];
+    genericId: string;
 }

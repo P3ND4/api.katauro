@@ -10,6 +10,7 @@ async function bootstrap() {
   // --- CORS robusto para desarrollo y producción ---
   const allowedOrigins = [
     'http://localhost:4200',
+    'http://localhost:3200',
     'https://katauro.com',
     `https://www.katauro.com`,
     'https://admin.katauro.com',

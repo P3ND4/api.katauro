@@ -8,4 +8,5 @@ export declare class CreateSpecProductDTO {
         link: string;
         public_id?: string;
     }[];
+    genericId: string;
 }

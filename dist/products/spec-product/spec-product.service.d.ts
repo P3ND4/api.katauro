@@ -7,41 +7,35 @@ export declare class SpecProductService {
     private cloudy;
     constructor(variantRep: SpecProductRepository, cloudy: CloudinaryService);
     create(createSpecProductDTO: CreateSpecProductDTO): Promise<{
-        image: string;
-        id: string;
-        position: number;
-        price: number;
-        stock: number;
-        colorId: string;
         genericId: string;
+        id: string;
+        image: string;
+        price: number;
+        colorId: string;
+        position: number;
+        stock: number;
     }>;
     update(id: string, updateSpecProductDto: UpdateSpecProductDto): Promise<{
-        image: string;
-        id: string;
-        position: number;
-        price: number;
-        stock: number;
-        colorId: string;
-        genericId: string;
+        count: number;
     }>;
     delete(id: string): Promise<void>;
     findById(id: string): Promise<{
-        image: string;
-        id: string;
-        position: number;
-        price: number;
-        stock: number;
-        colorId: string;
         genericId: string;
+        id: string;
+        image: string;
+        price: number;
+        colorId: string;
+        position: number;
+        stock: number;
     } | null>;
     findManyById(ids: string[]): import("generated/prisma").Prisma.PrismaPromise<({
         promotions: ({
             promotion: {
                 name: string;
-                description: string;
                 promo_id: string;
                 startDate: Date;
                 endDate: Date;
+                description: string;
                 discountType: string;
                 discount: number;
                 Type: string;
@@ -51,21 +45,21 @@ export declare class SpecProductService {
             promotionId: string;
         })[];
     } & {
-        image: string;
-        id: string;
-        position: number;
-        price: number;
-        stock: number;
-        colorId: string;
         genericId: string;
+        id: string;
+        image: string;
+        price: number;
+        colorId: string;
+        position: number;
+        stock: number;
     })[]>;
     findByGeneric(id: string): Promise<{
-        image: string;
-        id: string;
-        position: number;
-        price: number;
-        stock: number;
-        colorId: string;
         genericId: string;
+        id: string;
+        image: string;
+        price: number;
+        colorId: string;
+        position: number;
+        stock: number;
     }[]>;
 }
