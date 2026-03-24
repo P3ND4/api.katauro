@@ -2,8 +2,8 @@ export declare class CloudinaryService {
     private readonly logger;
     constructor();
     moveImage(publicId: string, url: string): Promise<{
-        link: string;
-        public_id: string;
+        link: any;
+        public_id: any;
     }>;
     generateSignature(): Promise<{
         timestamp: number;
