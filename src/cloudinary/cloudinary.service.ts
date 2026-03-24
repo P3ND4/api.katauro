@@ -13,18 +13,28 @@ export class CloudinaryService {
 
     }
 
-    async moveImage(publicId: string, url: string): Promise<{ link: string, public_id: string }> {
-        const segments = publicId.split('/');
-        if (segments.includes('temp')) {
-            const newPublicId = publicId.replace('temp/', 'production/');
-            const res = await cloudinary.uploader.upload(url, {
-                public_id: newPublicId,
+    async moveImage(publicId: string, url: string) {
+        if (publicId.startsWith('katauro/temp/')) {
+            const newPublicId = publicId.replace(/^katauro\/temp\//, 'katauro/production/');
+
+            // 1. Renombrar (cambia public_id)
+            const res = await cloudinary.uploader.rename(publicId, newPublicId, {
                 overwrite: true
             });
-            return { link: res.secure_url.replace('/upload/', '/upload/q_auto,f_auto/'), public_id: res.public_id };
-        }
-        return { link: url, public_id: publicId };
 
+            // 2. Mover carpeta REAL (UI)
+            await cloudinary.uploader.explicit(res.public_id, {
+                type: 'upload',
+                asset_folder: 'katauro/production'
+            });
+
+            return {
+                link: res.secure_url.replace('/upload/', '/upload/q_auto,f_auto/'),
+                public_id: res.public_id
+            };
+        }
+
+        return { link: url, public_id: publicId };
     }
 
     async generateSignature() {

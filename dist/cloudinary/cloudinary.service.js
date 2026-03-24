@@ -55,14 +55,19 @@ let CloudinaryService = CloudinaryService_1 = class CloudinaryService {
     constructor() {
     }
     async moveImage(publicId, url) {
-        const segments = publicId.split('/');
-        if (segments.includes('temp')) {
-            const newPublicId = publicId.replace('temp/', 'production/');
-            const res = await cloudinary_config_1.default.uploader.upload(url, {
-                public_id: newPublicId,
+        if (publicId.startsWith('katauro/temp/')) {
+            const newPublicId = publicId.replace(/^katauro\/temp\//, 'katauro/production/');
+            const res = await cloudinary_config_1.default.uploader.rename(publicId, newPublicId, {
                 overwrite: true
             });
-            return { link: res.secure_url.replace('/upload/', '/upload/q_auto,f_auto/'), public_id: res.public_id };
+            await cloudinary_config_1.default.uploader.explicit(res.public_id, {
+                type: 'upload',
+                asset_folder: 'katauro/production'
+            });
+            return {
+                link: res.secure_url.replace('/upload/', '/upload/q_auto,f_auto/'),
+                public_id: res.public_id
+            };
         }
         return { link: url, public_id: publicId };
     }
