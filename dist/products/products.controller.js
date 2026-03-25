@@ -63,7 +63,7 @@ let ProductsController = class ProductsController {
     }
     findPage(cat, search) {
         const options = {
-            categories: cat,
+            category: cat,
             search: search,
         };
         return cat ? this.productsService.getPages(options) : this.productsService.getPages();
