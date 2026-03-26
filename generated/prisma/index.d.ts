@@ -21946,7 +21946,7 @@ export namespace Prisma {
   export type GenericProductCreateInput = {
     id?: string
     name: string
-    description: string
+    description?: string
     subtitle: string
     typology?: string
     vector?: string
@@ -21960,7 +21960,7 @@ export namespace Prisma {
   export type GenericProductUncheckedCreateInput = {
     id?: string
     name: string
-    description: string
+    description?: string
     subtitle: string
     typology?: string
     vector?: string
@@ -22002,7 +22002,7 @@ export namespace Prisma {
   export type GenericProductCreateManyInput = {
     id?: string
     name: string
-    description: string
+    description?: string
     subtitle: string
     typology?: string
     vector?: string
@@ -25102,7 +25102,7 @@ export namespace Prisma {
   export type GenericProductCreateWithoutFinishInput = {
     id?: string
     name: string
-    description: string
+    description?: string
     subtitle: string
     typology?: string
     vector?: string
@@ -25115,7 +25115,7 @@ export namespace Prisma {
   export type GenericProductUncheckedCreateWithoutFinishInput = {
     id?: string
     name: string
-    description: string
+    description?: string
     subtitle: string
     typology?: string
     vector?: string
@@ -25579,7 +25579,7 @@ export namespace Prisma {
   export type GenericProductCreateWithoutCategoryInput = {
     id?: string
     name: string
-    description: string
+    description?: string
     subtitle: string
     typology?: string
     vector?: string
@@ -25592,7 +25592,7 @@ export namespace Prisma {
   export type GenericProductUncheckedCreateWithoutCategoryInput = {
     id?: string
     name: string
-    description: string
+    description?: string
     subtitle: string
     typology?: string
     vector?: string
@@ -25687,7 +25687,7 @@ export namespace Prisma {
   export type GenericProductCreateWithoutDetailsInput = {
     id?: string
     name: string
-    description: string
+    description?: string
     subtitle: string
     typology?: string
     vector?: string
@@ -25700,7 +25700,7 @@ export namespace Prisma {
   export type GenericProductUncheckedCreateWithoutDetailsInput = {
     id?: string
     name: string
-    description: string
+    description?: string
     subtitle: string
     typology?: string
     vector?: string
@@ -25847,7 +25847,7 @@ export namespace Prisma {
   export type GenericProductCreateWithoutVariantsInput = {
     id?: string
     name: string
-    description: string
+    description?: string
     subtitle: string
     typology?: string
     vector?: string
@@ -25860,7 +25860,7 @@ export namespace Prisma {
   export type GenericProductUncheckedCreateWithoutVariantsInput = {
     id?: string
     name: string
-    description: string
+    description?: string
     subtitle: string
     typology?: string
     vector?: string
@@ -27142,7 +27142,7 @@ export namespace Prisma {
   export type GenericProductCreateManyCategoryInput = {
     id?: string
     name: string
-    description: string
+    description?: string
     subtitle: string
     typology?: string
     vector?: string

@@ -63,7 +63,7 @@ model ProductForCart {
 model GenericProduct {
   id          String              @id @default(uuid())
   name        String
-  description String
+  description String              @default("") @db.LongText
   subtitle    String
   typology    String              @default("Variable")
   vector      String              @default("")
