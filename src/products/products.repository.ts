@@ -42,7 +42,7 @@ export class ProductRepository implements IProductRepository {
         });
     }
     findProductById(id: string): Promise<GenericProduct | null> {
-        return this.prismaService.genericProduct.findUnique({ where: { id }, include: { variants: { orderBy: { position: "asc" }, include: { images: { orderBy: { position: "asc" } }, color: true, promotions: { include: { promotion: true } } } }, details: true, category: true, finish: true } })
+        return this.prismaService.genericProduct.findUnique({ where: { id }, include: { variants: { orderBy: { position: "asc" }, include: { genericProd: { include: { category: true } }, images: { orderBy: { position: "asc" } }, color: true, promotions: { include: { promotion: true } } } }, details: true, category: true, finish: true } })
     }
     async updateProduct(id: string, data: UpdateProductDto): Promise<GenericProduct> {
 
