@@ -18,7 +18,7 @@ let CarouselRepository = class CarouselRepository {
         this.prisma = prisma;
     }
     FindAllCarousel() {
-        return this.prisma.carousel.findMany({ include: { banners: { include: { product: { include: { genericProd: true, promotions: { include: { promotion: true } } } } } } } });
+        return this.prisma.carousel.findMany({ include: { banners: { include: { product: { include: { genericProd: { include: { category: true } }, promotions: { include: { promotion: true } } } } } } } });
     }
     FindCarouselById(id) {
         return this.prisma.carousel.findUnique({ where: { id } });
