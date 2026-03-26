@@ -11,7 +11,7 @@ export class CarouselRepository implements ICarouselRepository {
     constructor(private prisma: PrismaService) { }
 
     FindAllCarousel(): Promise<Carousel[]> {
-        return this.prisma.carousel.findMany({ include: { banners: { include: { product: { include: { genericProd: true, promotions: { include: { promotion: true } } } } } } } });
+        return this.prisma.carousel.findMany({ include: { banners: { include: { product: { include: { genericProd: true, promotions: { include: { promotion: { include: { categories: true } } } } } } } } } });
     }
     FindCarouselById(id: number): Promise<Carousel | null> {
         return this.prisma.carousel.findUnique({ where: { id } });
