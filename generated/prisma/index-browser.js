@@ -267,6 +267,40 @@ exports.Prisma.CarouselScalarFieldEnum = {
   name: 'name'
 };
 
+exports.Prisma.BlogViewScalarFieldEnum = {
+  blogId: 'blogId',
+  UserId: 'UserId',
+  viewedAt: 'viewedAt'
+};
+
+exports.Prisma.BlogScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.BlogContentScalarFieldEnum = {
+  id: 'id',
+  blogId: 'blogId',
+  text: 'text',
+  position: 'position'
+};
+
+exports.Prisma.BlogImageScalarFieldEnum = {
+  id: 'id',
+  link: 'link',
+  publicId: 'publicId',
+  position: 'position',
+  blogId: 'blogId'
+};
+
+exports.Prisma.TagsScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  color: 'color'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -404,6 +438,35 @@ exports.Prisma.CarouselOrderByRelevanceFieldEnum = {
   name: 'name'
 };
 
+exports.Prisma.BlogViewOrderByRelevanceFieldEnum = {
+  blogId: 'blogId',
+  UserId: 'UserId'
+};
+
+exports.Prisma.BlogOrderByRelevanceFieldEnum = {
+  id: 'id',
+  title: 'title'
+};
+
+exports.Prisma.blogContentOrderByRelevanceFieldEnum = {
+  id: 'id',
+  blogId: 'blogId',
+  text: 'text'
+};
+
+exports.Prisma.BlogImageOrderByRelevanceFieldEnum = {
+  id: 'id',
+  link: 'link',
+  publicId: 'publicId',
+  blogId: 'blogId'
+};
+
+exports.Prisma.TagsOrderByRelevanceFieldEnum = {
+  id: 'id',
+  name: 'name',
+  color: 'color'
+};
+
 
 exports.Prisma.ModelName = {
   User: 'User',
@@ -423,7 +486,12 @@ exports.Prisma.ModelName = {
   CategoryforPromo: 'CategoryforPromo',
   ProductForPromotion: 'ProductForPromotion',
   PromoBanner: 'PromoBanner',
-  Carousel: 'Carousel'
+  Carousel: 'Carousel',
+  BlogView: 'BlogView',
+  Blog: 'Blog',
+  blogContent: 'blogContent',
+  BlogImage: 'BlogImage',
+  Tags: 'Tags'
 };
 
 /**
