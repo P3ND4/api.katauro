@@ -16,7 +16,8 @@ exports.CloudinaryModule = CloudinaryModule;
 exports.CloudinaryModule = CloudinaryModule = __decorate([
     (0, common_1.Module)({
         providers: [cloudinary_service_1.CloudinaryService],
-        controllers: [cloudinary_controller_1.CloudinaryController]
+        controllers: [cloudinary_controller_1.CloudinaryController],
+        exports: [cloudinary_service_1.CloudinaryService]
     })
 ], CloudinaryModule);
 //# sourceMappingURL=cloudinary.module.js.map

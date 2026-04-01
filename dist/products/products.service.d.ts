@@ -18,25 +18,28 @@ export declare class ProductsService implements OnModuleInit {
         id: string;
         description: string;
         subtitle: string;
-        categoryId: string;
         typology: string;
         vector: string;
         vPublicId: string | null;
+        categoryId: string;
     }>;
     findAll(options?: {
         category?: string;
         search?: string;
         page?: number;
-    }): Promise<Product[]>;
+    }): Promise<{
+        products: Product[];
+        total: number;
+    }>;
     findPage(page: number): Promise<{
         name: string;
         id: string;
         description: string;
         subtitle: string;
-        categoryId: string;
         typology: string;
         vector: string;
         vPublicId: string | null;
+        categoryId: string;
     }[]>;
     getPages(options?: {
         category?: string;
@@ -47,30 +50,30 @@ export declare class ProductsService implements OnModuleInit {
         id: string;
         description: string;
         subtitle: string;
-        categoryId: string;
         typology: string;
         vector: string;
         vPublicId: string | null;
+        categoryId: string;
     } | null>;
     update(id: string, updateProductDto: UpdateProductDto): Promise<{
         name: string;
         id: string;
         description: string;
         subtitle: string;
-        categoryId: string;
         typology: string;
         vector: string;
         vPublicId: string | null;
+        categoryId: string;
     }>;
     remove(id: string): Promise<{
         name: string;
         id: string;
         description: string;
         subtitle: string;
-        categoryId: string;
         typology: string;
         vector: string;
         vPublicId: string | null;
+        categoryId: string;
     }>;
     getProductByCategory(name: string, page?: number): Promise<Product[]>;
     getCatByName(name: string): Promise<import("./entities/product.entity").CatEntity[]>;

@@ -50,7 +50,7 @@ export class ProductsService implements OnModuleInit {
     products = categories ? products.filter((p) => categories.includes((p as Product).category?.nombre as Categories)) : products;
     products = options?.search ? products.filter(p => p.name.toLowerCase().includes(options.search!.toLowerCase())) : products;
     const result = options?.page ? { products: products.slice((options.page - 1) * 9, (options.page - 1) * 9 + 9), total: len } : { products, total: len };
-
+    return result;
   }
 
   async findPage(page: number) {

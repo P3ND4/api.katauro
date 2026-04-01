@@ -46,7 +46,7 @@ let ProductRepository = class ProductRepository {
         });
     }
     findProductById(id) {
-        return this.prismaService.genericProduct.findUnique({ where: { id }, include: { variants: { orderBy: { position: "asc" }, include: { images: { orderBy: { position: "asc" } }, color: true, promotions: { include: { promotion: true } } } }, details: true, category: true, finish: true } });
+        return this.prismaService.genericProduct.findUnique({ where: { id }, include: { variants: { orderBy: { position: "asc" }, include: { genericProd: { include: { category: true } }, images: { orderBy: { position: "asc" } }, color: true, promotions: { include: { promotion: true } } } }, details: true, category: true, finish: true } });
     }
     async updateProduct(id, data) {
         await this.prismaService.genericProduct.update({

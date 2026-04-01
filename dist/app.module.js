@@ -11,7 +11,6 @@ const common_1 = require("@nestjs/common");
 const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
 const users_module_1 = require("./users/users.module");
-const prisma_service_1 = require("./shared/services/prisma/prisma.service");
 const products_module_1 = require("./products/products.module");
 const order_module_1 = require("./order/order.module");
 const auth_module_1 = require("./auth/auth.module");
@@ -20,15 +19,16 @@ const cloudinary_module_1 = require("./cloudinary/cloudinary.module");
 const mail_service_1 = require("./shared/services/mail/mail.service");
 const schedule_1 = require("@nestjs/schedule");
 const promotion_module_1 = require("./promotion/promotion.module");
+const blog_module_1 = require("./blog/blog.module");
+const shared_module_1 = require("./shared/shared.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [config_1.ConfigModule.forRoot({ isGlobal: true }),
-            users_module_1.UsersModule, products_module_1.ProductsModule, order_module_1.OrderModule, auth_module_1.AuthModule, cloudinary_module_1.CloudinaryModule, schedule_1.ScheduleModule.forRoot(), promotion_module_1.PromotionModule],
+        imports: [config_1.ConfigModule.forRoot({ isGlobal: true }), shared_module_1.SharedModule, users_module_1.UsersModule, products_module_1.ProductsModule, order_module_1.OrderModule, auth_module_1.AuthModule, cloudinary_module_1.CloudinaryModule, schedule_1.ScheduleModule.forRoot(), promotion_module_1.PromotionModule, blog_module_1.BlogModule],
         controllers: [app_controller_1.AppController],
-        providers: [app_service_1.AppService, prisma_service_1.PrismaService, mail_service_1.MailService],
+        providers: [app_service_1.AppService, mail_service_1.MailService],
     })
 ], AppModule);
 //# sourceMappingURL=app.module.js.map
