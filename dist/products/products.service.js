@@ -53,11 +53,13 @@ let ProductsService = class ProductsService {
     }
     async findAll(options) {
         var products = (await this.productRepository.findAllProducts());
+        const len = products.length;
         const catList = options?.category ? options.category.split('-') : null;
         const categories = catList ? catList.map((cat) => this.CatParser[+cat]) : null;
         products = categories ? products.filter((p) => categories.includes(p.category?.nombre)) : products;
         products = options?.search ? products.filter(p => p.name.toLowerCase().includes(options.search.toLowerCase())) : products;
-        return options?.page ? products.slice((options.page - 1) * 9, (options.page - 1) * 9 + 9) : products;
+        const result = options?.page ? { products: products.slice((options.page - 1) * 9, (options.page - 1) * 9 + 9), total: len } : { products, total: len };
+        return result;
     }
     async findPage(page) {
         const products = await this.productRepository.findAllProducts();

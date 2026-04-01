@@ -1,0 +1,36 @@
+import { PrismaService } from '../../shared/services/prisma/prisma.service';
+import { CreateBlogDto } from '../dto/create-blog.dto';
+import { UpdateBlogDto } from '../dto/update-blog.dto';
+import { CreateBlogContentDto, UpdateBlogContentDto, CreateBlogImageDto, UpdateBlogImageDto, CreateBlogViewDto, CreateTagsDto, UpdateTagsDto } from '../dto';
+import { Blog } from '../entities/blog.entity';
+import { BlogImage } from '../entities/blog-image.entity';
+import { BlogView } from '../entities/blog-view.entity';
+import { Tags } from '../entities/tags.entity';
+import { BlogContent } from '../entities/blog-content.entity';
+export declare class BlogsRepository {
+    private readonly prisma;
+    constructor(prisma: PrismaService);
+    createBlogWithContent(createBlogDto: CreateBlogDto): Promise<Blog>;
+    findAllBlogs(): Promise<Blog[]>;
+    findBlogById(id: string): Promise<Blog | null>;
+    updateBlog(id: string, updateBlogDto: UpdateBlogDto): Promise<Blog>;
+    deleteBlog(id: string): Promise<boolean>;
+    createBlogContent(blogId: string, createContentDto: CreateBlogContentDto): Promise<BlogContent>;
+    updateBlogContent(contentId: string, updateContentDto: UpdateBlogContentDto): Promise<BlogContent>;
+    deleteBlogContent(contentId: string): Promise<boolean>;
+    createBlogImage(blogId: string, createImageDto: CreateBlogImageDto): Promise<BlogImage>;
+    updateBlogImage(imageId: string, updateImageDto: UpdateBlogImageDto): Promise<BlogImage>;
+    deleteBlogImage(imageId: string): Promise<boolean>;
+    createBlogView(createViewDto: CreateBlogViewDto): Promise<BlogView>;
+    getBlogViews(blogId: string): Promise<BlogView[]>;
+    getUserBlogViews(userId: string): Promise<BlogView[]>;
+    createTag(createTagDto: CreateTagsDto): Promise<Tags>;
+    findAllTags(): Promise<Tags[]>;
+    updateTag(id: string, updateTagDto: UpdateTagsDto): Promise<Tags>;
+    deleteTag(id: string): Promise<boolean>;
+    private mapToBlogEntity;
+    private mapToBlogImageEntity;
+    private mapToBlogContentEntity;
+    private mapToBlogViewEntity;
+    private mapToTagsEntity;
+}

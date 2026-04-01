@@ -11,11 +11,12 @@ import { CloudinaryModule } from './cloudinary/cloudinary.module';
 import { MailService } from './shared/services/mail/mail.service';
 import { ScheduleModule } from '@nestjs/schedule';
 import { PromotionModule } from './promotion/promotion.module';
+import { BlogModule } from './blog/blog.module';
+import { SharedModule } from './shared/shared.module';
 
 @Module({
-  imports: [ConfigModule.forRoot({ isGlobal: true }), // SOLO aquí
-    UsersModule, ProductsModule, OrderModule, AuthModule, CloudinaryModule, ScheduleModule.forRoot(), PromotionModule],
+  imports: [ConfigModule.forRoot({ isGlobal: true }), SharedModule, UsersModule, ProductsModule, OrderModule, AuthModule, CloudinaryModule, ScheduleModule.forRoot(), PromotionModule, BlogModule],
   controllers: [AppController],
-  providers: [AppService, PrismaService, MailService],
+  providers: [AppService, MailService],
 })
 export class AppModule { }
