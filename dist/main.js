@@ -49,7 +49,8 @@ async function bootstrap() {
         'https://katauro.com',
         `https://www.katauro.com`,
         'https://admin.katauro.com',
-        'https://katauro-luminaria-web.vercel.app'
+        'https://katauro-luminaria-web.vercel.app',
+        'katauroluminariaweb-production.up.railway.app'
     ];
     app.enableCors({
         origin: (origin, callback) => {
