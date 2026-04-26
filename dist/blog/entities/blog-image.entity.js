@@ -7,6 +7,7 @@ class BlogImage {
     publicId;
     position;
     blogId;
+    alt;
     blog;
 }
 exports.BlogImage = BlogImage;

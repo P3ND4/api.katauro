@@ -222,16 +222,18 @@ model BlogView {
 }
 
 model Blog {
-  id    String @id @default(uuid())
-  title String
-
-  images BlogImage[] @relation()
+  id           String      @id @default(uuid())
+  title        String
+  introduction String      @db.LongText
+  images       BlogImage[] @relation()
 
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt
 
+  Tags        Tags[]        @relation()
   blogContent blogContent[] @relation()
   BlogView    BlogView[]    @relation()
+  BlogTags    BlogTags[]
 }
 
 model blogContent {
@@ -248,11 +250,25 @@ model BlogImage {
   publicId String? @unique
   position Int     @default(0)
   blogId   String
+  alt      String  @default("")
   blog     Blog    @relation(fields: [blogId], references: [id], onDelete: Cascade)
 }
 
 model Tags {
-  id    String @id @default(uuid())
-  name  String
-  color String
+  id       String     @id @default(uuid())
+  name     String
+  color    String
+  BgColor  String
+  Blog     Blog?      @relation(fields: [blogId], references: [id])
+  blogId   String?
+  BlogTags BlogTags[]
+}
+
+model BlogTags {
+  blogId String
+  tagId  String
+  blog   Blog   @relation(fields: [blogId], references: [id], onDelete: Cascade)
+  tag    Tags   @relation(fields: [tagId], references: [id], onDelete: Cascade)
+
+  @@id([blogId, tagId])
 }

@@ -37,10 +37,27 @@ export class BlogService {
   }
 
   /**
-   * Obtener todos los blogs
+   * Obtener todos los blogs con opciones de filtro y paginación
    */
-  async findAll(): Promise<Blog[]> {
-    return await this.blogsRepository.findAllBlogs();
+  async findAll(options?: { sortBy?: string; tags?: string; search?: string; page?: number }): Promise<{ blogs: Blog[]; total: number }> {
+    const blogs = await this.blogsRepository.findAllBlogs(options);
+    const total = blogs.length;
+
+    if (options?.page) {
+      const paginatedBlogs = blogs.slice((options.page - 1) * 9, (options.page - 1) * 9 + 9);
+      return { blogs: paginatedBlogs, total };
+    }
+
+    const paginatedBlogs = blogs.slice(0, 9);
+    return { blogs: paginatedBlogs, total };
+  }
+
+  /**
+   * Obtener el número total de páginas
+   */
+  async getPages(options?: { tags?: string; search?: string }): Promise<number> {
+    const blogs = await this.blogsRepository.findAllBlogs(options);
+    return blogs.length / 9 > 0 ? Math.ceil(blogs.length / 9) : 1;
   }
 
   /**

@@ -11,7 +11,11 @@ export declare class BlogsRepository {
     private readonly prisma;
     constructor(prisma: PrismaService);
     createBlogWithContent(createBlogDto: CreateBlogDto): Promise<Blog>;
-    findAllBlogs(): Promise<Blog[]>;
+    findAllBlogs(options?: {
+        sortBy?: string;
+        tags?: string;
+        search?: string;
+    }): Promise<Blog[]>;
     findBlogById(id: string): Promise<Blog | null>;
     updateBlog(id: string, updateBlogDto: UpdateBlogDto): Promise<Blog>;
     deleteBlog(id: string): Promise<boolean>;

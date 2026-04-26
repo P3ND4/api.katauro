@@ -6,6 +6,8 @@ import {
   Patch,
   Param,
   Delete,
+  UseGuards,
+  Query,
 } from '@nestjs/common';
 import { BlogService } from './blog.service';
 import { CreateBlogDto } from './dto/create-blog.dto';
@@ -19,6 +21,8 @@ import {
   CreateTagsDto,
   UpdateTagsDto,
 } from './dto';
+import { AdminGuard } from 'src/shared/guards/admin/admin.guard';
+import { OwnerGuard } from 'src/shared/guards/ouwner/owner.guard';
 
 @Controller('blogs')
 export class BlogController {
@@ -27,17 +31,30 @@ export class BlogController {
   /**
    * Crear un nuevo blog
    */
+  @UseGuards(AdminGuard)
   @Post()
   create(@Body() createBlogDto: CreateBlogDto) {
     return this.blogService.create(createBlogDto);
   }
 
   /**
-   * Obtener todos los blogs
+   * Obtener todos los blogs con filtros opcionales y paginación
+   * @param sortBy 'asc' para más antiguos primero, 'desc' para más recientes primero
+   * @param tags IDs de tags separados por comas para filtrar
+   * @param search Búsqueda por título de blog
+   * @param page Número de página para paginación (9 blogs por página)
    */
   @Get()
-  findAll() {
-    return this.blogService.findAll();
+  findAll(@Query('sortBy') sortBy?: string, @Query('tags') tags?: string, @Query('search') search?: string, @Query('page') page?: string) {
+    return this.blogService.findAll({ sortBy, tags, search, page: page ? +page : undefined });
+  }
+
+  /**
+   * Obtener el número total de páginas
+   */
+  @Get('pages/total')
+  findPages(@Query('tags') tags?: string, @Query('search') search?: string) {
+    return this.blogService.getPages({ tags, search });
   }
 
   /**
@@ -51,6 +68,7 @@ export class BlogController {
   /**
    * Actualizar un blog
    */
+  @UseGuards(AdminGuard)
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateBlogDto: UpdateBlogDto) {
     return this.blogService.update(id, updateBlogDto);
@@ -59,6 +77,7 @@ export class BlogController {
   /**
    * Eliminar un blog
    */
+  @UseGuards(AdminGuard)
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.blogService.remove(id);
@@ -67,6 +86,7 @@ export class BlogController {
   /**
    * Crear contenido de blog
    */
+  @UseGuards(AdminGuard)
   @Post(':blogId/content')
   createContent(
     @Param('blogId') blogId: string,
@@ -78,6 +98,7 @@ export class BlogController {
   /**
    * Actualizar contenido de blog
    */
+  @UseGuards(AdminGuard)
   @Patch('content/:contentId')
   updateContent(
     @Param('contentId') contentId: string,
@@ -89,6 +110,7 @@ export class BlogController {
   /**
    * Eliminar contenido de blog
    */
+  @UseGuards(AdminGuard)
   @Delete('content/:contentId')
   removeContent(@Param('contentId') contentId: string) {
     return this.blogService.removeBlogContent(contentId);
@@ -97,6 +119,7 @@ export class BlogController {
   /**
    * Crear imagen de blog
    */
+  @UseGuards(AdminGuard)
   @Post(':blogId/images')
   createImage(
     @Param('blogId') blogId: string,
@@ -108,6 +131,7 @@ export class BlogController {
   /**
    * Actualizar imagen de blog
    */
+  @UseGuards(AdminGuard)
   @Patch('images/:imageId')
   updateImage(
     @Param('imageId') imageId: string,
@@ -119,6 +143,7 @@ export class BlogController {
   /**
    * Eliminar imagen de blog
    */
+  @UseGuards(AdminGuard)
   @Delete('images/:imageId')
   removeImage(@Param('imageId') imageId: string) {
     return this.blogService.removeBlogImage(imageId);
@@ -127,8 +152,10 @@ export class BlogController {
   /**
    * Registrar vista de blog
    */
-  @Post('views')
-  recordView(@Body() createViewDto: CreateBlogViewDto) {
+  @UseGuards(OwnerGuard)
+  @Post('views/:id')
+  recordView(@Body() createViewDto: CreateBlogViewDto, @Param('id') userId: string) {
+    createViewDto.UserId = userId;
     return this.blogService.recordBlogView(createViewDto);
   }
 

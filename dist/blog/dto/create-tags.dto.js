@@ -4,6 +4,7 @@ exports.CreateTagsDto = void 0;
 class CreateTagsDto {
     name;
     color;
+    bgColor;
 }
 exports.CreateTagsDto = CreateTagsDto;
 //# sourceMappingURL=create-tags.dto.js.map

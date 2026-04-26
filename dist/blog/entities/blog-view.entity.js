@@ -5,6 +5,7 @@ class BlogView {
     blogId;
     UserId;
     viewedAt;
+    introduction;
     User;
     Blog;
 }

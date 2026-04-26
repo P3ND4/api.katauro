@@ -5,6 +5,7 @@ export class BlogView {
   blogId: string;
   UserId: string;
   viewedAt: Date;
+  introduction: string;
   User?: User;
   Blog?: Blog;
 }

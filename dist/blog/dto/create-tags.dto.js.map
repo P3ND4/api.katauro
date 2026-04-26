@@ -1,1 +1,1 @@
-{"version":3,"file":"create-tags.dto.js","sourceRoot":"","sources":["../../../src/blog/dto/create-tags.dto.ts"],"names":[],"mappings":";;;AAAA,MAAa,aAAa;IACxB,IAAI,CAAS;IACb,KAAK,CAAS;CACf;AAHD,sCAGC"}
+{"version":3,"file":"create-tags.dto.js","sourceRoot":"","sources":["../../../src/blog/dto/create-tags.dto.ts"],"names":[],"mappings":";;;AAAA,MAAa,aAAa;IACxB,IAAI,CAAS;IACb,KAAK,CAAS;IACd,OAAO,CAAS;CACjB;AAJD,sCAIC"}

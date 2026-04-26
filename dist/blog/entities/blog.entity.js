@@ -6,9 +6,17 @@ class Blog {
     title;
     createdAt;
     updatedAt;
+    introduction;
     images;
     blogContent;
     BlogView;
+    tags;
 }
 exports.Blog = Blog;
+class BlogTags {
+    blogId;
+    tagId;
+    blog;
+    tag;
+}
 //# sourceMappingURL=blog.entity.js.map

@@ -9,7 +9,19 @@ export declare class BlogService {
     private cloudinaryService;
     constructor(blogsRepository: BlogsRepository, cloudinaryService: CloudinaryService);
     create(createBlogDto: CreateBlogDto): Promise<Blog>;
-    findAll(): Promise<Blog[]>;
+    findAll(options?: {
+        sortBy?: string;
+        tags?: string;
+        search?: string;
+        page?: number;
+    }): Promise<{
+        blogs: Blog[];
+        total: number;
+    }>;
+    getPages(options?: {
+        tags?: string;
+        search?: string;
+    }): Promise<number>;
     findOne(id: string): Promise<Blog | null>;
     update(id: string, updateBlogDto: UpdateBlogDto): Promise<Blog>;
     remove(id: string): Promise<boolean>;

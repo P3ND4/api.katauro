@@ -6,7 +6,11 @@ export declare class BlogController {
     private readonly blogService;
     constructor(blogService: BlogService);
     create(createBlogDto: CreateBlogDto): Promise<import("./entities").Blog>;
-    findAll(): Promise<import("./entities").Blog[]>;
+    findAll(sortBy?: string, tags?: string, search?: string, page?: string): Promise<{
+        blogs: import("./entities").Blog[];
+        total: number;
+    }>;
+    findPages(tags?: string, search?: string): Promise<number>;
     findOne(id: string): Promise<import("./entities").Blog | null>;
     update(id: string, updateBlogDto: UpdateBlogDto): Promise<import("./entities").Blog>;
     remove(id: string): Promise<boolean>;
@@ -16,7 +20,7 @@ export declare class BlogController {
     createImage(blogId: string, createImageDto: CreateBlogImageDto): Promise<import("./entities").BlogImage>;
     updateImage(imageId: string, updateImageDto: UpdateBlogImageDto): Promise<import("./entities").BlogImage>;
     removeImage(imageId: string): Promise<boolean>;
-    recordView(createViewDto: CreateBlogViewDto): Promise<import("./entities").BlogView>;
+    recordView(createViewDto: CreateBlogViewDto, userId: string): Promise<import("./entities").BlogView>;
     getBlogViews(blogId: string): Promise<import("./entities").BlogView[]>;
     getUserViews(userId: string): Promise<import("./entities").BlogView[]>;
     createTag(createTagDto: CreateTagsDto): Promise<import("./entities").Tags>;

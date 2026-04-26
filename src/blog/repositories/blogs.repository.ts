@@ -25,10 +25,11 @@ export class BlogsRepository {
     /**
      * Crear un blog con su contenido e imágenes asociadas
      */
-    async  createBlogWithContent(createBlogDto: CreateBlogDto): Promise<Blog> {
+    async createBlogWithContent(createBlogDto: CreateBlogDto): Promise<Blog> {
         const blog = await this.prisma.blog.create({
             data: {
                 title: createBlogDto.title,
+                introduction: createBlogDto.introduction,
                 images: {
                     create: createBlogDto.images?.map((img, index) => ({
                         link: img.link,
@@ -42,11 +43,19 @@ export class BlogsRepository {
                         position: content.position ?? index,
                     })) || [],
                 },
+                BlogTags: {
+                    create: createBlogDto.tags?.map((tag) => ({ tagId: tag })) || [],
+                },
             },
             include: {
                 images: true,
                 blogContent: true,
                 BlogView: true,
+                BlogTags: {
+                    include: {
+                        tag: true,
+                    },
+                },
             },
         });
 
@@ -54,14 +63,37 @@ export class BlogsRepository {
     }
 
     /**
-     * Obtener todos los blogs
+     * Obtener todos los blogs con opciones de filtro
+     * @param options Opciones de filtrado: sortBy ('asc'|'desc'), tags (IDs separados por comas) y search (búsqueda por título)
      */
-    async findAllBlogs(): Promise<Blog[]> {
+    async findAllBlogs(options?: { sortBy?: string; tags?: string; search?: string }): Promise<Blog[]> {
+        const tagIds = options?.tags ? options.tags.split(',').filter(t => t.trim()) : [];
+        
         const blogs = await this.prisma.blog.findMany({
             include: {
                 images: true,
                 blogContent: true,
                 BlogView: { include: { User: true } },
+                BlogTags: { include: { tag: true } }
+            },
+            where: {
+                ...(tagIds.length > 0 && {
+                    BlogTags: {
+                        some: {
+                            tagId: {
+                                in: tagIds,
+                            },
+                        },
+                    },
+                }),
+                ...(options?.search && {
+                    title: {
+                        contains: options.search
+                    }
+                })
+            },
+            orderBy: {
+                createdAt: options?.sortBy === 'asc' ? 'asc' : 'desc',
             },
         });
 
@@ -78,6 +110,11 @@ export class BlogsRepository {
                 images: true,
                 blogContent: true,
                 BlogView: true,
+                BlogTags: {
+                    include: {
+                        tag: true,
+                    },
+                },
             },
         });
 
@@ -92,6 +129,36 @@ export class BlogsRepository {
             where: { id },
             data: {
                 title: updateBlogDto.title,
+                introduction: updateBlogDto.introduction,
+                blogContent: {
+                    deleteMany: updateBlogDto.blogContent?.map((content) => ({ blogId: id })) || [],
+                    createMany: {
+                        data: updateBlogDto.blogContent?.map((content) => ({
+                            text: content.text,
+                            position: content.position,
+                        })) || []
+                    },
+                },
+
+                BlogTags: {
+
+                    deleteMany: { blogId: id }, // Elimina todas las relaciones de tags para este blog (puedes ajustar esto según tus necesidades)
+                    createMany: {
+                        data: updateBlogDto.tags?.map((tag) => ({ tagId: tag })) || [],
+                    },
+                },
+
+                images: {
+                    deleteMany: updateBlogDto.images?.map((img) => ({ blogId: id })) || [],
+                    createMany: {
+                        data: updateBlogDto.images?.map((img) => ({
+                            link: img.link,
+                            publicId: img.publicId,
+                            position: img.position,
+                        })) || []
+                    }
+                },
+
             },
             include: {
                 images: true,
@@ -329,6 +396,7 @@ export class BlogsRepository {
             data: {
                 name: createTagDto.name,
                 color: createTagDto.color,
+                BgColor: createTagDto.bgColor,
             },
         });
 
@@ -381,6 +449,8 @@ export class BlogsRepository {
         blog.title = data.title;
         blog.createdAt = data.createdAt;
         blog.updatedAt = data.updatedAt;
+        blog.introduction = data.introduction;
+        blog.tags = data.BlogTags?.map((bt: any) => ({ ...bt, tag: this.mapToTagsEntity(bt.tag), blogId: bt.blogId })) || [];
         blog.images = data.images?.map((img: any) => this.mapToBlogImageEntity(img)) || [];
         blog.blogContent = data.blogContent?.map((content: any) => this.mapToBlogContentEntity(content)) || [];
         blog.BlogView = data.BlogView?.map((view: any) => this.mapToBlogViewEntity(view)) || [];
@@ -435,6 +505,7 @@ export class BlogsRepository {
         tag.id = data.id;
         tag.name = data.name;
         tag.color = data.color;
+        tag.bgColor = data.BgColor;
         return tag;
     }
 }

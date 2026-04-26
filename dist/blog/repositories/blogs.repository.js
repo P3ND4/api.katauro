@@ -26,6 +26,7 @@ let BlogsRepository = class BlogsRepository {
         const blog = await this.prisma.blog.create({
             data: {
                 title: createBlogDto.title,
+                introduction: createBlogDto.introduction,
                 images: {
                     create: createBlogDto.images?.map((img, index) => ({
                         link: img.link,
@@ -39,21 +40,50 @@ let BlogsRepository = class BlogsRepository {
                         position: content.position ?? index,
                     })) || [],
                 },
+                BlogTags: {
+                    create: createBlogDto.tags?.map((tag) => ({ tagId: tag })) || [],
+                },
             },
             include: {
                 images: true,
                 blogContent: true,
                 BlogView: true,
+                BlogTags: {
+                    include: {
+                        tag: true,
+                    },
+                },
             },
         });
         return this.mapToBlogEntity(blog);
     }
-    async findAllBlogs() {
+    async findAllBlogs(options) {
+        const tagIds = options?.tags ? options.tags.split(',').filter(t => t.trim()) : [];
         const blogs = await this.prisma.blog.findMany({
             include: {
                 images: true,
                 blogContent: true,
                 BlogView: { include: { User: true } },
+                BlogTags: { include: { tag: true } }
+            },
+            where: {
+                ...(tagIds.length > 0 && {
+                    BlogTags: {
+                        some: {
+                            tagId: {
+                                in: tagIds,
+                            },
+                        },
+                    },
+                }),
+                ...(options?.search && {
+                    title: {
+                        contains: options.search
+                    }
+                })
+            },
+            orderBy: {
+                createdAt: options?.sortBy === 'asc' ? 'asc' : 'desc',
             },
         });
         return blogs.map((blog) => this.mapToBlogEntity(blog));
@@ -65,6 +95,11 @@ let BlogsRepository = class BlogsRepository {
                 images: true,
                 blogContent: true,
                 BlogView: true,
+                BlogTags: {
+                    include: {
+                        tag: true,
+                    },
+                },
             },
         });
         return blog ? this.mapToBlogEntity(blog) : null;
@@ -74,6 +109,32 @@ let BlogsRepository = class BlogsRepository {
             where: { id },
             data: {
                 title: updateBlogDto.title,
+                introduction: updateBlogDto.introduction,
+                blogContent: {
+                    deleteMany: updateBlogDto.blogContent?.map((content) => ({ blogId: id })) || [],
+                    createMany: {
+                        data: updateBlogDto.blogContent?.map((content) => ({
+                            text: content.text,
+                            position: content.position,
+                        })) || []
+                    },
+                },
+                BlogTags: {
+                    deleteMany: { blogId: id },
+                    createMany: {
+                        data: updateBlogDto.tags?.map((tag) => ({ tagId: tag })) || [],
+                    },
+                },
+                images: {
+                    deleteMany: updateBlogDto.images?.map((img) => ({ blogId: id })) || [],
+                    createMany: {
+                        data: updateBlogDto.images?.map((img) => ({
+                            link: img.link,
+                            publicId: img.publicId,
+                            position: img.position,
+                        })) || []
+                    }
+                },
             },
             include: {
                 images: true,
@@ -250,6 +311,7 @@ let BlogsRepository = class BlogsRepository {
             data: {
                 name: createTagDto.name,
                 color: createTagDto.color,
+                BgColor: createTagDto.bgColor,
             },
         });
         return this.mapToTagsEntity(tag);
@@ -285,6 +347,8 @@ let BlogsRepository = class BlogsRepository {
         blog.title = data.title;
         blog.createdAt = data.createdAt;
         blog.updatedAt = data.updatedAt;
+        blog.introduction = data.introduction;
+        blog.tags = data.BlogTags?.map((bt) => ({ ...bt, tag: this.mapToTagsEntity(bt.tag), blogId: bt.blogId })) || [];
         blog.images = data.images?.map((img) => this.mapToBlogImageEntity(img)) || [];
         blog.blogContent = data.blogContent?.map((content) => this.mapToBlogContentEntity(content)) || [];
         blog.BlogView = data.BlogView?.map((view) => this.mapToBlogViewEntity(view)) || [];
@@ -323,6 +387,7 @@ let BlogsRepository = class BlogsRepository {
         tag.id = data.id;
         tag.name = data.name;
         tag.color = data.color;
+        tag.bgColor = data.BgColor;
         return tag;
     }
 };
