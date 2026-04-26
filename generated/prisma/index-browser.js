@@ -276,6 +276,7 @@ exports.Prisma.BlogViewScalarFieldEnum = {
 exports.Prisma.BlogScalarFieldEnum = {
   id: 'id',
   title: 'title',
+  introduction: 'introduction',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -292,13 +293,21 @@ exports.Prisma.BlogImageScalarFieldEnum = {
   link: 'link',
   publicId: 'publicId',
   position: 'position',
-  blogId: 'blogId'
+  blogId: 'blogId',
+  alt: 'alt'
 };
 
 exports.Prisma.TagsScalarFieldEnum = {
   id: 'id',
   name: 'name',
-  color: 'color'
+  color: 'color',
+  BgColor: 'BgColor',
+  blogId: 'blogId'
+};
+
+exports.Prisma.BlogTagsScalarFieldEnum = {
+  blogId: 'blogId',
+  tagId: 'tagId'
 };
 
 exports.Prisma.SortOrder = {
@@ -445,7 +454,8 @@ exports.Prisma.BlogViewOrderByRelevanceFieldEnum = {
 
 exports.Prisma.BlogOrderByRelevanceFieldEnum = {
   id: 'id',
-  title: 'title'
+  title: 'title',
+  introduction: 'introduction'
 };
 
 exports.Prisma.blogContentOrderByRelevanceFieldEnum = {
@@ -458,13 +468,21 @@ exports.Prisma.BlogImageOrderByRelevanceFieldEnum = {
   id: 'id',
   link: 'link',
   publicId: 'publicId',
-  blogId: 'blogId'
+  blogId: 'blogId',
+  alt: 'alt'
 };
 
 exports.Prisma.TagsOrderByRelevanceFieldEnum = {
   id: 'id',
   name: 'name',
-  color: 'color'
+  color: 'color',
+  BgColor: 'BgColor',
+  blogId: 'blogId'
+};
+
+exports.Prisma.BlogTagsOrderByRelevanceFieldEnum = {
+  blogId: 'blogId',
+  tagId: 'tagId'
 };
 
 
@@ -491,7 +509,8 @@ exports.Prisma.ModelName = {
   Blog: 'Blog',
   blogContent: 'blogContent',
   BlogImage: 'BlogImage',
-  Tags: 'Tags'
+  Tags: 'Tags',
+  BlogTags: 'BlogTags'
 };
 
 /**

@@ -18,6 +18,8 @@ const blog_service_1 = require("./blog.service");
 const create_blog_dto_1 = require("./dto/create-blog.dto");
 const update_blog_dto_1 = require("./dto/update-blog.dto");
 const dto_1 = require("./dto");
+const admin_guard_1 = require("../shared/guards/admin/admin.guard");
+const owner_guard_1 = require("../shared/guards/ouwner/owner.guard");
 let BlogController = class BlogController {
     blogService;
     constructor(blogService) {
@@ -26,8 +28,11 @@ let BlogController = class BlogController {
     create(createBlogDto) {
         return this.blogService.create(createBlogDto);
     }
-    findAll() {
-        return this.blogService.findAll();
+    findAll(sortBy, tags, search, page) {
+        return this.blogService.findAll({ sortBy, tags, search, page: page ? +page : undefined });
+    }
+    findPages(tags, search) {
+        return this.blogService.getPages({ tags, search });
     }
     findOne(id) {
         return this.blogService.findOne(id);
@@ -56,7 +61,8 @@ let BlogController = class BlogController {
     removeImage(imageId) {
         return this.blogService.removeBlogImage(imageId);
     }
-    recordView(createViewDto) {
+    recordView(createViewDto, userId) {
+        createViewDto.UserId = userId;
         return this.blogService.recordBlogView(createViewDto);
     }
     getBlogViews(blogId) {
@@ -80,6 +86,7 @@ let BlogController = class BlogController {
 };
 exports.BlogController = BlogController;
 __decorate([
+    (0, common_1.UseGuards)(admin_guard_1.AdminGuard),
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
@@ -88,10 +95,22 @@ __decorate([
 ], BlogController.prototype, "create", null);
 __decorate([
     (0, common_1.Get)(),
+    __param(0, (0, common_1.Query)('sortBy')),
+    __param(1, (0, common_1.Query)('tags')),
+    __param(2, (0, common_1.Query)('search')),
+    __param(3, (0, common_1.Query)('page')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
+    __metadata("design:paramtypes", [String, String, String, String]),
     __metadata("design:returntype", void 0)
 ], BlogController.prototype, "findAll", null);
+__decorate([
+    (0, common_1.Get)('pages/total'),
+    __param(0, (0, common_1.Query)('tags')),
+    __param(1, (0, common_1.Query)('search')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, String]),
+    __metadata("design:returntype", void 0)
+], BlogController.prototype, "findPages", null);
 __decorate([
     (0, common_1.Get)(':id'),
     __param(0, (0, common_1.Param)('id')),
@@ -100,6 +119,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], BlogController.prototype, "findOne", null);
 __decorate([
+    (0, common_1.UseGuards)(admin_guard_1.AdminGuard),
     (0, common_1.Patch)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __param(1, (0, common_1.Body)()),
@@ -108,6 +128,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], BlogController.prototype, "update", null);
 __decorate([
+    (0, common_1.UseGuards)(admin_guard_1.AdminGuard),
     (0, common_1.Delete)(':id'),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
@@ -115,6 +136,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], BlogController.prototype, "remove", null);
 __decorate([
+    (0, common_1.UseGuards)(admin_guard_1.AdminGuard),
     (0, common_1.Post)(':blogId/content'),
     __param(0, (0, common_1.Param)('blogId')),
     __param(1, (0, common_1.Body)()),
@@ -123,6 +145,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], BlogController.prototype, "createContent", null);
 __decorate([
+    (0, common_1.UseGuards)(admin_guard_1.AdminGuard),
     (0, common_1.Patch)('content/:contentId'),
     __param(0, (0, common_1.Param)('contentId')),
     __param(1, (0, common_1.Body)()),
@@ -131,6 +154,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], BlogController.prototype, "updateContent", null);
 __decorate([
+    (0, common_1.UseGuards)(admin_guard_1.AdminGuard),
     (0, common_1.Delete)('content/:contentId'),
     __param(0, (0, common_1.Param)('contentId')),
     __metadata("design:type", Function),
@@ -138,6 +162,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], BlogController.prototype, "removeContent", null);
 __decorate([
+    (0, common_1.UseGuards)(admin_guard_1.AdminGuard),
     (0, common_1.Post)(':blogId/images'),
     __param(0, (0, common_1.Param)('blogId')),
     __param(1, (0, common_1.Body)()),
@@ -146,6 +171,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], BlogController.prototype, "createImage", null);
 __decorate([
+    (0, common_1.UseGuards)(admin_guard_1.AdminGuard),
     (0, common_1.Patch)('images/:imageId'),
     __param(0, (0, common_1.Param)('imageId')),
     __param(1, (0, common_1.Body)()),
@@ -154,6 +180,7 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], BlogController.prototype, "updateImage", null);
 __decorate([
+    (0, common_1.UseGuards)(admin_guard_1.AdminGuard),
     (0, common_1.Delete)('images/:imageId'),
     __param(0, (0, common_1.Param)('imageId')),
     __metadata("design:type", Function),
@@ -161,10 +188,12 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], BlogController.prototype, "removeImage", null);
 __decorate([
-    (0, common_1.Post)('views'),
+    (0, common_1.UseGuards)(owner_guard_1.OwnerGuard),
+    (0, common_1.Post)('views/:id'),
     __param(0, (0, common_1.Body)()),
+    __param(1, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [dto_1.CreateBlogViewDto]),
+    __metadata("design:paramtypes", [dto_1.CreateBlogViewDto, String]),
     __metadata("design:returntype", void 0)
 ], BlogController.prototype, "recordView", null);
 __decorate([

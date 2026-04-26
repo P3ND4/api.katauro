@@ -5,6 +5,7 @@ class Tags {
     id;
     name;
     color;
+    bgColor;
 }
 exports.Tags = Tags;
 //# sourceMappingURL=tags.entity.js.map

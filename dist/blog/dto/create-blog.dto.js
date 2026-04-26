@@ -5,6 +5,8 @@ class CreateBlogDto {
     title;
     images;
     blogContent;
+    tags;
+    introduction;
 }
 exports.CreateBlogDto = CreateBlogDto;
 //# sourceMappingURL=create-blog.dto.js.map

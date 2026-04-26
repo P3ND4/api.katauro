@@ -12,14 +12,17 @@ const blog_service_1 = require("./blog.service");
 const blog_controller_1 = require("./blog.controller");
 const blogs_repository_1 = require("./repositories/blogs.repository");
 const cloudinary_module_1 = require("../cloudinary/cloudinary.module");
+const admin_guard_1 = require("../shared/guards/admin/admin.guard");
+const jwt_admin_strategy_1 = require("../shared/guards/admin/jwt-admin.strategy");
+const shared_module_1 = require("../shared/shared.module");
 let BlogModule = class BlogModule {
 };
 exports.BlogModule = BlogModule;
 exports.BlogModule = BlogModule = __decorate([
     (0, common_1.Module)({
         controllers: [blog_controller_1.BlogController],
-        providers: [blog_service_1.BlogService, blogs_repository_1.BlogsRepository, blogs_repository_1.BlogsRepository],
-        imports: [cloudinary_module_1.CloudinaryModule]
+        providers: [blog_service_1.BlogService, blogs_repository_1.BlogsRepository, blogs_repository_1.BlogsRepository, admin_guard_1.AdminGuard, jwt_admin_strategy_1.JwtAdminStrategy],
+        imports: [cloudinary_module_1.CloudinaryModule, shared_module_1.SharedModule]
     })
 ], BlogModule);
 //# sourceMappingURL=blog.module.js.map

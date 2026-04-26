@@ -30,8 +30,19 @@ let BlogService = class BlogService {
         }
         return await this.blogsRepository.createBlogWithContent(createBlogDto);
     }
-    async findAll() {
-        return await this.blogsRepository.findAllBlogs();
+    async findAll(options) {
+        const blogs = await this.blogsRepository.findAllBlogs(options);
+        const total = blogs.length;
+        if (options?.page) {
+            const paginatedBlogs = blogs.slice((options.page - 1) * 9, (options.page - 1) * 9 + 9);
+            return { blogs: paginatedBlogs, total };
+        }
+        const paginatedBlogs = blogs.slice(0, 9);
+        return { blogs: paginatedBlogs, total };
+    }
+    async getPages(options) {
+        const blogs = await this.blogsRepository.findAllBlogs(options);
+        return blogs.length / 9 > 0 ? Math.ceil(blogs.length / 9) : 1;
     }
     async findOne(id) {
         return await this.blogsRepository.findBlogById(id);

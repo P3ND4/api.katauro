@@ -6,5 +6,6 @@ export class BlogImage {
   publicId?: string;
   position: number;
   blogId: string;
+  alt?: string;
   blog?: Blog;
 }
