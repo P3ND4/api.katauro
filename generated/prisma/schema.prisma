@@ -106,8 +106,8 @@ model Color {
 }
 
 model SpecificProduct {
-  genericId      String
   id             String                @id @default(uuid())
+  genericId      String
   image          String
   price          Float
   colorId        String
@@ -120,6 +120,16 @@ model SpecificProduct {
   ProductForCart ProductForCart[]      @relation()
   color          Color                 @relation(fields: [colorId], references: [id], onUpdate: Cascade)
   PromoBanner    PromoBanner[]         @relation()
+  models3D       Model3D[]             @relation()
+}
+
+model Model3D {
+  id       String          @id @default(uuid())
+  url      String
+  publicId String?         @unique
+  position Int             @default(0)
+  prodId   String
+  product  SpecificProduct @relation(fields: [prodId], references: [id], onDelete: Cascade)
 }
 
 //TODO: Hacer el publicId obligatorio en Images, Users, Color y finish

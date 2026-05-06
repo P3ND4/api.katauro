@@ -64,6 +64,11 @@ export type Color = $Result.DefaultSelection<Prisma.$ColorPayload>
  */
 export type SpecificProduct = $Result.DefaultSelection<Prisma.$SpecificProductPayload>
 /**
+ * Model Model3D
+ * 
+ */
+export type Model3D = $Result.DefaultSelection<Prisma.$Model3DPayload>
+/**
  * Model Images
  * 
  */
@@ -358,6 +363,16 @@ export class PrismaClient<
     * ```
     */
   get specificProduct(): Prisma.SpecificProductDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.model3D`: Exposes CRUD operations for the **Model3D** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Model3DS
+    * const model3DS = await prisma.model3D.findMany()
+    * ```
+    */
+  get model3D(): Prisma.Model3DDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.images`: Exposes CRUD operations for the **Images** model.
@@ -948,6 +963,7 @@ export namespace Prisma {
     TokenBlacklist: 'TokenBlacklist',
     Color: 'Color',
     SpecificProduct: 'SpecificProduct',
+    Model3D: 'Model3D',
     Images: 'Images',
     Order: 'Order',
     ProductForOrder: 'ProductForOrder',
@@ -980,7 +996,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "finishForProducts" | "finish" | "productForCart" | "genericProduct" | "category" | "details" | "tokenBlacklist" | "color" | "specificProduct" | "images" | "order" | "productForOrder" | "promotion" | "categoryforPromo" | "productForPromotion" | "promoBanner" | "carousel" | "blogView" | "blog" | "blogContent" | "blogImage" | "tags" | "blogTags"
+      modelProps: "user" | "finishForProducts" | "finish" | "productForCart" | "genericProduct" | "category" | "details" | "tokenBlacklist" | "color" | "specificProduct" | "model3D" | "images" | "order" | "productForOrder" | "promotion" | "categoryforPromo" | "productForPromotion" | "promoBanner" | "carousel" | "blogView" | "blog" | "blogContent" | "blogImage" | "tags" | "blogTags"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1641,6 +1657,72 @@ export namespace Prisma {
           count: {
             args: Prisma.SpecificProductCountArgs<ExtArgs>
             result: $Utils.Optional<SpecificProductCountAggregateOutputType> | number
+          }
+        }
+      }
+      Model3D: {
+        payload: Prisma.$Model3DPayload<ExtArgs>
+        fields: Prisma.Model3DFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.Model3DFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Model3DPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.Model3DFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Model3DPayload>
+          }
+          findFirst: {
+            args: Prisma.Model3DFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Model3DPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.Model3DFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Model3DPayload>
+          }
+          findMany: {
+            args: Prisma.Model3DFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Model3DPayload>[]
+          }
+          create: {
+            args: Prisma.Model3DCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Model3DPayload>
+          }
+          createMany: {
+            args: Prisma.Model3DCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.Model3DDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Model3DPayload>
+          }
+          update: {
+            args: Prisma.Model3DUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Model3DPayload>
+          }
+          deleteMany: {
+            args: Prisma.Model3DDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.Model3DUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.Model3DUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$Model3DPayload>
+          }
+          aggregate: {
+            args: Prisma.Model3DAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateModel3D>
+          }
+          groupBy: {
+            args: Prisma.Model3DGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Model3DGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.Model3DCountArgs<ExtArgs>
+            result: $Utils.Optional<Model3DCountAggregateOutputType> | number
           }
         }
       }
@@ -2670,6 +2752,7 @@ export namespace Prisma {
     tokenBlacklist?: TokenBlacklistOmit
     color?: ColorOmit
     specificProduct?: SpecificProductOmit
+    model3D?: Model3DOmit
     images?: ImagesOmit
     order?: OrderOmit
     productForOrder?: ProductForOrderOmit
@@ -2988,6 +3071,7 @@ export namespace Prisma {
     images: number
     ProductForCart: number
     PromoBanner: number
+    models3D: number
   }
 
   export type SpecificProductCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -2996,6 +3080,7 @@ export namespace Prisma {
     images?: boolean | SpecificProductCountOutputTypeCountImagesArgs
     ProductForCart?: boolean | SpecificProductCountOutputTypeCountProductForCartArgs
     PromoBanner?: boolean | SpecificProductCountOutputTypeCountPromoBannerArgs
+    models3D?: boolean | SpecificProductCountOutputTypeCountModels3DArgs
   }
 
   // Custom InputTypes
@@ -3042,6 +3127,13 @@ export namespace Prisma {
    */
   export type SpecificProductCountOutputTypeCountPromoBannerArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: PromoBannerWhereInput
+  }
+
+  /**
+   * SpecificProductCountOutputType without action
+   */
+  export type SpecificProductCountOutputTypeCountModels3DArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: Model3DWhereInput
   }
 
 
@@ -11837,8 +11929,8 @@ export namespace Prisma {
   }
 
   export type SpecificProductMinAggregateOutputType = {
-    genericId: string | null
     id: string | null
+    genericId: string | null
     image: string | null
     price: number | null
     colorId: string | null
@@ -11847,8 +11939,8 @@ export namespace Prisma {
   }
 
   export type SpecificProductMaxAggregateOutputType = {
-    genericId: string | null
     id: string | null
+    genericId: string | null
     image: string | null
     price: number | null
     colorId: string | null
@@ -11857,8 +11949,8 @@ export namespace Prisma {
   }
 
   export type SpecificProductCountAggregateOutputType = {
-    genericId: number
     id: number
+    genericId: number
     image: number
     price: number
     colorId: number
@@ -11881,8 +11973,8 @@ export namespace Prisma {
   }
 
   export type SpecificProductMinAggregateInputType = {
-    genericId?: true
     id?: true
+    genericId?: true
     image?: true
     price?: true
     colorId?: true
@@ -11891,8 +11983,8 @@ export namespace Prisma {
   }
 
   export type SpecificProductMaxAggregateInputType = {
-    genericId?: true
     id?: true
+    genericId?: true
     image?: true
     price?: true
     colorId?: true
@@ -11901,8 +11993,8 @@ export namespace Prisma {
   }
 
   export type SpecificProductCountAggregateInputType = {
-    genericId?: true
     id?: true
+    genericId?: true
     image?: true
     price?: true
     colorId?: true
@@ -11998,8 +12090,8 @@ export namespace Prisma {
   }
 
   export type SpecificProductGroupByOutputType = {
-    genericId: string
     id: string
+    genericId: string
     image: string
     price: number
     colorId: string
@@ -12027,8 +12119,8 @@ export namespace Prisma {
 
 
   export type SpecificProductSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    genericId?: boolean
     id?: boolean
+    genericId?: boolean
     image?: boolean
     price?: boolean
     colorId?: boolean
@@ -12041,14 +12133,15 @@ export namespace Prisma {
     ProductForCart?: boolean | SpecificProduct$ProductForCartArgs<ExtArgs>
     color?: boolean | ColorDefaultArgs<ExtArgs>
     PromoBanner?: boolean | SpecificProduct$PromoBannerArgs<ExtArgs>
+    models3D?: boolean | SpecificProduct$models3DArgs<ExtArgs>
     _count?: boolean | SpecificProductCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["specificProduct"]>
 
 
 
   export type SpecificProductSelectScalar = {
-    genericId?: boolean
     id?: boolean
+    genericId?: boolean
     image?: boolean
     price?: boolean
     colorId?: boolean
@@ -12056,7 +12149,7 @@ export namespace Prisma {
     stock?: boolean
   }
 
-  export type SpecificProductOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"genericId" | "id" | "image" | "price" | "colorId" | "position" | "stock", ExtArgs["result"]["specificProduct"]>
+  export type SpecificProductOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "genericId" | "image" | "price" | "colorId" | "position" | "stock", ExtArgs["result"]["specificProduct"]>
   export type SpecificProductInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     order?: boolean | SpecificProduct$orderArgs<ExtArgs>
     promotions?: boolean | SpecificProduct$promotionsArgs<ExtArgs>
@@ -12065,6 +12158,7 @@ export namespace Prisma {
     ProductForCart?: boolean | SpecificProduct$ProductForCartArgs<ExtArgs>
     color?: boolean | ColorDefaultArgs<ExtArgs>
     PromoBanner?: boolean | SpecificProduct$PromoBannerArgs<ExtArgs>
+    models3D?: boolean | SpecificProduct$models3DArgs<ExtArgs>
     _count?: boolean | SpecificProductCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -12078,10 +12172,11 @@ export namespace Prisma {
       ProductForCart: Prisma.$ProductForCartPayload<ExtArgs>[]
       color: Prisma.$ColorPayload<ExtArgs>
       PromoBanner: Prisma.$PromoBannerPayload<ExtArgs>[]
+      models3D: Prisma.$Model3DPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
-      genericId: string
       id: string
+      genericId: string
       image: string
       price: number
       colorId: string
@@ -12170,8 +12265,8 @@ export namespace Prisma {
      * // Get first 10 SpecificProducts
      * const specificProducts = await prisma.specificProduct.findMany({ take: 10 })
      * 
-     * // Only select the `genericId`
-     * const specificProductWithGenericIdOnly = await prisma.specificProduct.findMany({ select: { genericId: true } })
+     * // Only select the `id`
+     * const specificProductWithIdOnly = await prisma.specificProduct.findMany({ select: { id: true } })
      * 
      */
     findMany<T extends SpecificProductFindManyArgs>(args?: SelectSubset<T, SpecificProductFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SpecificProductPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -12434,6 +12529,7 @@ export namespace Prisma {
     ProductForCart<T extends SpecificProduct$ProductForCartArgs<ExtArgs> = {}>(args?: Subset<T, SpecificProduct$ProductForCartArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ProductForCartPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     color<T extends ColorDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ColorDefaultArgs<ExtArgs>>): Prisma__ColorClient<$Result.GetResult<Prisma.$ColorPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     PromoBanner<T extends SpecificProduct$PromoBannerArgs<ExtArgs> = {}>(args?: Subset<T, SpecificProduct$PromoBannerArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PromoBannerPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    models3D<T extends SpecificProduct$models3DArgs<ExtArgs> = {}>(args?: Subset<T, SpecificProduct$models3DArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Model3DPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -12463,8 +12559,8 @@ export namespace Prisma {
    * Fields of the SpecificProduct model
    */
   interface SpecificProductFieldRefs {
-    readonly genericId: FieldRef<"SpecificProduct", 'String'>
     readonly id: FieldRef<"SpecificProduct", 'String'>
+    readonly genericId: FieldRef<"SpecificProduct", 'String'>
     readonly image: FieldRef<"SpecificProduct", 'String'>
     readonly price: FieldRef<"SpecificProduct", 'Float'>
     readonly colorId: FieldRef<"SpecificProduct", 'String'>
@@ -12933,6 +13029,30 @@ export namespace Prisma {
   }
 
   /**
+   * SpecificProduct.models3D
+   */
+  export type SpecificProduct$models3DArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Model3D
+     */
+    select?: Model3DSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Model3D
+     */
+    omit?: Model3DOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Model3DInclude<ExtArgs> | null
+    where?: Model3DWhereInput
+    orderBy?: Model3DOrderByWithRelationInput | Model3DOrderByWithRelationInput[]
+    cursor?: Model3DWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Model3DScalarFieldEnum | Model3DScalarFieldEnum[]
+  }
+
+  /**
    * SpecificProduct without action
    */
   export type SpecificProductDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -12948,6 +13068,969 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: SpecificProductInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Model3D
+   */
+
+  export type AggregateModel3D = {
+    _count: Model3DCountAggregateOutputType | null
+    _avg: Model3DAvgAggregateOutputType | null
+    _sum: Model3DSumAggregateOutputType | null
+    _min: Model3DMinAggregateOutputType | null
+    _max: Model3DMaxAggregateOutputType | null
+  }
+
+  export type Model3DAvgAggregateOutputType = {
+    position: number | null
+  }
+
+  export type Model3DSumAggregateOutputType = {
+    position: number | null
+  }
+
+  export type Model3DMinAggregateOutputType = {
+    id: string | null
+    url: string | null
+    publicId: string | null
+    position: number | null
+    prodId: string | null
+  }
+
+  export type Model3DMaxAggregateOutputType = {
+    id: string | null
+    url: string | null
+    publicId: string | null
+    position: number | null
+    prodId: string | null
+  }
+
+  export type Model3DCountAggregateOutputType = {
+    id: number
+    url: number
+    publicId: number
+    position: number
+    prodId: number
+    _all: number
+  }
+
+
+  export type Model3DAvgAggregateInputType = {
+    position?: true
+  }
+
+  export type Model3DSumAggregateInputType = {
+    position?: true
+  }
+
+  export type Model3DMinAggregateInputType = {
+    id?: true
+    url?: true
+    publicId?: true
+    position?: true
+    prodId?: true
+  }
+
+  export type Model3DMaxAggregateInputType = {
+    id?: true
+    url?: true
+    publicId?: true
+    position?: true
+    prodId?: true
+  }
+
+  export type Model3DCountAggregateInputType = {
+    id?: true
+    url?: true
+    publicId?: true
+    position?: true
+    prodId?: true
+    _all?: true
+  }
+
+  export type Model3DAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Model3D to aggregate.
+     */
+    where?: Model3DWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Model3DS to fetch.
+     */
+    orderBy?: Model3DOrderByWithRelationInput | Model3DOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: Model3DWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Model3DS from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Model3DS.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Model3DS
+    **/
+    _count?: true | Model3DCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Model3DAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Model3DSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Model3DMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Model3DMaxAggregateInputType
+  }
+
+  export type GetModel3DAggregateType<T extends Model3DAggregateArgs> = {
+        [P in keyof T & keyof AggregateModel3D]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateModel3D[P]>
+      : GetScalarType<T[P], AggregateModel3D[P]>
+  }
+
+
+
+
+  export type Model3DGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: Model3DWhereInput
+    orderBy?: Model3DOrderByWithAggregationInput | Model3DOrderByWithAggregationInput[]
+    by: Model3DScalarFieldEnum[] | Model3DScalarFieldEnum
+    having?: Model3DScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Model3DCountAggregateInputType | true
+    _avg?: Model3DAvgAggregateInputType
+    _sum?: Model3DSumAggregateInputType
+    _min?: Model3DMinAggregateInputType
+    _max?: Model3DMaxAggregateInputType
+  }
+
+  export type Model3DGroupByOutputType = {
+    id: string
+    url: string
+    publicId: string | null
+    position: number
+    prodId: string
+    _count: Model3DCountAggregateOutputType | null
+    _avg: Model3DAvgAggregateOutputType | null
+    _sum: Model3DSumAggregateOutputType | null
+    _min: Model3DMinAggregateOutputType | null
+    _max: Model3DMaxAggregateOutputType | null
+  }
+
+  type GetModel3DGroupByPayload<T extends Model3DGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Model3DGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Model3DGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Model3DGroupByOutputType[P]>
+            : GetScalarType<T[P], Model3DGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type Model3DSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    url?: boolean
+    publicId?: boolean
+    position?: boolean
+    prodId?: boolean
+    product?: boolean | SpecificProductDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["model3D"]>
+
+
+
+  export type Model3DSelectScalar = {
+    id?: boolean
+    url?: boolean
+    publicId?: boolean
+    position?: boolean
+    prodId?: boolean
+  }
+
+  export type Model3DOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "url" | "publicId" | "position" | "prodId", ExtArgs["result"]["model3D"]>
+  export type Model3DInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    product?: boolean | SpecificProductDefaultArgs<ExtArgs>
+  }
+
+  export type $Model3DPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Model3D"
+    objects: {
+      product: Prisma.$SpecificProductPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      url: string
+      publicId: string | null
+      position: number
+      prodId: string
+    }, ExtArgs["result"]["model3D"]>
+    composites: {}
+  }
+
+  type Model3DGetPayload<S extends boolean | null | undefined | Model3DDefaultArgs> = $Result.GetResult<Prisma.$Model3DPayload, S>
+
+  type Model3DCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<Model3DFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Model3DCountAggregateInputType | true
+    }
+
+  export interface Model3DDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Model3D'], meta: { name: 'Model3D' } }
+    /**
+     * Find zero or one Model3D that matches the filter.
+     * @param {Model3DFindUniqueArgs} args - Arguments to find a Model3D
+     * @example
+     * // Get one Model3D
+     * const model3D = await prisma.model3D.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends Model3DFindUniqueArgs>(args: SelectSubset<T, Model3DFindUniqueArgs<ExtArgs>>): Prisma__Model3DClient<$Result.GetResult<Prisma.$Model3DPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Model3D that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {Model3DFindUniqueOrThrowArgs} args - Arguments to find a Model3D
+     * @example
+     * // Get one Model3D
+     * const model3D = await prisma.model3D.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends Model3DFindUniqueOrThrowArgs>(args: SelectSubset<T, Model3DFindUniqueOrThrowArgs<ExtArgs>>): Prisma__Model3DClient<$Result.GetResult<Prisma.$Model3DPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Model3D that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Model3DFindFirstArgs} args - Arguments to find a Model3D
+     * @example
+     * // Get one Model3D
+     * const model3D = await prisma.model3D.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends Model3DFindFirstArgs>(args?: SelectSubset<T, Model3DFindFirstArgs<ExtArgs>>): Prisma__Model3DClient<$Result.GetResult<Prisma.$Model3DPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Model3D that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Model3DFindFirstOrThrowArgs} args - Arguments to find a Model3D
+     * @example
+     * // Get one Model3D
+     * const model3D = await prisma.model3D.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends Model3DFindFirstOrThrowArgs>(args?: SelectSubset<T, Model3DFindFirstOrThrowArgs<ExtArgs>>): Prisma__Model3DClient<$Result.GetResult<Prisma.$Model3DPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Model3DS that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Model3DFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Model3DS
+     * const model3DS = await prisma.model3D.findMany()
+     * 
+     * // Get first 10 Model3DS
+     * const model3DS = await prisma.model3D.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const model3DWithIdOnly = await prisma.model3D.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends Model3DFindManyArgs>(args?: SelectSubset<T, Model3DFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Model3DPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Model3D.
+     * @param {Model3DCreateArgs} args - Arguments to create a Model3D.
+     * @example
+     * // Create one Model3D
+     * const Model3D = await prisma.model3D.create({
+     *   data: {
+     *     // ... data to create a Model3D
+     *   }
+     * })
+     * 
+     */
+    create<T extends Model3DCreateArgs>(args: SelectSubset<T, Model3DCreateArgs<ExtArgs>>): Prisma__Model3DClient<$Result.GetResult<Prisma.$Model3DPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Model3DS.
+     * @param {Model3DCreateManyArgs} args - Arguments to create many Model3DS.
+     * @example
+     * // Create many Model3DS
+     * const model3D = await prisma.model3D.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends Model3DCreateManyArgs>(args?: SelectSubset<T, Model3DCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Model3D.
+     * @param {Model3DDeleteArgs} args - Arguments to delete one Model3D.
+     * @example
+     * // Delete one Model3D
+     * const Model3D = await prisma.model3D.delete({
+     *   where: {
+     *     // ... filter to delete one Model3D
+     *   }
+     * })
+     * 
+     */
+    delete<T extends Model3DDeleteArgs>(args: SelectSubset<T, Model3DDeleteArgs<ExtArgs>>): Prisma__Model3DClient<$Result.GetResult<Prisma.$Model3DPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Model3D.
+     * @param {Model3DUpdateArgs} args - Arguments to update one Model3D.
+     * @example
+     * // Update one Model3D
+     * const model3D = await prisma.model3D.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends Model3DUpdateArgs>(args: SelectSubset<T, Model3DUpdateArgs<ExtArgs>>): Prisma__Model3DClient<$Result.GetResult<Prisma.$Model3DPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Model3DS.
+     * @param {Model3DDeleteManyArgs} args - Arguments to filter Model3DS to delete.
+     * @example
+     * // Delete a few Model3DS
+     * const { count } = await prisma.model3D.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends Model3DDeleteManyArgs>(args?: SelectSubset<T, Model3DDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Model3DS.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Model3DUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Model3DS
+     * const model3D = await prisma.model3D.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends Model3DUpdateManyArgs>(args: SelectSubset<T, Model3DUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Model3D.
+     * @param {Model3DUpsertArgs} args - Arguments to update or create a Model3D.
+     * @example
+     * // Update or create a Model3D
+     * const model3D = await prisma.model3D.upsert({
+     *   create: {
+     *     // ... data to create a Model3D
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Model3D we want to update
+     *   }
+     * })
+     */
+    upsert<T extends Model3DUpsertArgs>(args: SelectSubset<T, Model3DUpsertArgs<ExtArgs>>): Prisma__Model3DClient<$Result.GetResult<Prisma.$Model3DPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Model3DS.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Model3DCountArgs} args - Arguments to filter Model3DS to count.
+     * @example
+     * // Count the number of Model3DS
+     * const count = await prisma.model3D.count({
+     *   where: {
+     *     // ... the filter for the Model3DS we want to count
+     *   }
+     * })
+    **/
+    count<T extends Model3DCountArgs>(
+      args?: Subset<T, Model3DCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Model3DCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Model3D.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Model3DAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Model3DAggregateArgs>(args: Subset<T, Model3DAggregateArgs>): Prisma.PrismaPromise<GetModel3DAggregateType<T>>
+
+    /**
+     * Group by Model3D.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Model3DGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends Model3DGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: Model3DGroupByArgs['orderBy'] }
+        : { orderBy?: Model3DGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, Model3DGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetModel3DGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Model3D model
+   */
+  readonly fields: Model3DFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Model3D.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__Model3DClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    product<T extends SpecificProductDefaultArgs<ExtArgs> = {}>(args?: Subset<T, SpecificProductDefaultArgs<ExtArgs>>): Prisma__SpecificProductClient<$Result.GetResult<Prisma.$SpecificProductPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Model3D model
+   */
+  interface Model3DFieldRefs {
+    readonly id: FieldRef<"Model3D", 'String'>
+    readonly url: FieldRef<"Model3D", 'String'>
+    readonly publicId: FieldRef<"Model3D", 'String'>
+    readonly position: FieldRef<"Model3D", 'Int'>
+    readonly prodId: FieldRef<"Model3D", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Model3D findUnique
+   */
+  export type Model3DFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Model3D
+     */
+    select?: Model3DSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Model3D
+     */
+    omit?: Model3DOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Model3DInclude<ExtArgs> | null
+    /**
+     * Filter, which Model3D to fetch.
+     */
+    where: Model3DWhereUniqueInput
+  }
+
+  /**
+   * Model3D findUniqueOrThrow
+   */
+  export type Model3DFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Model3D
+     */
+    select?: Model3DSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Model3D
+     */
+    omit?: Model3DOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Model3DInclude<ExtArgs> | null
+    /**
+     * Filter, which Model3D to fetch.
+     */
+    where: Model3DWhereUniqueInput
+  }
+
+  /**
+   * Model3D findFirst
+   */
+  export type Model3DFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Model3D
+     */
+    select?: Model3DSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Model3D
+     */
+    omit?: Model3DOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Model3DInclude<ExtArgs> | null
+    /**
+     * Filter, which Model3D to fetch.
+     */
+    where?: Model3DWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Model3DS to fetch.
+     */
+    orderBy?: Model3DOrderByWithRelationInput | Model3DOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Model3DS.
+     */
+    cursor?: Model3DWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Model3DS from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Model3DS.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Model3DS.
+     */
+    distinct?: Model3DScalarFieldEnum | Model3DScalarFieldEnum[]
+  }
+
+  /**
+   * Model3D findFirstOrThrow
+   */
+  export type Model3DFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Model3D
+     */
+    select?: Model3DSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Model3D
+     */
+    omit?: Model3DOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Model3DInclude<ExtArgs> | null
+    /**
+     * Filter, which Model3D to fetch.
+     */
+    where?: Model3DWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Model3DS to fetch.
+     */
+    orderBy?: Model3DOrderByWithRelationInput | Model3DOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Model3DS.
+     */
+    cursor?: Model3DWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Model3DS from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Model3DS.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Model3DS.
+     */
+    distinct?: Model3DScalarFieldEnum | Model3DScalarFieldEnum[]
+  }
+
+  /**
+   * Model3D findMany
+   */
+  export type Model3DFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Model3D
+     */
+    select?: Model3DSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Model3D
+     */
+    omit?: Model3DOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Model3DInclude<ExtArgs> | null
+    /**
+     * Filter, which Model3DS to fetch.
+     */
+    where?: Model3DWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Model3DS to fetch.
+     */
+    orderBy?: Model3DOrderByWithRelationInput | Model3DOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Model3DS.
+     */
+    cursor?: Model3DWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Model3DS from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Model3DS.
+     */
+    skip?: number
+    distinct?: Model3DScalarFieldEnum | Model3DScalarFieldEnum[]
+  }
+
+  /**
+   * Model3D create
+   */
+  export type Model3DCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Model3D
+     */
+    select?: Model3DSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Model3D
+     */
+    omit?: Model3DOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Model3DInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Model3D.
+     */
+    data: XOR<Model3DCreateInput, Model3DUncheckedCreateInput>
+  }
+
+  /**
+   * Model3D createMany
+   */
+  export type Model3DCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Model3DS.
+     */
+    data: Model3DCreateManyInput | Model3DCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Model3D update
+   */
+  export type Model3DUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Model3D
+     */
+    select?: Model3DSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Model3D
+     */
+    omit?: Model3DOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Model3DInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Model3D.
+     */
+    data: XOR<Model3DUpdateInput, Model3DUncheckedUpdateInput>
+    /**
+     * Choose, which Model3D to update.
+     */
+    where: Model3DWhereUniqueInput
+  }
+
+  /**
+   * Model3D updateMany
+   */
+  export type Model3DUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Model3DS.
+     */
+    data: XOR<Model3DUpdateManyMutationInput, Model3DUncheckedUpdateManyInput>
+    /**
+     * Filter which Model3DS to update
+     */
+    where?: Model3DWhereInput
+    /**
+     * Limit how many Model3DS to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Model3D upsert
+   */
+  export type Model3DUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Model3D
+     */
+    select?: Model3DSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Model3D
+     */
+    omit?: Model3DOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Model3DInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Model3D to update in case it exists.
+     */
+    where: Model3DWhereUniqueInput
+    /**
+     * In case the Model3D found by the `where` argument doesn't exist, create a new Model3D with this data.
+     */
+    create: XOR<Model3DCreateInput, Model3DUncheckedCreateInput>
+    /**
+     * In case the Model3D was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<Model3DUpdateInput, Model3DUncheckedUpdateInput>
+  }
+
+  /**
+   * Model3D delete
+   */
+  export type Model3DDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Model3D
+     */
+    select?: Model3DSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Model3D
+     */
+    omit?: Model3DOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Model3DInclude<ExtArgs> | null
+    /**
+     * Filter which Model3D to delete.
+     */
+    where: Model3DWhereUniqueInput
+  }
+
+  /**
+   * Model3D deleteMany
+   */
+  export type Model3DDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Model3DS to delete
+     */
+    where?: Model3DWhereInput
+    /**
+     * Limit how many Model3DS to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Model3D without action
+   */
+  export type Model3DDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Model3D
+     */
+    select?: Model3DSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Model3D
+     */
+    omit?: Model3DOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: Model3DInclude<ExtArgs> | null
   }
 
 
@@ -26677,8 +27760,8 @@ export namespace Prisma {
 
 
   export const SpecificProductScalarFieldEnum: {
-    genericId: 'genericId',
     id: 'id',
+    genericId: 'genericId',
     image: 'image',
     price: 'price',
     colorId: 'colorId',
@@ -26687,6 +27770,17 @@ export namespace Prisma {
   };
 
   export type SpecificProductScalarFieldEnum = (typeof SpecificProductScalarFieldEnum)[keyof typeof SpecificProductScalarFieldEnum]
+
+
+  export const Model3DScalarFieldEnum: {
+    id: 'id',
+    url: 'url',
+    publicId: 'publicId',
+    position: 'position',
+    prodId: 'prodId'
+  };
+
+  export type Model3DScalarFieldEnum = (typeof Model3DScalarFieldEnum)[keyof typeof Model3DScalarFieldEnum]
 
 
   export const ImagesScalarFieldEnum: {
@@ -26950,13 +28044,23 @@ export namespace Prisma {
 
 
   export const SpecificProductOrderByRelevanceFieldEnum: {
-    genericId: 'genericId',
     id: 'id',
+    genericId: 'genericId',
     image: 'image',
     colorId: 'colorId'
   };
 
   export type SpecificProductOrderByRelevanceFieldEnum = (typeof SpecificProductOrderByRelevanceFieldEnum)[keyof typeof SpecificProductOrderByRelevanceFieldEnum]
+
+
+  export const Model3DOrderByRelevanceFieldEnum: {
+    id: 'id',
+    url: 'url',
+    publicId: 'publicId',
+    prodId: 'prodId'
+  };
+
+  export type Model3DOrderByRelevanceFieldEnum = (typeof Model3DOrderByRelevanceFieldEnum)[keyof typeof Model3DOrderByRelevanceFieldEnum]
 
 
   export const ImagesOrderByRelevanceFieldEnum: {
@@ -27654,8 +28758,8 @@ export namespace Prisma {
     AND?: SpecificProductWhereInput | SpecificProductWhereInput[]
     OR?: SpecificProductWhereInput[]
     NOT?: SpecificProductWhereInput | SpecificProductWhereInput[]
-    genericId?: StringFilter<"SpecificProduct"> | string
     id?: StringFilter<"SpecificProduct"> | string
+    genericId?: StringFilter<"SpecificProduct"> | string
     image?: StringFilter<"SpecificProduct"> | string
     price?: FloatFilter<"SpecificProduct"> | number
     colorId?: StringFilter<"SpecificProduct"> | string
@@ -27668,11 +28772,12 @@ export namespace Prisma {
     ProductForCart?: ProductForCartListRelationFilter
     color?: XOR<ColorScalarRelationFilter, ColorWhereInput>
     PromoBanner?: PromoBannerListRelationFilter
+    models3D?: Model3DListRelationFilter
   }
 
   export type SpecificProductOrderByWithRelationInput = {
-    genericId?: SortOrder
     id?: SortOrder
+    genericId?: SortOrder
     image?: SortOrder
     price?: SortOrder
     colorId?: SortOrder
@@ -27685,6 +28790,7 @@ export namespace Prisma {
     ProductForCart?: ProductForCartOrderByRelationAggregateInput
     color?: ColorOrderByWithRelationInput
     PromoBanner?: PromoBannerOrderByRelationAggregateInput
+    models3D?: Model3DOrderByRelationAggregateInput
     _relevance?: SpecificProductOrderByRelevanceInput
   }
 
@@ -27706,11 +28812,12 @@ export namespace Prisma {
     ProductForCart?: ProductForCartListRelationFilter
     color?: XOR<ColorScalarRelationFilter, ColorWhereInput>
     PromoBanner?: PromoBannerListRelationFilter
+    models3D?: Model3DListRelationFilter
   }, "id">
 
   export type SpecificProductOrderByWithAggregationInput = {
-    genericId?: SortOrder
     id?: SortOrder
+    genericId?: SortOrder
     image?: SortOrder
     price?: SortOrder
     colorId?: SortOrder
@@ -27727,13 +28834,71 @@ export namespace Prisma {
     AND?: SpecificProductScalarWhereWithAggregatesInput | SpecificProductScalarWhereWithAggregatesInput[]
     OR?: SpecificProductScalarWhereWithAggregatesInput[]
     NOT?: SpecificProductScalarWhereWithAggregatesInput | SpecificProductScalarWhereWithAggregatesInput[]
-    genericId?: StringWithAggregatesFilter<"SpecificProduct"> | string
     id?: StringWithAggregatesFilter<"SpecificProduct"> | string
+    genericId?: StringWithAggregatesFilter<"SpecificProduct"> | string
     image?: StringWithAggregatesFilter<"SpecificProduct"> | string
     price?: FloatWithAggregatesFilter<"SpecificProduct"> | number
     colorId?: StringWithAggregatesFilter<"SpecificProduct"> | string
     position?: IntWithAggregatesFilter<"SpecificProduct"> | number
     stock?: IntWithAggregatesFilter<"SpecificProduct"> | number
+  }
+
+  export type Model3DWhereInput = {
+    AND?: Model3DWhereInput | Model3DWhereInput[]
+    OR?: Model3DWhereInput[]
+    NOT?: Model3DWhereInput | Model3DWhereInput[]
+    id?: StringFilter<"Model3D"> | string
+    url?: StringFilter<"Model3D"> | string
+    publicId?: StringNullableFilter<"Model3D"> | string | null
+    position?: IntFilter<"Model3D"> | number
+    prodId?: StringFilter<"Model3D"> | string
+    product?: XOR<SpecificProductScalarRelationFilter, SpecificProductWhereInput>
+  }
+
+  export type Model3DOrderByWithRelationInput = {
+    id?: SortOrder
+    url?: SortOrder
+    publicId?: SortOrderInput | SortOrder
+    position?: SortOrder
+    prodId?: SortOrder
+    product?: SpecificProductOrderByWithRelationInput
+    _relevance?: Model3DOrderByRelevanceInput
+  }
+
+  export type Model3DWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    publicId?: string
+    AND?: Model3DWhereInput | Model3DWhereInput[]
+    OR?: Model3DWhereInput[]
+    NOT?: Model3DWhereInput | Model3DWhereInput[]
+    url?: StringFilter<"Model3D"> | string
+    position?: IntFilter<"Model3D"> | number
+    prodId?: StringFilter<"Model3D"> | string
+    product?: XOR<SpecificProductScalarRelationFilter, SpecificProductWhereInput>
+  }, "id" | "publicId">
+
+  export type Model3DOrderByWithAggregationInput = {
+    id?: SortOrder
+    url?: SortOrder
+    publicId?: SortOrderInput | SortOrder
+    position?: SortOrder
+    prodId?: SortOrder
+    _count?: Model3DCountOrderByAggregateInput
+    _avg?: Model3DAvgOrderByAggregateInput
+    _max?: Model3DMaxOrderByAggregateInput
+    _min?: Model3DMinOrderByAggregateInput
+    _sum?: Model3DSumOrderByAggregateInput
+  }
+
+  export type Model3DScalarWhereWithAggregatesInput = {
+    AND?: Model3DScalarWhereWithAggregatesInput | Model3DScalarWhereWithAggregatesInput[]
+    OR?: Model3DScalarWhereWithAggregatesInput[]
+    NOT?: Model3DScalarWhereWithAggregatesInput | Model3DScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Model3D"> | string
+    url?: StringWithAggregatesFilter<"Model3D"> | string
+    publicId?: StringNullableWithAggregatesFilter<"Model3D"> | string | null
+    position?: IntWithAggregatesFilter<"Model3D"> | number
+    prodId?: StringWithAggregatesFilter<"Model3D"> | string
   }
 
   export type ImagesWhereInput = {
@@ -29107,11 +30272,12 @@ export namespace Prisma {
     ProductForCart?: ProductForCartCreateNestedManyWithoutProductInput
     color: ColorCreateNestedOneWithoutProductsInput
     PromoBanner?: PromoBannerCreateNestedManyWithoutProductInput
+    models3D?: Model3DCreateNestedManyWithoutProductInput
   }
 
   export type SpecificProductUncheckedCreateInput = {
-    genericId: string
     id?: string
+    genericId: string
     image: string
     price: number
     colorId: string
@@ -29122,6 +30288,7 @@ export namespace Prisma {
     images?: ImagesUncheckedCreateNestedManyWithoutProductInput
     ProductForCart?: ProductForCartUncheckedCreateNestedManyWithoutProductInput
     PromoBanner?: PromoBannerUncheckedCreateNestedManyWithoutProductInput
+    models3D?: Model3DUncheckedCreateNestedManyWithoutProductInput
   }
 
   export type SpecificProductUpdateInput = {
@@ -29137,11 +30304,12 @@ export namespace Prisma {
     ProductForCart?: ProductForCartUpdateManyWithoutProductNestedInput
     color?: ColorUpdateOneRequiredWithoutProductsNestedInput
     PromoBanner?: PromoBannerUpdateManyWithoutProductNestedInput
+    models3D?: Model3DUpdateManyWithoutProductNestedInput
   }
 
   export type SpecificProductUncheckedUpdateInput = {
-    genericId?: StringFieldUpdateOperationsInput | string
     id?: StringFieldUpdateOperationsInput | string
+    genericId?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
     colorId?: StringFieldUpdateOperationsInput | string
@@ -29152,11 +30320,12 @@ export namespace Prisma {
     images?: ImagesUncheckedUpdateManyWithoutProductNestedInput
     ProductForCart?: ProductForCartUncheckedUpdateManyWithoutProductNestedInput
     PromoBanner?: PromoBannerUncheckedUpdateManyWithoutProductNestedInput
+    models3D?: Model3DUncheckedUpdateManyWithoutProductNestedInput
   }
 
   export type SpecificProductCreateManyInput = {
-    genericId: string
     id?: string
+    genericId: string
     image: string
     price: number
     colorId: string
@@ -29173,13 +30342,68 @@ export namespace Prisma {
   }
 
   export type SpecificProductUncheckedUpdateManyInput = {
-    genericId?: StringFieldUpdateOperationsInput | string
     id?: StringFieldUpdateOperationsInput | string
+    genericId?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
     colorId?: StringFieldUpdateOperationsInput | string
     position?: IntFieldUpdateOperationsInput | number
     stock?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type Model3DCreateInput = {
+    id?: string
+    url: string
+    publicId?: string | null
+    position?: number
+    product: SpecificProductCreateNestedOneWithoutModels3DInput
+  }
+
+  export type Model3DUncheckedCreateInput = {
+    id?: string
+    url: string
+    publicId?: string | null
+    position?: number
+    prodId: string
+  }
+
+  export type Model3DUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    publicId?: NullableStringFieldUpdateOperationsInput | string | null
+    position?: IntFieldUpdateOperationsInput | number
+    product?: SpecificProductUpdateOneRequiredWithoutModels3DNestedInput
+  }
+
+  export type Model3DUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    publicId?: NullableStringFieldUpdateOperationsInput | string | null
+    position?: IntFieldUpdateOperationsInput | number
+    prodId?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type Model3DCreateManyInput = {
+    id?: string
+    url: string
+    publicId?: string | null
+    position?: number
+    prodId: string
+  }
+
+  export type Model3DUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    publicId?: NullableStringFieldUpdateOperationsInput | string | null
+    position?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type Model3DUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    publicId?: NullableStringFieldUpdateOperationsInput | string | null
+    position?: IntFieldUpdateOperationsInput | number
+    prodId?: StringFieldUpdateOperationsInput | string
   }
 
   export type ImagesCreateInput = {
@@ -30515,6 +31739,12 @@ export namespace Prisma {
     none?: PromoBannerWhereInput
   }
 
+  export type Model3DListRelationFilter = {
+    every?: Model3DWhereInput
+    some?: Model3DWhereInput
+    none?: Model3DWhereInput
+  }
+
   export type ProductForOrderOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
@@ -30531,6 +31761,10 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
+  export type Model3DOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type SpecificProductOrderByRelevanceInput = {
     fields: SpecificProductOrderByRelevanceFieldEnum | SpecificProductOrderByRelevanceFieldEnum[]
     sort: SortOrder
@@ -30538,8 +31772,8 @@ export namespace Prisma {
   }
 
   export type SpecificProductCountOrderByAggregateInput = {
-    genericId?: SortOrder
     id?: SortOrder
+    genericId?: SortOrder
     image?: SortOrder
     price?: SortOrder
     colorId?: SortOrder
@@ -30554,8 +31788,8 @@ export namespace Prisma {
   }
 
   export type SpecificProductMaxOrderByAggregateInput = {
-    genericId?: SortOrder
     id?: SortOrder
+    genericId?: SortOrder
     image?: SortOrder
     price?: SortOrder
     colorId?: SortOrder
@@ -30564,8 +31798,8 @@ export namespace Prisma {
   }
 
   export type SpecificProductMinOrderByAggregateInput = {
-    genericId?: SortOrder
     id?: SortOrder
+    genericId?: SortOrder
     image?: SortOrder
     price?: SortOrder
     colorId?: SortOrder
@@ -30609,6 +31843,44 @@ export namespace Prisma {
     _sum?: NestedIntFilter<$PrismaModel>
     _min?: NestedIntFilter<$PrismaModel>
     _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type Model3DOrderByRelevanceInput = {
+    fields: Model3DOrderByRelevanceFieldEnum | Model3DOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type Model3DCountOrderByAggregateInput = {
+    id?: SortOrder
+    url?: SortOrder
+    publicId?: SortOrder
+    position?: SortOrder
+    prodId?: SortOrder
+  }
+
+  export type Model3DAvgOrderByAggregateInput = {
+    position?: SortOrder
+  }
+
+  export type Model3DMaxOrderByAggregateInput = {
+    id?: SortOrder
+    url?: SortOrder
+    publicId?: SortOrder
+    position?: SortOrder
+    prodId?: SortOrder
+  }
+
+  export type Model3DMinOrderByAggregateInput = {
+    id?: SortOrder
+    url?: SortOrder
+    publicId?: SortOrder
+    position?: SortOrder
+    prodId?: SortOrder
+  }
+
+  export type Model3DSumOrderByAggregateInput = {
+    position?: SortOrder
   }
 
   export type ImagesOrderByRelevanceInput = {
@@ -31763,6 +33035,13 @@ export namespace Prisma {
     connect?: PromoBannerWhereUniqueInput | PromoBannerWhereUniqueInput[]
   }
 
+  export type Model3DCreateNestedManyWithoutProductInput = {
+    create?: XOR<Model3DCreateWithoutProductInput, Model3DUncheckedCreateWithoutProductInput> | Model3DCreateWithoutProductInput[] | Model3DUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: Model3DCreateOrConnectWithoutProductInput | Model3DCreateOrConnectWithoutProductInput[]
+    createMany?: Model3DCreateManyProductInputEnvelope
+    connect?: Model3DWhereUniqueInput | Model3DWhereUniqueInput[]
+  }
+
   export type ProductForOrderUncheckedCreateNestedManyWithoutProductInput = {
     create?: XOR<ProductForOrderCreateWithoutProductInput, ProductForOrderUncheckedCreateWithoutProductInput> | ProductForOrderCreateWithoutProductInput[] | ProductForOrderUncheckedCreateWithoutProductInput[]
     connectOrCreate?: ProductForOrderCreateOrConnectWithoutProductInput | ProductForOrderCreateOrConnectWithoutProductInput[]
@@ -31796,6 +33075,13 @@ export namespace Prisma {
     connectOrCreate?: PromoBannerCreateOrConnectWithoutProductInput | PromoBannerCreateOrConnectWithoutProductInput[]
     createMany?: PromoBannerCreateManyProductInputEnvelope
     connect?: PromoBannerWhereUniqueInput | PromoBannerWhereUniqueInput[]
+  }
+
+  export type Model3DUncheckedCreateNestedManyWithoutProductInput = {
+    create?: XOR<Model3DCreateWithoutProductInput, Model3DUncheckedCreateWithoutProductInput> | Model3DCreateWithoutProductInput[] | Model3DUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: Model3DCreateOrConnectWithoutProductInput | Model3DCreateOrConnectWithoutProductInput[]
+    createMany?: Model3DCreateManyProductInputEnvelope
+    connect?: Model3DWhereUniqueInput | Model3DWhereUniqueInput[]
   }
 
   export type FloatFieldUpdateOperationsInput = {
@@ -31900,6 +33186,20 @@ export namespace Prisma {
     deleteMany?: PromoBannerScalarWhereInput | PromoBannerScalarWhereInput[]
   }
 
+  export type Model3DUpdateManyWithoutProductNestedInput = {
+    create?: XOR<Model3DCreateWithoutProductInput, Model3DUncheckedCreateWithoutProductInput> | Model3DCreateWithoutProductInput[] | Model3DUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: Model3DCreateOrConnectWithoutProductInput | Model3DCreateOrConnectWithoutProductInput[]
+    upsert?: Model3DUpsertWithWhereUniqueWithoutProductInput | Model3DUpsertWithWhereUniqueWithoutProductInput[]
+    createMany?: Model3DCreateManyProductInputEnvelope
+    set?: Model3DWhereUniqueInput | Model3DWhereUniqueInput[]
+    disconnect?: Model3DWhereUniqueInput | Model3DWhereUniqueInput[]
+    delete?: Model3DWhereUniqueInput | Model3DWhereUniqueInput[]
+    connect?: Model3DWhereUniqueInput | Model3DWhereUniqueInput[]
+    update?: Model3DUpdateWithWhereUniqueWithoutProductInput | Model3DUpdateWithWhereUniqueWithoutProductInput[]
+    updateMany?: Model3DUpdateManyWithWhereWithoutProductInput | Model3DUpdateManyWithWhereWithoutProductInput[]
+    deleteMany?: Model3DScalarWhereInput | Model3DScalarWhereInput[]
+  }
+
   export type ProductForOrderUncheckedUpdateManyWithoutProductNestedInput = {
     create?: XOR<ProductForOrderCreateWithoutProductInput, ProductForOrderUncheckedCreateWithoutProductInput> | ProductForOrderCreateWithoutProductInput[] | ProductForOrderUncheckedCreateWithoutProductInput[]
     connectOrCreate?: ProductForOrderCreateOrConnectWithoutProductInput | ProductForOrderCreateOrConnectWithoutProductInput[]
@@ -31968,6 +33268,34 @@ export namespace Prisma {
     update?: PromoBannerUpdateWithWhereUniqueWithoutProductInput | PromoBannerUpdateWithWhereUniqueWithoutProductInput[]
     updateMany?: PromoBannerUpdateManyWithWhereWithoutProductInput | PromoBannerUpdateManyWithWhereWithoutProductInput[]
     deleteMany?: PromoBannerScalarWhereInput | PromoBannerScalarWhereInput[]
+  }
+
+  export type Model3DUncheckedUpdateManyWithoutProductNestedInput = {
+    create?: XOR<Model3DCreateWithoutProductInput, Model3DUncheckedCreateWithoutProductInput> | Model3DCreateWithoutProductInput[] | Model3DUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: Model3DCreateOrConnectWithoutProductInput | Model3DCreateOrConnectWithoutProductInput[]
+    upsert?: Model3DUpsertWithWhereUniqueWithoutProductInput | Model3DUpsertWithWhereUniqueWithoutProductInput[]
+    createMany?: Model3DCreateManyProductInputEnvelope
+    set?: Model3DWhereUniqueInput | Model3DWhereUniqueInput[]
+    disconnect?: Model3DWhereUniqueInput | Model3DWhereUniqueInput[]
+    delete?: Model3DWhereUniqueInput | Model3DWhereUniqueInput[]
+    connect?: Model3DWhereUniqueInput | Model3DWhereUniqueInput[]
+    update?: Model3DUpdateWithWhereUniqueWithoutProductInput | Model3DUpdateWithWhereUniqueWithoutProductInput[]
+    updateMany?: Model3DUpdateManyWithWhereWithoutProductInput | Model3DUpdateManyWithWhereWithoutProductInput[]
+    deleteMany?: Model3DScalarWhereInput | Model3DScalarWhereInput[]
+  }
+
+  export type SpecificProductCreateNestedOneWithoutModels3DInput = {
+    create?: XOR<SpecificProductCreateWithoutModels3DInput, SpecificProductUncheckedCreateWithoutModels3DInput>
+    connectOrCreate?: SpecificProductCreateOrConnectWithoutModels3DInput
+    connect?: SpecificProductWhereUniqueInput
+  }
+
+  export type SpecificProductUpdateOneRequiredWithoutModels3DNestedInput = {
+    create?: XOR<SpecificProductCreateWithoutModels3DInput, SpecificProductUncheckedCreateWithoutModels3DInput>
+    connectOrCreate?: SpecificProductCreateOrConnectWithoutModels3DInput
+    upsert?: SpecificProductUpsertWithoutModels3DInput
+    connect?: SpecificProductWhereUniqueInput
+    update?: XOR<XOR<SpecificProductUpdateToOneWithWhereWithoutModels3DInput, SpecificProductUpdateWithoutModels3DInput>, SpecificProductUncheckedUpdateWithoutModels3DInput>
   }
 
   export type SpecificProductCreateNestedOneWithoutImagesInput = {
@@ -33178,11 +34506,12 @@ export namespace Prisma {
     images?: ImagesCreateNestedManyWithoutProductInput
     color: ColorCreateNestedOneWithoutProductsInput
     PromoBanner?: PromoBannerCreateNestedManyWithoutProductInput
+    models3D?: Model3DCreateNestedManyWithoutProductInput
   }
 
   export type SpecificProductUncheckedCreateWithoutProductForCartInput = {
-    genericId: string
     id?: string
+    genericId: string
     image: string
     price: number
     colorId: string
@@ -33192,6 +34521,7 @@ export namespace Prisma {
     promotions?: ProductForPromotionUncheckedCreateNestedManyWithoutProductInput
     images?: ImagesUncheckedCreateNestedManyWithoutProductInput
     PromoBanner?: PromoBannerUncheckedCreateNestedManyWithoutProductInput
+    models3D?: Model3DUncheckedCreateNestedManyWithoutProductInput
   }
 
   export type SpecificProductCreateOrConnectWithoutProductForCartInput = {
@@ -33269,11 +34599,12 @@ export namespace Prisma {
     images?: ImagesUpdateManyWithoutProductNestedInput
     color?: ColorUpdateOneRequiredWithoutProductsNestedInput
     PromoBanner?: PromoBannerUpdateManyWithoutProductNestedInput
+    models3D?: Model3DUpdateManyWithoutProductNestedInput
   }
 
   export type SpecificProductUncheckedUpdateWithoutProductForCartInput = {
-    genericId?: StringFieldUpdateOperationsInput | string
     id?: StringFieldUpdateOperationsInput | string
+    genericId?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
     colorId?: StringFieldUpdateOperationsInput | string
@@ -33283,6 +34614,7 @@ export namespace Prisma {
     promotions?: ProductForPromotionUncheckedUpdateManyWithoutProductNestedInput
     images?: ImagesUncheckedUpdateManyWithoutProductNestedInput
     PromoBanner?: PromoBannerUncheckedUpdateManyWithoutProductNestedInput
+    models3D?: Model3DUncheckedUpdateManyWithoutProductNestedInput
   }
 
   export type SpecificProductCreateWithoutGenericProdInput = {
@@ -33297,6 +34629,7 @@ export namespace Prisma {
     ProductForCart?: ProductForCartCreateNestedManyWithoutProductInput
     color: ColorCreateNestedOneWithoutProductsInput
     PromoBanner?: PromoBannerCreateNestedManyWithoutProductInput
+    models3D?: Model3DCreateNestedManyWithoutProductInput
   }
 
   export type SpecificProductUncheckedCreateWithoutGenericProdInput = {
@@ -33311,6 +34644,7 @@ export namespace Prisma {
     images?: ImagesUncheckedCreateNestedManyWithoutProductInput
     ProductForCart?: ProductForCartUncheckedCreateNestedManyWithoutProductInput
     PromoBanner?: PromoBannerUncheckedCreateNestedManyWithoutProductInput
+    models3D?: Model3DUncheckedCreateNestedManyWithoutProductInput
   }
 
   export type SpecificProductCreateOrConnectWithoutGenericProdInput = {
@@ -33398,8 +34732,8 @@ export namespace Prisma {
     AND?: SpecificProductScalarWhereInput | SpecificProductScalarWhereInput[]
     OR?: SpecificProductScalarWhereInput[]
     NOT?: SpecificProductScalarWhereInput | SpecificProductScalarWhereInput[]
-    genericId?: StringFilter<"SpecificProduct"> | string
     id?: StringFilter<"SpecificProduct"> | string
+    genericId?: StringFilter<"SpecificProduct"> | string
     image?: StringFilter<"SpecificProduct"> | string
     price?: FloatFilter<"SpecificProduct"> | number
     colorId?: StringFilter<"SpecificProduct"> | string
@@ -33659,11 +34993,12 @@ export namespace Prisma {
     images?: ImagesCreateNestedManyWithoutProductInput
     ProductForCart?: ProductForCartCreateNestedManyWithoutProductInput
     PromoBanner?: PromoBannerCreateNestedManyWithoutProductInput
+    models3D?: Model3DCreateNestedManyWithoutProductInput
   }
 
   export type SpecificProductUncheckedCreateWithoutColorInput = {
-    genericId: string
     id?: string
+    genericId: string
     image: string
     price: number
     position?: number
@@ -33673,6 +35008,7 @@ export namespace Prisma {
     images?: ImagesUncheckedCreateNestedManyWithoutProductInput
     ProductForCart?: ProductForCartUncheckedCreateNestedManyWithoutProductInput
     PromoBanner?: PromoBannerUncheckedCreateNestedManyWithoutProductInput
+    models3D?: Model3DUncheckedCreateNestedManyWithoutProductInput
   }
 
   export type SpecificProductCreateOrConnectWithoutColorInput = {
@@ -33855,6 +35191,30 @@ export namespace Prisma {
 
   export type PromoBannerCreateManyProductInputEnvelope = {
     data: PromoBannerCreateManyProductInput | PromoBannerCreateManyProductInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type Model3DCreateWithoutProductInput = {
+    id?: string
+    url: string
+    publicId?: string | null
+    position?: number
+  }
+
+  export type Model3DUncheckedCreateWithoutProductInput = {
+    id?: string
+    url: string
+    publicId?: string | null
+    position?: number
+  }
+
+  export type Model3DCreateOrConnectWithoutProductInput = {
+    where: Model3DWhereUniqueInput
+    create: XOR<Model3DCreateWithoutProductInput, Model3DUncheckedCreateWithoutProductInput>
+  }
+
+  export type Model3DCreateManyProductInputEnvelope = {
+    data: Model3DCreateManyProductInput | Model3DCreateManyProductInput[]
     skipDuplicates?: boolean
   }
 
@@ -34041,6 +35401,109 @@ export namespace Prisma {
     carouselId?: IntFilter<"PromoBanner"> | number
   }
 
+  export type Model3DUpsertWithWhereUniqueWithoutProductInput = {
+    where: Model3DWhereUniqueInput
+    update: XOR<Model3DUpdateWithoutProductInput, Model3DUncheckedUpdateWithoutProductInput>
+    create: XOR<Model3DCreateWithoutProductInput, Model3DUncheckedCreateWithoutProductInput>
+  }
+
+  export type Model3DUpdateWithWhereUniqueWithoutProductInput = {
+    where: Model3DWhereUniqueInput
+    data: XOR<Model3DUpdateWithoutProductInput, Model3DUncheckedUpdateWithoutProductInput>
+  }
+
+  export type Model3DUpdateManyWithWhereWithoutProductInput = {
+    where: Model3DScalarWhereInput
+    data: XOR<Model3DUpdateManyMutationInput, Model3DUncheckedUpdateManyWithoutProductInput>
+  }
+
+  export type Model3DScalarWhereInput = {
+    AND?: Model3DScalarWhereInput | Model3DScalarWhereInput[]
+    OR?: Model3DScalarWhereInput[]
+    NOT?: Model3DScalarWhereInput | Model3DScalarWhereInput[]
+    id?: StringFilter<"Model3D"> | string
+    url?: StringFilter<"Model3D"> | string
+    publicId?: StringNullableFilter<"Model3D"> | string | null
+    position?: IntFilter<"Model3D"> | number
+    prodId?: StringFilter<"Model3D"> | string
+  }
+
+  export type SpecificProductCreateWithoutModels3DInput = {
+    id?: string
+    image: string
+    price: number
+    position?: number
+    stock?: number
+    order?: ProductForOrderCreateNestedManyWithoutProductInput
+    promotions?: ProductForPromotionCreateNestedManyWithoutProductInput
+    genericProd: GenericProductCreateNestedOneWithoutVariantsInput
+    images?: ImagesCreateNestedManyWithoutProductInput
+    ProductForCart?: ProductForCartCreateNestedManyWithoutProductInput
+    color: ColorCreateNestedOneWithoutProductsInput
+    PromoBanner?: PromoBannerCreateNestedManyWithoutProductInput
+  }
+
+  export type SpecificProductUncheckedCreateWithoutModels3DInput = {
+    id?: string
+    genericId: string
+    image: string
+    price: number
+    colorId: string
+    position?: number
+    stock?: number
+    order?: ProductForOrderUncheckedCreateNestedManyWithoutProductInput
+    promotions?: ProductForPromotionUncheckedCreateNestedManyWithoutProductInput
+    images?: ImagesUncheckedCreateNestedManyWithoutProductInput
+    ProductForCart?: ProductForCartUncheckedCreateNestedManyWithoutProductInput
+    PromoBanner?: PromoBannerUncheckedCreateNestedManyWithoutProductInput
+  }
+
+  export type SpecificProductCreateOrConnectWithoutModels3DInput = {
+    where: SpecificProductWhereUniqueInput
+    create: XOR<SpecificProductCreateWithoutModels3DInput, SpecificProductUncheckedCreateWithoutModels3DInput>
+  }
+
+  export type SpecificProductUpsertWithoutModels3DInput = {
+    update: XOR<SpecificProductUpdateWithoutModels3DInput, SpecificProductUncheckedUpdateWithoutModels3DInput>
+    create: XOR<SpecificProductCreateWithoutModels3DInput, SpecificProductUncheckedCreateWithoutModels3DInput>
+    where?: SpecificProductWhereInput
+  }
+
+  export type SpecificProductUpdateToOneWithWhereWithoutModels3DInput = {
+    where?: SpecificProductWhereInput
+    data: XOR<SpecificProductUpdateWithoutModels3DInput, SpecificProductUncheckedUpdateWithoutModels3DInput>
+  }
+
+  export type SpecificProductUpdateWithoutModels3DInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    price?: FloatFieldUpdateOperationsInput | number
+    position?: IntFieldUpdateOperationsInput | number
+    stock?: IntFieldUpdateOperationsInput | number
+    order?: ProductForOrderUpdateManyWithoutProductNestedInput
+    promotions?: ProductForPromotionUpdateManyWithoutProductNestedInput
+    genericProd?: GenericProductUpdateOneRequiredWithoutVariantsNestedInput
+    images?: ImagesUpdateManyWithoutProductNestedInput
+    ProductForCart?: ProductForCartUpdateManyWithoutProductNestedInput
+    color?: ColorUpdateOneRequiredWithoutProductsNestedInput
+    PromoBanner?: PromoBannerUpdateManyWithoutProductNestedInput
+  }
+
+  export type SpecificProductUncheckedUpdateWithoutModels3DInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    genericId?: StringFieldUpdateOperationsInput | string
+    image?: StringFieldUpdateOperationsInput | string
+    price?: FloatFieldUpdateOperationsInput | number
+    colorId?: StringFieldUpdateOperationsInput | string
+    position?: IntFieldUpdateOperationsInput | number
+    stock?: IntFieldUpdateOperationsInput | number
+    order?: ProductForOrderUncheckedUpdateManyWithoutProductNestedInput
+    promotions?: ProductForPromotionUncheckedUpdateManyWithoutProductNestedInput
+    images?: ImagesUncheckedUpdateManyWithoutProductNestedInput
+    ProductForCart?: ProductForCartUncheckedUpdateManyWithoutProductNestedInput
+    PromoBanner?: PromoBannerUncheckedUpdateManyWithoutProductNestedInput
+  }
+
   export type SpecificProductCreateWithoutImagesInput = {
     id?: string
     image: string
@@ -34053,11 +35516,12 @@ export namespace Prisma {
     ProductForCart?: ProductForCartCreateNestedManyWithoutProductInput
     color: ColorCreateNestedOneWithoutProductsInput
     PromoBanner?: PromoBannerCreateNestedManyWithoutProductInput
+    models3D?: Model3DCreateNestedManyWithoutProductInput
   }
 
   export type SpecificProductUncheckedCreateWithoutImagesInput = {
-    genericId: string
     id?: string
+    genericId: string
     image: string
     price: number
     colorId: string
@@ -34067,6 +35531,7 @@ export namespace Prisma {
     promotions?: ProductForPromotionUncheckedCreateNestedManyWithoutProductInput
     ProductForCart?: ProductForCartUncheckedCreateNestedManyWithoutProductInput
     PromoBanner?: PromoBannerUncheckedCreateNestedManyWithoutProductInput
+    models3D?: Model3DUncheckedCreateNestedManyWithoutProductInput
   }
 
   export type SpecificProductCreateOrConnectWithoutImagesInput = {
@@ -34097,11 +35562,12 @@ export namespace Prisma {
     ProductForCart?: ProductForCartUpdateManyWithoutProductNestedInput
     color?: ColorUpdateOneRequiredWithoutProductsNestedInput
     PromoBanner?: PromoBannerUpdateManyWithoutProductNestedInput
+    models3D?: Model3DUpdateManyWithoutProductNestedInput
   }
 
   export type SpecificProductUncheckedUpdateWithoutImagesInput = {
-    genericId?: StringFieldUpdateOperationsInput | string
     id?: StringFieldUpdateOperationsInput | string
+    genericId?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
     colorId?: StringFieldUpdateOperationsInput | string
@@ -34111,6 +35577,7 @@ export namespace Prisma {
     promotions?: ProductForPromotionUncheckedUpdateManyWithoutProductNestedInput
     ProductForCart?: ProductForCartUncheckedUpdateManyWithoutProductNestedInput
     PromoBanner?: PromoBannerUncheckedUpdateManyWithoutProductNestedInput
+    models3D?: Model3DUncheckedUpdateManyWithoutProductNestedInput
   }
 
   export type UserCreateWithoutOrdersInput = {
@@ -34290,11 +35757,12 @@ export namespace Prisma {
     ProductForCart?: ProductForCartCreateNestedManyWithoutProductInput
     color: ColorCreateNestedOneWithoutProductsInput
     PromoBanner?: PromoBannerCreateNestedManyWithoutProductInput
+    models3D?: Model3DCreateNestedManyWithoutProductInput
   }
 
   export type SpecificProductUncheckedCreateWithoutOrderInput = {
-    genericId: string
     id?: string
+    genericId: string
     image: string
     price: number
     colorId: string
@@ -34304,6 +35772,7 @@ export namespace Prisma {
     images?: ImagesUncheckedCreateNestedManyWithoutProductInput
     ProductForCart?: ProductForCartUncheckedCreateNestedManyWithoutProductInput
     PromoBanner?: PromoBannerUncheckedCreateNestedManyWithoutProductInput
+    models3D?: Model3DUncheckedCreateNestedManyWithoutProductInput
   }
 
   export type SpecificProductCreateOrConnectWithoutOrderInput = {
@@ -34381,11 +35850,12 @@ export namespace Prisma {
     ProductForCart?: ProductForCartUpdateManyWithoutProductNestedInput
     color?: ColorUpdateOneRequiredWithoutProductsNestedInput
     PromoBanner?: PromoBannerUpdateManyWithoutProductNestedInput
+    models3D?: Model3DUpdateManyWithoutProductNestedInput
   }
 
   export type SpecificProductUncheckedUpdateWithoutOrderInput = {
-    genericId?: StringFieldUpdateOperationsInput | string
     id?: StringFieldUpdateOperationsInput | string
+    genericId?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
     colorId?: StringFieldUpdateOperationsInput | string
@@ -34395,6 +35865,7 @@ export namespace Prisma {
     images?: ImagesUncheckedUpdateManyWithoutProductNestedInput
     ProductForCart?: ProductForCartUncheckedUpdateManyWithoutProductNestedInput
     PromoBanner?: PromoBannerUncheckedUpdateManyWithoutProductNestedInput
+    models3D?: Model3DUncheckedUpdateManyWithoutProductNestedInput
   }
 
   export type ProductForPromotionCreateWithoutPromotionInput = {
@@ -34581,11 +36052,12 @@ export namespace Prisma {
     ProductForCart?: ProductForCartCreateNestedManyWithoutProductInput
     color: ColorCreateNestedOneWithoutProductsInput
     PromoBanner?: PromoBannerCreateNestedManyWithoutProductInput
+    models3D?: Model3DCreateNestedManyWithoutProductInput
   }
 
   export type SpecificProductUncheckedCreateWithoutPromotionsInput = {
-    genericId: string
     id?: string
+    genericId: string
     image: string
     price: number
     colorId: string
@@ -34595,6 +36067,7 @@ export namespace Prisma {
     images?: ImagesUncheckedCreateNestedManyWithoutProductInput
     ProductForCart?: ProductForCartUncheckedCreateNestedManyWithoutProductInput
     PromoBanner?: PromoBannerUncheckedCreateNestedManyWithoutProductInput
+    models3D?: Model3DUncheckedCreateNestedManyWithoutProductInput
   }
 
   export type SpecificProductCreateOrConnectWithoutPromotionsInput = {
@@ -34654,11 +36127,12 @@ export namespace Prisma {
     ProductForCart?: ProductForCartUpdateManyWithoutProductNestedInput
     color?: ColorUpdateOneRequiredWithoutProductsNestedInput
     PromoBanner?: PromoBannerUpdateManyWithoutProductNestedInput
+    models3D?: Model3DUpdateManyWithoutProductNestedInput
   }
 
   export type SpecificProductUncheckedUpdateWithoutPromotionsInput = {
-    genericId?: StringFieldUpdateOperationsInput | string
     id?: StringFieldUpdateOperationsInput | string
+    genericId?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
     colorId?: StringFieldUpdateOperationsInput | string
@@ -34668,6 +36142,7 @@ export namespace Prisma {
     images?: ImagesUncheckedUpdateManyWithoutProductNestedInput
     ProductForCart?: ProductForCartUncheckedUpdateManyWithoutProductNestedInput
     PromoBanner?: PromoBannerUncheckedUpdateManyWithoutProductNestedInput
+    models3D?: Model3DUncheckedUpdateManyWithoutProductNestedInput
   }
 
   export type PromotionUpsertWithoutProductsInput = {
@@ -34717,11 +36192,12 @@ export namespace Prisma {
     images?: ImagesCreateNestedManyWithoutProductInput
     ProductForCart?: ProductForCartCreateNestedManyWithoutProductInput
     color: ColorCreateNestedOneWithoutProductsInput
+    models3D?: Model3DCreateNestedManyWithoutProductInput
   }
 
   export type SpecificProductUncheckedCreateWithoutPromoBannerInput = {
-    genericId: string
     id?: string
+    genericId: string
     image: string
     price: number
     colorId: string
@@ -34731,6 +36207,7 @@ export namespace Prisma {
     promotions?: ProductForPromotionUncheckedCreateNestedManyWithoutProductInput
     images?: ImagesUncheckedCreateNestedManyWithoutProductInput
     ProductForCart?: ProductForCartUncheckedCreateNestedManyWithoutProductInput
+    models3D?: Model3DUncheckedCreateNestedManyWithoutProductInput
   }
 
   export type SpecificProductCreateOrConnectWithoutPromoBannerInput = {
@@ -34775,11 +36252,12 @@ export namespace Prisma {
     images?: ImagesUpdateManyWithoutProductNestedInput
     ProductForCart?: ProductForCartUpdateManyWithoutProductNestedInput
     color?: ColorUpdateOneRequiredWithoutProductsNestedInput
+    models3D?: Model3DUpdateManyWithoutProductNestedInput
   }
 
   export type SpecificProductUncheckedUpdateWithoutPromoBannerInput = {
-    genericId?: StringFieldUpdateOperationsInput | string
     id?: StringFieldUpdateOperationsInput | string
+    genericId?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
     colorId?: StringFieldUpdateOperationsInput | string
@@ -34789,6 +36267,7 @@ export namespace Prisma {
     promotions?: ProductForPromotionUncheckedUpdateManyWithoutProductNestedInput
     images?: ImagesUncheckedUpdateManyWithoutProductNestedInput
     ProductForCart?: ProductForCartUncheckedUpdateManyWithoutProductNestedInput
+    models3D?: Model3DUncheckedUpdateManyWithoutProductNestedInput
   }
 
   export type CarouselUpsertWithoutBannersInput = {
@@ -35729,6 +37208,7 @@ export namespace Prisma {
     ProductForCart?: ProductForCartUpdateManyWithoutProductNestedInput
     color?: ColorUpdateOneRequiredWithoutProductsNestedInput
     PromoBanner?: PromoBannerUpdateManyWithoutProductNestedInput
+    models3D?: Model3DUpdateManyWithoutProductNestedInput
   }
 
   export type SpecificProductUncheckedUpdateWithoutGenericProdInput = {
@@ -35743,6 +37223,7 @@ export namespace Prisma {
     images?: ImagesUncheckedUpdateManyWithoutProductNestedInput
     ProductForCart?: ProductForCartUncheckedUpdateManyWithoutProductNestedInput
     PromoBanner?: PromoBannerUncheckedUpdateManyWithoutProductNestedInput
+    models3D?: Model3DUncheckedUpdateManyWithoutProductNestedInput
   }
 
   export type SpecificProductUncheckedUpdateManyWithoutGenericProdInput = {
@@ -35844,8 +37325,8 @@ export namespace Prisma {
   }
 
   export type SpecificProductCreateManyColorInput = {
-    genericId: string
     id?: string
+    genericId: string
     image: string
     price: number
     position?: number
@@ -35864,11 +37345,12 @@ export namespace Prisma {
     images?: ImagesUpdateManyWithoutProductNestedInput
     ProductForCart?: ProductForCartUpdateManyWithoutProductNestedInput
     PromoBanner?: PromoBannerUpdateManyWithoutProductNestedInput
+    models3D?: Model3DUpdateManyWithoutProductNestedInput
   }
 
   export type SpecificProductUncheckedUpdateWithoutColorInput = {
-    genericId?: StringFieldUpdateOperationsInput | string
     id?: StringFieldUpdateOperationsInput | string
+    genericId?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
     position?: IntFieldUpdateOperationsInput | number
@@ -35878,11 +37360,12 @@ export namespace Prisma {
     images?: ImagesUncheckedUpdateManyWithoutProductNestedInput
     ProductForCart?: ProductForCartUncheckedUpdateManyWithoutProductNestedInput
     PromoBanner?: PromoBannerUncheckedUpdateManyWithoutProductNestedInput
+    models3D?: Model3DUncheckedUpdateManyWithoutProductNestedInput
   }
 
   export type SpecificProductUncheckedUpdateManyWithoutColorInput = {
-    genericId?: StringFieldUpdateOperationsInput | string
     id?: StringFieldUpdateOperationsInput | string
+    genericId?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
     position?: IntFieldUpdateOperationsInput | number
@@ -35916,6 +37399,13 @@ export namespace Prisma {
     image: string
     publicId?: string | null
     carouselId: number
+  }
+
+  export type Model3DCreateManyProductInput = {
+    id?: string
+    url: string
+    publicId?: string | null
+    position?: number
   }
 
   export type ProductForOrderUpdateWithoutProductInput = {
@@ -36002,6 +37492,27 @@ export namespace Prisma {
     image?: StringFieldUpdateOperationsInput | string
     publicId?: NullableStringFieldUpdateOperationsInput | string | null
     carouselId?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type Model3DUpdateWithoutProductInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    publicId?: NullableStringFieldUpdateOperationsInput | string | null
+    position?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type Model3DUncheckedUpdateWithoutProductInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    publicId?: NullableStringFieldUpdateOperationsInput | string | null
+    position?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type Model3DUncheckedUpdateManyWithoutProductInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    url?: StringFieldUpdateOperationsInput | string
+    publicId?: NullableStringFieldUpdateOperationsInput | string | null
+    position?: IntFieldUpdateOperationsInput | number
   }
 
   export type ProductForOrderCreateManyOrderInput = {

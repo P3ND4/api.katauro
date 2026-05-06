@@ -190,13 +190,21 @@ exports.Prisma.ColorScalarFieldEnum = {
 };
 
 exports.Prisma.SpecificProductScalarFieldEnum = {
-  genericId: 'genericId',
   id: 'id',
+  genericId: 'genericId',
   image: 'image',
   price: 'price',
   colorId: 'colorId',
   position: 'position',
   stock: 'stock'
+};
+
+exports.Prisma.Model3DScalarFieldEnum = {
+  id: 'id',
+  url: 'url',
+  publicId: 'publicId',
+  position: 'position',
+  prodId: 'prodId'
 };
 
 exports.Prisma.ImagesScalarFieldEnum = {
@@ -385,10 +393,17 @@ exports.Prisma.ColorOrderByRelevanceFieldEnum = {
 };
 
 exports.Prisma.SpecificProductOrderByRelevanceFieldEnum = {
-  genericId: 'genericId',
   id: 'id',
+  genericId: 'genericId',
   image: 'image',
   colorId: 'colorId'
+};
+
+exports.Prisma.Model3DOrderByRelevanceFieldEnum = {
+  id: 'id',
+  url: 'url',
+  publicId: 'publicId',
+  prodId: 'prodId'
 };
 
 exports.Prisma.ImagesOrderByRelevanceFieldEnum = {
@@ -497,6 +512,7 @@ exports.Prisma.ModelName = {
   TokenBlacklist: 'TokenBlacklist',
   Color: 'Color',
   SpecificProduct: 'SpecificProduct',
+  Model3D: 'Model3D',
   Images: 'Images',
   Order: 'Order',
   ProductForOrder: 'ProductForOrder',

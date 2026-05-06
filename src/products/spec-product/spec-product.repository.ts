@@ -13,17 +13,17 @@ export class SpecProductRepository implements ISpecificProductRepository {
 
     constructor(private prismaService: PrismaService) { }
     findByGeneric(genId: string): Promise<SpecificProduct[]> {
-        return this.prismaService.specificProduct.findMany({ where: { genericId: genId }, include: { images: true, genericProd: true, color: true } });
+        return this.prismaService.specificProduct.findMany({ where: { genericId: genId }, include: { images: true, models3D: true, genericProd: true, color: true } });
     }
 
     findAllProducts(): Promise<SpecificProduct[]> {
-        return this.prismaService.specificProduct.findMany({ include: { images: true, genericProd: true, color: true } });
+        return this.prismaService.specificProduct.findMany({ include: { images: true, models3D: true, genericProd: true, color: true } });
     }
     createProduct(data: CreateSpecProductDTO): Promise<SpecificProduct> {
-        return this.prismaService.specificProduct.create({ data: { stock: data.stock, price: data.price, image: data.image, genericId: '', images: { create: data.images.map(x => ({ link: x.link, publicId: x.public_id })) }, colorId: data.colorId } });
+        return this.prismaService.specificProduct.create({ data: { stock: data.stock, price: data.price, image: data.image, genericId: '', images: { create: data.images.map(x => ({ link: x.link, publicId: x.public_id })) }, models3D: { create: data.models3D.map(x => ({ url: x.url, publicId: x.public_id })) }, colorId: data.colorId } });
     }
     findProductById(id: string): Promise<SpecificProduct | null> {
-        return this.prismaService.specificProduct.findUnique({ where: { id }, include: { images: true, genericProd: true, color: true } })
+        return this.prismaService.specificProduct.findUnique({ where: { id }, include: { images: true, models3D: true, genericProd: true, color: true } })
     }
 
     findManyById(ids: string[]) {
@@ -54,7 +54,7 @@ export class SpecProductRepository implements ISpecificProductRepository {
         return result
     }
     deleteProduct(id: string): Promise<SpecificProduct> {
-        return this.prismaService.specificProduct.delete({ where: { id }, include: { images: true } })
+        return this.prismaService.specificProduct.delete({ where: { id }, include: { images: true, models3D: true } })
     }
 
 }

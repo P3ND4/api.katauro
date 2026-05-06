@@ -14,7 +14,7 @@ export class ProductRepository implements IProductRepository {
     constructor(private prismaService: PrismaService) { }
 
     findAllProducts(): Promise<GenericProduct[]> {
-        return this.prismaService.genericProduct.findMany({ include: { variants: { include: { genericProd: { include: { category: true } }, images: { orderBy: { position: "asc" } }, color: true, promotions: { include: { promotion: true } } }, orderBy: { position: "asc" } }, details: true, category: true, finish: true } });
+        return this.prismaService.genericProduct.findMany({ include: { variants: { include: { genericProd: { include: { category: true } }, images: { orderBy: { position: "asc" } }, models3D: true, color: true, promotions: { include: { promotion: true } } }, orderBy: { position: "asc" } }, details: true, category: true, finish: true } });
     }
     createProduct(data: CreateProductDto): Promise<GenericProduct> {
         return this.prismaService.genericProduct.create({
@@ -35,14 +35,15 @@ export class ProductRepository implements IProductRepository {
                         image: x.image,
                         price: x.price,
                         position: data.variants.indexOf(x),
-                        images: { create: x.images.map(y => ({ position: x.images.indexOf(y), link: y.link, publicId: y.public_id })) }
+                        images: { create: x.images.map(y => ({ position: x.images.indexOf(y), link: y.link, publicId: y.public_id })) },
+                        models3D: { create: x.models3D?.map(y => ({ url: y.url, publicId: y.public_id })) || [] }
                     }))
                 }
             }
         });
     }
     findProductById(id: string): Promise<GenericProduct | null> {
-        return this.prismaService.genericProduct.findUnique({ where: { id }, include: { variants: { orderBy: { position: "asc" }, include: { genericProd: { include: { category: true } }, images: { orderBy: { position: "asc" } }, color: true, promotions: { include: { promotion: true } } } }, details: true, category: true, finish: true } })
+        return this.prismaService.genericProduct.findUnique({ where: { id }, include: { variants: { orderBy: { position: "asc" }, include: { genericProd: { include: { category: true } }, images: { orderBy: { position: "asc" } }, models3D: true, color: true, promotions: { include: { promotion: true } } } }, details: true, category: true, finish: true } })
     }
     async updateProduct(id: string, data: UpdateProductDto): Promise<GenericProduct> {
 
@@ -75,7 +76,8 @@ export class ProductRepository implements IProductRepository {
                             stock: x.stock,
                             image: x.image,
                             price: x.price,
-                            images: { deleteMany: {}, create: x.images.map(y => ({ position: x.images.indexOf(y), link: y.link, publicId: y.public_id })) }
+                            images: { deleteMany: {}, create: x.images.map(y => ({ position: x.images.indexOf(y), link: y.link, publicId: y.public_id })) },
+                            models3D: { deleteMany: {}, create: x.models3D?.map(y => ({ url: y.url, publicId: y.public_id })) || [] }
                         }
                     }))
                 }
@@ -84,7 +86,7 @@ export class ProductRepository implements IProductRepository {
         })
     }
     deleteProduct(id: string): Promise<GenericProduct> {
-        return this.prismaService.genericProduct.delete({ where: { id }, include: { variants: { include: { images: true } } } });
+        return this.prismaService.genericProduct.delete({ where: { id }, include: { variants: { include: { images: true, models3D: true } } } });
     }
 
 }

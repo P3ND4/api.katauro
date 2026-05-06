@@ -65,6 +65,44 @@ export class CloudinaryService {
             throw error;
         }
     }
+
+    async moveModel3D(publicId: string, url: string) {
+        if (publicId.startsWith('katauro/temp/')) {
+            const newPublicId = publicId.replace(/^katauro\/temp\//, 'katauro/production/');
+
+            const res = await cloudinary.uploader.rename(publicId, newPublicId, {
+                overwrite: true,
+                resource_type: 'raw'
+            });
+
+            await cloudinary.uploader.explicit(res.public_id, {
+                type: 'upload',
+                asset_folder: 'katauro/production',
+                resource_type: 'raw'
+            });
+
+            return {
+                link: res.secure_url,
+                public_id: res.public_id
+            };
+        }
+
+        return { link: url, public_id: publicId };
+    }
+
+    async deleteModel3D(publicId: string): Promise<any> {
+        try {
+            const result = await cloudinary.uploader.destroy(publicId, {
+                invalidate: true,
+                resource_type: 'raw',
+            });
+            this.logger.log(`Modelo 3D eliminado de Cloudinary: ${publicId} => ${JSON.stringify(result)}`);
+            return result;
+        } catch (error) {
+            this.logger.error(`Error al eliminar modelo 3D de Cloudinary: ${publicId}`, error as any);
+            throw error;
+        }
+    }
 }
 
 
