@@ -17,21 +17,31 @@ export class CloudinaryService {
         if (publicId.startsWith('katauro/temp/')) {
             const newPublicId = publicId.replace(/^katauro\/temp\//, 'katauro/production/');
 
-            // 1. Renombrar (cambia public_id)
-            const res = await cloudinary.uploader.rename(publicId, newPublicId, {
-                overwrite: true
-            });
+            try {
+                const res = await cloudinary.uploader.rename(publicId, newPublicId, {
+                    overwrite: true
+                });
 
-            // 2. Mover carpeta REAL (UI)
-            await cloudinary.uploader.explicit(res.public_id, {
-                type: 'upload',
-                asset_folder: 'katauro/production'
-            });
+                await cloudinary.uploader.explicit(res.public_id, {
+                    type: 'upload',
+                    asset_folder: 'katauro/production'
+                });
 
-            return {
-                link: res.secure_url.replace('/upload/', '/upload/q_auto,f_auto/'),
-                public_id: res.public_id
-            };
+                return {
+                    link: res.secure_url.replace('/upload/', '/upload/q_auto,f_auto/'),
+                    public_id: res.public_id
+                };
+            } catch (error: any) {
+                if (error?.http_code === 404 || error?.error?.http_code === 404 || error?.message?.includes('not found')) {
+                    this.logger.warn(`moveImage: recurso ya movido o no encontrado en temp: ${publicId}`);
+                    return {
+                        link: url.replace('/upload/', '/upload/q_auto,f_auto/'),
+                        public_id: newPublicId
+                    };
+                }
+                this.logger.error(`moveImage: error inesperado para ${publicId}`, error);
+                throw error;
+            }
         }
 
         return { link: url, public_id: publicId };
@@ -70,21 +80,28 @@ export class CloudinaryService {
         if (publicId.startsWith('katauro/temp/')) {
             const newPublicId = publicId.replace(/^katauro\/temp\//, 'katauro/production/');
 
-            const res = await cloudinary.uploader.rename(publicId, newPublicId, {
-                overwrite: true,
-                resource_type: 'raw'
-            });
+            try {
+                const res = await cloudinary.uploader.rename(publicId, newPublicId, {
+                    overwrite: true,
+                });
 
-            await cloudinary.uploader.explicit(res.public_id, {
-                type: 'upload',
-                asset_folder: 'katauro/production',
-                resource_type: 'raw'
-            });
+                await cloudinary.uploader.explicit(res.public_id, {
+                    type: 'upload',
+                    asset_folder: 'katauro/production',
+                });
 
-            return {
-                link: res.secure_url,
-                public_id: res.public_id
-            };
+                return {
+                    link: res.secure_url,
+                    public_id: res.public_id
+                };
+            } catch (error: any) {
+                if (error?.http_code === 404 || error?.error?.http_code === 404 || error?.message?.includes('not found')) {
+                    this.logger.warn(`moveModel3D: recurso ya movido o no encontrado en temp: ${publicId}`);
+                    return { link: url, public_id: newPublicId };
+                }
+                this.logger.error(`moveModel3D: error inesperado para ${publicId}`, error);
+                throw error;
+            }
         }
 
         return { link: url, public_id: publicId };

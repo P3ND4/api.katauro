@@ -8,6 +8,7 @@ class CreateSpecProductDTO {
     colorId;
     image;
     images;
+    models3D;
     genericId;
 }
 exports.CreateSpecProductDTO = CreateSpecProductDTO;

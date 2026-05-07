@@ -87,14 +87,5 @@ export declare class ProductsController {
         vector: string;
         vPublicId: string | null;
     }>;
-    remove(id: string): Promise<{
-        name: string;
-        id: string;
-        description: string;
-        subtitle: string;
-        categoryId: string;
-        typology: string;
-        vector: string;
-        vPublicId: string | null;
-    }>;
+    remove(id: string): Promise<any>;
 }

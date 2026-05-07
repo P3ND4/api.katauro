@@ -23,6 +23,7 @@ class Variant {
     stock;
     image;
     images;
+    models3D;
     color;
     genericId;
     genericProd;

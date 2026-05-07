@@ -43,6 +43,13 @@ let ProductsService = class ProductsService {
         createProductDto.variants = await Promise.all(createProductDto.variants.map(async (x) => {
             let varian = x;
             varian.images = await Promise.all(x.images.map(async (y) => y.public_id ? await this.cloudyService.moveImage(y.public_id, y.link) : y));
+            varian.models3D = await Promise.all(x.models3D?.map(async (y) => {
+                if (y.public_id) {
+                    const moved = await this.cloudyService.moveModel3D(y.public_id, y.url);
+                    return { url: moved.link, public_id: moved.public_id };
+                }
+                return y;
+            }) || []);
             varian.image = varian.images[0].link;
             return varian;
         }));
@@ -80,6 +87,13 @@ let ProductsService = class ProductsService {
         updateProductDto.variants = await Promise.all(updateProductDto.variants ? updateProductDto.variants.map(async (x) => {
             let varian = x;
             varian.images = await Promise.all(x.images.map(async (y) => y.public_id ? await this.cloudyService.moveImage(y.public_id, y.link) : y));
+            varian.models3D = await Promise.all(x.models3D?.map(async (y) => {
+                if (y.public_id) {
+                    const moved = await this.cloudyService.moveModel3D(y.public_id, y.url);
+                    return { url: moved.link, public_id: moved.public_id };
+                }
+                return y;
+            }) || []);
             varian.image = varian.images[0].link;
             return varian;
         }) : []);
@@ -88,8 +102,19 @@ let ProductsService = class ProductsService {
         updateProductDto.vPublicId = vector.public_id;
         return this.productRepository.updateProduct(id, updateProductDto);
     }
-    remove(id) {
-        return this.productRepository.deleteProduct(id);
+    async remove(id) {
+        const deleted = await this.productRepository.deleteProduct(id);
+        deleted.variants?.forEach((variant) => {
+            variant.images?.forEach(async (img) => {
+                if (img.publicId)
+                    await this.cloudyService.deleteImage(img.publicId);
+            });
+            variant.models3D?.forEach(async (model) => {
+                if (model.publicId)
+                    await this.cloudyService.deleteModel3D(model.publicId);
+            });
+        });
+        return deleted;
     }
     async getProductByCategory(name, page) {
         var products = await this.productRepository.findAllProducts();

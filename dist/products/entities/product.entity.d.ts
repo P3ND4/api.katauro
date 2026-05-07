@@ -21,6 +21,12 @@ export declare class Variant {
     stock: number;
     image?: string;
     images: Images[];
+    models3D: {
+        id: string;
+        url: string;
+        publicId?: string;
+        position: number;
+    }[];
     color: Color;
     genericId: string;
     genericProd?: Product;

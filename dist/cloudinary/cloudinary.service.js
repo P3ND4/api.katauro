@@ -57,17 +57,30 @@ let CloudinaryService = CloudinaryService_1 = class CloudinaryService {
     async moveImage(publicId, url) {
         if (publicId.startsWith('katauro/temp/')) {
             const newPublicId = publicId.replace(/^katauro\/temp\//, 'katauro/production/');
-            const res = await cloudinary_config_1.default.uploader.rename(publicId, newPublicId, {
-                overwrite: true
-            });
-            await cloudinary_config_1.default.uploader.explicit(res.public_id, {
-                type: 'upload',
-                asset_folder: 'katauro/production'
-            });
-            return {
-                link: res.secure_url.replace('/upload/', '/upload/q_auto,f_auto/'),
-                public_id: res.public_id
-            };
+            try {
+                const res = await cloudinary_config_1.default.uploader.rename(publicId, newPublicId, {
+                    overwrite: true
+                });
+                await cloudinary_config_1.default.uploader.explicit(res.public_id, {
+                    type: 'upload',
+                    asset_folder: 'katauro/production'
+                });
+                return {
+                    link: res.secure_url.replace('/upload/', '/upload/q_auto,f_auto/'),
+                    public_id: res.public_id
+                };
+            }
+            catch (error) {
+                if (error?.http_code === 404 || error?.error?.http_code === 404 || error?.message?.includes('not found')) {
+                    this.logger.warn(`moveImage: recurso ya movido o no encontrado en temp: ${publicId}`);
+                    return {
+                        link: url.replace('/upload/', '/upload/q_auto,f_auto/'),
+                        public_id: newPublicId
+                    };
+                }
+                this.logger.error(`moveImage: error inesperado para ${publicId}`, error);
+                throw error;
+            }
         }
         return { link: url, public_id: publicId };
     }
@@ -93,6 +106,47 @@ let CloudinaryService = CloudinaryService_1 = class CloudinaryService {
         }
         catch (error) {
             this.logger.error(`Error al eliminar imagen de Cloudinary: ${publicId}`, error);
+            throw error;
+        }
+    }
+    async moveModel3D(publicId, url) {
+        if (publicId.startsWith('katauro/temp/')) {
+            const newPublicId = publicId.replace(/^katauro\/temp\//, 'katauro/production/');
+            try {
+                const res = await cloudinary_config_1.default.uploader.rename(publicId, newPublicId, {
+                    overwrite: true,
+                });
+                await cloudinary_config_1.default.uploader.explicit(res.public_id, {
+                    type: 'upload',
+                    asset_folder: 'katauro/production',
+                });
+                return {
+                    link: res.secure_url,
+                    public_id: res.public_id
+                };
+            }
+            catch (error) {
+                if (error?.http_code === 404 || error?.error?.http_code === 404 || error?.message?.includes('not found')) {
+                    this.logger.warn(`moveModel3D: recurso ya movido o no encontrado en temp: ${publicId}`);
+                    return { link: url, public_id: newPublicId };
+                }
+                this.logger.error(`moveModel3D: error inesperado para ${publicId}`, error);
+                throw error;
+            }
+        }
+        return { link: url, public_id: publicId };
+    }
+    async deleteModel3D(publicId) {
+        try {
+            const result = await cloudinary_config_1.default.uploader.destroy(publicId, {
+                invalidate: true,
+                resource_type: 'raw',
+            });
+            this.logger.log(`Modelo 3D eliminado de Cloudinary: ${publicId} => ${JSON.stringify(result)}`);
+            return result;
+        }
+        catch (error) {
+            this.logger.error(`Error al eliminar modelo 3D de Cloudinary: ${publicId}`, error);
             throw error;
         }
     }

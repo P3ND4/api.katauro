@@ -14,4 +14,9 @@ export declare class CloudinaryService {
         folder: string;
     }>;
     deleteImage(publicId: string): Promise<any>;
+    moveModel3D(publicId: string, url: string): Promise<{
+        link: any;
+        public_id: any;
+    }>;
+    deleteModel3D(publicId: string): Promise<any>;
 }

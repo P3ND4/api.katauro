@@ -31,7 +31,12 @@ let SpecProductService = class SpecProductService {
         const deleted = await this.variantRep.deleteProduct(id);
         if (deleted) {
             deleted.images?.forEach(async (img) => {
-                this.cloudy;
+                if (img.publicId)
+                    await this.cloudy.deleteImage(img.publicId);
+            });
+            deleted.models3D?.forEach(async (model) => {
+                if (model.publicId)
+                    await this.cloudy.deleteModel3D(model.publicId);
             });
         }
     }

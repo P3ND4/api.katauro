@@ -18,7 +18,7 @@ let ProductRepository = class ProductRepository {
         this.prismaService = prismaService;
     }
     findAllProducts() {
-        return this.prismaService.genericProduct.findMany({ include: { variants: { include: { genericProd: { include: { category: true } }, images: { orderBy: { position: "asc" } }, color: true, promotions: { include: { promotion: true } } }, orderBy: { position: "asc" } }, details: true, category: true, finish: true } });
+        return this.prismaService.genericProduct.findMany({ include: { variants: { include: { genericProd: { include: { category: true } }, images: { orderBy: { position: "asc" } }, models3D: true, color: true, promotions: { include: { promotion: true } } }, orderBy: { position: "asc" } }, details: true, category: true, finish: true } });
     }
     createProduct(data) {
         return this.prismaService.genericProduct.create({
@@ -39,14 +39,15 @@ let ProductRepository = class ProductRepository {
                         image: x.image,
                         price: x.price,
                         position: data.variants.indexOf(x),
-                        images: { create: x.images.map(y => ({ position: x.images.indexOf(y), link: y.link, publicId: y.public_id })) }
+                        images: { create: x.images.map(y => ({ position: x.images.indexOf(y), link: y.link, publicId: y.public_id })) },
+                        models3D: { create: x.models3D?.map(y => ({ url: y.url, publicId: y.public_id })) || [] }
                     }))
                 }
             }
         });
     }
     findProductById(id) {
-        return this.prismaService.genericProduct.findUnique({ where: { id }, include: { variants: { orderBy: { position: "asc" }, include: { genericProd: { include: { category: true } }, images: { orderBy: { position: "asc" } }, color: true, promotions: { include: { promotion: true } } } }, details: true, category: true, finish: true } });
+        return this.prismaService.genericProduct.findUnique({ where: { id }, include: { variants: { orderBy: { position: "asc" }, include: { genericProd: { include: { category: true } }, images: { orderBy: { position: "asc" } }, models3D: true, color: true, promotions: { include: { promotion: true } } } }, details: true, category: true, finish: true } });
     }
     async updateProduct(id, data) {
         await this.prismaService.genericProduct.update({
@@ -74,7 +75,8 @@ let ProductRepository = class ProductRepository {
                             stock: x.stock,
                             image: x.image,
                             price: x.price,
-                            images: { deleteMany: {}, create: x.images.map(y => ({ position: x.images.indexOf(y), link: y.link, publicId: y.public_id })) }
+                            images: { deleteMany: {}, create: x.images.map(y => ({ position: x.images.indexOf(y), link: y.link, publicId: y.public_id })) },
+                            models3D: { deleteMany: {}, create: x.models3D?.map(y => ({ url: y.url, publicId: y.public_id })) || [] }
                         }
                     }))
                 }
@@ -82,7 +84,7 @@ let ProductRepository = class ProductRepository {
         });
     }
     deleteProduct(id) {
-        return this.prismaService.genericProduct.delete({ where: { id }, include: { variants: { include: { images: true } } } });
+        return this.prismaService.genericProduct.delete({ where: { id }, include: { variants: { include: { images: true, models3D: true } } } });
     }
 };
 exports.ProductRepository = ProductRepository;

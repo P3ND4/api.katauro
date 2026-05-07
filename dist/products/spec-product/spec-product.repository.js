@@ -18,16 +18,16 @@ let SpecProductRepository = class SpecProductRepository {
         this.prismaService = prismaService;
     }
     findByGeneric(genId) {
-        return this.prismaService.specificProduct.findMany({ where: { genericId: genId }, include: { images: true, genericProd: true, color: true } });
+        return this.prismaService.specificProduct.findMany({ where: { genericId: genId }, include: { images: true, models3D: true, genericProd: true, color: true } });
     }
     findAllProducts() {
-        return this.prismaService.specificProduct.findMany({ include: { images: true, genericProd: true, color: true } });
+        return this.prismaService.specificProduct.findMany({ include: { images: true, models3D: true, genericProd: true, color: true } });
     }
     createProduct(data) {
-        return this.prismaService.specificProduct.create({ data: { stock: data.stock, price: data.price, image: data.image, genericId: '', images: { create: data.images.map(x => ({ link: x.link, publicId: x.public_id })) }, colorId: data.colorId } });
+        return this.prismaService.specificProduct.create({ data: { stock: data.stock, price: data.price, image: data.image, genericId: '', images: { create: data.images.map(x => ({ link: x.link, publicId: x.public_id })) }, models3D: { create: data.models3D.map(x => ({ url: x.url, publicId: x.public_id })) }, colorId: data.colorId } });
     }
     findProductById(id) {
-        return this.prismaService.specificProduct.findUnique({ where: { id }, include: { images: true, genericProd: true, color: true } });
+        return this.prismaService.specificProduct.findUnique({ where: { id }, include: { images: true, models3D: true, genericProd: true, color: true } });
     }
     findManyById(ids) {
         return this.prismaService.specificProduct.findMany({ where: { id: { in: ids } }, include: { promotions: { include: { promotion: true } } } });
@@ -52,7 +52,7 @@ let SpecProductRepository = class SpecProductRepository {
         return result;
     }
     deleteProduct(id) {
-        return this.prismaService.specificProduct.delete({ where: { id }, include: { images: true } });
+        return this.prismaService.specificProduct.delete({ where: { id }, include: { images: true, models3D: true } });
     }
 };
 exports.SpecProductRepository = SpecProductRepository;

@@ -65,16 +65,7 @@ export declare class ProductsService implements OnModuleInit {
         vector: string;
         vPublicId: string | null;
     }>;
-    remove(id: string): Promise<{
-        name: string;
-        id: string;
-        description: string;
-        subtitle: string;
-        categoryId: string;
-        typology: string;
-        vector: string;
-        vPublicId: string | null;
-    }>;
+    remove(id: string): Promise<any>;
     getProductByCategory(name: string, page?: number): Promise<Product[]>;
     getCatByName(name: string): Promise<import("./entities/product.entity").CatEntity[]>;
     getCats(): Promise<import("./entities/product.entity").CatEntity[]>;

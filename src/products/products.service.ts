@@ -31,7 +31,13 @@ export class ProductsService implements OnModuleInit {
     createProductDto.variants = await Promise.all(createProductDto.variants.map(async x => {
       let varian = x
       varian.images = await Promise.all(x.images.map(async y => y.public_id ? await this.cloudyService.moveImage(y.public_id, y.link) : y))
-      varian.models3D = await Promise.all(x.models3D?.map(async y => y.public_id ? { url: (await this.cloudyService.moveModel3D(y.public_id, y.url)).link, public_id: (await this.cloudyService.moveModel3D(y.public_id, y.url)).public_id } : y) || [])
+      varian.models3D = await Promise.all(x.models3D?.map(async y => {
+        if (y.public_id) {
+          const moved = await this.cloudyService.moveModel3D(y.public_id, y.url);
+          return { url: moved.link, public_id: moved.public_id };
+        }
+        return y;
+      }) || [])
       varian.image = varian.images[0].link;
       return varian
     }));
@@ -78,7 +84,13 @@ export class ProductsService implements OnModuleInit {
     updateProductDto.variants = await Promise.all(updateProductDto.variants ? updateProductDto.variants.map(async x => {
       let varian = x
       varian.images = await Promise.all(x.images.map(async y => y.public_id ? await this.cloudyService.moveImage(y.public_id, y.link) : y))
-      varian.models3D = await Promise.all(x.models3D?.map(async y => y.public_id ? { url: (await this.cloudyService.moveModel3D(y.public_id, y.url)).link, public_id: (await this.cloudyService.moveModel3D(y.public_id, y.url)).public_id } : y) || [])
+      varian.models3D = await Promise.all(x.models3D?.map(async y => {
+        if (y.public_id) {
+          const moved = await this.cloudyService.moveModel3D(y.public_id, y.url);
+          return { url: moved.link, public_id: moved.public_id };
+        }
+        return y;
+      }) || [])
       varian.image = varian.images[0].link;
       return varian
     }) : [])
