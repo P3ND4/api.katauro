@@ -34,6 +34,15 @@ let BlogController = class BlogController {
     findPages(tags, search) {
         return this.blogService.getPages({ tags, search });
     }
+    getStatsOverview() {
+        return this.blogService.getStatsOverview();
+    }
+    getStatsTimeline(months) {
+        return this.blogService.getStatsTimeline(months ? +months : undefined);
+    }
+    getStatsArticles() {
+        return this.blogService.getStatsArticles();
+    }
     findOne(id) {
         return this.blogService.findOne(id);
     }
@@ -121,6 +130,25 @@ __decorate([
     __metadata("design:paramtypes", [String, String]),
     __metadata("design:returntype", void 0)
 ], BlogController.prototype, "findPages", null);
+__decorate([
+    (0, common_1.Get)('stats/overview'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], BlogController.prototype, "getStatsOverview", null);
+__decorate([
+    (0, common_1.Get)('stats/timeline'),
+    __param(0, (0, common_1.Query)('months')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], BlogController.prototype, "getStatsTimeline", null);
+__decorate([
+    (0, common_1.Get)('stats/articles'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], BlogController.prototype, "getStatsArticles", null);
 __decorate([
     (0, common_1.Get)(':id'),
     __param(0, (0, common_1.Param)('id')),

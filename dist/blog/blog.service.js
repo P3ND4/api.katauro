@@ -116,6 +116,15 @@ let BlogService = class BlogService {
     async getAnalytics(blogId) {
         return this.blogsRepository.getBlogAnalytics(blogId);
     }
+    async getStatsOverview() {
+        return this.blogsRepository.getStatsOverview();
+    }
+    async getStatsTimeline(months) {
+        return this.blogsRepository.getStatsTimeline(months);
+    }
+    async getStatsArticles() {
+        return this.blogsRepository.getStatsArticles();
+    }
 };
 exports.BlogService = BlogService;
 exports.BlogService = BlogService = __decorate([

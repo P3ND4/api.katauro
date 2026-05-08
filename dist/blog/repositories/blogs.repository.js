@@ -419,6 +419,10 @@ let BlogsRepository = class BlogsRepository {
     async getBlogAnalytics(blogId) {
         const signedViews = await this.prisma.blogView.findMany({ where: { blogId } });
         const unsignedViews = await this.prisma.unsignedBlogView.findMany({ where: { blogId } });
+        const blog = await this.prisma.blog.findUnique({
+            where: { id: blogId },
+            include: { images: true, BlogTags: { include: { tag: true } } },
+        });
         const allViews = [...signedViews, ...unsignedViews];
         const totalVisits = signedViews.length + unsignedViews.length;
         const uniqueUsers = new Set(signedViews.map(v => v.UserId)).size;
@@ -438,7 +442,17 @@ let BlogsRepository = class BlogsRepository {
         const totalLinkClicks = allViews.reduce((sum, v) => sum + v.linkClicks, 0);
         const totalImageClicks = allViews.reduce((sum, v) => sum + v.imageClicks, 0);
         const totalCtaClicks = allViews.reduce((sum, v) => sum + v.ctaClicks, 0);
+        const visitsWithClicks = allViews.filter(v => (v.linkClicks ?? 0) > 0 || (v.imageClicks ?? 0) > 0 || (v.ctaClicks ?? 0) > 0).length;
+        const ctr = totalVisits > 0 ? Math.round((visitsWithClicks / totalVisits) * 100) : 0;
+        const thresholds = [25, 50, 75, 100];
+        const scrollDepthDistribution = {};
+        for (const t of thresholds) {
+            scrollDepthDistribution[String(t)] = totalVisits > 0
+                ? Math.round((allViews.filter(v => v.scrollDepth >= t).length / totalVisits) * 100)
+                : 0;
+        }
         return {
+            blog: blog ? { id: blog.id, title: blog.title, createdAt: blog.createdAt, introduction: blog.introduction, images: blog.images ?? [], tags: blog.BlogTags?.map(bt => bt.tag) ?? [] } : null,
             totalVisits,
             uniqueUsers: uniqueTotal,
             avgTimeSeconds: avgTime,
@@ -446,6 +460,8 @@ let BlogsRepository = class BlogsRepository {
             readPercentage,
             bounceRate,
             totalShares,
+            ctr,
+            scrollDepthDistribution,
             totalLinkClicks,
             totalImageClicks,
             totalCtaClicks,
@@ -461,6 +477,82 @@ let BlogsRepository = class BlogsRepository {
         catch (error) {
             return false;
         }
+    }
+    async getStatsOverview() {
+        const blogCount = await this.prisma.blog.count();
+        const signedViews = await this.prisma.blogView.findMany();
+        const unsignedViews = await this.prisma.unsignedBlogView.findMany();
+        const allViews = [...signedViews, ...unsignedViews];
+        const totalVisits = allViews.length;
+        const uniqueUsers = new Set(signedViews.map(v => v.UserId)).size;
+        const uniqueIps = new Set(unsignedViews.map(v => v.ipAddress)).size;
+        const avgTime = allViews.length > 0
+            ? Math.round(allViews.reduce((sum, v) => sum + v.timeSpent, 0) / allViews.length)
+            : 0;
+        const blogVisits = new Map();
+        for (const v of signedViews)
+            blogVisits.set(v.blogId, (blogVisits.get(v.blogId) ?? 0) + 1);
+        for (const v of unsignedViews)
+            blogVisits.set(v.blogId, (blogVisits.get(v.blogId) ?? 0) + 1);
+        let topBlogId = '';
+        let topVisits = 0;
+        blogVisits.forEach((visits, id) => { if (visits > topVisits) {
+            topVisits = visits;
+            topBlogId = id;
+        } });
+        let topArticle = null;
+        if (topBlogId) {
+            const blog = await this.prisma.blog.findUnique({ where: { id: topBlogId }, select: { id: true, title: true } });
+            if (blog)
+                topArticle = { id: blog.id, title: blog.title, visits: topVisits };
+        }
+        return { totalVisits, uniqueUsers: uniqueUsers + uniqueIps, avgTimeSeconds: avgTime, totalArticles: blogCount, topArticle };
+    }
+    async getStatsTimeline(months = 12) {
+        const since = new Date();
+        since.setMonth(since.getMonth() - months);
+        const labels = [];
+        const visitData = [];
+        const readerData = [];
+        const engagementData = [];
+        const allSigned = await this.prisma.blogView.findMany({ where: { viewedAt: { gte: since } } });
+        const allUnsigned = await this.prisma.unsignedBlogView.findMany({ where: { viewedAt: { gte: since } } });
+        for (let i = months - 1; i >= 0; i--) {
+            const d = new Date();
+            d.setMonth(d.getMonth() - i);
+            const year = d.getFullYear();
+            const month = d.getMonth();
+            const monthStart = new Date(year, month, 1);
+            const monthEnd = new Date(year, month + 1, 0, 23, 59, 59);
+            labels.push(d.toLocaleString('es-ES', { month: 'short' }));
+            const s = allSigned.filter(v => v.viewedAt >= monthStart && v.viewedAt <= monthEnd);
+            const u = allUnsigned.filter(v => v.viewedAt >= monthStart && v.viewedAt <= monthEnd);
+            const monthViews = [...s, ...u];
+            visitData.push(monthViews.length);
+            const uniqueMonthUsers = new Set(s.map(v => v.UserId)).size + new Set(u.map(v => v.ipAddress)).size;
+            readerData.push(uniqueMonthUsers);
+            const comp = monthViews.filter(v => v.completed).length;
+            engagementData.push(monthViews.length > 0 ? Math.round((comp / monthViews.length) * 100) : 0);
+        }
+        return { labels, visits: visitData, readers: readerData, engagement: engagementData };
+    }
+    async getStatsArticles() {
+        const blogs = await this.prisma.blog.findMany({
+            include: { BlogView: true, UnsignedBlogView: true },
+            orderBy: { createdAt: 'desc' },
+        });
+        return blogs.map(blog => {
+            const signed = blog.BlogView ?? [];
+            const unsigned = blog.UnsignedBlogView ?? [];
+            const allViews = [...signed, ...unsigned];
+            const totalVisits = allViews.length;
+            const avgTime = allViews.length > 0
+                ? Math.round(allViews.reduce((s, v) => s + v.timeSpent, 0) / allViews.length)
+                : 0;
+            const completed = allViews.filter(v => v.completed).length;
+            const engagementRate = totalVisits > 0 ? Math.round((completed / totalVisits) * 100) : 0;
+            return { id: blog.id, title: blog.title, createdAt: blog.createdAt, totalVisits, avgTimeSeconds: avgTime, engagementRate };
+        });
     }
     mapToBlogEntity(data) {
         const blog = new blog_entity_1.Blog();

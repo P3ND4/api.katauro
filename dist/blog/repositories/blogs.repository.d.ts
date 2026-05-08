@@ -36,6 +36,27 @@ export declare class BlogsRepository {
     updateSignedBlogViewMetrics(blogId: string, userId: string, metrics: UpdateBlogMetricsDto): Promise<BlogView>;
     updateUnsignedBlogViewMetrics(viewId: string, metrics: UpdateBlogMetricsDto): Promise<UnsignedBlogView>;
     getBlogAnalytics(blogId: string): Promise<{
+        blog: {
+            id: string;
+            title: string;
+            createdAt: Date;
+            introduction: string;
+            images: {
+                publicId: string | null;
+                id: string;
+                link: string;
+                position: number;
+                blogId: string;
+                alt: string;
+            }[];
+            tags: {
+                name: string;
+                color: string;
+                id: string;
+                BgColor: string;
+                blogId: string | null;
+            }[];
+        } | null;
         totalVisits: number;
         uniqueUsers: number;
         avgTimeSeconds: number;
@@ -43,11 +64,38 @@ export declare class BlogsRepository {
         readPercentage: number;
         bounceRate: number;
         totalShares: number;
+        ctr: number;
+        scrollDepthDistribution: Record<string, number>;
         totalLinkClicks: number;
         totalImageClicks: number;
         totalCtaClicks: number;
     }>;
     deleteTag(id: string): Promise<boolean>;
+    getStatsOverview(): Promise<{
+        totalVisits: number;
+        uniqueUsers: number;
+        avgTimeSeconds: number;
+        totalArticles: number;
+        topArticle: {
+            id: string;
+            title: string;
+            visits: number;
+        } | null;
+    }>;
+    getStatsTimeline(months?: number): Promise<{
+        labels: string[];
+        visits: number[];
+        readers: number[];
+        engagement: number[];
+    }>;
+    getStatsArticles(): Promise<{
+        id: string;
+        title: string;
+        createdAt: Date;
+        totalVisits: number;
+        avgTimeSeconds: number;
+        engagementRate: number;
+    }[]>;
     private mapToBlogEntity;
     private mapToBlogImageEntity;
     private mapToBlogContentEntity;

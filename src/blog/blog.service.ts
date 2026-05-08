@@ -219,4 +219,16 @@ export class BlogService {
   async getAnalytics(blogId: string) {
     return this.blogsRepository.getBlogAnalytics(blogId);
   }
+
+  async getStatsOverview() {
+    return this.blogsRepository.getStatsOverview();
+  }
+
+  async getStatsTimeline(months?: number) {
+    return this.blogsRepository.getStatsTimeline(months);
+  }
+
+  async getStatsArticles() {
+    return this.blogsRepository.getStatsArticles();
+  }
 }

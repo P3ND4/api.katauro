@@ -60,6 +60,21 @@ export class BlogController {
     return this.blogService.getPages({ tags, search });
   }
 
+  @Get('stats/overview')
+  getStatsOverview() {
+    return this.blogService.getStatsOverview();
+  }
+
+  @Get('stats/timeline')
+  getStatsTimeline(@Query('months') months?: string) {
+    return this.blogService.getStatsTimeline(months ? +months : undefined);
+  }
+
+  @Get('stats/articles')
+  getStatsArticles() {
+    return this.blogService.getStatsArticles();
+  }
+
   /**
    * Obtener un blog por ID
    */
