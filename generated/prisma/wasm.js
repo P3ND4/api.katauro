@@ -278,7 +278,30 @@ exports.Prisma.CarouselScalarFieldEnum = {
 exports.Prisma.BlogViewScalarFieldEnum = {
   blogId: 'blogId',
   UserId: 'UserId',
-  viewedAt: 'viewedAt'
+  viewedAt: 'viewedAt',
+  scrollDepth: 'scrollDepth',
+  timeSpent: 'timeSpent',
+  bounced: 'bounced',
+  completed: 'completed',
+  shares: 'shares',
+  linkClicks: 'linkClicks',
+  imageClicks: 'imageClicks',
+  ctaClicks: 'ctaClicks'
+};
+
+exports.Prisma.UnsignedBlogViewScalarFieldEnum = {
+  id: 'id',
+  blogId: 'blogId',
+  ipAddress: 'ipAddress',
+  viewedAt: 'viewedAt',
+  scrollDepth: 'scrollDepth',
+  timeSpent: 'timeSpent',
+  bounced: 'bounced',
+  completed: 'completed',
+  shares: 'shares',
+  linkClicks: 'linkClicks',
+  imageClicks: 'imageClicks',
+  ctaClicks: 'ctaClicks'
 };
 
 exports.Prisma.BlogScalarFieldEnum = {
@@ -467,6 +490,12 @@ exports.Prisma.BlogViewOrderByRelevanceFieldEnum = {
   UserId: 'UserId'
 };
 
+exports.Prisma.UnsignedBlogViewOrderByRelevanceFieldEnum = {
+  id: 'id',
+  blogId: 'blogId',
+  ipAddress: 'ipAddress'
+};
+
 exports.Prisma.BlogOrderByRelevanceFieldEnum = {
   id: 'id',
   title: 'title',
@@ -522,6 +551,7 @@ exports.Prisma.ModelName = {
   PromoBanner: 'PromoBanner',
   Carousel: 'Carousel',
   BlogView: 'BlogView',
+  UnsignedBlogView: 'UnsignedBlogView',
   Blog: 'Blog',
   blogContent: 'blogContent',
   BlogImage: 'BlogImage',

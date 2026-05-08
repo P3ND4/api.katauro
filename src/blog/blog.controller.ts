@@ -8,6 +8,7 @@ import {
   Delete,
   UseGuards,
   Query,
+  Req,
 } from '@nestjs/common';
 import { BlogService } from './blog.service';
 import { CreateBlogDto } from './dto/create-blog.dto';
@@ -20,9 +21,11 @@ import {
   CreateBlogViewDto,
   CreateTagsDto,
   UpdateTagsDto,
+  UpdateBlogMetricsDto,
 } from './dto';
 import { AdminGuard } from 'src/shared/guards/admin/admin.guard';
 import { OwnerGuard } from 'src/shared/guards/ouwner/owner.guard';
+import type { Request } from 'express';
 
 @Controller('blogs')
 export class BlogController {
@@ -173,6 +176,31 @@ export class BlogController {
   @Get('user/:userId/views')
   getUserViews(@Param('userId') userId: string) {
     return this.blogService.getUserViews(userId);
+  }
+
+  /**
+   * Registrar vista de blog (público, soporta usuarios anónimos y autenticados)
+   */
+  @Post(':id/view')
+  recordPublicView(@Param('id') blogId: string, @Body('userId') userId: string | undefined, @Req() req: Request) {
+    const ipAddress = req.ip || req.socket.remoteAddress || '';
+    return this.blogService.recordView(blogId, userId, ipAddress);
+  }
+
+  /**
+   * Actualizar métricas de una vista existente
+   */
+  @Patch(':id/metrics')
+  updateMetrics(@Param('id') blogId: string, @Body() metrics: UpdateBlogMetricsDto) {
+    return this.blogService.updateMetrics(blogId, metrics);
+  }
+
+  /**
+   * Obtener analíticas agregadas de un blog
+   */
+  @Get(':id/analytics')
+  getAnalytics(@Param('id') blogId: string) {
+    return this.blogService.getAnalytics(blogId);
   }
 
   /**

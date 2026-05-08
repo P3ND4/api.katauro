@@ -5,5 +5,7 @@ export { UpdateBlogContentDto } from './update-blog-content.dto';
 export { CreateBlogImageDto } from './create-blog-image.dto';
 export { UpdateBlogImageDto } from './update-blog-image.dto';
 export { CreateBlogViewDto } from './create-blog-view.dto';
+export { CreateUnsignedBlogViewDto } from './create-unsigned-blog-view.dto';
+export { UpdateBlogMetricsDto } from './update-blog-metrics.dto';
 export { CreateTagsDto } from './create-tags.dto';
 export { UpdateTagsDto } from './update-tags.dto';

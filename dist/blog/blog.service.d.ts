@@ -1,8 +1,8 @@
 import { CreateBlogDto } from './dto/create-blog.dto';
 import { UpdateBlogDto } from './dto/update-blog.dto';
 import { BlogsRepository } from './repositories/blogs.repository';
-import { CreateBlogContentDto, UpdateBlogContentDto, CreateBlogImageDto, UpdateBlogImageDto, CreateBlogViewDto, CreateTagsDto, UpdateTagsDto } from './dto';
-import { Blog, BlogContent, BlogImage, BlogView, Tags } from './entities/index';
+import { CreateBlogContentDto, UpdateBlogContentDto, CreateBlogImageDto, UpdateBlogImageDto, CreateBlogViewDto, UpdateBlogMetricsDto, CreateTagsDto, UpdateTagsDto } from './dto';
+import { Blog, BlogContent, BlogImage, BlogView, UnsignedBlogView, Tags } from './entities/index';
 import { CloudinaryService } from 'src/cloudinary/cloudinary.service';
 export declare class BlogService {
     private readonly blogsRepository;
@@ -38,4 +38,21 @@ export declare class BlogService {
     findAllTags(): Promise<Tags[]>;
     updateTag(id: string, updateTagDto: UpdateTagsDto): Promise<Tags>;
     removeTag(id: string): Promise<boolean>;
+    recordView(blogId: string, userId?: string, ipAddress?: string): Promise<{
+        viewToken: string;
+        viewType: 'signed' | 'unsigned';
+    }>;
+    updateMetrics(blogId: string, metrics: UpdateBlogMetricsDto): Promise<BlogView | UnsignedBlogView>;
+    getAnalytics(blogId: string): Promise<{
+        totalVisits: number;
+        uniqueUsers: number;
+        avgTimeSeconds: number;
+        avgScrollDepth: number;
+        readPercentage: number;
+        bounceRate: number;
+        totalShares: number;
+        totalLinkClicks: number;
+        totalImageClicks: number;
+        totalCtaClicks: number;
+    }>;
 }

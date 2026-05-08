@@ -1,7 +1,8 @@
 import { BlogService } from './blog.service';
 import { CreateBlogDto } from './dto/create-blog.dto';
 import { UpdateBlogDto } from './dto/update-blog.dto';
-import { CreateBlogContentDto, UpdateBlogContentDto, CreateBlogImageDto, UpdateBlogImageDto, CreateBlogViewDto, CreateTagsDto, UpdateTagsDto } from './dto';
+import { CreateBlogContentDto, UpdateBlogContentDto, CreateBlogImageDto, UpdateBlogImageDto, CreateBlogViewDto, CreateTagsDto, UpdateTagsDto, UpdateBlogMetricsDto } from './dto';
+import type { Request } from 'express';
 export declare class BlogController {
     private readonly blogService;
     constructor(blogService: BlogService);
@@ -23,6 +24,23 @@ export declare class BlogController {
     recordView(createViewDto: CreateBlogViewDto, userId: string): Promise<import("./entities").BlogView>;
     getBlogViews(blogId: string): Promise<import("./entities").BlogView[]>;
     getUserViews(userId: string): Promise<import("./entities").BlogView[]>;
+    recordPublicView(blogId: string, userId: string | undefined, req: Request): Promise<{
+        viewToken: string;
+        viewType: "signed" | "unsigned";
+    }>;
+    updateMetrics(blogId: string, metrics: UpdateBlogMetricsDto): Promise<import("./entities").BlogView | import("./entities").UnsignedBlogView>;
+    getAnalytics(blogId: string): Promise<{
+        totalVisits: number;
+        uniqueUsers: number;
+        avgTimeSeconds: number;
+        avgScrollDepth: number;
+        readPercentage: number;
+        bounceRate: number;
+        totalShares: number;
+        totalLinkClicks: number;
+        totalImageClicks: number;
+        totalCtaClicks: number;
+    }>;
     createTag(createTagDto: CreateTagsDto): Promise<import("./entities").Tags>;
     findAllTags(): Promise<import("./entities").Tags[]>;
     updateTag(id: string, updateTagDto: UpdateTagsDto): Promise<import("./entities").Tags>;

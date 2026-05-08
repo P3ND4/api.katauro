@@ -1,9 +1,9 @@
 import { Blog } from './blog.entity';
-import { User } from '../../users/entities/user.entity';
 
-export class BlogView {
+export class UnsignedBlogView {
+  id: string;
   blogId: string;
-  UserId: string;
+  ipAddress: string;
   viewedAt: Date;
   scrollDepth: number;
   timeSpent: number;
@@ -13,6 +13,5 @@ export class BlogView {
   linkClicks: number;
   imageClicks: number;
   ctaClicks: number;
-  User?: User;
   Blog?: Blog;
 }

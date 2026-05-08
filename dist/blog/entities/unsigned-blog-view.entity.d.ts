@@ -1,8 +1,8 @@
 import { Blog } from './blog.entity';
-import { User } from '../../users/entities/user.entity';
-export declare class BlogView {
+export declare class UnsignedBlogView {
+    id: string;
     blogId: string;
-    UserId: string;
+    ipAddress: string;
     viewedAt: Date;
     scrollDepth: number;
     timeSpent: number;
@@ -12,6 +12,5 @@ export declare class BlogView {
     linkClicks: number;
     imageClicks: number;
     ctaClicks: number;
-    User?: User;
     Blog?: Blog;
 }

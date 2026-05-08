@@ -71,6 +71,16 @@ let BlogController = class BlogController {
     getUserViews(userId) {
         return this.blogService.getUserViews(userId);
     }
+    recordPublicView(blogId, userId, req) {
+        const ipAddress = req.ip || req.socket.remoteAddress || '';
+        return this.blogService.recordView(blogId, userId, ipAddress);
+    }
+    updateMetrics(blogId, metrics) {
+        return this.blogService.updateMetrics(blogId, metrics);
+    }
+    getAnalytics(blogId) {
+        return this.blogService.getAnalytics(blogId);
+    }
     createTag(createTagDto) {
         return this.blogService.createTag(createTagDto);
     }
@@ -210,6 +220,30 @@ __decorate([
     __metadata("design:paramtypes", [String]),
     __metadata("design:returntype", void 0)
 ], BlogController.prototype, "getUserViews", null);
+__decorate([
+    (0, common_1.Post)(':id/view'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Body)('userId')),
+    __param(2, (0, common_1.Req)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object, Object]),
+    __metadata("design:returntype", void 0)
+], BlogController.prototype, "recordPublicView", null);
+__decorate([
+    (0, common_1.Patch)(':id/metrics'),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, dto_1.UpdateBlogMetricsDto]),
+    __metadata("design:returntype", void 0)
+], BlogController.prototype, "updateMetrics", null);
+__decorate([
+    (0, common_1.Get)(':id/analytics'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", void 0)
+], BlogController.prototype, "getAnalytics", null);
 __decorate([
     (0, common_1.Post)('tags'),
     __param(0, (0, common_1.Body)()),

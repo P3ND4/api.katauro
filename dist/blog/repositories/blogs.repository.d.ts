@@ -1,10 +1,11 @@
 import { PrismaService } from '../../shared/services/prisma/prisma.service';
 import { CreateBlogDto } from '../dto/create-blog.dto';
 import { UpdateBlogDto } from '../dto/update-blog.dto';
-import { CreateBlogContentDto, UpdateBlogContentDto, CreateBlogImageDto, UpdateBlogImageDto, CreateBlogViewDto, CreateTagsDto, UpdateTagsDto } from '../dto';
+import { CreateBlogContentDto, UpdateBlogContentDto, CreateBlogImageDto, UpdateBlogImageDto, CreateBlogViewDto, CreateUnsignedBlogViewDto, UpdateBlogMetricsDto, CreateTagsDto, UpdateTagsDto } from '../dto';
 import { Blog } from '../entities/blog.entity';
 import { BlogImage } from '../entities/blog-image.entity';
 import { BlogView } from '../entities/blog-view.entity';
+import { UnsignedBlogView } from '../entities/unsigned-blog-view.entity';
 import { Tags } from '../entities/tags.entity';
 import { BlogContent } from '../entities/blog-content.entity';
 export declare class BlogsRepository {
@@ -31,10 +32,26 @@ export declare class BlogsRepository {
     createTag(createTagDto: CreateTagsDto): Promise<Tags>;
     findAllTags(): Promise<Tags[]>;
     updateTag(id: string, updateTagDto: UpdateTagsDto): Promise<Tags>;
+    createUnsignedBlogView(createViewDto: CreateUnsignedBlogViewDto): Promise<UnsignedBlogView>;
+    updateSignedBlogViewMetrics(blogId: string, userId: string, metrics: UpdateBlogMetricsDto): Promise<BlogView>;
+    updateUnsignedBlogViewMetrics(viewId: string, metrics: UpdateBlogMetricsDto): Promise<UnsignedBlogView>;
+    getBlogAnalytics(blogId: string): Promise<{
+        totalVisits: number;
+        uniqueUsers: number;
+        avgTimeSeconds: number;
+        avgScrollDepth: number;
+        readPercentage: number;
+        bounceRate: number;
+        totalShares: number;
+        totalLinkClicks: number;
+        totalImageClicks: number;
+        totalCtaClicks: number;
+    }>;
     deleteTag(id: string): Promise<boolean>;
     private mapToBlogEntity;
     private mapToBlogImageEntity;
     private mapToBlogContentEntity;
     private mapToBlogViewEntity;
+    private mapToUnsignedBlogViewEntity;
     private mapToTagsEntity;
 }
