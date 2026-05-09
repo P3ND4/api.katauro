@@ -8,10 +8,12 @@ import {
   CreateBlogImageDto,
   UpdateBlogImageDto,
   CreateBlogViewDto,
+  CreateUnsignedBlogViewDto,
+  UpdateBlogMetricsDto,
   CreateTagsDto,
   UpdateTagsDto,
 } from './dto';
-import { Blog, BlogContent, BlogImage, BlogView, Tags } from './entities/index';
+import { Blog, BlogContent, BlogImage, BlogView, UnsignedBlogView, Tags } from './entities/index';
 import { CloudinaryService } from 'src/cloudinary/cloudinary.service';
 
 @Injectable()
@@ -188,5 +190,45 @@ export class BlogService {
    */
   async removeTag(id: string): Promise<boolean> {
     return await this.blogsRepository.deleteTag(id);
+  }
+
+  async recordView(blogId: string, userId?: string, ipAddress?: string): Promise<{ viewToken: string; viewType: 'signed' | 'unsigned' }> {
+    if (userId) {
+      try {
+        await this.blogsRepository.createBlogView({ blogId, UserId: userId });
+      } catch {
+        // Ya existe la vista del usuario para este blog
+      }
+      return { viewToken: userId, viewType: 'signed' };
+    }
+
+    const view = await this.blogsRepository.createUnsignedBlogView({
+      blogId,
+      ipAddress: ipAddress ?? 'unknown',
+    });
+    return { viewToken: view.id, viewType: 'unsigned' };
+  }
+
+  async updateMetrics(blogId: string, metrics: UpdateBlogMetricsDto) {
+    if (metrics.viewType === 'signed') {
+      return this.blogsRepository.updateSignedBlogViewMetrics(blogId, metrics.viewToken, metrics);
+    }
+    return this.blogsRepository.updateUnsignedBlogViewMetrics(metrics.viewToken, metrics);
+  }
+
+  async getAnalytics(blogId: string) {
+    return this.blogsRepository.getBlogAnalytics(blogId);
+  }
+
+  async getStatsOverview() {
+    return this.blogsRepository.getStatsOverview();
+  }
+
+  async getStatsTimeline(months?: number) {
+    return this.blogsRepository.getStatsTimeline(months);
+  }
+
+  async getStatsArticles() {
+    return this.blogsRepository.getStatsArticles();
   }
 }

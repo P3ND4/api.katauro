@@ -1,9 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.BlogView = void 0;
-class BlogView {
+exports.UnsignedBlogView = void 0;
+class UnsignedBlogView {
+    id;
     blogId;
-    UserId;
+    ipAddress;
     viewedAt;
     scrollDepth;
     timeSpent;
@@ -13,8 +14,7 @@ class BlogView {
     linkClicks;
     imageClicks;
     ctaClicks;
-    User;
     Blog;
 }
-exports.BlogView = BlogView;
-//# sourceMappingURL=blog-view.entity.js.map
+exports.UnsignedBlogView = UnsignedBlogView;
+//# sourceMappingURL=unsigned-blog-view.entity.js.map

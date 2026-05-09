@@ -114,6 +114,11 @@ export type Carousel = $Result.DefaultSelection<Prisma.$CarouselPayload>
  */
 export type BlogView = $Result.DefaultSelection<Prisma.$BlogViewPayload>
 /**
+ * Model UnsignedBlogView
+ * 
+ */
+export type UnsignedBlogView = $Result.DefaultSelection<Prisma.$UnsignedBlogViewPayload>
+/**
  * Model Blog
  * 
  */
@@ -463,6 +468,16 @@ export class PrismaClient<
     * ```
     */
   get blogView(): Prisma.BlogViewDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.unsignedBlogView`: Exposes CRUD operations for the **UnsignedBlogView** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more UnsignedBlogViews
+    * const unsignedBlogViews = await prisma.unsignedBlogView.findMany()
+    * ```
+    */
+  get unsignedBlogView(): Prisma.UnsignedBlogViewDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.blog`: Exposes CRUD operations for the **Blog** model.
@@ -973,6 +988,7 @@ export namespace Prisma {
     PromoBanner: 'PromoBanner',
     Carousel: 'Carousel',
     BlogView: 'BlogView',
+    UnsignedBlogView: 'UnsignedBlogView',
     Blog: 'Blog',
     blogContent: 'blogContent',
     BlogImage: 'BlogImage',
@@ -996,7 +1012,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "finishForProducts" | "finish" | "productForCart" | "genericProduct" | "category" | "details" | "tokenBlacklist" | "color" | "specificProduct" | "model3D" | "images" | "order" | "productForOrder" | "promotion" | "categoryforPromo" | "productForPromotion" | "promoBanner" | "carousel" | "blogView" | "blog" | "blogContent" | "blogImage" | "tags" | "blogTags"
+      modelProps: "user" | "finishForProducts" | "finish" | "productForCart" | "genericProduct" | "category" | "details" | "tokenBlacklist" | "color" | "specificProduct" | "model3D" | "images" | "order" | "productForOrder" | "promotion" | "categoryforPromo" | "productForPromotion" | "promoBanner" | "carousel" | "blogView" | "unsignedBlogView" | "blog" | "blogContent" | "blogImage" | "tags" | "blogTags"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -2320,6 +2336,72 @@ export namespace Prisma {
           }
         }
       }
+      UnsignedBlogView: {
+        payload: Prisma.$UnsignedBlogViewPayload<ExtArgs>
+        fields: Prisma.UnsignedBlogViewFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.UnsignedBlogViewFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UnsignedBlogViewPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.UnsignedBlogViewFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UnsignedBlogViewPayload>
+          }
+          findFirst: {
+            args: Prisma.UnsignedBlogViewFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UnsignedBlogViewPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.UnsignedBlogViewFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UnsignedBlogViewPayload>
+          }
+          findMany: {
+            args: Prisma.UnsignedBlogViewFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UnsignedBlogViewPayload>[]
+          }
+          create: {
+            args: Prisma.UnsignedBlogViewCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UnsignedBlogViewPayload>
+          }
+          createMany: {
+            args: Prisma.UnsignedBlogViewCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.UnsignedBlogViewDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UnsignedBlogViewPayload>
+          }
+          update: {
+            args: Prisma.UnsignedBlogViewUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UnsignedBlogViewPayload>
+          }
+          deleteMany: {
+            args: Prisma.UnsignedBlogViewDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.UnsignedBlogViewUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.UnsignedBlogViewUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$UnsignedBlogViewPayload>
+          }
+          aggregate: {
+            args: Prisma.UnsignedBlogViewAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateUnsignedBlogView>
+          }
+          groupBy: {
+            args: Prisma.UnsignedBlogViewGroupByArgs<ExtArgs>
+            result: $Utils.Optional<UnsignedBlogViewGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.UnsignedBlogViewCountArgs<ExtArgs>
+            result: $Utils.Optional<UnsignedBlogViewCountAggregateOutputType> | number
+          }
+        }
+      }
       Blog: {
         payload: Prisma.$BlogPayload<ExtArgs>
         fields: Prisma.BlogFieldRefs
@@ -2762,6 +2844,7 @@ export namespace Prisma {
     promoBanner?: PromoBannerOmit
     carousel?: CarouselOmit
     blogView?: BlogViewOmit
+    unsignedBlogView?: UnsignedBlogViewOmit
     blog?: BlogOmit
     blogContent?: blogContentOmit
     blogImage?: BlogImageOmit
@@ -3248,6 +3331,7 @@ export namespace Prisma {
     Tags: number
     blogContent: number
     BlogView: number
+    UnsignedBlogView: number
     BlogTags: number
   }
 
@@ -3256,6 +3340,7 @@ export namespace Prisma {
     Tags?: boolean | BlogCountOutputTypeCountTagsArgs
     blogContent?: boolean | BlogCountOutputTypeCountBlogContentArgs
     BlogView?: boolean | BlogCountOutputTypeCountBlogViewArgs
+    UnsignedBlogView?: boolean | BlogCountOutputTypeCountUnsignedBlogViewArgs
     BlogTags?: boolean | BlogCountOutputTypeCountBlogTagsArgs
   }
 
@@ -3296,6 +3381,13 @@ export namespace Prisma {
    */
   export type BlogCountOutputTypeCountBlogViewArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: BlogViewWhereInput
+  }
+
+  /**
+   * BlogCountOutputType without action
+   */
+  export type BlogCountOutputTypeCountUnsignedBlogViewArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UnsignedBlogViewWhereInput
   }
 
   /**
@@ -21873,46 +21965,132 @@ export namespace Prisma {
 
   export type AggregateBlogView = {
     _count: BlogViewCountAggregateOutputType | null
+    _avg: BlogViewAvgAggregateOutputType | null
+    _sum: BlogViewSumAggregateOutputType | null
     _min: BlogViewMinAggregateOutputType | null
     _max: BlogViewMaxAggregateOutputType | null
+  }
+
+  export type BlogViewAvgAggregateOutputType = {
+    scrollDepth: number | null
+    timeSpent: number | null
+    shares: number | null
+    linkClicks: number | null
+    imageClicks: number | null
+    ctaClicks: number | null
+  }
+
+  export type BlogViewSumAggregateOutputType = {
+    scrollDepth: number | null
+    timeSpent: number | null
+    shares: number | null
+    linkClicks: number | null
+    imageClicks: number | null
+    ctaClicks: number | null
   }
 
   export type BlogViewMinAggregateOutputType = {
     blogId: string | null
     UserId: string | null
     viewedAt: Date | null
+    scrollDepth: number | null
+    timeSpent: number | null
+    bounced: boolean | null
+    completed: boolean | null
+    shares: number | null
+    linkClicks: number | null
+    imageClicks: number | null
+    ctaClicks: number | null
   }
 
   export type BlogViewMaxAggregateOutputType = {
     blogId: string | null
     UserId: string | null
     viewedAt: Date | null
+    scrollDepth: number | null
+    timeSpent: number | null
+    bounced: boolean | null
+    completed: boolean | null
+    shares: number | null
+    linkClicks: number | null
+    imageClicks: number | null
+    ctaClicks: number | null
   }
 
   export type BlogViewCountAggregateOutputType = {
     blogId: number
     UserId: number
     viewedAt: number
+    scrollDepth: number
+    timeSpent: number
+    bounced: number
+    completed: number
+    shares: number
+    linkClicks: number
+    imageClicks: number
+    ctaClicks: number
     _all: number
   }
 
+
+  export type BlogViewAvgAggregateInputType = {
+    scrollDepth?: true
+    timeSpent?: true
+    shares?: true
+    linkClicks?: true
+    imageClicks?: true
+    ctaClicks?: true
+  }
+
+  export type BlogViewSumAggregateInputType = {
+    scrollDepth?: true
+    timeSpent?: true
+    shares?: true
+    linkClicks?: true
+    imageClicks?: true
+    ctaClicks?: true
+  }
 
   export type BlogViewMinAggregateInputType = {
     blogId?: true
     UserId?: true
     viewedAt?: true
+    scrollDepth?: true
+    timeSpent?: true
+    bounced?: true
+    completed?: true
+    shares?: true
+    linkClicks?: true
+    imageClicks?: true
+    ctaClicks?: true
   }
 
   export type BlogViewMaxAggregateInputType = {
     blogId?: true
     UserId?: true
     viewedAt?: true
+    scrollDepth?: true
+    timeSpent?: true
+    bounced?: true
+    completed?: true
+    shares?: true
+    linkClicks?: true
+    imageClicks?: true
+    ctaClicks?: true
   }
 
   export type BlogViewCountAggregateInputType = {
     blogId?: true
     UserId?: true
     viewedAt?: true
+    scrollDepth?: true
+    timeSpent?: true
+    bounced?: true
+    completed?: true
+    shares?: true
+    linkClicks?: true
+    imageClicks?: true
+    ctaClicks?: true
     _all?: true
   }
 
@@ -21954,6 +22132,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: BlogViewAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: BlogViewSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: BlogViewMinAggregateInputType
@@ -21984,6 +22174,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: BlogViewCountAggregateInputType | true
+    _avg?: BlogViewAvgAggregateInputType
+    _sum?: BlogViewSumAggregateInputType
     _min?: BlogViewMinAggregateInputType
     _max?: BlogViewMaxAggregateInputType
   }
@@ -21992,7 +22184,17 @@ export namespace Prisma {
     blogId: string
     UserId: string
     viewedAt: Date
+    scrollDepth: number
+    timeSpent: number
+    bounced: boolean
+    completed: boolean
+    shares: number
+    linkClicks: number
+    imageClicks: number
+    ctaClicks: number
     _count: BlogViewCountAggregateOutputType | null
+    _avg: BlogViewAvgAggregateOutputType | null
+    _sum: BlogViewSumAggregateOutputType | null
     _min: BlogViewMinAggregateOutputType | null
     _max: BlogViewMaxAggregateOutputType | null
   }
@@ -22015,6 +22217,14 @@ export namespace Prisma {
     blogId?: boolean
     UserId?: boolean
     viewedAt?: boolean
+    scrollDepth?: boolean
+    timeSpent?: boolean
+    bounced?: boolean
+    completed?: boolean
+    shares?: boolean
+    linkClicks?: boolean
+    imageClicks?: boolean
+    ctaClicks?: boolean
     User?: boolean | UserDefaultArgs<ExtArgs>
     Blog?: boolean | BlogDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["blogView"]>
@@ -22025,9 +22235,17 @@ export namespace Prisma {
     blogId?: boolean
     UserId?: boolean
     viewedAt?: boolean
+    scrollDepth?: boolean
+    timeSpent?: boolean
+    bounced?: boolean
+    completed?: boolean
+    shares?: boolean
+    linkClicks?: boolean
+    imageClicks?: boolean
+    ctaClicks?: boolean
   }
 
-  export type BlogViewOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"blogId" | "UserId" | "viewedAt", ExtArgs["result"]["blogView"]>
+  export type BlogViewOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"blogId" | "UserId" | "viewedAt" | "scrollDepth" | "timeSpent" | "bounced" | "completed" | "shares" | "linkClicks" | "imageClicks" | "ctaClicks", ExtArgs["result"]["blogView"]>
   export type BlogViewInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     User?: boolean | UserDefaultArgs<ExtArgs>
     Blog?: boolean | BlogDefaultArgs<ExtArgs>
@@ -22043,6 +22261,14 @@ export namespace Prisma {
       blogId: string
       UserId: string
       viewedAt: Date
+      scrollDepth: number
+      timeSpent: number
+      bounced: boolean
+      completed: boolean
+      shares: number
+      linkClicks: number
+      imageClicks: number
+      ctaClicks: number
     }, ExtArgs["result"]["blogView"]>
     composites: {}
   }
@@ -22417,6 +22643,14 @@ export namespace Prisma {
     readonly blogId: FieldRef<"BlogView", 'String'>
     readonly UserId: FieldRef<"BlogView", 'String'>
     readonly viewedAt: FieldRef<"BlogView", 'DateTime'>
+    readonly scrollDepth: FieldRef<"BlogView", 'Int'>
+    readonly timeSpent: FieldRef<"BlogView", 'Int'>
+    readonly bounced: FieldRef<"BlogView", 'Boolean'>
+    readonly completed: FieldRef<"BlogView", 'Boolean'>
+    readonly shares: FieldRef<"BlogView", 'Int'>
+    readonly linkClicks: FieldRef<"BlogView", 'Int'>
+    readonly imageClicks: FieldRef<"BlogView", 'Int'>
+    readonly ctaClicks: FieldRef<"BlogView", 'Int'>
   }
     
 
@@ -22779,6 +23013,1066 @@ export namespace Prisma {
 
 
   /**
+   * Model UnsignedBlogView
+   */
+
+  export type AggregateUnsignedBlogView = {
+    _count: UnsignedBlogViewCountAggregateOutputType | null
+    _avg: UnsignedBlogViewAvgAggregateOutputType | null
+    _sum: UnsignedBlogViewSumAggregateOutputType | null
+    _min: UnsignedBlogViewMinAggregateOutputType | null
+    _max: UnsignedBlogViewMaxAggregateOutputType | null
+  }
+
+  export type UnsignedBlogViewAvgAggregateOutputType = {
+    scrollDepth: number | null
+    timeSpent: number | null
+    shares: number | null
+    linkClicks: number | null
+    imageClicks: number | null
+    ctaClicks: number | null
+  }
+
+  export type UnsignedBlogViewSumAggregateOutputType = {
+    scrollDepth: number | null
+    timeSpent: number | null
+    shares: number | null
+    linkClicks: number | null
+    imageClicks: number | null
+    ctaClicks: number | null
+  }
+
+  export type UnsignedBlogViewMinAggregateOutputType = {
+    id: string | null
+    blogId: string | null
+    ipAddress: string | null
+    viewedAt: Date | null
+    scrollDepth: number | null
+    timeSpent: number | null
+    bounced: boolean | null
+    completed: boolean | null
+    shares: number | null
+    linkClicks: number | null
+    imageClicks: number | null
+    ctaClicks: number | null
+  }
+
+  export type UnsignedBlogViewMaxAggregateOutputType = {
+    id: string | null
+    blogId: string | null
+    ipAddress: string | null
+    viewedAt: Date | null
+    scrollDepth: number | null
+    timeSpent: number | null
+    bounced: boolean | null
+    completed: boolean | null
+    shares: number | null
+    linkClicks: number | null
+    imageClicks: number | null
+    ctaClicks: number | null
+  }
+
+  export type UnsignedBlogViewCountAggregateOutputType = {
+    id: number
+    blogId: number
+    ipAddress: number
+    viewedAt: number
+    scrollDepth: number
+    timeSpent: number
+    bounced: number
+    completed: number
+    shares: number
+    linkClicks: number
+    imageClicks: number
+    ctaClicks: number
+    _all: number
+  }
+
+
+  export type UnsignedBlogViewAvgAggregateInputType = {
+    scrollDepth?: true
+    timeSpent?: true
+    shares?: true
+    linkClicks?: true
+    imageClicks?: true
+    ctaClicks?: true
+  }
+
+  export type UnsignedBlogViewSumAggregateInputType = {
+    scrollDepth?: true
+    timeSpent?: true
+    shares?: true
+    linkClicks?: true
+    imageClicks?: true
+    ctaClicks?: true
+  }
+
+  export type UnsignedBlogViewMinAggregateInputType = {
+    id?: true
+    blogId?: true
+    ipAddress?: true
+    viewedAt?: true
+    scrollDepth?: true
+    timeSpent?: true
+    bounced?: true
+    completed?: true
+    shares?: true
+    linkClicks?: true
+    imageClicks?: true
+    ctaClicks?: true
+  }
+
+  export type UnsignedBlogViewMaxAggregateInputType = {
+    id?: true
+    blogId?: true
+    ipAddress?: true
+    viewedAt?: true
+    scrollDepth?: true
+    timeSpent?: true
+    bounced?: true
+    completed?: true
+    shares?: true
+    linkClicks?: true
+    imageClicks?: true
+    ctaClicks?: true
+  }
+
+  export type UnsignedBlogViewCountAggregateInputType = {
+    id?: true
+    blogId?: true
+    ipAddress?: true
+    viewedAt?: true
+    scrollDepth?: true
+    timeSpent?: true
+    bounced?: true
+    completed?: true
+    shares?: true
+    linkClicks?: true
+    imageClicks?: true
+    ctaClicks?: true
+    _all?: true
+  }
+
+  export type UnsignedBlogViewAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which UnsignedBlogView to aggregate.
+     */
+    where?: UnsignedBlogViewWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UnsignedBlogViews to fetch.
+     */
+    orderBy?: UnsignedBlogViewOrderByWithRelationInput | UnsignedBlogViewOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: UnsignedBlogViewWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UnsignedBlogViews from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UnsignedBlogViews.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned UnsignedBlogViews
+    **/
+    _count?: true | UnsignedBlogViewCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: UnsignedBlogViewAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: UnsignedBlogViewSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: UnsignedBlogViewMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: UnsignedBlogViewMaxAggregateInputType
+  }
+
+  export type GetUnsignedBlogViewAggregateType<T extends UnsignedBlogViewAggregateArgs> = {
+        [P in keyof T & keyof AggregateUnsignedBlogView]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateUnsignedBlogView[P]>
+      : GetScalarType<T[P], AggregateUnsignedBlogView[P]>
+  }
+
+
+
+
+  export type UnsignedBlogViewGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: UnsignedBlogViewWhereInput
+    orderBy?: UnsignedBlogViewOrderByWithAggregationInput | UnsignedBlogViewOrderByWithAggregationInput[]
+    by: UnsignedBlogViewScalarFieldEnum[] | UnsignedBlogViewScalarFieldEnum
+    having?: UnsignedBlogViewScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: UnsignedBlogViewCountAggregateInputType | true
+    _avg?: UnsignedBlogViewAvgAggregateInputType
+    _sum?: UnsignedBlogViewSumAggregateInputType
+    _min?: UnsignedBlogViewMinAggregateInputType
+    _max?: UnsignedBlogViewMaxAggregateInputType
+  }
+
+  export type UnsignedBlogViewGroupByOutputType = {
+    id: string
+    blogId: string
+    ipAddress: string
+    viewedAt: Date
+    scrollDepth: number
+    timeSpent: number
+    bounced: boolean
+    completed: boolean
+    shares: number
+    linkClicks: number
+    imageClicks: number
+    ctaClicks: number
+    _count: UnsignedBlogViewCountAggregateOutputType | null
+    _avg: UnsignedBlogViewAvgAggregateOutputType | null
+    _sum: UnsignedBlogViewSumAggregateOutputType | null
+    _min: UnsignedBlogViewMinAggregateOutputType | null
+    _max: UnsignedBlogViewMaxAggregateOutputType | null
+  }
+
+  type GetUnsignedBlogViewGroupByPayload<T extends UnsignedBlogViewGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<UnsignedBlogViewGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof UnsignedBlogViewGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], UnsignedBlogViewGroupByOutputType[P]>
+            : GetScalarType<T[P], UnsignedBlogViewGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type UnsignedBlogViewSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    blogId?: boolean
+    ipAddress?: boolean
+    viewedAt?: boolean
+    scrollDepth?: boolean
+    timeSpent?: boolean
+    bounced?: boolean
+    completed?: boolean
+    shares?: boolean
+    linkClicks?: boolean
+    imageClicks?: boolean
+    ctaClicks?: boolean
+    Blog?: boolean | BlogDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["unsignedBlogView"]>
+
+
+
+  export type UnsignedBlogViewSelectScalar = {
+    id?: boolean
+    blogId?: boolean
+    ipAddress?: boolean
+    viewedAt?: boolean
+    scrollDepth?: boolean
+    timeSpent?: boolean
+    bounced?: boolean
+    completed?: boolean
+    shares?: boolean
+    linkClicks?: boolean
+    imageClicks?: boolean
+    ctaClicks?: boolean
+  }
+
+  export type UnsignedBlogViewOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "blogId" | "ipAddress" | "viewedAt" | "scrollDepth" | "timeSpent" | "bounced" | "completed" | "shares" | "linkClicks" | "imageClicks" | "ctaClicks", ExtArgs["result"]["unsignedBlogView"]>
+  export type UnsignedBlogViewInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    Blog?: boolean | BlogDefaultArgs<ExtArgs>
+  }
+
+  export type $UnsignedBlogViewPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "UnsignedBlogView"
+    objects: {
+      Blog: Prisma.$BlogPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      blogId: string
+      ipAddress: string
+      viewedAt: Date
+      scrollDepth: number
+      timeSpent: number
+      bounced: boolean
+      completed: boolean
+      shares: number
+      linkClicks: number
+      imageClicks: number
+      ctaClicks: number
+    }, ExtArgs["result"]["unsignedBlogView"]>
+    composites: {}
+  }
+
+  type UnsignedBlogViewGetPayload<S extends boolean | null | undefined | UnsignedBlogViewDefaultArgs> = $Result.GetResult<Prisma.$UnsignedBlogViewPayload, S>
+
+  type UnsignedBlogViewCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<UnsignedBlogViewFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: UnsignedBlogViewCountAggregateInputType | true
+    }
+
+  export interface UnsignedBlogViewDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['UnsignedBlogView'], meta: { name: 'UnsignedBlogView' } }
+    /**
+     * Find zero or one UnsignedBlogView that matches the filter.
+     * @param {UnsignedBlogViewFindUniqueArgs} args - Arguments to find a UnsignedBlogView
+     * @example
+     * // Get one UnsignedBlogView
+     * const unsignedBlogView = await prisma.unsignedBlogView.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends UnsignedBlogViewFindUniqueArgs>(args: SelectSubset<T, UnsignedBlogViewFindUniqueArgs<ExtArgs>>): Prisma__UnsignedBlogViewClient<$Result.GetResult<Prisma.$UnsignedBlogViewPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one UnsignedBlogView that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {UnsignedBlogViewFindUniqueOrThrowArgs} args - Arguments to find a UnsignedBlogView
+     * @example
+     * // Get one UnsignedBlogView
+     * const unsignedBlogView = await prisma.unsignedBlogView.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends UnsignedBlogViewFindUniqueOrThrowArgs>(args: SelectSubset<T, UnsignedBlogViewFindUniqueOrThrowArgs<ExtArgs>>): Prisma__UnsignedBlogViewClient<$Result.GetResult<Prisma.$UnsignedBlogViewPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first UnsignedBlogView that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UnsignedBlogViewFindFirstArgs} args - Arguments to find a UnsignedBlogView
+     * @example
+     * // Get one UnsignedBlogView
+     * const unsignedBlogView = await prisma.unsignedBlogView.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends UnsignedBlogViewFindFirstArgs>(args?: SelectSubset<T, UnsignedBlogViewFindFirstArgs<ExtArgs>>): Prisma__UnsignedBlogViewClient<$Result.GetResult<Prisma.$UnsignedBlogViewPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first UnsignedBlogView that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UnsignedBlogViewFindFirstOrThrowArgs} args - Arguments to find a UnsignedBlogView
+     * @example
+     * // Get one UnsignedBlogView
+     * const unsignedBlogView = await prisma.unsignedBlogView.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends UnsignedBlogViewFindFirstOrThrowArgs>(args?: SelectSubset<T, UnsignedBlogViewFindFirstOrThrowArgs<ExtArgs>>): Prisma__UnsignedBlogViewClient<$Result.GetResult<Prisma.$UnsignedBlogViewPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more UnsignedBlogViews that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UnsignedBlogViewFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all UnsignedBlogViews
+     * const unsignedBlogViews = await prisma.unsignedBlogView.findMany()
+     * 
+     * // Get first 10 UnsignedBlogViews
+     * const unsignedBlogViews = await prisma.unsignedBlogView.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const unsignedBlogViewWithIdOnly = await prisma.unsignedBlogView.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends UnsignedBlogViewFindManyArgs>(args?: SelectSubset<T, UnsignedBlogViewFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UnsignedBlogViewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a UnsignedBlogView.
+     * @param {UnsignedBlogViewCreateArgs} args - Arguments to create a UnsignedBlogView.
+     * @example
+     * // Create one UnsignedBlogView
+     * const UnsignedBlogView = await prisma.unsignedBlogView.create({
+     *   data: {
+     *     // ... data to create a UnsignedBlogView
+     *   }
+     * })
+     * 
+     */
+    create<T extends UnsignedBlogViewCreateArgs>(args: SelectSubset<T, UnsignedBlogViewCreateArgs<ExtArgs>>): Prisma__UnsignedBlogViewClient<$Result.GetResult<Prisma.$UnsignedBlogViewPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many UnsignedBlogViews.
+     * @param {UnsignedBlogViewCreateManyArgs} args - Arguments to create many UnsignedBlogViews.
+     * @example
+     * // Create many UnsignedBlogViews
+     * const unsignedBlogView = await prisma.unsignedBlogView.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends UnsignedBlogViewCreateManyArgs>(args?: SelectSubset<T, UnsignedBlogViewCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a UnsignedBlogView.
+     * @param {UnsignedBlogViewDeleteArgs} args - Arguments to delete one UnsignedBlogView.
+     * @example
+     * // Delete one UnsignedBlogView
+     * const UnsignedBlogView = await prisma.unsignedBlogView.delete({
+     *   where: {
+     *     // ... filter to delete one UnsignedBlogView
+     *   }
+     * })
+     * 
+     */
+    delete<T extends UnsignedBlogViewDeleteArgs>(args: SelectSubset<T, UnsignedBlogViewDeleteArgs<ExtArgs>>): Prisma__UnsignedBlogViewClient<$Result.GetResult<Prisma.$UnsignedBlogViewPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one UnsignedBlogView.
+     * @param {UnsignedBlogViewUpdateArgs} args - Arguments to update one UnsignedBlogView.
+     * @example
+     * // Update one UnsignedBlogView
+     * const unsignedBlogView = await prisma.unsignedBlogView.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends UnsignedBlogViewUpdateArgs>(args: SelectSubset<T, UnsignedBlogViewUpdateArgs<ExtArgs>>): Prisma__UnsignedBlogViewClient<$Result.GetResult<Prisma.$UnsignedBlogViewPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more UnsignedBlogViews.
+     * @param {UnsignedBlogViewDeleteManyArgs} args - Arguments to filter UnsignedBlogViews to delete.
+     * @example
+     * // Delete a few UnsignedBlogViews
+     * const { count } = await prisma.unsignedBlogView.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends UnsignedBlogViewDeleteManyArgs>(args?: SelectSubset<T, UnsignedBlogViewDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more UnsignedBlogViews.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UnsignedBlogViewUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many UnsignedBlogViews
+     * const unsignedBlogView = await prisma.unsignedBlogView.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends UnsignedBlogViewUpdateManyArgs>(args: SelectSubset<T, UnsignedBlogViewUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one UnsignedBlogView.
+     * @param {UnsignedBlogViewUpsertArgs} args - Arguments to update or create a UnsignedBlogView.
+     * @example
+     * // Update or create a UnsignedBlogView
+     * const unsignedBlogView = await prisma.unsignedBlogView.upsert({
+     *   create: {
+     *     // ... data to create a UnsignedBlogView
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the UnsignedBlogView we want to update
+     *   }
+     * })
+     */
+    upsert<T extends UnsignedBlogViewUpsertArgs>(args: SelectSubset<T, UnsignedBlogViewUpsertArgs<ExtArgs>>): Prisma__UnsignedBlogViewClient<$Result.GetResult<Prisma.$UnsignedBlogViewPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of UnsignedBlogViews.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UnsignedBlogViewCountArgs} args - Arguments to filter UnsignedBlogViews to count.
+     * @example
+     * // Count the number of UnsignedBlogViews
+     * const count = await prisma.unsignedBlogView.count({
+     *   where: {
+     *     // ... the filter for the UnsignedBlogViews we want to count
+     *   }
+     * })
+    **/
+    count<T extends UnsignedBlogViewCountArgs>(
+      args?: Subset<T, UnsignedBlogViewCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], UnsignedBlogViewCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a UnsignedBlogView.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UnsignedBlogViewAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends UnsignedBlogViewAggregateArgs>(args: Subset<T, UnsignedBlogViewAggregateArgs>): Prisma.PrismaPromise<GetUnsignedBlogViewAggregateType<T>>
+
+    /**
+     * Group by UnsignedBlogView.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {UnsignedBlogViewGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends UnsignedBlogViewGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: UnsignedBlogViewGroupByArgs['orderBy'] }
+        : { orderBy?: UnsignedBlogViewGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, UnsignedBlogViewGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUnsignedBlogViewGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the UnsignedBlogView model
+   */
+  readonly fields: UnsignedBlogViewFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for UnsignedBlogView.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__UnsignedBlogViewClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    Blog<T extends BlogDefaultArgs<ExtArgs> = {}>(args?: Subset<T, BlogDefaultArgs<ExtArgs>>): Prisma__BlogClient<$Result.GetResult<Prisma.$BlogPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the UnsignedBlogView model
+   */
+  interface UnsignedBlogViewFieldRefs {
+    readonly id: FieldRef<"UnsignedBlogView", 'String'>
+    readonly blogId: FieldRef<"UnsignedBlogView", 'String'>
+    readonly ipAddress: FieldRef<"UnsignedBlogView", 'String'>
+    readonly viewedAt: FieldRef<"UnsignedBlogView", 'DateTime'>
+    readonly scrollDepth: FieldRef<"UnsignedBlogView", 'Int'>
+    readonly timeSpent: FieldRef<"UnsignedBlogView", 'Int'>
+    readonly bounced: FieldRef<"UnsignedBlogView", 'Boolean'>
+    readonly completed: FieldRef<"UnsignedBlogView", 'Boolean'>
+    readonly shares: FieldRef<"UnsignedBlogView", 'Int'>
+    readonly linkClicks: FieldRef<"UnsignedBlogView", 'Int'>
+    readonly imageClicks: FieldRef<"UnsignedBlogView", 'Int'>
+    readonly ctaClicks: FieldRef<"UnsignedBlogView", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * UnsignedBlogView findUnique
+   */
+  export type UnsignedBlogViewFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UnsignedBlogView
+     */
+    select?: UnsignedBlogViewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UnsignedBlogView
+     */
+    omit?: UnsignedBlogViewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UnsignedBlogViewInclude<ExtArgs> | null
+    /**
+     * Filter, which UnsignedBlogView to fetch.
+     */
+    where: UnsignedBlogViewWhereUniqueInput
+  }
+
+  /**
+   * UnsignedBlogView findUniqueOrThrow
+   */
+  export type UnsignedBlogViewFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UnsignedBlogView
+     */
+    select?: UnsignedBlogViewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UnsignedBlogView
+     */
+    omit?: UnsignedBlogViewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UnsignedBlogViewInclude<ExtArgs> | null
+    /**
+     * Filter, which UnsignedBlogView to fetch.
+     */
+    where: UnsignedBlogViewWhereUniqueInput
+  }
+
+  /**
+   * UnsignedBlogView findFirst
+   */
+  export type UnsignedBlogViewFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UnsignedBlogView
+     */
+    select?: UnsignedBlogViewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UnsignedBlogView
+     */
+    omit?: UnsignedBlogViewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UnsignedBlogViewInclude<ExtArgs> | null
+    /**
+     * Filter, which UnsignedBlogView to fetch.
+     */
+    where?: UnsignedBlogViewWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UnsignedBlogViews to fetch.
+     */
+    orderBy?: UnsignedBlogViewOrderByWithRelationInput | UnsignedBlogViewOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for UnsignedBlogViews.
+     */
+    cursor?: UnsignedBlogViewWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UnsignedBlogViews from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UnsignedBlogViews.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of UnsignedBlogViews.
+     */
+    distinct?: UnsignedBlogViewScalarFieldEnum | UnsignedBlogViewScalarFieldEnum[]
+  }
+
+  /**
+   * UnsignedBlogView findFirstOrThrow
+   */
+  export type UnsignedBlogViewFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UnsignedBlogView
+     */
+    select?: UnsignedBlogViewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UnsignedBlogView
+     */
+    omit?: UnsignedBlogViewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UnsignedBlogViewInclude<ExtArgs> | null
+    /**
+     * Filter, which UnsignedBlogView to fetch.
+     */
+    where?: UnsignedBlogViewWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UnsignedBlogViews to fetch.
+     */
+    orderBy?: UnsignedBlogViewOrderByWithRelationInput | UnsignedBlogViewOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for UnsignedBlogViews.
+     */
+    cursor?: UnsignedBlogViewWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UnsignedBlogViews from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UnsignedBlogViews.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of UnsignedBlogViews.
+     */
+    distinct?: UnsignedBlogViewScalarFieldEnum | UnsignedBlogViewScalarFieldEnum[]
+  }
+
+  /**
+   * UnsignedBlogView findMany
+   */
+  export type UnsignedBlogViewFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UnsignedBlogView
+     */
+    select?: UnsignedBlogViewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UnsignedBlogView
+     */
+    omit?: UnsignedBlogViewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UnsignedBlogViewInclude<ExtArgs> | null
+    /**
+     * Filter, which UnsignedBlogViews to fetch.
+     */
+    where?: UnsignedBlogViewWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of UnsignedBlogViews to fetch.
+     */
+    orderBy?: UnsignedBlogViewOrderByWithRelationInput | UnsignedBlogViewOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing UnsignedBlogViews.
+     */
+    cursor?: UnsignedBlogViewWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` UnsignedBlogViews from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` UnsignedBlogViews.
+     */
+    skip?: number
+    distinct?: UnsignedBlogViewScalarFieldEnum | UnsignedBlogViewScalarFieldEnum[]
+  }
+
+  /**
+   * UnsignedBlogView create
+   */
+  export type UnsignedBlogViewCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UnsignedBlogView
+     */
+    select?: UnsignedBlogViewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UnsignedBlogView
+     */
+    omit?: UnsignedBlogViewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UnsignedBlogViewInclude<ExtArgs> | null
+    /**
+     * The data needed to create a UnsignedBlogView.
+     */
+    data: XOR<UnsignedBlogViewCreateInput, UnsignedBlogViewUncheckedCreateInput>
+  }
+
+  /**
+   * UnsignedBlogView createMany
+   */
+  export type UnsignedBlogViewCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many UnsignedBlogViews.
+     */
+    data: UnsignedBlogViewCreateManyInput | UnsignedBlogViewCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * UnsignedBlogView update
+   */
+  export type UnsignedBlogViewUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UnsignedBlogView
+     */
+    select?: UnsignedBlogViewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UnsignedBlogView
+     */
+    omit?: UnsignedBlogViewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UnsignedBlogViewInclude<ExtArgs> | null
+    /**
+     * The data needed to update a UnsignedBlogView.
+     */
+    data: XOR<UnsignedBlogViewUpdateInput, UnsignedBlogViewUncheckedUpdateInput>
+    /**
+     * Choose, which UnsignedBlogView to update.
+     */
+    where: UnsignedBlogViewWhereUniqueInput
+  }
+
+  /**
+   * UnsignedBlogView updateMany
+   */
+  export type UnsignedBlogViewUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update UnsignedBlogViews.
+     */
+    data: XOR<UnsignedBlogViewUpdateManyMutationInput, UnsignedBlogViewUncheckedUpdateManyInput>
+    /**
+     * Filter which UnsignedBlogViews to update
+     */
+    where?: UnsignedBlogViewWhereInput
+    /**
+     * Limit how many UnsignedBlogViews to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * UnsignedBlogView upsert
+   */
+  export type UnsignedBlogViewUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UnsignedBlogView
+     */
+    select?: UnsignedBlogViewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UnsignedBlogView
+     */
+    omit?: UnsignedBlogViewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UnsignedBlogViewInclude<ExtArgs> | null
+    /**
+     * The filter to search for the UnsignedBlogView to update in case it exists.
+     */
+    where: UnsignedBlogViewWhereUniqueInput
+    /**
+     * In case the UnsignedBlogView found by the `where` argument doesn't exist, create a new UnsignedBlogView with this data.
+     */
+    create: XOR<UnsignedBlogViewCreateInput, UnsignedBlogViewUncheckedCreateInput>
+    /**
+     * In case the UnsignedBlogView was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<UnsignedBlogViewUpdateInput, UnsignedBlogViewUncheckedUpdateInput>
+  }
+
+  /**
+   * UnsignedBlogView delete
+   */
+  export type UnsignedBlogViewDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UnsignedBlogView
+     */
+    select?: UnsignedBlogViewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UnsignedBlogView
+     */
+    omit?: UnsignedBlogViewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UnsignedBlogViewInclude<ExtArgs> | null
+    /**
+     * Filter which UnsignedBlogView to delete.
+     */
+    where: UnsignedBlogViewWhereUniqueInput
+  }
+
+  /**
+   * UnsignedBlogView deleteMany
+   */
+  export type UnsignedBlogViewDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which UnsignedBlogViews to delete
+     */
+    where?: UnsignedBlogViewWhereInput
+    /**
+     * Limit how many UnsignedBlogViews to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * UnsignedBlogView without action
+   */
+  export type UnsignedBlogViewDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UnsignedBlogView
+     */
+    select?: UnsignedBlogViewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UnsignedBlogView
+     */
+    omit?: UnsignedBlogViewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UnsignedBlogViewInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Model Blog
    */
 
@@ -22946,6 +24240,7 @@ export namespace Prisma {
     Tags?: boolean | Blog$TagsArgs<ExtArgs>
     blogContent?: boolean | Blog$blogContentArgs<ExtArgs>
     BlogView?: boolean | Blog$BlogViewArgs<ExtArgs>
+    UnsignedBlogView?: boolean | Blog$UnsignedBlogViewArgs<ExtArgs>
     BlogTags?: boolean | Blog$BlogTagsArgs<ExtArgs>
     _count?: boolean | BlogCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["blog"]>
@@ -22966,6 +24261,7 @@ export namespace Prisma {
     Tags?: boolean | Blog$TagsArgs<ExtArgs>
     blogContent?: boolean | Blog$blogContentArgs<ExtArgs>
     BlogView?: boolean | Blog$BlogViewArgs<ExtArgs>
+    UnsignedBlogView?: boolean | Blog$UnsignedBlogViewArgs<ExtArgs>
     BlogTags?: boolean | Blog$BlogTagsArgs<ExtArgs>
     _count?: boolean | BlogCountOutputTypeDefaultArgs<ExtArgs>
   }
@@ -22977,6 +24273,7 @@ export namespace Prisma {
       Tags: Prisma.$TagsPayload<ExtArgs>[]
       blogContent: Prisma.$blogContentPayload<ExtArgs>[]
       BlogView: Prisma.$BlogViewPayload<ExtArgs>[]
+      UnsignedBlogView: Prisma.$UnsignedBlogViewPayload<ExtArgs>[]
       BlogTags: Prisma.$BlogTagsPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -23329,6 +24626,7 @@ export namespace Prisma {
     Tags<T extends Blog$TagsArgs<ExtArgs> = {}>(args?: Subset<T, Blog$TagsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TagsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     blogContent<T extends Blog$blogContentArgs<ExtArgs> = {}>(args?: Subset<T, Blog$blogContentArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$blogContentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     BlogView<T extends Blog$BlogViewArgs<ExtArgs> = {}>(args?: Subset<T, Blog$BlogViewArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BlogViewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    UnsignedBlogView<T extends Blog$UnsignedBlogViewArgs<ExtArgs> = {}>(args?: Subset<T, Blog$UnsignedBlogViewArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UnsignedBlogViewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     BlogTags<T extends Blog$BlogTagsArgs<ExtArgs> = {}>(args?: Subset<T, Blog$BlogTagsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$BlogTagsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -23800,6 +25098,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: BlogViewScalarFieldEnum | BlogViewScalarFieldEnum[]
+  }
+
+  /**
+   * Blog.UnsignedBlogView
+   */
+  export type Blog$UnsignedBlogViewArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UnsignedBlogView
+     */
+    select?: UnsignedBlogViewSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the UnsignedBlogView
+     */
+    omit?: UnsignedBlogViewOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UnsignedBlogViewInclude<ExtArgs> | null
+    where?: UnsignedBlogViewWhereInput
+    orderBy?: UnsignedBlogViewOrderByWithRelationInput | UnsignedBlogViewOrderByWithRelationInput[]
+    cursor?: UnsignedBlogViewWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: UnsignedBlogViewScalarFieldEnum | UnsignedBlogViewScalarFieldEnum[]
   }
 
   /**
@@ -27878,10 +29200,36 @@ export namespace Prisma {
   export const BlogViewScalarFieldEnum: {
     blogId: 'blogId',
     UserId: 'UserId',
-    viewedAt: 'viewedAt'
+    viewedAt: 'viewedAt',
+    scrollDepth: 'scrollDepth',
+    timeSpent: 'timeSpent',
+    bounced: 'bounced',
+    completed: 'completed',
+    shares: 'shares',
+    linkClicks: 'linkClicks',
+    imageClicks: 'imageClicks',
+    ctaClicks: 'ctaClicks'
   };
 
   export type BlogViewScalarFieldEnum = (typeof BlogViewScalarFieldEnum)[keyof typeof BlogViewScalarFieldEnum]
+
+
+  export const UnsignedBlogViewScalarFieldEnum: {
+    id: 'id',
+    blogId: 'blogId',
+    ipAddress: 'ipAddress',
+    viewedAt: 'viewedAt',
+    scrollDepth: 'scrollDepth',
+    timeSpent: 'timeSpent',
+    bounced: 'bounced',
+    completed: 'completed',
+    shares: 'shares',
+    linkClicks: 'linkClicks',
+    imageClicks: 'imageClicks',
+    ctaClicks: 'ctaClicks'
+  };
+
+  export type UnsignedBlogViewScalarFieldEnum = (typeof UnsignedBlogViewScalarFieldEnum)[keyof typeof UnsignedBlogViewScalarFieldEnum]
 
 
   export const BlogScalarFieldEnum: {
@@ -28149,6 +29497,15 @@ export namespace Prisma {
   };
 
   export type BlogViewOrderByRelevanceFieldEnum = (typeof BlogViewOrderByRelevanceFieldEnum)[keyof typeof BlogViewOrderByRelevanceFieldEnum]
+
+
+  export const UnsignedBlogViewOrderByRelevanceFieldEnum: {
+    id: 'id',
+    blogId: 'blogId',
+    ipAddress: 'ipAddress'
+  };
+
+  export type UnsignedBlogViewOrderByRelevanceFieldEnum = (typeof UnsignedBlogViewOrderByRelevanceFieldEnum)[keyof typeof UnsignedBlogViewOrderByRelevanceFieldEnum]
 
 
   export const BlogOrderByRelevanceFieldEnum: {
@@ -29409,6 +30766,14 @@ export namespace Prisma {
     blogId?: StringFilter<"BlogView"> | string
     UserId?: StringFilter<"BlogView"> | string
     viewedAt?: DateTimeFilter<"BlogView"> | Date | string
+    scrollDepth?: IntFilter<"BlogView"> | number
+    timeSpent?: IntFilter<"BlogView"> | number
+    bounced?: BoolFilter<"BlogView"> | boolean
+    completed?: BoolFilter<"BlogView"> | boolean
+    shares?: IntFilter<"BlogView"> | number
+    linkClicks?: IntFilter<"BlogView"> | number
+    imageClicks?: IntFilter<"BlogView"> | number
+    ctaClicks?: IntFilter<"BlogView"> | number
     User?: XOR<UserScalarRelationFilter, UserWhereInput>
     Blog?: XOR<BlogScalarRelationFilter, BlogWhereInput>
   }
@@ -29417,6 +30782,14 @@ export namespace Prisma {
     blogId?: SortOrder
     UserId?: SortOrder
     viewedAt?: SortOrder
+    scrollDepth?: SortOrder
+    timeSpent?: SortOrder
+    bounced?: SortOrder
+    completed?: SortOrder
+    shares?: SortOrder
+    linkClicks?: SortOrder
+    imageClicks?: SortOrder
+    ctaClicks?: SortOrder
     User?: UserOrderByWithRelationInput
     Blog?: BlogOrderByWithRelationInput
     _relevance?: BlogViewOrderByRelevanceInput
@@ -29430,6 +30803,14 @@ export namespace Prisma {
     blogId?: StringFilter<"BlogView"> | string
     UserId?: StringFilter<"BlogView"> | string
     viewedAt?: DateTimeFilter<"BlogView"> | Date | string
+    scrollDepth?: IntFilter<"BlogView"> | number
+    timeSpent?: IntFilter<"BlogView"> | number
+    bounced?: BoolFilter<"BlogView"> | boolean
+    completed?: BoolFilter<"BlogView"> | boolean
+    shares?: IntFilter<"BlogView"> | number
+    linkClicks?: IntFilter<"BlogView"> | number
+    imageClicks?: IntFilter<"BlogView"> | number
+    ctaClicks?: IntFilter<"BlogView"> | number
     User?: XOR<UserScalarRelationFilter, UserWhereInput>
     Blog?: XOR<BlogScalarRelationFilter, BlogWhereInput>
   }, "blogId_UserId">
@@ -29438,9 +30819,19 @@ export namespace Prisma {
     blogId?: SortOrder
     UserId?: SortOrder
     viewedAt?: SortOrder
+    scrollDepth?: SortOrder
+    timeSpent?: SortOrder
+    bounced?: SortOrder
+    completed?: SortOrder
+    shares?: SortOrder
+    linkClicks?: SortOrder
+    imageClicks?: SortOrder
+    ctaClicks?: SortOrder
     _count?: BlogViewCountOrderByAggregateInput
+    _avg?: BlogViewAvgOrderByAggregateInput
     _max?: BlogViewMaxOrderByAggregateInput
     _min?: BlogViewMinOrderByAggregateInput
+    _sum?: BlogViewSumOrderByAggregateInput
   }
 
   export type BlogViewScalarWhereWithAggregatesInput = {
@@ -29450,6 +30841,107 @@ export namespace Prisma {
     blogId?: StringWithAggregatesFilter<"BlogView"> | string
     UserId?: StringWithAggregatesFilter<"BlogView"> | string
     viewedAt?: DateTimeWithAggregatesFilter<"BlogView"> | Date | string
+    scrollDepth?: IntWithAggregatesFilter<"BlogView"> | number
+    timeSpent?: IntWithAggregatesFilter<"BlogView"> | number
+    bounced?: BoolWithAggregatesFilter<"BlogView"> | boolean
+    completed?: BoolWithAggregatesFilter<"BlogView"> | boolean
+    shares?: IntWithAggregatesFilter<"BlogView"> | number
+    linkClicks?: IntWithAggregatesFilter<"BlogView"> | number
+    imageClicks?: IntWithAggregatesFilter<"BlogView"> | number
+    ctaClicks?: IntWithAggregatesFilter<"BlogView"> | number
+  }
+
+  export type UnsignedBlogViewWhereInput = {
+    AND?: UnsignedBlogViewWhereInput | UnsignedBlogViewWhereInput[]
+    OR?: UnsignedBlogViewWhereInput[]
+    NOT?: UnsignedBlogViewWhereInput | UnsignedBlogViewWhereInput[]
+    id?: StringFilter<"UnsignedBlogView"> | string
+    blogId?: StringFilter<"UnsignedBlogView"> | string
+    ipAddress?: StringFilter<"UnsignedBlogView"> | string
+    viewedAt?: DateTimeFilter<"UnsignedBlogView"> | Date | string
+    scrollDepth?: IntFilter<"UnsignedBlogView"> | number
+    timeSpent?: IntFilter<"UnsignedBlogView"> | number
+    bounced?: BoolFilter<"UnsignedBlogView"> | boolean
+    completed?: BoolFilter<"UnsignedBlogView"> | boolean
+    shares?: IntFilter<"UnsignedBlogView"> | number
+    linkClicks?: IntFilter<"UnsignedBlogView"> | number
+    imageClicks?: IntFilter<"UnsignedBlogView"> | number
+    ctaClicks?: IntFilter<"UnsignedBlogView"> | number
+    Blog?: XOR<BlogScalarRelationFilter, BlogWhereInput>
+  }
+
+  export type UnsignedBlogViewOrderByWithRelationInput = {
+    id?: SortOrder
+    blogId?: SortOrder
+    ipAddress?: SortOrder
+    viewedAt?: SortOrder
+    scrollDepth?: SortOrder
+    timeSpent?: SortOrder
+    bounced?: SortOrder
+    completed?: SortOrder
+    shares?: SortOrder
+    linkClicks?: SortOrder
+    imageClicks?: SortOrder
+    ctaClicks?: SortOrder
+    Blog?: BlogOrderByWithRelationInput
+    _relevance?: UnsignedBlogViewOrderByRelevanceInput
+  }
+
+  export type UnsignedBlogViewWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: UnsignedBlogViewWhereInput | UnsignedBlogViewWhereInput[]
+    OR?: UnsignedBlogViewWhereInput[]
+    NOT?: UnsignedBlogViewWhereInput | UnsignedBlogViewWhereInput[]
+    blogId?: StringFilter<"UnsignedBlogView"> | string
+    ipAddress?: StringFilter<"UnsignedBlogView"> | string
+    viewedAt?: DateTimeFilter<"UnsignedBlogView"> | Date | string
+    scrollDepth?: IntFilter<"UnsignedBlogView"> | number
+    timeSpent?: IntFilter<"UnsignedBlogView"> | number
+    bounced?: BoolFilter<"UnsignedBlogView"> | boolean
+    completed?: BoolFilter<"UnsignedBlogView"> | boolean
+    shares?: IntFilter<"UnsignedBlogView"> | number
+    linkClicks?: IntFilter<"UnsignedBlogView"> | number
+    imageClicks?: IntFilter<"UnsignedBlogView"> | number
+    ctaClicks?: IntFilter<"UnsignedBlogView"> | number
+    Blog?: XOR<BlogScalarRelationFilter, BlogWhereInput>
+  }, "id">
+
+  export type UnsignedBlogViewOrderByWithAggregationInput = {
+    id?: SortOrder
+    blogId?: SortOrder
+    ipAddress?: SortOrder
+    viewedAt?: SortOrder
+    scrollDepth?: SortOrder
+    timeSpent?: SortOrder
+    bounced?: SortOrder
+    completed?: SortOrder
+    shares?: SortOrder
+    linkClicks?: SortOrder
+    imageClicks?: SortOrder
+    ctaClicks?: SortOrder
+    _count?: UnsignedBlogViewCountOrderByAggregateInput
+    _avg?: UnsignedBlogViewAvgOrderByAggregateInput
+    _max?: UnsignedBlogViewMaxOrderByAggregateInput
+    _min?: UnsignedBlogViewMinOrderByAggregateInput
+    _sum?: UnsignedBlogViewSumOrderByAggregateInput
+  }
+
+  export type UnsignedBlogViewScalarWhereWithAggregatesInput = {
+    AND?: UnsignedBlogViewScalarWhereWithAggregatesInput | UnsignedBlogViewScalarWhereWithAggregatesInput[]
+    OR?: UnsignedBlogViewScalarWhereWithAggregatesInput[]
+    NOT?: UnsignedBlogViewScalarWhereWithAggregatesInput | UnsignedBlogViewScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"UnsignedBlogView"> | string
+    blogId?: StringWithAggregatesFilter<"UnsignedBlogView"> | string
+    ipAddress?: StringWithAggregatesFilter<"UnsignedBlogView"> | string
+    viewedAt?: DateTimeWithAggregatesFilter<"UnsignedBlogView"> | Date | string
+    scrollDepth?: IntWithAggregatesFilter<"UnsignedBlogView"> | number
+    timeSpent?: IntWithAggregatesFilter<"UnsignedBlogView"> | number
+    bounced?: BoolWithAggregatesFilter<"UnsignedBlogView"> | boolean
+    completed?: BoolWithAggregatesFilter<"UnsignedBlogView"> | boolean
+    shares?: IntWithAggregatesFilter<"UnsignedBlogView"> | number
+    linkClicks?: IntWithAggregatesFilter<"UnsignedBlogView"> | number
+    imageClicks?: IntWithAggregatesFilter<"UnsignedBlogView"> | number
+    ctaClicks?: IntWithAggregatesFilter<"UnsignedBlogView"> | number
   }
 
   export type BlogWhereInput = {
@@ -29465,6 +30957,7 @@ export namespace Prisma {
     Tags?: TagsListRelationFilter
     blogContent?: BlogContentListRelationFilter
     BlogView?: BlogViewListRelationFilter
+    UnsignedBlogView?: UnsignedBlogViewListRelationFilter
     BlogTags?: BlogTagsListRelationFilter
   }
 
@@ -29478,6 +30971,7 @@ export namespace Prisma {
     Tags?: TagsOrderByRelationAggregateInput
     blogContent?: blogContentOrderByRelationAggregateInput
     BlogView?: BlogViewOrderByRelationAggregateInput
+    UnsignedBlogView?: UnsignedBlogViewOrderByRelationAggregateInput
     BlogTags?: BlogTagsOrderByRelationAggregateInput
     _relevance?: BlogOrderByRelevanceInput
   }
@@ -29495,6 +30989,7 @@ export namespace Prisma {
     Tags?: TagsListRelationFilter
     blogContent?: BlogContentListRelationFilter
     BlogView?: BlogViewListRelationFilter
+    UnsignedBlogView?: UnsignedBlogViewListRelationFilter
     BlogTags?: BlogTagsListRelationFilter
   }, "id">
 
@@ -30886,6 +32381,14 @@ export namespace Prisma {
 
   export type BlogViewCreateInput = {
     viewedAt?: Date | string
+    scrollDepth?: number
+    timeSpent?: number
+    bounced?: boolean
+    completed?: boolean
+    shares?: number
+    linkClicks?: number
+    imageClicks?: number
+    ctaClicks?: number
     User: UserCreateNestedOneWithoutBlogViewsInput
     Blog: BlogCreateNestedOneWithoutBlogViewInput
   }
@@ -30894,10 +32397,26 @@ export namespace Prisma {
     blogId: string
     UserId: string
     viewedAt?: Date | string
+    scrollDepth?: number
+    timeSpent?: number
+    bounced?: boolean
+    completed?: boolean
+    shares?: number
+    linkClicks?: number
+    imageClicks?: number
+    ctaClicks?: number
   }
 
   export type BlogViewUpdateInput = {
     viewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    scrollDepth?: IntFieldUpdateOperationsInput | number
+    timeSpent?: IntFieldUpdateOperationsInput | number
+    bounced?: BoolFieldUpdateOperationsInput | boolean
+    completed?: BoolFieldUpdateOperationsInput | boolean
+    shares?: IntFieldUpdateOperationsInput | number
+    linkClicks?: IntFieldUpdateOperationsInput | number
+    imageClicks?: IntFieldUpdateOperationsInput | number
+    ctaClicks?: IntFieldUpdateOperationsInput | number
     User?: UserUpdateOneRequiredWithoutBlogViewsNestedInput
     Blog?: BlogUpdateOneRequiredWithoutBlogViewNestedInput
   }
@@ -30906,22 +32425,158 @@ export namespace Prisma {
     blogId?: StringFieldUpdateOperationsInput | string
     UserId?: StringFieldUpdateOperationsInput | string
     viewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    scrollDepth?: IntFieldUpdateOperationsInput | number
+    timeSpent?: IntFieldUpdateOperationsInput | number
+    bounced?: BoolFieldUpdateOperationsInput | boolean
+    completed?: BoolFieldUpdateOperationsInput | boolean
+    shares?: IntFieldUpdateOperationsInput | number
+    linkClicks?: IntFieldUpdateOperationsInput | number
+    imageClicks?: IntFieldUpdateOperationsInput | number
+    ctaClicks?: IntFieldUpdateOperationsInput | number
   }
 
   export type BlogViewCreateManyInput = {
     blogId: string
     UserId: string
     viewedAt?: Date | string
+    scrollDepth?: number
+    timeSpent?: number
+    bounced?: boolean
+    completed?: boolean
+    shares?: number
+    linkClicks?: number
+    imageClicks?: number
+    ctaClicks?: number
   }
 
   export type BlogViewUpdateManyMutationInput = {
     viewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    scrollDepth?: IntFieldUpdateOperationsInput | number
+    timeSpent?: IntFieldUpdateOperationsInput | number
+    bounced?: BoolFieldUpdateOperationsInput | boolean
+    completed?: BoolFieldUpdateOperationsInput | boolean
+    shares?: IntFieldUpdateOperationsInput | number
+    linkClicks?: IntFieldUpdateOperationsInput | number
+    imageClicks?: IntFieldUpdateOperationsInput | number
+    ctaClicks?: IntFieldUpdateOperationsInput | number
   }
 
   export type BlogViewUncheckedUpdateManyInput = {
     blogId?: StringFieldUpdateOperationsInput | string
     UserId?: StringFieldUpdateOperationsInput | string
     viewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    scrollDepth?: IntFieldUpdateOperationsInput | number
+    timeSpent?: IntFieldUpdateOperationsInput | number
+    bounced?: BoolFieldUpdateOperationsInput | boolean
+    completed?: BoolFieldUpdateOperationsInput | boolean
+    shares?: IntFieldUpdateOperationsInput | number
+    linkClicks?: IntFieldUpdateOperationsInput | number
+    imageClicks?: IntFieldUpdateOperationsInput | number
+    ctaClicks?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type UnsignedBlogViewCreateInput = {
+    id?: string
+    ipAddress: string
+    viewedAt?: Date | string
+    scrollDepth?: number
+    timeSpent?: number
+    bounced?: boolean
+    completed?: boolean
+    shares?: number
+    linkClicks?: number
+    imageClicks?: number
+    ctaClicks?: number
+    Blog: BlogCreateNestedOneWithoutUnsignedBlogViewInput
+  }
+
+  export type UnsignedBlogViewUncheckedCreateInput = {
+    id?: string
+    blogId: string
+    ipAddress: string
+    viewedAt?: Date | string
+    scrollDepth?: number
+    timeSpent?: number
+    bounced?: boolean
+    completed?: boolean
+    shares?: number
+    linkClicks?: number
+    imageClicks?: number
+    ctaClicks?: number
+  }
+
+  export type UnsignedBlogViewUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    ipAddress?: StringFieldUpdateOperationsInput | string
+    viewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    scrollDepth?: IntFieldUpdateOperationsInput | number
+    timeSpent?: IntFieldUpdateOperationsInput | number
+    bounced?: BoolFieldUpdateOperationsInput | boolean
+    completed?: BoolFieldUpdateOperationsInput | boolean
+    shares?: IntFieldUpdateOperationsInput | number
+    linkClicks?: IntFieldUpdateOperationsInput | number
+    imageClicks?: IntFieldUpdateOperationsInput | number
+    ctaClicks?: IntFieldUpdateOperationsInput | number
+    Blog?: BlogUpdateOneRequiredWithoutUnsignedBlogViewNestedInput
+  }
+
+  export type UnsignedBlogViewUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    blogId?: StringFieldUpdateOperationsInput | string
+    ipAddress?: StringFieldUpdateOperationsInput | string
+    viewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    scrollDepth?: IntFieldUpdateOperationsInput | number
+    timeSpent?: IntFieldUpdateOperationsInput | number
+    bounced?: BoolFieldUpdateOperationsInput | boolean
+    completed?: BoolFieldUpdateOperationsInput | boolean
+    shares?: IntFieldUpdateOperationsInput | number
+    linkClicks?: IntFieldUpdateOperationsInput | number
+    imageClicks?: IntFieldUpdateOperationsInput | number
+    ctaClicks?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type UnsignedBlogViewCreateManyInput = {
+    id?: string
+    blogId: string
+    ipAddress: string
+    viewedAt?: Date | string
+    scrollDepth?: number
+    timeSpent?: number
+    bounced?: boolean
+    completed?: boolean
+    shares?: number
+    linkClicks?: number
+    imageClicks?: number
+    ctaClicks?: number
+  }
+
+  export type UnsignedBlogViewUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    ipAddress?: StringFieldUpdateOperationsInput | string
+    viewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    scrollDepth?: IntFieldUpdateOperationsInput | number
+    timeSpent?: IntFieldUpdateOperationsInput | number
+    bounced?: BoolFieldUpdateOperationsInput | boolean
+    completed?: BoolFieldUpdateOperationsInput | boolean
+    shares?: IntFieldUpdateOperationsInput | number
+    linkClicks?: IntFieldUpdateOperationsInput | number
+    imageClicks?: IntFieldUpdateOperationsInput | number
+    ctaClicks?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type UnsignedBlogViewUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    blogId?: StringFieldUpdateOperationsInput | string
+    ipAddress?: StringFieldUpdateOperationsInput | string
+    viewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    scrollDepth?: IntFieldUpdateOperationsInput | number
+    timeSpent?: IntFieldUpdateOperationsInput | number
+    bounced?: BoolFieldUpdateOperationsInput | boolean
+    completed?: BoolFieldUpdateOperationsInput | boolean
+    shares?: IntFieldUpdateOperationsInput | number
+    linkClicks?: IntFieldUpdateOperationsInput | number
+    imageClicks?: IntFieldUpdateOperationsInput | number
+    ctaClicks?: IntFieldUpdateOperationsInput | number
   }
 
   export type BlogCreateInput = {
@@ -30934,6 +32589,7 @@ export namespace Prisma {
     Tags?: TagsCreateNestedManyWithoutBlogInput
     blogContent?: blogContentCreateNestedManyWithoutBlogInput
     BlogView?: BlogViewCreateNestedManyWithoutBlogInput
+    UnsignedBlogView?: UnsignedBlogViewCreateNestedManyWithoutBlogInput
     BlogTags?: BlogTagsCreateNestedManyWithoutBlogInput
   }
 
@@ -30947,6 +32603,7 @@ export namespace Prisma {
     Tags?: TagsUncheckedCreateNestedManyWithoutBlogInput
     blogContent?: blogContentUncheckedCreateNestedManyWithoutBlogInput
     BlogView?: BlogViewUncheckedCreateNestedManyWithoutBlogInput
+    UnsignedBlogView?: UnsignedBlogViewUncheckedCreateNestedManyWithoutBlogInput
     BlogTags?: BlogTagsUncheckedCreateNestedManyWithoutBlogInput
   }
 
@@ -30960,6 +32617,7 @@ export namespace Prisma {
     Tags?: TagsUpdateManyWithoutBlogNestedInput
     blogContent?: blogContentUpdateManyWithoutBlogNestedInput
     BlogView?: BlogViewUpdateManyWithoutBlogNestedInput
+    UnsignedBlogView?: UnsignedBlogViewUpdateManyWithoutBlogNestedInput
     BlogTags?: BlogTagsUpdateManyWithoutBlogNestedInput
   }
 
@@ -30973,6 +32631,7 @@ export namespace Prisma {
     Tags?: TagsUncheckedUpdateManyWithoutBlogNestedInput
     blogContent?: blogContentUncheckedUpdateManyWithoutBlogNestedInput
     BlogView?: BlogViewUncheckedUpdateManyWithoutBlogNestedInput
+    UnsignedBlogView?: UnsignedBlogViewUncheckedUpdateManyWithoutBlogNestedInput
     BlogTags?: BlogTagsUncheckedUpdateManyWithoutBlogNestedInput
   }
 
@@ -32242,18 +33901,129 @@ export namespace Prisma {
     blogId?: SortOrder
     UserId?: SortOrder
     viewedAt?: SortOrder
+    scrollDepth?: SortOrder
+    timeSpent?: SortOrder
+    bounced?: SortOrder
+    completed?: SortOrder
+    shares?: SortOrder
+    linkClicks?: SortOrder
+    imageClicks?: SortOrder
+    ctaClicks?: SortOrder
+  }
+
+  export type BlogViewAvgOrderByAggregateInput = {
+    scrollDepth?: SortOrder
+    timeSpent?: SortOrder
+    shares?: SortOrder
+    linkClicks?: SortOrder
+    imageClicks?: SortOrder
+    ctaClicks?: SortOrder
   }
 
   export type BlogViewMaxOrderByAggregateInput = {
     blogId?: SortOrder
     UserId?: SortOrder
     viewedAt?: SortOrder
+    scrollDepth?: SortOrder
+    timeSpent?: SortOrder
+    bounced?: SortOrder
+    completed?: SortOrder
+    shares?: SortOrder
+    linkClicks?: SortOrder
+    imageClicks?: SortOrder
+    ctaClicks?: SortOrder
   }
 
   export type BlogViewMinOrderByAggregateInput = {
     blogId?: SortOrder
     UserId?: SortOrder
     viewedAt?: SortOrder
+    scrollDepth?: SortOrder
+    timeSpent?: SortOrder
+    bounced?: SortOrder
+    completed?: SortOrder
+    shares?: SortOrder
+    linkClicks?: SortOrder
+    imageClicks?: SortOrder
+    ctaClicks?: SortOrder
+  }
+
+  export type BlogViewSumOrderByAggregateInput = {
+    scrollDepth?: SortOrder
+    timeSpent?: SortOrder
+    shares?: SortOrder
+    linkClicks?: SortOrder
+    imageClicks?: SortOrder
+    ctaClicks?: SortOrder
+  }
+
+  export type UnsignedBlogViewOrderByRelevanceInput = {
+    fields: UnsignedBlogViewOrderByRelevanceFieldEnum | UnsignedBlogViewOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type UnsignedBlogViewCountOrderByAggregateInput = {
+    id?: SortOrder
+    blogId?: SortOrder
+    ipAddress?: SortOrder
+    viewedAt?: SortOrder
+    scrollDepth?: SortOrder
+    timeSpent?: SortOrder
+    bounced?: SortOrder
+    completed?: SortOrder
+    shares?: SortOrder
+    linkClicks?: SortOrder
+    imageClicks?: SortOrder
+    ctaClicks?: SortOrder
+  }
+
+  export type UnsignedBlogViewAvgOrderByAggregateInput = {
+    scrollDepth?: SortOrder
+    timeSpent?: SortOrder
+    shares?: SortOrder
+    linkClicks?: SortOrder
+    imageClicks?: SortOrder
+    ctaClicks?: SortOrder
+  }
+
+  export type UnsignedBlogViewMaxOrderByAggregateInput = {
+    id?: SortOrder
+    blogId?: SortOrder
+    ipAddress?: SortOrder
+    viewedAt?: SortOrder
+    scrollDepth?: SortOrder
+    timeSpent?: SortOrder
+    bounced?: SortOrder
+    completed?: SortOrder
+    shares?: SortOrder
+    linkClicks?: SortOrder
+    imageClicks?: SortOrder
+    ctaClicks?: SortOrder
+  }
+
+  export type UnsignedBlogViewMinOrderByAggregateInput = {
+    id?: SortOrder
+    blogId?: SortOrder
+    ipAddress?: SortOrder
+    viewedAt?: SortOrder
+    scrollDepth?: SortOrder
+    timeSpent?: SortOrder
+    bounced?: SortOrder
+    completed?: SortOrder
+    shares?: SortOrder
+    linkClicks?: SortOrder
+    imageClicks?: SortOrder
+    ctaClicks?: SortOrder
+  }
+
+  export type UnsignedBlogViewSumOrderByAggregateInput = {
+    scrollDepth?: SortOrder
+    timeSpent?: SortOrder
+    shares?: SortOrder
+    linkClicks?: SortOrder
+    imageClicks?: SortOrder
+    ctaClicks?: SortOrder
   }
 
   export type BlogImageListRelationFilter = {
@@ -32274,6 +34044,12 @@ export namespace Prisma {
     none?: blogContentWhereInput
   }
 
+  export type UnsignedBlogViewListRelationFilter = {
+    every?: UnsignedBlogViewWhereInput
+    some?: UnsignedBlogViewWhereInput
+    none?: UnsignedBlogViewWhereInput
+  }
+
   export type BlogTagsListRelationFilter = {
     every?: BlogTagsWhereInput
     some?: BlogTagsWhereInput
@@ -32289,6 +34065,10 @@ export namespace Prisma {
   }
 
   export type blogContentOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type UnsignedBlogViewOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -33636,6 +35416,20 @@ export namespace Prisma {
     update?: XOR<XOR<BlogUpdateToOneWithWhereWithoutBlogViewInput, BlogUpdateWithoutBlogViewInput>, BlogUncheckedUpdateWithoutBlogViewInput>
   }
 
+  export type BlogCreateNestedOneWithoutUnsignedBlogViewInput = {
+    create?: XOR<BlogCreateWithoutUnsignedBlogViewInput, BlogUncheckedCreateWithoutUnsignedBlogViewInput>
+    connectOrCreate?: BlogCreateOrConnectWithoutUnsignedBlogViewInput
+    connect?: BlogWhereUniqueInput
+  }
+
+  export type BlogUpdateOneRequiredWithoutUnsignedBlogViewNestedInput = {
+    create?: XOR<BlogCreateWithoutUnsignedBlogViewInput, BlogUncheckedCreateWithoutUnsignedBlogViewInput>
+    connectOrCreate?: BlogCreateOrConnectWithoutUnsignedBlogViewInput
+    upsert?: BlogUpsertWithoutUnsignedBlogViewInput
+    connect?: BlogWhereUniqueInput
+    update?: XOR<XOR<BlogUpdateToOneWithWhereWithoutUnsignedBlogViewInput, BlogUpdateWithoutUnsignedBlogViewInput>, BlogUncheckedUpdateWithoutUnsignedBlogViewInput>
+  }
+
   export type BlogImageCreateNestedManyWithoutBlogInput = {
     create?: XOR<BlogImageCreateWithoutBlogInput, BlogImageUncheckedCreateWithoutBlogInput> | BlogImageCreateWithoutBlogInput[] | BlogImageUncheckedCreateWithoutBlogInput[]
     connectOrCreate?: BlogImageCreateOrConnectWithoutBlogInput | BlogImageCreateOrConnectWithoutBlogInput[]
@@ -33662,6 +35456,13 @@ export namespace Prisma {
     connectOrCreate?: BlogViewCreateOrConnectWithoutBlogInput | BlogViewCreateOrConnectWithoutBlogInput[]
     createMany?: BlogViewCreateManyBlogInputEnvelope
     connect?: BlogViewWhereUniqueInput | BlogViewWhereUniqueInput[]
+  }
+
+  export type UnsignedBlogViewCreateNestedManyWithoutBlogInput = {
+    create?: XOR<UnsignedBlogViewCreateWithoutBlogInput, UnsignedBlogViewUncheckedCreateWithoutBlogInput> | UnsignedBlogViewCreateWithoutBlogInput[] | UnsignedBlogViewUncheckedCreateWithoutBlogInput[]
+    connectOrCreate?: UnsignedBlogViewCreateOrConnectWithoutBlogInput | UnsignedBlogViewCreateOrConnectWithoutBlogInput[]
+    createMany?: UnsignedBlogViewCreateManyBlogInputEnvelope
+    connect?: UnsignedBlogViewWhereUniqueInput | UnsignedBlogViewWhereUniqueInput[]
   }
 
   export type BlogTagsCreateNestedManyWithoutBlogInput = {
@@ -33697,6 +35498,13 @@ export namespace Prisma {
     connectOrCreate?: BlogViewCreateOrConnectWithoutBlogInput | BlogViewCreateOrConnectWithoutBlogInput[]
     createMany?: BlogViewCreateManyBlogInputEnvelope
     connect?: BlogViewWhereUniqueInput | BlogViewWhereUniqueInput[]
+  }
+
+  export type UnsignedBlogViewUncheckedCreateNestedManyWithoutBlogInput = {
+    create?: XOR<UnsignedBlogViewCreateWithoutBlogInput, UnsignedBlogViewUncheckedCreateWithoutBlogInput> | UnsignedBlogViewCreateWithoutBlogInput[] | UnsignedBlogViewUncheckedCreateWithoutBlogInput[]
+    connectOrCreate?: UnsignedBlogViewCreateOrConnectWithoutBlogInput | UnsignedBlogViewCreateOrConnectWithoutBlogInput[]
+    createMany?: UnsignedBlogViewCreateManyBlogInputEnvelope
+    connect?: UnsignedBlogViewWhereUniqueInput | UnsignedBlogViewWhereUniqueInput[]
   }
 
   export type BlogTagsUncheckedCreateNestedManyWithoutBlogInput = {
@@ -33760,6 +35568,20 @@ export namespace Prisma {
     update?: BlogViewUpdateWithWhereUniqueWithoutBlogInput | BlogViewUpdateWithWhereUniqueWithoutBlogInput[]
     updateMany?: BlogViewUpdateManyWithWhereWithoutBlogInput | BlogViewUpdateManyWithWhereWithoutBlogInput[]
     deleteMany?: BlogViewScalarWhereInput | BlogViewScalarWhereInput[]
+  }
+
+  export type UnsignedBlogViewUpdateManyWithoutBlogNestedInput = {
+    create?: XOR<UnsignedBlogViewCreateWithoutBlogInput, UnsignedBlogViewUncheckedCreateWithoutBlogInput> | UnsignedBlogViewCreateWithoutBlogInput[] | UnsignedBlogViewUncheckedCreateWithoutBlogInput[]
+    connectOrCreate?: UnsignedBlogViewCreateOrConnectWithoutBlogInput | UnsignedBlogViewCreateOrConnectWithoutBlogInput[]
+    upsert?: UnsignedBlogViewUpsertWithWhereUniqueWithoutBlogInput | UnsignedBlogViewUpsertWithWhereUniqueWithoutBlogInput[]
+    createMany?: UnsignedBlogViewCreateManyBlogInputEnvelope
+    set?: UnsignedBlogViewWhereUniqueInput | UnsignedBlogViewWhereUniqueInput[]
+    disconnect?: UnsignedBlogViewWhereUniqueInput | UnsignedBlogViewWhereUniqueInput[]
+    delete?: UnsignedBlogViewWhereUniqueInput | UnsignedBlogViewWhereUniqueInput[]
+    connect?: UnsignedBlogViewWhereUniqueInput | UnsignedBlogViewWhereUniqueInput[]
+    update?: UnsignedBlogViewUpdateWithWhereUniqueWithoutBlogInput | UnsignedBlogViewUpdateWithWhereUniqueWithoutBlogInput[]
+    updateMany?: UnsignedBlogViewUpdateManyWithWhereWithoutBlogInput | UnsignedBlogViewUpdateManyWithWhereWithoutBlogInput[]
+    deleteMany?: UnsignedBlogViewScalarWhereInput | UnsignedBlogViewScalarWhereInput[]
   }
 
   export type BlogTagsUpdateManyWithoutBlogNestedInput = {
@@ -33830,6 +35652,20 @@ export namespace Prisma {
     update?: BlogViewUpdateWithWhereUniqueWithoutBlogInput | BlogViewUpdateWithWhereUniqueWithoutBlogInput[]
     updateMany?: BlogViewUpdateManyWithWhereWithoutBlogInput | BlogViewUpdateManyWithWhereWithoutBlogInput[]
     deleteMany?: BlogViewScalarWhereInput | BlogViewScalarWhereInput[]
+  }
+
+  export type UnsignedBlogViewUncheckedUpdateManyWithoutBlogNestedInput = {
+    create?: XOR<UnsignedBlogViewCreateWithoutBlogInput, UnsignedBlogViewUncheckedCreateWithoutBlogInput> | UnsignedBlogViewCreateWithoutBlogInput[] | UnsignedBlogViewUncheckedCreateWithoutBlogInput[]
+    connectOrCreate?: UnsignedBlogViewCreateOrConnectWithoutBlogInput | UnsignedBlogViewCreateOrConnectWithoutBlogInput[]
+    upsert?: UnsignedBlogViewUpsertWithWhereUniqueWithoutBlogInput | UnsignedBlogViewUpsertWithWhereUniqueWithoutBlogInput[]
+    createMany?: UnsignedBlogViewCreateManyBlogInputEnvelope
+    set?: UnsignedBlogViewWhereUniqueInput | UnsignedBlogViewWhereUniqueInput[]
+    disconnect?: UnsignedBlogViewWhereUniqueInput | UnsignedBlogViewWhereUniqueInput[]
+    delete?: UnsignedBlogViewWhereUniqueInput | UnsignedBlogViewWhereUniqueInput[]
+    connect?: UnsignedBlogViewWhereUniqueInput | UnsignedBlogViewWhereUniqueInput[]
+    update?: UnsignedBlogViewUpdateWithWhereUniqueWithoutBlogInput | UnsignedBlogViewUpdateWithWhereUniqueWithoutBlogInput[]
+    updateMany?: UnsignedBlogViewUpdateManyWithWhereWithoutBlogInput | UnsignedBlogViewUpdateManyWithWhereWithoutBlogInput[]
+    deleteMany?: UnsignedBlogViewScalarWhereInput | UnsignedBlogViewScalarWhereInput[]
   }
 
   export type BlogTagsUncheckedUpdateManyWithoutBlogNestedInput = {
@@ -34195,12 +36031,28 @@ export namespace Prisma {
 
   export type BlogViewCreateWithoutUserInput = {
     viewedAt?: Date | string
+    scrollDepth?: number
+    timeSpent?: number
+    bounced?: boolean
+    completed?: boolean
+    shares?: number
+    linkClicks?: number
+    imageClicks?: number
+    ctaClicks?: number
     Blog: BlogCreateNestedOneWithoutBlogViewInput
   }
 
   export type BlogViewUncheckedCreateWithoutUserInput = {
     blogId: string
     viewedAt?: Date | string
+    scrollDepth?: number
+    timeSpent?: number
+    bounced?: boolean
+    completed?: boolean
+    shares?: number
+    linkClicks?: number
+    imageClicks?: number
+    ctaClicks?: number
   }
 
   export type BlogViewCreateOrConnectWithoutUserInput = {
@@ -34297,6 +36149,14 @@ export namespace Prisma {
     blogId?: StringFilter<"BlogView"> | string
     UserId?: StringFilter<"BlogView"> | string
     viewedAt?: DateTimeFilter<"BlogView"> | Date | string
+    scrollDepth?: IntFilter<"BlogView"> | number
+    timeSpent?: IntFilter<"BlogView"> | number
+    bounced?: BoolFilter<"BlogView"> | boolean
+    completed?: BoolFilter<"BlogView"> | boolean
+    shares?: IntFilter<"BlogView"> | number
+    linkClicks?: IntFilter<"BlogView"> | number
+    imageClicks?: IntFilter<"BlogView"> | number
+    ctaClicks?: IntFilter<"BlogView"> | number
   }
 
   export type finishCreateWithoutProductsInput = {
@@ -36383,6 +38243,7 @@ export namespace Prisma {
     images?: BlogImageCreateNestedManyWithoutBlogInput
     Tags?: TagsCreateNestedManyWithoutBlogInput
     blogContent?: blogContentCreateNestedManyWithoutBlogInput
+    UnsignedBlogView?: UnsignedBlogViewCreateNestedManyWithoutBlogInput
     BlogTags?: BlogTagsCreateNestedManyWithoutBlogInput
   }
 
@@ -36395,6 +38256,7 @@ export namespace Prisma {
     images?: BlogImageUncheckedCreateNestedManyWithoutBlogInput
     Tags?: TagsUncheckedCreateNestedManyWithoutBlogInput
     blogContent?: blogContentUncheckedCreateNestedManyWithoutBlogInput
+    UnsignedBlogView?: UnsignedBlogViewUncheckedCreateNestedManyWithoutBlogInput
     BlogTags?: BlogTagsUncheckedCreateNestedManyWithoutBlogInput
   }
 
@@ -36470,6 +38332,7 @@ export namespace Prisma {
     images?: BlogImageUpdateManyWithoutBlogNestedInput
     Tags?: TagsUpdateManyWithoutBlogNestedInput
     blogContent?: blogContentUpdateManyWithoutBlogNestedInput
+    UnsignedBlogView?: UnsignedBlogViewUpdateManyWithoutBlogNestedInput
     BlogTags?: BlogTagsUpdateManyWithoutBlogNestedInput
   }
 
@@ -36482,6 +38345,75 @@ export namespace Prisma {
     images?: BlogImageUncheckedUpdateManyWithoutBlogNestedInput
     Tags?: TagsUncheckedUpdateManyWithoutBlogNestedInput
     blogContent?: blogContentUncheckedUpdateManyWithoutBlogNestedInput
+    UnsignedBlogView?: UnsignedBlogViewUncheckedUpdateManyWithoutBlogNestedInput
+    BlogTags?: BlogTagsUncheckedUpdateManyWithoutBlogNestedInput
+  }
+
+  export type BlogCreateWithoutUnsignedBlogViewInput = {
+    id?: string
+    title: string
+    introduction: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    images?: BlogImageCreateNestedManyWithoutBlogInput
+    Tags?: TagsCreateNestedManyWithoutBlogInput
+    blogContent?: blogContentCreateNestedManyWithoutBlogInput
+    BlogView?: BlogViewCreateNestedManyWithoutBlogInput
+    BlogTags?: BlogTagsCreateNestedManyWithoutBlogInput
+  }
+
+  export type BlogUncheckedCreateWithoutUnsignedBlogViewInput = {
+    id?: string
+    title: string
+    introduction: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    images?: BlogImageUncheckedCreateNestedManyWithoutBlogInput
+    Tags?: TagsUncheckedCreateNestedManyWithoutBlogInput
+    blogContent?: blogContentUncheckedCreateNestedManyWithoutBlogInput
+    BlogView?: BlogViewUncheckedCreateNestedManyWithoutBlogInput
+    BlogTags?: BlogTagsUncheckedCreateNestedManyWithoutBlogInput
+  }
+
+  export type BlogCreateOrConnectWithoutUnsignedBlogViewInput = {
+    where: BlogWhereUniqueInput
+    create: XOR<BlogCreateWithoutUnsignedBlogViewInput, BlogUncheckedCreateWithoutUnsignedBlogViewInput>
+  }
+
+  export type BlogUpsertWithoutUnsignedBlogViewInput = {
+    update: XOR<BlogUpdateWithoutUnsignedBlogViewInput, BlogUncheckedUpdateWithoutUnsignedBlogViewInput>
+    create: XOR<BlogCreateWithoutUnsignedBlogViewInput, BlogUncheckedCreateWithoutUnsignedBlogViewInput>
+    where?: BlogWhereInput
+  }
+
+  export type BlogUpdateToOneWithWhereWithoutUnsignedBlogViewInput = {
+    where?: BlogWhereInput
+    data: XOR<BlogUpdateWithoutUnsignedBlogViewInput, BlogUncheckedUpdateWithoutUnsignedBlogViewInput>
+  }
+
+  export type BlogUpdateWithoutUnsignedBlogViewInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    introduction?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    images?: BlogImageUpdateManyWithoutBlogNestedInput
+    Tags?: TagsUpdateManyWithoutBlogNestedInput
+    blogContent?: blogContentUpdateManyWithoutBlogNestedInput
+    BlogView?: BlogViewUpdateManyWithoutBlogNestedInput
+    BlogTags?: BlogTagsUpdateManyWithoutBlogNestedInput
+  }
+
+  export type BlogUncheckedUpdateWithoutUnsignedBlogViewInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    introduction?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    images?: BlogImageUncheckedUpdateManyWithoutBlogNestedInput
+    Tags?: TagsUncheckedUpdateManyWithoutBlogNestedInput
+    blogContent?: blogContentUncheckedUpdateManyWithoutBlogNestedInput
+    BlogView?: BlogViewUncheckedUpdateManyWithoutBlogNestedInput
     BlogTags?: BlogTagsUncheckedUpdateManyWithoutBlogNestedInput
   }
 
@@ -36561,12 +38493,28 @@ export namespace Prisma {
 
   export type BlogViewCreateWithoutBlogInput = {
     viewedAt?: Date | string
+    scrollDepth?: number
+    timeSpent?: number
+    bounced?: boolean
+    completed?: boolean
+    shares?: number
+    linkClicks?: number
+    imageClicks?: number
+    ctaClicks?: number
     User: UserCreateNestedOneWithoutBlogViewsInput
   }
 
   export type BlogViewUncheckedCreateWithoutBlogInput = {
     UserId: string
     viewedAt?: Date | string
+    scrollDepth?: number
+    timeSpent?: number
+    bounced?: boolean
+    completed?: boolean
+    shares?: number
+    linkClicks?: number
+    imageClicks?: number
+    ctaClicks?: number
   }
 
   export type BlogViewCreateOrConnectWithoutBlogInput = {
@@ -36576,6 +38524,44 @@ export namespace Prisma {
 
   export type BlogViewCreateManyBlogInputEnvelope = {
     data: BlogViewCreateManyBlogInput | BlogViewCreateManyBlogInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type UnsignedBlogViewCreateWithoutBlogInput = {
+    id?: string
+    ipAddress: string
+    viewedAt?: Date | string
+    scrollDepth?: number
+    timeSpent?: number
+    bounced?: boolean
+    completed?: boolean
+    shares?: number
+    linkClicks?: number
+    imageClicks?: number
+    ctaClicks?: number
+  }
+
+  export type UnsignedBlogViewUncheckedCreateWithoutBlogInput = {
+    id?: string
+    ipAddress: string
+    viewedAt?: Date | string
+    scrollDepth?: number
+    timeSpent?: number
+    bounced?: boolean
+    completed?: boolean
+    shares?: number
+    linkClicks?: number
+    imageClicks?: number
+    ctaClicks?: number
+  }
+
+  export type UnsignedBlogViewCreateOrConnectWithoutBlogInput = {
+    where: UnsignedBlogViewWhereUniqueInput
+    create: XOR<UnsignedBlogViewCreateWithoutBlogInput, UnsignedBlogViewUncheckedCreateWithoutBlogInput>
+  }
+
+  export type UnsignedBlogViewCreateManyBlogInputEnvelope = {
+    data: UnsignedBlogViewCreateManyBlogInput | UnsignedBlogViewCreateManyBlogInput[]
     skipDuplicates?: boolean
   }
 
@@ -36694,6 +38680,40 @@ export namespace Prisma {
     data: XOR<BlogViewUpdateManyMutationInput, BlogViewUncheckedUpdateManyWithoutBlogInput>
   }
 
+  export type UnsignedBlogViewUpsertWithWhereUniqueWithoutBlogInput = {
+    where: UnsignedBlogViewWhereUniqueInput
+    update: XOR<UnsignedBlogViewUpdateWithoutBlogInput, UnsignedBlogViewUncheckedUpdateWithoutBlogInput>
+    create: XOR<UnsignedBlogViewCreateWithoutBlogInput, UnsignedBlogViewUncheckedCreateWithoutBlogInput>
+  }
+
+  export type UnsignedBlogViewUpdateWithWhereUniqueWithoutBlogInput = {
+    where: UnsignedBlogViewWhereUniqueInput
+    data: XOR<UnsignedBlogViewUpdateWithoutBlogInput, UnsignedBlogViewUncheckedUpdateWithoutBlogInput>
+  }
+
+  export type UnsignedBlogViewUpdateManyWithWhereWithoutBlogInput = {
+    where: UnsignedBlogViewScalarWhereInput
+    data: XOR<UnsignedBlogViewUpdateManyMutationInput, UnsignedBlogViewUncheckedUpdateManyWithoutBlogInput>
+  }
+
+  export type UnsignedBlogViewScalarWhereInput = {
+    AND?: UnsignedBlogViewScalarWhereInput | UnsignedBlogViewScalarWhereInput[]
+    OR?: UnsignedBlogViewScalarWhereInput[]
+    NOT?: UnsignedBlogViewScalarWhereInput | UnsignedBlogViewScalarWhereInput[]
+    id?: StringFilter<"UnsignedBlogView"> | string
+    blogId?: StringFilter<"UnsignedBlogView"> | string
+    ipAddress?: StringFilter<"UnsignedBlogView"> | string
+    viewedAt?: DateTimeFilter<"UnsignedBlogView"> | Date | string
+    scrollDepth?: IntFilter<"UnsignedBlogView"> | number
+    timeSpent?: IntFilter<"UnsignedBlogView"> | number
+    bounced?: BoolFilter<"UnsignedBlogView"> | boolean
+    completed?: BoolFilter<"UnsignedBlogView"> | boolean
+    shares?: IntFilter<"UnsignedBlogView"> | number
+    linkClicks?: IntFilter<"UnsignedBlogView"> | number
+    imageClicks?: IntFilter<"UnsignedBlogView"> | number
+    ctaClicks?: IntFilter<"UnsignedBlogView"> | number
+  }
+
   export type BlogTagsUpsertWithWhereUniqueWithoutBlogInput = {
     where: BlogTagsWhereUniqueInput
     update: XOR<BlogTagsUpdateWithoutBlogInput, BlogTagsUncheckedUpdateWithoutBlogInput>
@@ -36727,6 +38747,7 @@ export namespace Prisma {
     images?: BlogImageCreateNestedManyWithoutBlogInput
     Tags?: TagsCreateNestedManyWithoutBlogInput
     BlogView?: BlogViewCreateNestedManyWithoutBlogInput
+    UnsignedBlogView?: UnsignedBlogViewCreateNestedManyWithoutBlogInput
     BlogTags?: BlogTagsCreateNestedManyWithoutBlogInput
   }
 
@@ -36739,6 +38760,7 @@ export namespace Prisma {
     images?: BlogImageUncheckedCreateNestedManyWithoutBlogInput
     Tags?: TagsUncheckedCreateNestedManyWithoutBlogInput
     BlogView?: BlogViewUncheckedCreateNestedManyWithoutBlogInput
+    UnsignedBlogView?: UnsignedBlogViewUncheckedCreateNestedManyWithoutBlogInput
     BlogTags?: BlogTagsUncheckedCreateNestedManyWithoutBlogInput
   }
 
@@ -36767,6 +38789,7 @@ export namespace Prisma {
     images?: BlogImageUpdateManyWithoutBlogNestedInput
     Tags?: TagsUpdateManyWithoutBlogNestedInput
     BlogView?: BlogViewUpdateManyWithoutBlogNestedInput
+    UnsignedBlogView?: UnsignedBlogViewUpdateManyWithoutBlogNestedInput
     BlogTags?: BlogTagsUpdateManyWithoutBlogNestedInput
   }
 
@@ -36779,6 +38802,7 @@ export namespace Prisma {
     images?: BlogImageUncheckedUpdateManyWithoutBlogNestedInput
     Tags?: TagsUncheckedUpdateManyWithoutBlogNestedInput
     BlogView?: BlogViewUncheckedUpdateManyWithoutBlogNestedInput
+    UnsignedBlogView?: UnsignedBlogViewUncheckedUpdateManyWithoutBlogNestedInput
     BlogTags?: BlogTagsUncheckedUpdateManyWithoutBlogNestedInput
   }
 
@@ -36791,6 +38815,7 @@ export namespace Prisma {
     Tags?: TagsCreateNestedManyWithoutBlogInput
     blogContent?: blogContentCreateNestedManyWithoutBlogInput
     BlogView?: BlogViewCreateNestedManyWithoutBlogInput
+    UnsignedBlogView?: UnsignedBlogViewCreateNestedManyWithoutBlogInput
     BlogTags?: BlogTagsCreateNestedManyWithoutBlogInput
   }
 
@@ -36803,6 +38828,7 @@ export namespace Prisma {
     Tags?: TagsUncheckedCreateNestedManyWithoutBlogInput
     blogContent?: blogContentUncheckedCreateNestedManyWithoutBlogInput
     BlogView?: BlogViewUncheckedCreateNestedManyWithoutBlogInput
+    UnsignedBlogView?: UnsignedBlogViewUncheckedCreateNestedManyWithoutBlogInput
     BlogTags?: BlogTagsUncheckedCreateNestedManyWithoutBlogInput
   }
 
@@ -36831,6 +38857,7 @@ export namespace Prisma {
     Tags?: TagsUpdateManyWithoutBlogNestedInput
     blogContent?: blogContentUpdateManyWithoutBlogNestedInput
     BlogView?: BlogViewUpdateManyWithoutBlogNestedInput
+    UnsignedBlogView?: UnsignedBlogViewUpdateManyWithoutBlogNestedInput
     BlogTags?: BlogTagsUpdateManyWithoutBlogNestedInput
   }
 
@@ -36843,6 +38870,7 @@ export namespace Prisma {
     Tags?: TagsUncheckedUpdateManyWithoutBlogNestedInput
     blogContent?: blogContentUncheckedUpdateManyWithoutBlogNestedInput
     BlogView?: BlogViewUncheckedUpdateManyWithoutBlogNestedInput
+    UnsignedBlogView?: UnsignedBlogViewUncheckedUpdateManyWithoutBlogNestedInput
     BlogTags?: BlogTagsUncheckedUpdateManyWithoutBlogNestedInput
   }
 
@@ -36855,6 +38883,7 @@ export namespace Prisma {
     images?: BlogImageCreateNestedManyWithoutBlogInput
     blogContent?: blogContentCreateNestedManyWithoutBlogInput
     BlogView?: BlogViewCreateNestedManyWithoutBlogInput
+    UnsignedBlogView?: UnsignedBlogViewCreateNestedManyWithoutBlogInput
     BlogTags?: BlogTagsCreateNestedManyWithoutBlogInput
   }
 
@@ -36867,6 +38896,7 @@ export namespace Prisma {
     images?: BlogImageUncheckedCreateNestedManyWithoutBlogInput
     blogContent?: blogContentUncheckedCreateNestedManyWithoutBlogInput
     BlogView?: BlogViewUncheckedCreateNestedManyWithoutBlogInput
+    UnsignedBlogView?: UnsignedBlogViewUncheckedCreateNestedManyWithoutBlogInput
     BlogTags?: BlogTagsUncheckedCreateNestedManyWithoutBlogInput
   }
 
@@ -36913,6 +38943,7 @@ export namespace Prisma {
     images?: BlogImageUpdateManyWithoutBlogNestedInput
     blogContent?: blogContentUpdateManyWithoutBlogNestedInput
     BlogView?: BlogViewUpdateManyWithoutBlogNestedInput
+    UnsignedBlogView?: UnsignedBlogViewUpdateManyWithoutBlogNestedInput
     BlogTags?: BlogTagsUpdateManyWithoutBlogNestedInput
   }
 
@@ -36925,6 +38956,7 @@ export namespace Prisma {
     images?: BlogImageUncheckedUpdateManyWithoutBlogNestedInput
     blogContent?: blogContentUncheckedUpdateManyWithoutBlogNestedInput
     BlogView?: BlogViewUncheckedUpdateManyWithoutBlogNestedInput
+    UnsignedBlogView?: UnsignedBlogViewUncheckedUpdateManyWithoutBlogNestedInput
     BlogTags?: BlogTagsUncheckedUpdateManyWithoutBlogNestedInput
   }
 
@@ -36954,6 +38986,7 @@ export namespace Prisma {
     Tags?: TagsCreateNestedManyWithoutBlogInput
     blogContent?: blogContentCreateNestedManyWithoutBlogInput
     BlogView?: BlogViewCreateNestedManyWithoutBlogInput
+    UnsignedBlogView?: UnsignedBlogViewCreateNestedManyWithoutBlogInput
   }
 
   export type BlogUncheckedCreateWithoutBlogTagsInput = {
@@ -36966,6 +38999,7 @@ export namespace Prisma {
     Tags?: TagsUncheckedCreateNestedManyWithoutBlogInput
     blogContent?: blogContentUncheckedCreateNestedManyWithoutBlogInput
     BlogView?: BlogViewUncheckedCreateNestedManyWithoutBlogInput
+    UnsignedBlogView?: UnsignedBlogViewUncheckedCreateNestedManyWithoutBlogInput
   }
 
   export type BlogCreateOrConnectWithoutBlogTagsInput = {
@@ -37015,6 +39049,7 @@ export namespace Prisma {
     Tags?: TagsUpdateManyWithoutBlogNestedInput
     blogContent?: blogContentUpdateManyWithoutBlogNestedInput
     BlogView?: BlogViewUpdateManyWithoutBlogNestedInput
+    UnsignedBlogView?: UnsignedBlogViewUpdateManyWithoutBlogNestedInput
   }
 
   export type BlogUncheckedUpdateWithoutBlogTagsInput = {
@@ -37027,6 +39062,7 @@ export namespace Prisma {
     Tags?: TagsUncheckedUpdateManyWithoutBlogNestedInput
     blogContent?: blogContentUncheckedUpdateManyWithoutBlogNestedInput
     BlogView?: BlogViewUncheckedUpdateManyWithoutBlogNestedInput
+    UnsignedBlogView?: UnsignedBlogViewUncheckedUpdateManyWithoutBlogNestedInput
   }
 
   export type TagsUpsertWithoutBlogTagsInput = {
@@ -37080,6 +39116,14 @@ export namespace Prisma {
   export type BlogViewCreateManyUserInput = {
     blogId: string
     viewedAt?: Date | string
+    scrollDepth?: number
+    timeSpent?: number
+    bounced?: boolean
+    completed?: boolean
+    shares?: number
+    linkClicks?: number
+    imageClicks?: number
+    ctaClicks?: number
   }
 
   export type ProductForCartUpdateWithoutUserInput = {
@@ -37149,17 +39193,41 @@ export namespace Prisma {
 
   export type BlogViewUpdateWithoutUserInput = {
     viewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    scrollDepth?: IntFieldUpdateOperationsInput | number
+    timeSpent?: IntFieldUpdateOperationsInput | number
+    bounced?: BoolFieldUpdateOperationsInput | boolean
+    completed?: BoolFieldUpdateOperationsInput | boolean
+    shares?: IntFieldUpdateOperationsInput | number
+    linkClicks?: IntFieldUpdateOperationsInput | number
+    imageClicks?: IntFieldUpdateOperationsInput | number
+    ctaClicks?: IntFieldUpdateOperationsInput | number
     Blog?: BlogUpdateOneRequiredWithoutBlogViewNestedInput
   }
 
   export type BlogViewUncheckedUpdateWithoutUserInput = {
     blogId?: StringFieldUpdateOperationsInput | string
     viewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    scrollDepth?: IntFieldUpdateOperationsInput | number
+    timeSpent?: IntFieldUpdateOperationsInput | number
+    bounced?: BoolFieldUpdateOperationsInput | boolean
+    completed?: BoolFieldUpdateOperationsInput | boolean
+    shares?: IntFieldUpdateOperationsInput | number
+    linkClicks?: IntFieldUpdateOperationsInput | number
+    imageClicks?: IntFieldUpdateOperationsInput | number
+    ctaClicks?: IntFieldUpdateOperationsInput | number
   }
 
   export type BlogViewUncheckedUpdateManyWithoutUserInput = {
     blogId?: StringFieldUpdateOperationsInput | string
     viewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    scrollDepth?: IntFieldUpdateOperationsInput | number
+    timeSpent?: IntFieldUpdateOperationsInput | number
+    bounced?: BoolFieldUpdateOperationsInput | boolean
+    completed?: BoolFieldUpdateOperationsInput | boolean
+    shares?: IntFieldUpdateOperationsInput | number
+    linkClicks?: IntFieldUpdateOperationsInput | number
+    imageClicks?: IntFieldUpdateOperationsInput | number
+    ctaClicks?: IntFieldUpdateOperationsInput | number
   }
 
   export type finishForProductsCreateManyFinishInput = {
@@ -37626,6 +39694,28 @@ export namespace Prisma {
   export type BlogViewCreateManyBlogInput = {
     UserId: string
     viewedAt?: Date | string
+    scrollDepth?: number
+    timeSpent?: number
+    bounced?: boolean
+    completed?: boolean
+    shares?: number
+    linkClicks?: number
+    imageClicks?: number
+    ctaClicks?: number
+  }
+
+  export type UnsignedBlogViewCreateManyBlogInput = {
+    id?: string
+    ipAddress: string
+    viewedAt?: Date | string
+    scrollDepth?: number
+    timeSpent?: number
+    bounced?: boolean
+    completed?: boolean
+    shares?: number
+    linkClicks?: number
+    imageClicks?: number
+    ctaClicks?: number
   }
 
   export type BlogTagsCreateManyBlogInput = {
@@ -37699,17 +39789,83 @@ export namespace Prisma {
 
   export type BlogViewUpdateWithoutBlogInput = {
     viewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    scrollDepth?: IntFieldUpdateOperationsInput | number
+    timeSpent?: IntFieldUpdateOperationsInput | number
+    bounced?: BoolFieldUpdateOperationsInput | boolean
+    completed?: BoolFieldUpdateOperationsInput | boolean
+    shares?: IntFieldUpdateOperationsInput | number
+    linkClicks?: IntFieldUpdateOperationsInput | number
+    imageClicks?: IntFieldUpdateOperationsInput | number
+    ctaClicks?: IntFieldUpdateOperationsInput | number
     User?: UserUpdateOneRequiredWithoutBlogViewsNestedInput
   }
 
   export type BlogViewUncheckedUpdateWithoutBlogInput = {
     UserId?: StringFieldUpdateOperationsInput | string
     viewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    scrollDepth?: IntFieldUpdateOperationsInput | number
+    timeSpent?: IntFieldUpdateOperationsInput | number
+    bounced?: BoolFieldUpdateOperationsInput | boolean
+    completed?: BoolFieldUpdateOperationsInput | boolean
+    shares?: IntFieldUpdateOperationsInput | number
+    linkClicks?: IntFieldUpdateOperationsInput | number
+    imageClicks?: IntFieldUpdateOperationsInput | number
+    ctaClicks?: IntFieldUpdateOperationsInput | number
   }
 
   export type BlogViewUncheckedUpdateManyWithoutBlogInput = {
     UserId?: StringFieldUpdateOperationsInput | string
     viewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    scrollDepth?: IntFieldUpdateOperationsInput | number
+    timeSpent?: IntFieldUpdateOperationsInput | number
+    bounced?: BoolFieldUpdateOperationsInput | boolean
+    completed?: BoolFieldUpdateOperationsInput | boolean
+    shares?: IntFieldUpdateOperationsInput | number
+    linkClicks?: IntFieldUpdateOperationsInput | number
+    imageClicks?: IntFieldUpdateOperationsInput | number
+    ctaClicks?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type UnsignedBlogViewUpdateWithoutBlogInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    ipAddress?: StringFieldUpdateOperationsInput | string
+    viewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    scrollDepth?: IntFieldUpdateOperationsInput | number
+    timeSpent?: IntFieldUpdateOperationsInput | number
+    bounced?: BoolFieldUpdateOperationsInput | boolean
+    completed?: BoolFieldUpdateOperationsInput | boolean
+    shares?: IntFieldUpdateOperationsInput | number
+    linkClicks?: IntFieldUpdateOperationsInput | number
+    imageClicks?: IntFieldUpdateOperationsInput | number
+    ctaClicks?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type UnsignedBlogViewUncheckedUpdateWithoutBlogInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    ipAddress?: StringFieldUpdateOperationsInput | string
+    viewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    scrollDepth?: IntFieldUpdateOperationsInput | number
+    timeSpent?: IntFieldUpdateOperationsInput | number
+    bounced?: BoolFieldUpdateOperationsInput | boolean
+    completed?: BoolFieldUpdateOperationsInput | boolean
+    shares?: IntFieldUpdateOperationsInput | number
+    linkClicks?: IntFieldUpdateOperationsInput | number
+    imageClicks?: IntFieldUpdateOperationsInput | number
+    ctaClicks?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type UnsignedBlogViewUncheckedUpdateManyWithoutBlogInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    ipAddress?: StringFieldUpdateOperationsInput | string
+    viewedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    scrollDepth?: IntFieldUpdateOperationsInput | number
+    timeSpent?: IntFieldUpdateOperationsInput | number
+    bounced?: BoolFieldUpdateOperationsInput | boolean
+    completed?: BoolFieldUpdateOperationsInput | boolean
+    shares?: IntFieldUpdateOperationsInput | number
+    linkClicks?: IntFieldUpdateOperationsInput | number
+    imageClicks?: IntFieldUpdateOperationsInput | number
+    ctaClicks?: IntFieldUpdateOperationsInput | number
   }
 
   export type BlogTagsUpdateWithoutBlogInput = {

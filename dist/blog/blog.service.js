@@ -92,6 +92,39 @@ let BlogService = class BlogService {
     async removeTag(id) {
         return await this.blogsRepository.deleteTag(id);
     }
+    async recordView(blogId, userId, ipAddress) {
+        if (userId) {
+            try {
+                await this.blogsRepository.createBlogView({ blogId, UserId: userId });
+            }
+            catch {
+            }
+            return { viewToken: userId, viewType: 'signed' };
+        }
+        const view = await this.blogsRepository.createUnsignedBlogView({
+            blogId,
+            ipAddress: ipAddress ?? 'unknown',
+        });
+        return { viewToken: view.id, viewType: 'unsigned' };
+    }
+    async updateMetrics(blogId, metrics) {
+        if (metrics.viewType === 'signed') {
+            return this.blogsRepository.updateSignedBlogViewMetrics(blogId, metrics.viewToken, metrics);
+        }
+        return this.blogsRepository.updateUnsignedBlogViewMetrics(metrics.viewToken, metrics);
+    }
+    async getAnalytics(blogId) {
+        return this.blogsRepository.getBlogAnalytics(blogId);
+    }
+    async getStatsOverview() {
+        return this.blogsRepository.getStatsOverview();
+    }
+    async getStatsTimeline(months) {
+        return this.blogsRepository.getStatsTimeline(months);
+    }
+    async getStatsArticles() {
+        return this.blogsRepository.getStatsArticles();
+    }
 };
 exports.BlogService = BlogService;
 exports.BlogService = BlogService = __decorate([

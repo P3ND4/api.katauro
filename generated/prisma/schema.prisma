@@ -222,13 +222,37 @@ model Carousel {
 }
 
 model BlogView {
-  blogId   String
-  UserId   String
-  viewedAt DateTime @default(now())
-  User     User     @relation(fields: [UserId], references: [id], onDelete: Cascade)
-  Blog     Blog     @relation(fields: [blogId], references: [id], onDelete: Cascade)
+  blogId      String
+  UserId      String
+  viewedAt    DateTime @default(now())
+  scrollDepth Int      @default(0)
+  timeSpent   Int      @default(0)
+  bounced     Boolean  @default(true)
+  completed   Boolean  @default(false)
+  shares      Int      @default(0)
+  linkClicks  Int      @default(0)
+  imageClicks Int      @default(0)
+  ctaClicks   Int      @default(0)
+  User        User     @relation(fields: [UserId], references: [id], onDelete: Cascade)
+  Blog        Blog     @relation(fields: [blogId], references: [id], onDelete: Cascade)
 
   @@id([blogId, UserId])
+}
+
+model UnsignedBlogView {
+  id          String   @id @default(uuid())
+  blogId      String
+  ipAddress   String
+  viewedAt    DateTime @default(now())
+  scrollDepth Int      @default(0)
+  timeSpent   Int      @default(0)
+  bounced     Boolean  @default(true)
+  completed   Boolean  @default(false)
+  shares      Int      @default(0)
+  linkClicks  Int      @default(0)
+  imageClicks Int      @default(0)
+  ctaClicks   Int      @default(0)
+  Blog        Blog     @relation(fields: [blogId], references: [id], onDelete: Cascade)
 }
 
 model Blog {
@@ -240,10 +264,11 @@ model Blog {
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt
 
-  Tags        Tags[]        @relation()
-  blogContent blogContent[] @relation()
-  BlogView    BlogView[]    @relation()
-  BlogTags    BlogTags[]
+  Tags             Tags[]             @relation()
+  blogContent      blogContent[]      @relation()
+  BlogView         BlogView[]         @relation()
+  UnsignedBlogView UnsignedBlogView[] @relation()
+  BlogTags         BlogTags[]
 }
 
 model blogContent {
