@@ -10,14 +10,16 @@ export class MailService {
         port: 465,
         secure: true,
         auth: {
-            user: 'verificacion@katauro.com',
+            user: 'noreply@katauro.com',
             pass: process.env.MAIL_PASS,
+        }, tls: {
+            rejectUnauthorized: false,
         },
     });
 
     async sendVerification(email: string, code: string) {
         await this.transporter.sendMail({
-            from: '"Katauro" <verificacion@katauro.com>',
+            from: '"Katauro" <noreply@katauro.com>',
             to: email,
             subject: 'Código de verificación',
             html:
