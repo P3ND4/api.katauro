@@ -17,16 +17,17 @@ export class OrderService {
     for (const x of createOrderDto.productsID) {
       count[x.productId] = x.count;
 
-      const res = await this.variantService.update(x.productId, {
-        setStock: -x.count
-      });
 
-      if (res.count === 0) {
-        const prod = await this.variantService.findById(x.productId) as Variant;
-        throw new ConflictException(
-          `El producto ${prod?.genericProd?.name} no tiene suficiente stock para completar la orden. Stock actual: ${prod?.stock}, Stock requerido: ${x.count}`
-        );
-      }
+      //TODO: Para implementacion de pago futra
+      //const res = await this.variantService.update(x.productId, {
+      //  setStock: -x.count
+      //});
+      //if (res.count === 0) {
+      //  const prod = await this.variantService.findById(x.productId) as Variant;
+      //  throw new ConflictException(
+      //    `El producto ${prod?.genericProd?.name} no tiene suficiente stock para completar la orden. Stock actual: ${prod?.stock}, Stock requerido: ${x.count}`
+      //  );
+      //}
     }
     let correctedPrice = 0
     prods.forEach(prod => {
@@ -63,13 +64,15 @@ export class OrderService {
   }
 
   async update(id: string, updateOrderDto: UpdateOrderDto) {
-    if (updateOrderDto.state === OrderState.canceled) {
-      const order = (await this.orderRepository.findOrderById(id)) as Order;
-      order.products.forEach(async (x) => {
-        const res = await this.variantService.update(x.productId, { setStock: x.count });
 
-      });
-    }
+    // TODO: Para implementacion de pago futura, se debe revisar el stock de los productos al cancelar una orden, y si se cancela, se debe aumentar el stock de los productos correspondientes
+    //if (updateOrderDto.state === OrderState.canceled) {
+    //  const order = (await this.orderRepository.findOrderById(id)) as Order;
+    //  order.products.forEach(async (x) => {
+    //    const res = await this.variantService.update(x.productId, { setStock: x.count });
+    //
+    //  });
+    //}
     return this.orderRepository.updateOrder(id, updateOrderDto);
   }
 

@@ -11,7 +11,7 @@ export class UsersRepository implements IUserRepository {
     constructor(private prismaService: PrismaService) {
     }
     findUserByEmail(email: string): Promise<User | null> {
-        return this.prismaService.user.findUniqueOrThrow({
+        return this.prismaService.user.findUnique({
             where: { email: email },
             include: {
                 cart: {
@@ -86,6 +86,8 @@ export class UsersRepository implements IUserRepository {
                 password: data.password,
                 publicId: data.publicId,
                 phone: data.phone,
+                googleId: data.googleId,
+                provider: data.provider,
                 cart: { create: data.updateCart?.map(variantId => ({ productId: variantId })), delete: data.deleteFromCArt?.map(prod => ({ userId_productId: { productId: prod, userId: id } })) },
                 image: data.image,
                 emailVerificationCode: data.emailVerificationCode,
@@ -101,5 +103,11 @@ export class UsersRepository implements IUserRepository {
             where: { id },
         });
 
+    }
+
+    findUserByGoogleId(googleId: string): Promise<User | null> {
+        return this.prismaService.user.findUnique({
+            where: { googleId },
+        });
     }
 }

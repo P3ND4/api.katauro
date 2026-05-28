@@ -29,6 +29,13 @@ export class AuthController {
   }
 
 
+  @Post('google')
+  async googleLogin(@Body() body: { credential: string }, @Res() res: Response) {
+    const { access_token } = await this.authService.googleLogin(body.credential);
+    this.createCookie(access_token, res);
+    res.json({ message: 'Login successful' });
+  }
+
   @Post('register')
   register(@Body() createUserDto: CreateUserDto) {
     return this.authService.register(createUserDto);

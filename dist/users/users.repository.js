@@ -18,7 +18,7 @@ let UsersRepository = class UsersRepository {
         this.prismaService = prismaService;
     }
     findUserByEmail(email) {
-        return this.prismaService.user.findUniqueOrThrow({
+        return this.prismaService.user.findUnique({
             where: { email: email },
             include: {
                 cart: {
@@ -89,6 +89,8 @@ let UsersRepository = class UsersRepository {
                 password: data.password,
                 publicId: data.publicId,
                 phone: data.phone,
+                googleId: data.googleId,
+                provider: data.provider,
                 cart: { create: data.updateCart?.map(variantId => ({ productId: variantId })), delete: data.deleteFromCArt?.map(prod => ({ userId_productId: { productId: prod, userId: id } })) },
                 image: data.image,
                 emailVerificationCode: data.emailVerificationCode,
@@ -100,6 +102,11 @@ let UsersRepository = class UsersRepository {
     deleteUser(id) {
         return this.prismaService.user.delete({
             where: { id },
+        });
+    }
+    findUserByGoogleId(googleId) {
+        return this.prismaService.user.findUnique({
+            where: { googleId },
         });
     }
 };

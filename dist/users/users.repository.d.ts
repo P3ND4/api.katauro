@@ -12,4 +12,5 @@ export declare class UsersRepository implements IUserRepository {
     findUserById(id: string): Promise<User | null>;
     updateUser(id: string, data: UpdateUserDto): Promise<User>;
     deleteUser(id: string): Promise<User>;
+    findUserByGoogleId(googleId: string): Promise<User | null>;
 }

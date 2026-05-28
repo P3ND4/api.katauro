@@ -38,6 +38,11 @@ let AuthController = class AuthController {
             path: '/',
         });
     }
+    async googleLogin(body, res) {
+        const { access_token } = await this.authService.googleLogin(body.credential);
+        this.createCookie(access_token, res);
+        res.json({ message: 'Login successful' });
+    }
     register(createUserDto) {
         return this.authService.register(createUserDto);
     }
@@ -75,6 +80,14 @@ __decorate([
     __metadata("design:paramtypes", [loginDto_1.LoginDto, Object]),
     __metadata("design:returntype", Promise)
 ], AuthController.prototype, "login", null);
+__decorate([
+    (0, common_1.Post)('google'),
+    __param(0, (0, common_1.Body)()),
+    __param(1, (0, common_1.Res)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, Object]),
+    __metadata("design:returntype", Promise)
+], AuthController.prototype, "googleLogin", null);
 __decorate([
     (0, common_1.Post)('register'),
     __param(0, (0, common_1.Body)()),

@@ -8,6 +8,7 @@ import { LoginDto } from './dto/loginDto';
 import { RevokedJwtService } from '../shared/services/jwt/revokedJwt.service';
 import { MailService } from 'src/shared/services/mail/mail.service';
 import { User } from 'src/users/entities/user.entity';
+import { OAuth2Client } from 'google-auth-library';
 
 
 @Injectable()
@@ -31,9 +32,31 @@ export class AuthService {
         if (!user) {
             throw new UnauthorizedException('No existe usuario con ese email');
         }
-        if (!user || !(await bcrypt.compare(password, user.password))) {
+        if (!user.password || !(await bcrypt.compare(password, user.password))) {
             throw new UnauthorizedException('Contraseña incorrecta');
         }
+        return this.createToken(user);
+    }
+
+    async googleLogin(credential: string) {
+        const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
+        const ticket = await client.verifyIdToken({
+            idToken: credential,
+            audience: process.env.GOOGLE_CLIENT_ID,
+        });
+        const payload = ticket.getPayload();
+        if (!payload) throw new UnauthorizedException('Token inválido');
+
+        const { sub: googleId, email, given_name: name, family_name: lastName, picture: image } = payload;
+
+        if (!googleId || !email) {
+            throw new UnauthorizedException('Token de Google inválido: faltan datos esenciales');
+        }
+
+        const user = await this.userService.findOrCreateGoogleUser(
+            googleId, email, name || '', lastName || '', image || ''
+        );
+
         return this.createToken(user);
     }
 

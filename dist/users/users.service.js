@@ -58,7 +58,8 @@ let UsersService = class UsersService {
         this.cloudyServ = cloudyServ;
     }
     async create(createUserDto) {
-        createUserDto.password = await bcrypt.hash(createUserDto.password, 10);
+        if (createUserDto.password)
+            createUserDto.password = await bcrypt.hash(createUserDto.password, 10);
         const defaultImage = 'https://res.cloudinary.com/dmhadvchw/image/upload/q_auto,f_auto/v1778375147/Captura_de_pantalla_2026-05-09_210500_mxi00l.png';
         createUserDto.image = defaultImage;
         return await this.usersRepository.createUser(createUserDto);
@@ -82,6 +83,26 @@ let UsersService = class UsersService {
     }
     async findUserByEmail(email) {
         return this.usersRepository.findUserByEmail(email);
+    }
+    async findOrCreateGoogleUser(googleId, email, name, lastName, image) {
+        let user = await this.usersRepository.findUserByGoogleId(googleId);
+        if (!user) {
+            user = await this.usersRepository.findUserByEmail(email);
+            if (user) {
+                user = await this.usersRepository.updateUser(user.id, { googleId, provider: 'google' });
+            }
+            else {
+                user = await this.usersRepository.createUser({
+                    email,
+                    name,
+                    lastName: lastName || '',
+                    image: image || '',
+                    googleId,
+                    provider: 'google',
+                });
+            }
+        }
+        return user;
     }
 };
 exports.UsersService = UsersService;

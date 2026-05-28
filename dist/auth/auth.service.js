@@ -50,6 +50,7 @@ const bcrypt = __importStar(require("bcrypt"));
 const crypto_1 = require("crypto");
 const revokedJwt_service_1 = require("../shared/services/jwt/revokedJwt.service");
 const mail_service_1 = require("../shared/services/mail/mail.service");
+const google_auth_library_1 = require("google-auth-library");
 let AuthService = class AuthService {
     userService;
     jwtService;
@@ -77,9 +78,25 @@ let AuthService = class AuthService {
         if (!user) {
             throw new common_1.UnauthorizedException('No existe usuario con ese email');
         }
-        if (!user || !(await bcrypt.compare(password, user.password))) {
+        if (!user.password || !(await bcrypt.compare(password, user.password))) {
             throw new common_1.UnauthorizedException('Contraseña incorrecta');
         }
+        return this.createToken(user);
+    }
+    async googleLogin(credential) {
+        const client = new google_auth_library_1.OAuth2Client(process.env.GOOGLE_CLIENT_ID);
+        const ticket = await client.verifyIdToken({
+            idToken: credential,
+            audience: process.env.GOOGLE_CLIENT_ID,
+        });
+        const payload = ticket.getPayload();
+        if (!payload)
+            throw new common_1.UnauthorizedException('Token inválido');
+        const { sub: googleId, email, given_name: name, family_name: lastName, picture: image } = payload;
+        if (!googleId || !email) {
+            throw new common_1.UnauthorizedException('Token de Google inválido: faltan datos esenciales');
+        }
+        const user = await this.userService.findOrCreateGoogleUser(googleId, email, name || '', lastName || '', image || '');
         return this.createToken(user);
     }
     createToken(user) {

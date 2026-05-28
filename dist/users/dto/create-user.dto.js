@@ -12,6 +12,8 @@ class CreateUserDto {
     emailVerified;
     emailVerificationCode;
     emailVerificationExpires;
+    googleId;
+    provider;
 }
 exports.CreateUserDto = CreateUserDto;
 //# sourceMappingURL=create-user.dto.js.map

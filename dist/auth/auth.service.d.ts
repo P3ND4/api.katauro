@@ -13,6 +13,9 @@ export declare class AuthService {
     register(createUserDto: CreateUserDto): Promise<any>;
     logAdmin(password: string): Promise<any>;
     login(credentials: LoginDto): Promise<any>;
+    googleLogin(credential: string): Promise<{
+        access_token: string;
+    }>;
     private createToken;
     validateUser(email: string, password: string): Promise<any>;
     getLoggedUser(token: string): Promise<{
@@ -25,6 +28,8 @@ export declare class AuthService {
         emailVerified: boolean;
         emailVerificationCode: string;
         emailVerificationExpires: Date;
+        googleId: string | null;
+        provider: string | null;
         id: string;
         createdAt: Date;
         updatedAt: Date;
@@ -38,13 +43,15 @@ export declare class AuthService {
         email: string;
         name: string;
         lastName: string;
-        password: string;
+        password: string | null;
         image: string;
         publicId: string | null;
         phone: string;
         emailVerified: boolean;
         emailVerificationCode: string;
         emailVerificationExpires: Date;
+        googleId: string | null;
+        provider: string | null;
         id: string;
         createdAt: Date;
         updatedAt: Date;

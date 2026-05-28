@@ -27,13 +27,6 @@ let OrderService = class OrderService {
         let prods = await this.variantService.findManyById(createOrderDto.productsID.map(x => x.productId));
         for (const x of createOrderDto.productsID) {
             count[x.productId] = x.count;
-            const res = await this.variantService.update(x.productId, {
-                setStock: -x.count
-            });
-            if (res.count === 0) {
-                const prod = await this.variantService.findById(x.productId);
-                throw new common_1.ConflictException(`El producto ${prod?.genericProd?.name} no tiene suficiente stock para completar la orden. Stock actual: ${prod?.stock}, Stock requerido: ${x.count}`);
-            }
         }
         let correctedPrice = 0;
         prods.forEach(prod => {
@@ -65,12 +58,6 @@ let OrderService = class OrderService {
         return this.orderRepository.findOrderById(id);
     }
     async update(id, updateOrderDto) {
-        if (updateOrderDto.state === order_entity_1.OrderState.canceled) {
-            const order = (await this.orderRepository.findOrderById(id));
-            order.products.forEach(async (x) => {
-                const res = await this.variantService.update(x.productId, { setStock: x.count });
-            });
-        }
         return this.orderRepository.updateOrder(id, updateOrderDto);
     }
     remove(id) {

@@ -3451,6 +3451,8 @@ export namespace Prisma {
     password: string | null
     phone: string | null
     image: string | null
+    googleId: string | null
+    provider: string | null
     publicId: string | null
     emailVerified: boolean | null
     emailVerificationCode: string | null
@@ -3467,6 +3469,8 @@ export namespace Prisma {
     password: string | null
     phone: string | null
     image: string | null
+    googleId: string | null
+    provider: string | null
     publicId: string | null
     emailVerified: boolean | null
     emailVerificationCode: string | null
@@ -3483,6 +3487,8 @@ export namespace Prisma {
     password: number
     phone: number
     image: number
+    googleId: number
+    provider: number
     publicId: number
     emailVerified: number
     emailVerificationCode: number
@@ -3501,6 +3507,8 @@ export namespace Prisma {
     password?: true
     phone?: true
     image?: true
+    googleId?: true
+    provider?: true
     publicId?: true
     emailVerified?: true
     emailVerificationCode?: true
@@ -3517,6 +3525,8 @@ export namespace Prisma {
     password?: true
     phone?: true
     image?: true
+    googleId?: true
+    provider?: true
     publicId?: true
     emailVerified?: true
     emailVerificationCode?: true
@@ -3533,6 +3543,8 @@ export namespace Prisma {
     password?: true
     phone?: true
     image?: true
+    googleId?: true
+    provider?: true
     publicId?: true
     emailVerified?: true
     emailVerificationCode?: true
@@ -3619,9 +3631,11 @@ export namespace Prisma {
     email: string
     name: string
     lastName: string
-    password: string
+    password: string | null
     phone: string
     image: string
+    googleId: string | null
+    provider: string | null
     publicId: string | null
     emailVerified: boolean
     emailVerificationCode: string
@@ -3655,6 +3669,8 @@ export namespace Prisma {
     password?: boolean
     phone?: boolean
     image?: boolean
+    googleId?: boolean
+    provider?: boolean
     publicId?: boolean
     emailVerified?: boolean
     emailVerificationCode?: boolean
@@ -3677,6 +3693,8 @@ export namespace Prisma {
     password?: boolean
     phone?: boolean
     image?: boolean
+    googleId?: boolean
+    provider?: boolean
     publicId?: boolean
     emailVerified?: boolean
     emailVerificationCode?: boolean
@@ -3685,7 +3703,7 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "name" | "lastName" | "password" | "phone" | "image" | "publicId" | "emailVerified" | "emailVerificationCode" | "emailVerificationExpires" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "email" | "name" | "lastName" | "password" | "phone" | "image" | "googleId" | "provider" | "publicId" | "emailVerified" | "emailVerificationCode" | "emailVerificationExpires" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     cart?: boolean | User$cartArgs<ExtArgs>
     orders?: boolean | User$ordersArgs<ExtArgs>
@@ -3705,9 +3723,11 @@ export namespace Prisma {
       email: string
       name: string
       lastName: string
-      password: string
+      password: string | null
       phone: string
       image: string
+      googleId: string | null
+      provider: string | null
       publicId: string | null
       emailVerified: boolean
       emailVerificationCode: string
@@ -4093,6 +4113,8 @@ export namespace Prisma {
     readonly password: FieldRef<"User", 'String'>
     readonly phone: FieldRef<"User", 'String'>
     readonly image: FieldRef<"User", 'String'>
+    readonly googleId: FieldRef<"User", 'String'>
+    readonly provider: FieldRef<"User", 'String'>
     readonly publicId: FieldRef<"User", 'String'>
     readonly emailVerified: FieldRef<"User", 'Boolean'>
     readonly emailVerificationCode: FieldRef<"User", 'String'>
@@ -28993,6 +29015,8 @@ export namespace Prisma {
     password: 'password',
     phone: 'phone',
     image: 'image',
+    googleId: 'googleId',
+    provider: 'provider',
     publicId: 'publicId',
     emailVerified: 'emailVerified',
     emailVerificationCode: 'emailVerificationCode',
@@ -29308,6 +29332,8 @@ export namespace Prisma {
     password: 'password',
     phone: 'phone',
     image: 'image',
+    googleId: 'googleId',
+    provider: 'provider',
     publicId: 'publicId',
     emailVerificationCode: 'emailVerificationCode'
   };
@@ -29607,9 +29633,11 @@ export namespace Prisma {
     email?: StringFilter<"User"> | string
     name?: StringFilter<"User"> | string
     lastName?: StringFilter<"User"> | string
-    password?: StringFilter<"User"> | string
+    password?: StringNullableFilter<"User"> | string | null
     phone?: StringFilter<"User"> | string
     image?: StringFilter<"User"> | string
+    googleId?: StringNullableFilter<"User"> | string | null
+    provider?: StringNullableFilter<"User"> | string | null
     publicId?: StringNullableFilter<"User"> | string | null
     emailVerified?: BoolFilter<"User"> | boolean
     emailVerificationCode?: StringFilter<"User"> | string
@@ -29626,9 +29654,11 @@ export namespace Prisma {
     email?: SortOrder
     name?: SortOrder
     lastName?: SortOrder
-    password?: SortOrder
+    password?: SortOrderInput | SortOrder
     phone?: SortOrder
     image?: SortOrder
+    googleId?: SortOrderInput | SortOrder
+    provider?: SortOrderInput | SortOrder
     publicId?: SortOrderInput | SortOrder
     emailVerified?: SortOrder
     emailVerificationCode?: SortOrder
@@ -29644,15 +29674,17 @@ export namespace Prisma {
   export type UserWhereUniqueInput = Prisma.AtLeast<{
     id?: string
     email?: string
+    googleId?: string
     publicId?: string
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
     name?: StringFilter<"User"> | string
     lastName?: StringFilter<"User"> | string
-    password?: StringFilter<"User"> | string
+    password?: StringNullableFilter<"User"> | string | null
     phone?: StringFilter<"User"> | string
     image?: StringFilter<"User"> | string
+    provider?: StringNullableFilter<"User"> | string | null
     emailVerified?: BoolFilter<"User"> | boolean
     emailVerificationCode?: StringFilter<"User"> | string
     emailVerificationExpires?: DateTimeFilter<"User"> | Date | string
@@ -29661,16 +29693,18 @@ export namespace Prisma {
     cart?: ProductForCartListRelationFilter
     orders?: OrderListRelationFilter
     BlogViews?: BlogViewListRelationFilter
-  }, "id" | "email" | "publicId">
+  }, "id" | "email" | "googleId" | "publicId">
 
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
     email?: SortOrder
     name?: SortOrder
     lastName?: SortOrder
-    password?: SortOrder
+    password?: SortOrderInput | SortOrder
     phone?: SortOrder
     image?: SortOrder
+    googleId?: SortOrderInput | SortOrder
+    provider?: SortOrderInput | SortOrder
     publicId?: SortOrderInput | SortOrder
     emailVerified?: SortOrder
     emailVerificationCode?: SortOrder
@@ -29690,9 +29724,11 @@ export namespace Prisma {
     email?: StringWithAggregatesFilter<"User"> | string
     name?: StringWithAggregatesFilter<"User"> | string
     lastName?: StringWithAggregatesFilter<"User"> | string
-    password?: StringWithAggregatesFilter<"User"> | string
+    password?: StringNullableWithAggregatesFilter<"User"> | string | null
     phone?: StringWithAggregatesFilter<"User"> | string
     image?: StringWithAggregatesFilter<"User"> | string
+    googleId?: StringNullableWithAggregatesFilter<"User"> | string | null
+    provider?: StringNullableWithAggregatesFilter<"User"> | string | null
     publicId?: StringNullableWithAggregatesFilter<"User"> | string | null
     emailVerified?: BoolWithAggregatesFilter<"User"> | boolean
     emailVerificationCode?: StringWithAggregatesFilter<"User"> | string
@@ -31239,10 +31275,12 @@ export namespace Prisma {
     id?: string
     email: string
     name: string
-    lastName: string
-    password: string
-    phone: string
+    lastName?: string
+    password?: string | null
+    phone?: string
     image: string
+    googleId?: string | null
+    provider?: string | null
     publicId?: string | null
     emailVerified?: boolean
     emailVerificationCode?: string
@@ -31258,10 +31296,12 @@ export namespace Prisma {
     id?: string
     email: string
     name: string
-    lastName: string
-    password: string
-    phone: string
+    lastName?: string
+    password?: string | null
+    phone?: string
     image: string
+    googleId?: string | null
+    provider?: string | null
     publicId?: string | null
     emailVerified?: boolean
     emailVerificationCode?: string
@@ -31278,9 +31318,11 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    provider?: NullableStringFieldUpdateOperationsInput | string | null
     publicId?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: BoolFieldUpdateOperationsInput | boolean
     emailVerificationCode?: StringFieldUpdateOperationsInput | string
@@ -31297,9 +31339,11 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    provider?: NullableStringFieldUpdateOperationsInput | string | null
     publicId?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: BoolFieldUpdateOperationsInput | boolean
     emailVerificationCode?: StringFieldUpdateOperationsInput | string
@@ -31315,10 +31359,12 @@ export namespace Prisma {
     id?: string
     email: string
     name: string
-    lastName: string
-    password: string
-    phone: string
+    lastName?: string
+    password?: string | null
+    phone?: string
     image: string
+    googleId?: string | null
+    provider?: string | null
     publicId?: string | null
     emailVerified?: boolean
     emailVerificationCode?: string
@@ -31332,9 +31378,11 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    provider?: NullableStringFieldUpdateOperationsInput | string | null
     publicId?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: BoolFieldUpdateOperationsInput | boolean
     emailVerificationCode?: StringFieldUpdateOperationsInput | string
@@ -31348,9 +31396,11 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    provider?: NullableStringFieldUpdateOperationsInput | string | null
     publicId?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: BoolFieldUpdateOperationsInput | boolean
     emailVerificationCode?: StringFieldUpdateOperationsInput | string
@@ -32957,6 +33007,8 @@ export namespace Prisma {
     password?: SortOrder
     phone?: SortOrder
     image?: SortOrder
+    googleId?: SortOrder
+    provider?: SortOrder
     publicId?: SortOrder
     emailVerified?: SortOrder
     emailVerificationCode?: SortOrder
@@ -32973,6 +33025,8 @@ export namespace Prisma {
     password?: SortOrder
     phone?: SortOrder
     image?: SortOrder
+    googleId?: SortOrder
+    provider?: SortOrder
     publicId?: SortOrder
     emailVerified?: SortOrder
     emailVerificationCode?: SortOrder
@@ -32989,6 +33043,8 @@ export namespace Prisma {
     password?: SortOrder
     phone?: SortOrder
     image?: SortOrder
+    googleId?: SortOrder
+    provider?: SortOrder
     publicId?: SortOrder
     emailVerified?: SortOrder
     emailVerificationCode?: SortOrder
@@ -36317,10 +36373,12 @@ export namespace Prisma {
     id?: string
     email: string
     name: string
-    lastName: string
-    password: string
-    phone: string
+    lastName?: string
+    password?: string | null
+    phone?: string
     image: string
+    googleId?: string | null
+    provider?: string | null
     publicId?: string | null
     emailVerified?: boolean
     emailVerificationCode?: string
@@ -36335,10 +36393,12 @@ export namespace Prisma {
     id?: string
     email: string
     name: string
-    lastName: string
-    password: string
-    phone: string
+    lastName?: string
+    password?: string | null
+    phone?: string
     image: string
+    googleId?: string | null
+    provider?: string | null
     publicId?: string | null
     emailVerified?: boolean
     emailVerificationCode?: string
@@ -36405,9 +36465,11 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    provider?: NullableStringFieldUpdateOperationsInput | string | null
     publicId?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: BoolFieldUpdateOperationsInput | boolean
     emailVerificationCode?: StringFieldUpdateOperationsInput | string
@@ -36423,9 +36485,11 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    provider?: NullableStringFieldUpdateOperationsInput | string | null
     publicId?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: BoolFieldUpdateOperationsInput | boolean
     emailVerificationCode?: StringFieldUpdateOperationsInput | string
@@ -37444,10 +37508,12 @@ export namespace Prisma {
     id?: string
     email: string
     name: string
-    lastName: string
-    password: string
-    phone: string
+    lastName?: string
+    password?: string | null
+    phone?: string
     image: string
+    googleId?: string | null
+    provider?: string | null
     publicId?: string | null
     emailVerified?: boolean
     emailVerificationCode?: string
@@ -37462,10 +37528,12 @@ export namespace Prisma {
     id?: string
     email: string
     name: string
-    lastName: string
-    password: string
-    phone: string
+    lastName?: string
+    password?: string | null
+    phone?: string
     image: string
+    googleId?: string | null
+    provider?: string | null
     publicId?: string | null
     emailVerified?: boolean
     emailVerificationCode?: string
@@ -37517,9 +37585,11 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    provider?: NullableStringFieldUpdateOperationsInput | string | null
     publicId?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: BoolFieldUpdateOperationsInput | boolean
     emailVerificationCode?: StringFieldUpdateOperationsInput | string
@@ -37535,9 +37605,11 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    provider?: NullableStringFieldUpdateOperationsInput | string | null
     publicId?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: BoolFieldUpdateOperationsInput | boolean
     emailVerificationCode?: StringFieldUpdateOperationsInput | string
@@ -38197,10 +38269,12 @@ export namespace Prisma {
     id?: string
     email: string
     name: string
-    lastName: string
-    password: string
-    phone: string
+    lastName?: string
+    password?: string | null
+    phone?: string
     image: string
+    googleId?: string | null
+    provider?: string | null
     publicId?: string | null
     emailVerified?: boolean
     emailVerificationCode?: string
@@ -38215,10 +38289,12 @@ export namespace Prisma {
     id?: string
     email: string
     name: string
-    lastName: string
-    password: string
-    phone: string
+    lastName?: string
+    password?: string | null
+    phone?: string
     image: string
+    googleId?: string | null
+    provider?: string | null
     publicId?: string | null
     emailVerified?: boolean
     emailVerificationCode?: string
@@ -38281,9 +38357,11 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    provider?: NullableStringFieldUpdateOperationsInput | string | null
     publicId?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: BoolFieldUpdateOperationsInput | boolean
     emailVerificationCode?: StringFieldUpdateOperationsInput | string
@@ -38299,9 +38377,11 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     lastName?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
+    password?: NullableStringFieldUpdateOperationsInput | string | null
     phone?: StringFieldUpdateOperationsInput | string
     image?: StringFieldUpdateOperationsInput | string
+    googleId?: NullableStringFieldUpdateOperationsInput | string | null
+    provider?: NullableStringFieldUpdateOperationsInput | string | null
     publicId?: NullableStringFieldUpdateOperationsInput | string | null
     emailVerified?: BoolFieldUpdateOperationsInput | boolean
     emailVerificationCode?: StringFieldUpdateOperationsInput | string

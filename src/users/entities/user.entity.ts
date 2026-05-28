@@ -5,7 +5,7 @@ export class User {
     email: string;
     name: string;
     lastName: string;
-    password: string;
+    password: string | null;
     image: string;
     phone: string;
     orders?: Order[];

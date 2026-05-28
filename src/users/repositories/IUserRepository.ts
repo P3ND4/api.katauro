@@ -9,4 +9,5 @@ export interface IUserRepository {
     updateUser(id: string, data: UpdateUserDto): Promise<User>;
     deleteUser(id: string): Promise<User>;
     findUserByEmail(email: string): Promise<User | null>;
+    findUserByGoogleId(googleId: string): Promise<User | null>;
 }

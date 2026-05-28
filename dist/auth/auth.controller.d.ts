@@ -7,6 +7,9 @@ export declare class AuthController {
     constructor(authService: AuthService);
     login(loginDto: LoginDto, res: Response): Promise<void>;
     createCookie(access_token: string, res: Response, cookieName?: string, time?: number): void;
+    googleLogin(body: {
+        credential: string;
+    }, res: Response): Promise<void>;
     register(createUserDto: CreateUserDto): Promise<any>;
     logout(req: any): Promise<{
         message: string;
@@ -28,13 +31,15 @@ export declare class AuthController {
         email: string;
         name: string;
         lastName: string;
-        password: string;
+        password: string | null;
         image: string;
         publicId: string | null;
         phone: string;
         emailVerified: boolean;
         emailVerificationCode: string;
         emailVerificationExpires: Date;
+        googleId: string | null;
+        provider: string | null;
         id: string;
         createdAt: Date;
         updatedAt: Date;
@@ -49,6 +54,8 @@ export declare class AuthController {
         emailVerified: boolean;
         emailVerificationCode: string;
         emailVerificationExpires: Date;
+        googleId: string | null;
+        provider: string | null;
         id: string;
         createdAt: Date;
         updatedAt: Date;
