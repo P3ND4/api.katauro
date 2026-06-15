@@ -8,6 +8,8 @@ export declare class Blog {
     createdAt: Date;
     updatedAt: Date;
     introduction: string;
+    publishedDate?: Date;
+    draft?: boolean;
     images: BlogImage[];
     blogContent: BlogContent[];
     BlogView: BlogView[];

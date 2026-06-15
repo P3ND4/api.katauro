@@ -258,10 +258,12 @@ model UnsignedBlogView {
 }
 
 model Blog {
-  id           String      @id @default(uuid())
-  title        String
-  introduction String      @db.LongText
-  images       BlogImage[] @relation()
+  id            String      @id @default(uuid())
+  title         String
+  introduction  String      @db.LongText
+  images        BlogImage[] @relation()
+  publishedDate DateTime?
+  draft         Boolean     @default(false)
 
   createdAt DateTime @default(now())
   updatedAt DateTime @default(now()) @updatedAt

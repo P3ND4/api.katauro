@@ -33,6 +33,8 @@ export class BlogsRepository {
             data: {
                 title: createBlogDto.title,
                 introduction: createBlogDto.introduction,
+                publishedDate: createBlogDto.publishedDate,
+                draft: createBlogDto.draft ?? false,
                 images: {
                     create: createBlogDto.images?.map((img, index) => ({
                         link: img.link,
@@ -133,8 +135,10 @@ export class BlogsRepository {
             data: {
                 title: updateBlogDto.title,
                 introduction: updateBlogDto.introduction,
+                publishedDate: updateBlogDto.publishedDate,
+                draft: updateBlogDto.draft,
                 blogContent: {
-                    deleteMany: updateBlogDto.blogContent?.map((content) => ({ blogId: id })) || [],
+                    deleteMany: { blogId: id },
                     createMany: {
                         data: updateBlogDto.blogContent?.map((content) => ({
                             text: content.text,
@@ -152,7 +156,7 @@ export class BlogsRepository {
                 },
 
                 images: {
-                    deleteMany: updateBlogDto.images?.map((img) => ({ blogId: id })) || [],
+                    deleteMany: { blogId: id },
                     createMany: {
                         data: updateBlogDto.images?.map((img) => ({
                             link: img.link,
@@ -689,9 +693,11 @@ export class BlogsRepository {
         blog.createdAt = data.createdAt;
         blog.updatedAt = data.updatedAt;
         blog.introduction = data.introduction;
+        blog.publishedDate = data.publishedDate ?? undefined;
+        blog.draft = data.draft ?? undefined;
         blog.tags = data.BlogTags?.map((bt: any) => ({ ...bt, tag: this.mapToTagsEntity(bt.tag), blogId: bt.blogId })) || [];
-        blog.images = data.images?.map((img: any) => this.mapToBlogImageEntity(img)) || [];
-        blog.blogContent = data.blogContent?.map((content: any) => this.mapToBlogContentEntity(content)) || [];
+        blog.images = (data.images?.map((img: any) => this.mapToBlogImageEntity(img)) || []).sort((a: any, b: any) => a.position - b.position);
+        blog.blogContent = (data.blogContent?.map((content: any) => this.mapToBlogContentEntity(content)) || []).sort((a: any, b: any) => a.position - b.position);
         blog.BlogView = data.BlogView?.map((view: any) => this.mapToBlogViewEntity(view)) || [];
         return blog;
     }

@@ -7,6 +7,8 @@ class Blog {
     createdAt;
     updatedAt;
     introduction;
+    publishedDate;
+    draft;
     images;
     blogContent;
     BlogView;

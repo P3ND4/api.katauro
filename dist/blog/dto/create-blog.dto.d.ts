@@ -6,4 +6,6 @@ export declare class CreateBlogDto {
     blogContent: CreateBlogContentDto[];
     tags: string[];
     introduction: string;
+    publishedDate?: Date;
+    draft?: boolean;
 }
