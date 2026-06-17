@@ -311,3 +311,15 @@ model BlogTags {
 
   @@id([blogId, tagId])
 }
+
+model DeliveryPrice {
+  id           String   @id @default(uuid())
+  province     String
+  municipality String
+  price        Float
+  active       Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @default(now()) @updatedAt
+
+  @@unique([province, municipality])
+}

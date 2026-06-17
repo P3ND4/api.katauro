@@ -143,6 +143,11 @@ export type Tags = $Result.DefaultSelection<Prisma.$TagsPayload>
  * 
  */
 export type BlogTags = $Result.DefaultSelection<Prisma.$BlogTagsPayload>
+/**
+ * Model DeliveryPrice
+ * 
+ */
+export type DeliveryPrice = $Result.DefaultSelection<Prisma.$DeliveryPricePayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -528,6 +533,16 @@ export class PrismaClient<
     * ```
     */
   get blogTags(): Prisma.BlogTagsDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.deliveryPrice`: Exposes CRUD operations for the **DeliveryPrice** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more DeliveryPrices
+    * const deliveryPrices = await prisma.deliveryPrice.findMany()
+    * ```
+    */
+  get deliveryPrice(): Prisma.DeliveryPriceDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -993,7 +1008,8 @@ export namespace Prisma {
     blogContent: 'blogContent',
     BlogImage: 'BlogImage',
     Tags: 'Tags',
-    BlogTags: 'BlogTags'
+    BlogTags: 'BlogTags',
+    DeliveryPrice: 'DeliveryPrice'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -1012,7 +1028,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "finishForProducts" | "finish" | "productForCart" | "genericProduct" | "category" | "details" | "tokenBlacklist" | "color" | "specificProduct" | "model3D" | "images" | "order" | "productForOrder" | "promotion" | "categoryforPromo" | "productForPromotion" | "promoBanner" | "carousel" | "blogView" | "unsignedBlogView" | "blog" | "blogContent" | "blogImage" | "tags" | "blogTags"
+      modelProps: "user" | "finishForProducts" | "finish" | "productForCart" | "genericProduct" | "category" | "details" | "tokenBlacklist" | "color" | "specificProduct" | "model3D" | "images" | "order" | "productForOrder" | "promotion" | "categoryforPromo" | "productForPromotion" | "promoBanner" | "carousel" | "blogView" | "unsignedBlogView" | "blog" | "blogContent" | "blogImage" | "tags" | "blogTags" | "deliveryPrice"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -2732,6 +2748,72 @@ export namespace Prisma {
           }
         }
       }
+      DeliveryPrice: {
+        payload: Prisma.$DeliveryPricePayload<ExtArgs>
+        fields: Prisma.DeliveryPriceFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.DeliveryPriceFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DeliveryPricePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.DeliveryPriceFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DeliveryPricePayload>
+          }
+          findFirst: {
+            args: Prisma.DeliveryPriceFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DeliveryPricePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.DeliveryPriceFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DeliveryPricePayload>
+          }
+          findMany: {
+            args: Prisma.DeliveryPriceFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DeliveryPricePayload>[]
+          }
+          create: {
+            args: Prisma.DeliveryPriceCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DeliveryPricePayload>
+          }
+          createMany: {
+            args: Prisma.DeliveryPriceCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.DeliveryPriceDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DeliveryPricePayload>
+          }
+          update: {
+            args: Prisma.DeliveryPriceUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DeliveryPricePayload>
+          }
+          deleteMany: {
+            args: Prisma.DeliveryPriceDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.DeliveryPriceUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.DeliveryPriceUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DeliveryPricePayload>
+          }
+          aggregate: {
+            args: Prisma.DeliveryPriceAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateDeliveryPrice>
+          }
+          groupBy: {
+            args: Prisma.DeliveryPriceGroupByArgs<ExtArgs>
+            result: $Utils.Optional<DeliveryPriceGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.DeliveryPriceCountArgs<ExtArgs>
+            result: $Utils.Optional<DeliveryPriceCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -2850,6 +2932,7 @@ export namespace Prisma {
     blogImage?: BlogImageOmit
     tags?: TagsOmit
     blogTags?: BlogTagsOmit
+    deliveryPrice?: DeliveryPriceOmit
   }
 
   /* Types for Logging */
@@ -29016,6 +29099,944 @@ export namespace Prisma {
 
 
   /**
+   * Model DeliveryPrice
+   */
+
+  export type AggregateDeliveryPrice = {
+    _count: DeliveryPriceCountAggregateOutputType | null
+    _avg: DeliveryPriceAvgAggregateOutputType | null
+    _sum: DeliveryPriceSumAggregateOutputType | null
+    _min: DeliveryPriceMinAggregateOutputType | null
+    _max: DeliveryPriceMaxAggregateOutputType | null
+  }
+
+  export type DeliveryPriceAvgAggregateOutputType = {
+    price: number | null
+  }
+
+  export type DeliveryPriceSumAggregateOutputType = {
+    price: number | null
+  }
+
+  export type DeliveryPriceMinAggregateOutputType = {
+    id: string | null
+    province: string | null
+    municipality: string | null
+    price: number | null
+    active: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type DeliveryPriceMaxAggregateOutputType = {
+    id: string | null
+    province: string | null
+    municipality: string | null
+    price: number | null
+    active: boolean | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type DeliveryPriceCountAggregateOutputType = {
+    id: number
+    province: number
+    municipality: number
+    price: number
+    active: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type DeliveryPriceAvgAggregateInputType = {
+    price?: true
+  }
+
+  export type DeliveryPriceSumAggregateInputType = {
+    price?: true
+  }
+
+  export type DeliveryPriceMinAggregateInputType = {
+    id?: true
+    province?: true
+    municipality?: true
+    price?: true
+    active?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type DeliveryPriceMaxAggregateInputType = {
+    id?: true
+    province?: true
+    municipality?: true
+    price?: true
+    active?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type DeliveryPriceCountAggregateInputType = {
+    id?: true
+    province?: true
+    municipality?: true
+    price?: true
+    active?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type DeliveryPriceAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which DeliveryPrice to aggregate.
+     */
+    where?: DeliveryPriceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DeliveryPrices to fetch.
+     */
+    orderBy?: DeliveryPriceOrderByWithRelationInput | DeliveryPriceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: DeliveryPriceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DeliveryPrices from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DeliveryPrices.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned DeliveryPrices
+    **/
+    _count?: true | DeliveryPriceCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: DeliveryPriceAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: DeliveryPriceSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: DeliveryPriceMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: DeliveryPriceMaxAggregateInputType
+  }
+
+  export type GetDeliveryPriceAggregateType<T extends DeliveryPriceAggregateArgs> = {
+        [P in keyof T & keyof AggregateDeliveryPrice]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateDeliveryPrice[P]>
+      : GetScalarType<T[P], AggregateDeliveryPrice[P]>
+  }
+
+
+
+
+  export type DeliveryPriceGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DeliveryPriceWhereInput
+    orderBy?: DeliveryPriceOrderByWithAggregationInput | DeliveryPriceOrderByWithAggregationInput[]
+    by: DeliveryPriceScalarFieldEnum[] | DeliveryPriceScalarFieldEnum
+    having?: DeliveryPriceScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: DeliveryPriceCountAggregateInputType | true
+    _avg?: DeliveryPriceAvgAggregateInputType
+    _sum?: DeliveryPriceSumAggregateInputType
+    _min?: DeliveryPriceMinAggregateInputType
+    _max?: DeliveryPriceMaxAggregateInputType
+  }
+
+  export type DeliveryPriceGroupByOutputType = {
+    id: string
+    province: string
+    municipality: string
+    price: number
+    active: boolean
+    createdAt: Date
+    updatedAt: Date
+    _count: DeliveryPriceCountAggregateOutputType | null
+    _avg: DeliveryPriceAvgAggregateOutputType | null
+    _sum: DeliveryPriceSumAggregateOutputType | null
+    _min: DeliveryPriceMinAggregateOutputType | null
+    _max: DeliveryPriceMaxAggregateOutputType | null
+  }
+
+  type GetDeliveryPriceGroupByPayload<T extends DeliveryPriceGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<DeliveryPriceGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof DeliveryPriceGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], DeliveryPriceGroupByOutputType[P]>
+            : GetScalarType<T[P], DeliveryPriceGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type DeliveryPriceSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    province?: boolean
+    municipality?: boolean
+    price?: boolean
+    active?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["deliveryPrice"]>
+
+
+
+  export type DeliveryPriceSelectScalar = {
+    id?: boolean
+    province?: boolean
+    municipality?: boolean
+    price?: boolean
+    active?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type DeliveryPriceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "province" | "municipality" | "price" | "active" | "createdAt" | "updatedAt", ExtArgs["result"]["deliveryPrice"]>
+
+  export type $DeliveryPricePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "DeliveryPrice"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      province: string
+      municipality: string
+      price: number
+      active: boolean
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["deliveryPrice"]>
+    composites: {}
+  }
+
+  type DeliveryPriceGetPayload<S extends boolean | null | undefined | DeliveryPriceDefaultArgs> = $Result.GetResult<Prisma.$DeliveryPricePayload, S>
+
+  type DeliveryPriceCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<DeliveryPriceFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: DeliveryPriceCountAggregateInputType | true
+    }
+
+  export interface DeliveryPriceDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['DeliveryPrice'], meta: { name: 'DeliveryPrice' } }
+    /**
+     * Find zero or one DeliveryPrice that matches the filter.
+     * @param {DeliveryPriceFindUniqueArgs} args - Arguments to find a DeliveryPrice
+     * @example
+     * // Get one DeliveryPrice
+     * const deliveryPrice = await prisma.deliveryPrice.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends DeliveryPriceFindUniqueArgs>(args: SelectSubset<T, DeliveryPriceFindUniqueArgs<ExtArgs>>): Prisma__DeliveryPriceClient<$Result.GetResult<Prisma.$DeliveryPricePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one DeliveryPrice that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {DeliveryPriceFindUniqueOrThrowArgs} args - Arguments to find a DeliveryPrice
+     * @example
+     * // Get one DeliveryPrice
+     * const deliveryPrice = await prisma.deliveryPrice.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends DeliveryPriceFindUniqueOrThrowArgs>(args: SelectSubset<T, DeliveryPriceFindUniqueOrThrowArgs<ExtArgs>>): Prisma__DeliveryPriceClient<$Result.GetResult<Prisma.$DeliveryPricePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first DeliveryPrice that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DeliveryPriceFindFirstArgs} args - Arguments to find a DeliveryPrice
+     * @example
+     * // Get one DeliveryPrice
+     * const deliveryPrice = await prisma.deliveryPrice.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends DeliveryPriceFindFirstArgs>(args?: SelectSubset<T, DeliveryPriceFindFirstArgs<ExtArgs>>): Prisma__DeliveryPriceClient<$Result.GetResult<Prisma.$DeliveryPricePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first DeliveryPrice that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DeliveryPriceFindFirstOrThrowArgs} args - Arguments to find a DeliveryPrice
+     * @example
+     * // Get one DeliveryPrice
+     * const deliveryPrice = await prisma.deliveryPrice.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends DeliveryPriceFindFirstOrThrowArgs>(args?: SelectSubset<T, DeliveryPriceFindFirstOrThrowArgs<ExtArgs>>): Prisma__DeliveryPriceClient<$Result.GetResult<Prisma.$DeliveryPricePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more DeliveryPrices that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DeliveryPriceFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all DeliveryPrices
+     * const deliveryPrices = await prisma.deliveryPrice.findMany()
+     * 
+     * // Get first 10 DeliveryPrices
+     * const deliveryPrices = await prisma.deliveryPrice.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const deliveryPriceWithIdOnly = await prisma.deliveryPrice.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends DeliveryPriceFindManyArgs>(args?: SelectSubset<T, DeliveryPriceFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DeliveryPricePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a DeliveryPrice.
+     * @param {DeliveryPriceCreateArgs} args - Arguments to create a DeliveryPrice.
+     * @example
+     * // Create one DeliveryPrice
+     * const DeliveryPrice = await prisma.deliveryPrice.create({
+     *   data: {
+     *     // ... data to create a DeliveryPrice
+     *   }
+     * })
+     * 
+     */
+    create<T extends DeliveryPriceCreateArgs>(args: SelectSubset<T, DeliveryPriceCreateArgs<ExtArgs>>): Prisma__DeliveryPriceClient<$Result.GetResult<Prisma.$DeliveryPricePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many DeliveryPrices.
+     * @param {DeliveryPriceCreateManyArgs} args - Arguments to create many DeliveryPrices.
+     * @example
+     * // Create many DeliveryPrices
+     * const deliveryPrice = await prisma.deliveryPrice.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends DeliveryPriceCreateManyArgs>(args?: SelectSubset<T, DeliveryPriceCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a DeliveryPrice.
+     * @param {DeliveryPriceDeleteArgs} args - Arguments to delete one DeliveryPrice.
+     * @example
+     * // Delete one DeliveryPrice
+     * const DeliveryPrice = await prisma.deliveryPrice.delete({
+     *   where: {
+     *     // ... filter to delete one DeliveryPrice
+     *   }
+     * })
+     * 
+     */
+    delete<T extends DeliveryPriceDeleteArgs>(args: SelectSubset<T, DeliveryPriceDeleteArgs<ExtArgs>>): Prisma__DeliveryPriceClient<$Result.GetResult<Prisma.$DeliveryPricePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one DeliveryPrice.
+     * @param {DeliveryPriceUpdateArgs} args - Arguments to update one DeliveryPrice.
+     * @example
+     * // Update one DeliveryPrice
+     * const deliveryPrice = await prisma.deliveryPrice.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends DeliveryPriceUpdateArgs>(args: SelectSubset<T, DeliveryPriceUpdateArgs<ExtArgs>>): Prisma__DeliveryPriceClient<$Result.GetResult<Prisma.$DeliveryPricePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more DeliveryPrices.
+     * @param {DeliveryPriceDeleteManyArgs} args - Arguments to filter DeliveryPrices to delete.
+     * @example
+     * // Delete a few DeliveryPrices
+     * const { count } = await prisma.deliveryPrice.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends DeliveryPriceDeleteManyArgs>(args?: SelectSubset<T, DeliveryPriceDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more DeliveryPrices.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DeliveryPriceUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many DeliveryPrices
+     * const deliveryPrice = await prisma.deliveryPrice.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends DeliveryPriceUpdateManyArgs>(args: SelectSubset<T, DeliveryPriceUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one DeliveryPrice.
+     * @param {DeliveryPriceUpsertArgs} args - Arguments to update or create a DeliveryPrice.
+     * @example
+     * // Update or create a DeliveryPrice
+     * const deliveryPrice = await prisma.deliveryPrice.upsert({
+     *   create: {
+     *     // ... data to create a DeliveryPrice
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the DeliveryPrice we want to update
+     *   }
+     * })
+     */
+    upsert<T extends DeliveryPriceUpsertArgs>(args: SelectSubset<T, DeliveryPriceUpsertArgs<ExtArgs>>): Prisma__DeliveryPriceClient<$Result.GetResult<Prisma.$DeliveryPricePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of DeliveryPrices.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DeliveryPriceCountArgs} args - Arguments to filter DeliveryPrices to count.
+     * @example
+     * // Count the number of DeliveryPrices
+     * const count = await prisma.deliveryPrice.count({
+     *   where: {
+     *     // ... the filter for the DeliveryPrices we want to count
+     *   }
+     * })
+    **/
+    count<T extends DeliveryPriceCountArgs>(
+      args?: Subset<T, DeliveryPriceCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], DeliveryPriceCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a DeliveryPrice.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DeliveryPriceAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends DeliveryPriceAggregateArgs>(args: Subset<T, DeliveryPriceAggregateArgs>): Prisma.PrismaPromise<GetDeliveryPriceAggregateType<T>>
+
+    /**
+     * Group by DeliveryPrice.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DeliveryPriceGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends DeliveryPriceGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: DeliveryPriceGroupByArgs['orderBy'] }
+        : { orderBy?: DeliveryPriceGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, DeliveryPriceGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDeliveryPriceGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the DeliveryPrice model
+   */
+  readonly fields: DeliveryPriceFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for DeliveryPrice.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__DeliveryPriceClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the DeliveryPrice model
+   */
+  interface DeliveryPriceFieldRefs {
+    readonly id: FieldRef<"DeliveryPrice", 'String'>
+    readonly province: FieldRef<"DeliveryPrice", 'String'>
+    readonly municipality: FieldRef<"DeliveryPrice", 'String'>
+    readonly price: FieldRef<"DeliveryPrice", 'Float'>
+    readonly active: FieldRef<"DeliveryPrice", 'Boolean'>
+    readonly createdAt: FieldRef<"DeliveryPrice", 'DateTime'>
+    readonly updatedAt: FieldRef<"DeliveryPrice", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * DeliveryPrice findUnique
+   */
+  export type DeliveryPriceFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DeliveryPrice
+     */
+    select?: DeliveryPriceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DeliveryPrice
+     */
+    omit?: DeliveryPriceOmit<ExtArgs> | null
+    /**
+     * Filter, which DeliveryPrice to fetch.
+     */
+    where: DeliveryPriceWhereUniqueInput
+  }
+
+  /**
+   * DeliveryPrice findUniqueOrThrow
+   */
+  export type DeliveryPriceFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DeliveryPrice
+     */
+    select?: DeliveryPriceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DeliveryPrice
+     */
+    omit?: DeliveryPriceOmit<ExtArgs> | null
+    /**
+     * Filter, which DeliveryPrice to fetch.
+     */
+    where: DeliveryPriceWhereUniqueInput
+  }
+
+  /**
+   * DeliveryPrice findFirst
+   */
+  export type DeliveryPriceFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DeliveryPrice
+     */
+    select?: DeliveryPriceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DeliveryPrice
+     */
+    omit?: DeliveryPriceOmit<ExtArgs> | null
+    /**
+     * Filter, which DeliveryPrice to fetch.
+     */
+    where?: DeliveryPriceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DeliveryPrices to fetch.
+     */
+    orderBy?: DeliveryPriceOrderByWithRelationInput | DeliveryPriceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for DeliveryPrices.
+     */
+    cursor?: DeliveryPriceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DeliveryPrices from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DeliveryPrices.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of DeliveryPrices.
+     */
+    distinct?: DeliveryPriceScalarFieldEnum | DeliveryPriceScalarFieldEnum[]
+  }
+
+  /**
+   * DeliveryPrice findFirstOrThrow
+   */
+  export type DeliveryPriceFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DeliveryPrice
+     */
+    select?: DeliveryPriceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DeliveryPrice
+     */
+    omit?: DeliveryPriceOmit<ExtArgs> | null
+    /**
+     * Filter, which DeliveryPrice to fetch.
+     */
+    where?: DeliveryPriceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DeliveryPrices to fetch.
+     */
+    orderBy?: DeliveryPriceOrderByWithRelationInput | DeliveryPriceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for DeliveryPrices.
+     */
+    cursor?: DeliveryPriceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DeliveryPrices from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DeliveryPrices.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of DeliveryPrices.
+     */
+    distinct?: DeliveryPriceScalarFieldEnum | DeliveryPriceScalarFieldEnum[]
+  }
+
+  /**
+   * DeliveryPrice findMany
+   */
+  export type DeliveryPriceFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DeliveryPrice
+     */
+    select?: DeliveryPriceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DeliveryPrice
+     */
+    omit?: DeliveryPriceOmit<ExtArgs> | null
+    /**
+     * Filter, which DeliveryPrices to fetch.
+     */
+    where?: DeliveryPriceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DeliveryPrices to fetch.
+     */
+    orderBy?: DeliveryPriceOrderByWithRelationInput | DeliveryPriceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing DeliveryPrices.
+     */
+    cursor?: DeliveryPriceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DeliveryPrices from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DeliveryPrices.
+     */
+    skip?: number
+    distinct?: DeliveryPriceScalarFieldEnum | DeliveryPriceScalarFieldEnum[]
+  }
+
+  /**
+   * DeliveryPrice create
+   */
+  export type DeliveryPriceCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DeliveryPrice
+     */
+    select?: DeliveryPriceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DeliveryPrice
+     */
+    omit?: DeliveryPriceOmit<ExtArgs> | null
+    /**
+     * The data needed to create a DeliveryPrice.
+     */
+    data: XOR<DeliveryPriceCreateInput, DeliveryPriceUncheckedCreateInput>
+  }
+
+  /**
+   * DeliveryPrice createMany
+   */
+  export type DeliveryPriceCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many DeliveryPrices.
+     */
+    data: DeliveryPriceCreateManyInput | DeliveryPriceCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * DeliveryPrice update
+   */
+  export type DeliveryPriceUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DeliveryPrice
+     */
+    select?: DeliveryPriceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DeliveryPrice
+     */
+    omit?: DeliveryPriceOmit<ExtArgs> | null
+    /**
+     * The data needed to update a DeliveryPrice.
+     */
+    data: XOR<DeliveryPriceUpdateInput, DeliveryPriceUncheckedUpdateInput>
+    /**
+     * Choose, which DeliveryPrice to update.
+     */
+    where: DeliveryPriceWhereUniqueInput
+  }
+
+  /**
+   * DeliveryPrice updateMany
+   */
+  export type DeliveryPriceUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update DeliveryPrices.
+     */
+    data: XOR<DeliveryPriceUpdateManyMutationInput, DeliveryPriceUncheckedUpdateManyInput>
+    /**
+     * Filter which DeliveryPrices to update
+     */
+    where?: DeliveryPriceWhereInput
+    /**
+     * Limit how many DeliveryPrices to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * DeliveryPrice upsert
+   */
+  export type DeliveryPriceUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DeliveryPrice
+     */
+    select?: DeliveryPriceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DeliveryPrice
+     */
+    omit?: DeliveryPriceOmit<ExtArgs> | null
+    /**
+     * The filter to search for the DeliveryPrice to update in case it exists.
+     */
+    where: DeliveryPriceWhereUniqueInput
+    /**
+     * In case the DeliveryPrice found by the `where` argument doesn't exist, create a new DeliveryPrice with this data.
+     */
+    create: XOR<DeliveryPriceCreateInput, DeliveryPriceUncheckedCreateInput>
+    /**
+     * In case the DeliveryPrice was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<DeliveryPriceUpdateInput, DeliveryPriceUncheckedUpdateInput>
+  }
+
+  /**
+   * DeliveryPrice delete
+   */
+  export type DeliveryPriceDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DeliveryPrice
+     */
+    select?: DeliveryPriceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DeliveryPrice
+     */
+    omit?: DeliveryPriceOmit<ExtArgs> | null
+    /**
+     * Filter which DeliveryPrice to delete.
+     */
+    where: DeliveryPriceWhereUniqueInput
+  }
+
+  /**
+   * DeliveryPrice deleteMany
+   */
+  export type DeliveryPriceDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which DeliveryPrices to delete
+     */
+    where?: DeliveryPriceWhereInput
+    /**
+     * Limit how many DeliveryPrices to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * DeliveryPrice without action
+   */
+  export type DeliveryPriceDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DeliveryPrice
+     */
+    select?: DeliveryPriceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DeliveryPrice
+     */
+    omit?: DeliveryPriceOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -29332,6 +30353,19 @@ export namespace Prisma {
   export type BlogTagsScalarFieldEnum = (typeof BlogTagsScalarFieldEnum)[keyof typeof BlogTagsScalarFieldEnum]
 
 
+  export const DeliveryPriceScalarFieldEnum: {
+    id: 'id',
+    province: 'province',
+    municipality: 'municipality',
+    price: 'price',
+    active: 'active',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type DeliveryPriceScalarFieldEnum = (typeof DeliveryPriceScalarFieldEnum)[keyof typeof DeliveryPriceScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -29604,6 +30638,15 @@ export namespace Prisma {
   };
 
   export type BlogTagsOrderByRelevanceFieldEnum = (typeof BlogTagsOrderByRelevanceFieldEnum)[keyof typeof BlogTagsOrderByRelevanceFieldEnum]
+
+
+  export const DeliveryPriceOrderByRelevanceFieldEnum: {
+    id: 'id',
+    province: 'province',
+    municipality: 'municipality'
+  };
+
+  export type DeliveryPriceOrderByRelevanceFieldEnum = (typeof DeliveryPriceOrderByRelevanceFieldEnum)[keyof typeof DeliveryPriceOrderByRelevanceFieldEnum]
 
 
   /**
@@ -31305,6 +32348,72 @@ export namespace Prisma {
     tagId?: StringWithAggregatesFilter<"BlogTags"> | string
   }
 
+  export type DeliveryPriceWhereInput = {
+    AND?: DeliveryPriceWhereInput | DeliveryPriceWhereInput[]
+    OR?: DeliveryPriceWhereInput[]
+    NOT?: DeliveryPriceWhereInput | DeliveryPriceWhereInput[]
+    id?: StringFilter<"DeliveryPrice"> | string
+    province?: StringFilter<"DeliveryPrice"> | string
+    municipality?: StringFilter<"DeliveryPrice"> | string
+    price?: FloatFilter<"DeliveryPrice"> | number
+    active?: BoolFilter<"DeliveryPrice"> | boolean
+    createdAt?: DateTimeFilter<"DeliveryPrice"> | Date | string
+    updatedAt?: DateTimeFilter<"DeliveryPrice"> | Date | string
+  }
+
+  export type DeliveryPriceOrderByWithRelationInput = {
+    id?: SortOrder
+    province?: SortOrder
+    municipality?: SortOrder
+    price?: SortOrder
+    active?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _relevance?: DeliveryPriceOrderByRelevanceInput
+  }
+
+  export type DeliveryPriceWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    province_municipality?: DeliveryPriceProvinceMunicipalityCompoundUniqueInput
+    AND?: DeliveryPriceWhereInput | DeliveryPriceWhereInput[]
+    OR?: DeliveryPriceWhereInput[]
+    NOT?: DeliveryPriceWhereInput | DeliveryPriceWhereInput[]
+    province?: StringFilter<"DeliveryPrice"> | string
+    municipality?: StringFilter<"DeliveryPrice"> | string
+    price?: FloatFilter<"DeliveryPrice"> | number
+    active?: BoolFilter<"DeliveryPrice"> | boolean
+    createdAt?: DateTimeFilter<"DeliveryPrice"> | Date | string
+    updatedAt?: DateTimeFilter<"DeliveryPrice"> | Date | string
+  }, "id" | "province_municipality">
+
+  export type DeliveryPriceOrderByWithAggregationInput = {
+    id?: SortOrder
+    province?: SortOrder
+    municipality?: SortOrder
+    price?: SortOrder
+    active?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: DeliveryPriceCountOrderByAggregateInput
+    _avg?: DeliveryPriceAvgOrderByAggregateInput
+    _max?: DeliveryPriceMaxOrderByAggregateInput
+    _min?: DeliveryPriceMinOrderByAggregateInput
+    _sum?: DeliveryPriceSumOrderByAggregateInput
+  }
+
+  export type DeliveryPriceScalarWhereWithAggregatesInput = {
+    AND?: DeliveryPriceScalarWhereWithAggregatesInput | DeliveryPriceScalarWhereWithAggregatesInput[]
+    OR?: DeliveryPriceScalarWhereWithAggregatesInput[]
+    NOT?: DeliveryPriceScalarWhereWithAggregatesInput | DeliveryPriceScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"DeliveryPrice"> | string
+    province?: StringWithAggregatesFilter<"DeliveryPrice"> | string
+    municipality?: StringWithAggregatesFilter<"DeliveryPrice"> | string
+    price?: FloatWithAggregatesFilter<"DeliveryPrice"> | number
+    active?: BoolWithAggregatesFilter<"DeliveryPrice"> | boolean
+    createdAt?: DateTimeWithAggregatesFilter<"DeliveryPrice"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"DeliveryPrice"> | Date | string
+  }
+
   export type UserCreateInput = {
     id?: string
     email: string
@@ -32960,6 +34069,76 @@ export namespace Prisma {
     tagId?: StringFieldUpdateOperationsInput | string
   }
 
+  export type DeliveryPriceCreateInput = {
+    id?: string
+    province: string
+    municipality: string
+    price: number
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type DeliveryPriceUncheckedCreateInput = {
+    id?: string
+    province: string
+    municipality: string
+    price: number
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type DeliveryPriceUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    province?: StringFieldUpdateOperationsInput | string
+    municipality?: StringFieldUpdateOperationsInput | string
+    price?: FloatFieldUpdateOperationsInput | number
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DeliveryPriceUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    province?: StringFieldUpdateOperationsInput | string
+    municipality?: StringFieldUpdateOperationsInput | string
+    price?: FloatFieldUpdateOperationsInput | number
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DeliveryPriceCreateManyInput = {
+    id?: string
+    province: string
+    municipality: string
+    price: number
+    active?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type DeliveryPriceUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    province?: StringFieldUpdateOperationsInput | string
+    municipality?: StringFieldUpdateOperationsInput | string
+    price?: FloatFieldUpdateOperationsInput | number
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DeliveryPriceUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    province?: StringFieldUpdateOperationsInput | string
+    municipality?: StringFieldUpdateOperationsInput | string
+    price?: FloatFieldUpdateOperationsInput | number
+    active?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[]
@@ -34381,6 +35560,55 @@ export namespace Prisma {
   export type BlogTagsMinOrderByAggregateInput = {
     blogId?: SortOrder
     tagId?: SortOrder
+  }
+
+  export type DeliveryPriceOrderByRelevanceInput = {
+    fields: DeliveryPriceOrderByRelevanceFieldEnum | DeliveryPriceOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type DeliveryPriceProvinceMunicipalityCompoundUniqueInput = {
+    province: string
+    municipality: string
+  }
+
+  export type DeliveryPriceCountOrderByAggregateInput = {
+    id?: SortOrder
+    province?: SortOrder
+    municipality?: SortOrder
+    price?: SortOrder
+    active?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type DeliveryPriceAvgOrderByAggregateInput = {
+    price?: SortOrder
+  }
+
+  export type DeliveryPriceMaxOrderByAggregateInput = {
+    id?: SortOrder
+    province?: SortOrder
+    municipality?: SortOrder
+    price?: SortOrder
+    active?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type DeliveryPriceMinOrderByAggregateInput = {
+    id?: SortOrder
+    province?: SortOrder
+    municipality?: SortOrder
+    price?: SortOrder
+    active?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type DeliveryPriceSumOrderByAggregateInput = {
+    price?: SortOrder
   }
 
   export type ProductForCartCreateNestedManyWithoutUserInput = {

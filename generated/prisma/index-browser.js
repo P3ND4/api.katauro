@@ -345,6 +345,16 @@ exports.Prisma.BlogTagsScalarFieldEnum = {
   tagId: 'tagId'
 };
 
+exports.Prisma.DeliveryPriceScalarFieldEnum = {
+  id: 'id',
+  province: 'province',
+  municipality: 'municipality',
+  price: 'price',
+  active: 'active',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -535,6 +545,12 @@ exports.Prisma.BlogTagsOrderByRelevanceFieldEnum = {
   tagId: 'tagId'
 };
 
+exports.Prisma.DeliveryPriceOrderByRelevanceFieldEnum = {
+  id: 'id',
+  province: 'province',
+  municipality: 'municipality'
+};
+
 
 exports.Prisma.ModelName = {
   User: 'User',
@@ -562,7 +578,8 @@ exports.Prisma.ModelName = {
   blogContent: 'blogContent',
   BlogImage: 'BlogImage',
   Tags: 'Tags',
-  BlogTags: 'BlogTags'
+  BlogTags: 'BlogTags',
+  DeliveryPrice: 'DeliveryPrice'
 };
 
 /**

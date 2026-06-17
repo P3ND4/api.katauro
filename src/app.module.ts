@@ -12,10 +12,11 @@ import { MailService } from './shared/services/mail/mail.service';
 import { ScheduleModule } from '@nestjs/schedule';
 import { PromotionModule } from './promotion/promotion.module';
 import { BlogModule } from './blog/blog.module';
+import { DeliveryPriceModule } from './delivery-price/delivery-price.module';
 import { SharedModule } from './shared/shared.module';
 
 @Module({
-  imports: [ConfigModule.forRoot({ isGlobal: true }), SharedModule, UsersModule, ProductsModule, OrderModule, AuthModule, CloudinaryModule, ScheduleModule.forRoot(), PromotionModule, BlogModule],
+  imports: [ConfigModule.forRoot({ isGlobal: true }), SharedModule, UsersModule, ProductsModule, OrderModule, AuthModule, CloudinaryModule, ScheduleModule.forRoot(), PromotionModule, BlogModule, DeliveryPriceModule],
   controllers: [AppController],
   providers: [AppService, MailService],
 })
