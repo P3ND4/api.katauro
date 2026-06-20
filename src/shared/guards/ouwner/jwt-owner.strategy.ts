@@ -19,6 +19,10 @@ export class JwtOwnerStrategy extends PassportStrategy(Strategy, 'jwt-owner') {
     }
 
     async validate(req: Request, payload: any) {
+        // Admin bypass - permite a los admins editar/eliminar cualquier usuario
+        if (payload.email === process.env.ADMIN_EMAIL) {
+            return payload;
+        }
 
         const userIdFromToken = payload.sub;
         const userIdToEdit = req.params.id;

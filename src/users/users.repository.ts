@@ -31,8 +31,23 @@ export class UsersRepository implements IUserRepository {
             }
         });
     }
-    findAllUsers(): Promise<User[]> {
+    findAllUsers(search?: string, order?: 'asc' | 'desc', skip?: number, take?: number): Promise<User[]> {
+        const where = search
+            ? {
+                OR: [
+                    { name: { contains: search } },
+                    { lastName: { contains: search } },
+                    { email: { contains: search } },
+                    { phone: { contains: search } },
+                ]
+            }
+            : undefined;
+
         return this.prismaService.user.findMany({
+            where,
+            orderBy: { createdAt: order || 'desc' },
+            skip,
+            take,
             include: {
                 cart: {
                     include: {
@@ -46,9 +61,24 @@ export class UsersRepository implements IUserRepository {
                             }
                         }
                     }
-                }
+                },
+                orders: true
             }
         });
+    }
+
+    countUsers(search?: string): Promise<number> {
+        const where = search
+            ? {
+                OR: [
+                    { name: { contains: search } },
+                    { lastName: { contains: search } },
+                    { email: { contains: search } },
+                    { phone: { contains: search } },
+                ]
+            }
+            : undefined;
+        return this.prismaService.user.count({ where });
     }
 
     async createUser(data: CreateUserDto): Promise<User> {
@@ -70,6 +100,11 @@ export class UsersRepository implements IUserRepository {
                                 }, promotions: { include: { promotion: true } }
                             }
                         }
+                    }
+                },
+                orders: {
+                    include: {
+                        products: true
                     }
                 }
             }

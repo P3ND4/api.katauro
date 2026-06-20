@@ -7,7 +7,8 @@ export declare class UsersRepository implements IUserRepository {
     private prismaService;
     constructor(prismaService: PrismaService);
     findUserByEmail(email: string): Promise<User | null>;
-    findAllUsers(): Promise<User[]>;
+    findAllUsers(search?: string, order?: 'asc' | 'desc', skip?: number, take?: number): Promise<User[]>;
+    countUsers(search?: string): Promise<number>;
     createUser(data: CreateUserDto): Promise<User>;
     findUserById(id: string): Promise<User | null>;
     updateUser(id: string, data: UpdateUserDto): Promise<User>;

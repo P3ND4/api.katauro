@@ -27,8 +27,12 @@ let UsersController = class UsersController {
     async create(createUserDto) {
         return await this.usersService.create(createUserDto);
     }
-    findAll() {
-        return this.usersService.findAll();
+    async findAll(search, order, page) {
+        const pageNum = page ? parseInt(page, 10) : undefined;
+        const users = await this.usersService.findAll(search, order, pageNum);
+        const total = await this.usersService.count(search);
+        const pages = Math.ceil(total / 9);
+        return { users, total, pages };
     }
     findOne(id) {
         return this.usersService.findOne(id);
@@ -51,9 +55,12 @@ __decorate([
 __decorate([
     (0, common_1.UseGuards)(admin_guard_1.AdminGuard),
     (0, common_1.Get)(),
+    __param(0, (0, common_1.Query)('search')),
+    __param(1, (0, common_1.Query)('order')),
+    __param(2, (0, common_1.Query)('page')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", void 0)
+    __metadata("design:paramtypes", [String, String, String]),
+    __metadata("design:returntype", Promise)
 ], UsersController.prototype, "findAll", null);
 __decorate([
     (0, common_1.UseGuards)(admin_guard_1.AdminGuard),

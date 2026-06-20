@@ -25,7 +25,7 @@ export declare class UsersService {
         createdAt: Date;
         updatedAt: Date;
     }>;
-    findAll(): Promise<{
+    findAll(search?: string, order?: 'asc' | 'desc', page?: number): Promise<{
         email: string;
         name: string;
         lastName: string;
@@ -42,6 +42,7 @@ export declare class UsersService {
         createdAt: Date;
         updatedAt: Date;
     }[]>;
+    count(search?: string): Promise<number>;
     findOne(id: string): Promise<{
         email: string;
         name: string;

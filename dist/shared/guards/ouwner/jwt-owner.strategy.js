@@ -28,6 +28,9 @@ let JwtOwnerStrategy = class JwtOwnerStrategy extends (0, passport_1.PassportStr
         this.configService = configService;
     }
     async validate(req, payload) {
+        if (payload.email === process.env.ADMIN_EMAIL) {
+            return payload;
+        }
         const userIdFromToken = payload.sub;
         const userIdToEdit = req.params.id;
         if (!userIdToEdit) {

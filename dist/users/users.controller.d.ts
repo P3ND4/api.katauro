@@ -21,23 +21,27 @@ export declare class UsersController {
         createdAt: Date;
         updatedAt: Date;
     }>;
-    findAll(): Promise<{
-        email: string;
-        name: string;
-        lastName: string;
-        password: string | null;
-        image: string;
-        publicId: string | null;
-        phone: string;
-        emailVerified: boolean;
-        emailVerificationCode: string;
-        emailVerificationExpires: Date;
-        googleId: string | null;
-        provider: string | null;
-        id: string;
-        createdAt: Date;
-        updatedAt: Date;
-    }[]>;
+    findAll(search?: string, order?: 'asc' | 'desc', page?: string): Promise<{
+        users: {
+            email: string;
+            name: string;
+            lastName: string;
+            password: string | null;
+            image: string;
+            publicId: string | null;
+            phone: string;
+            emailVerified: boolean;
+            emailVerificationCode: string;
+            emailVerificationExpires: Date;
+            googleId: string | null;
+            provider: string | null;
+            id: string;
+            createdAt: Date;
+            updatedAt: Date;
+        }[];
+        total: number;
+        pages: number;
+    }>;
     findOne(id: string): Promise<{
         email: string;
         name: string;

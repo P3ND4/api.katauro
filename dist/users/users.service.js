@@ -65,8 +65,14 @@ let UsersService = class UsersService {
         return await this.usersRepository.createUser(createUserDto);
     }
     ;
-    async findAll() {
-        return this.usersRepository.findAllUsers();
+    async findAll(search, order, page) {
+        const pageSize = 9;
+        const skip = page ? (page - 1) * pageSize : undefined;
+        const take = page ? pageSize : undefined;
+        return this.usersRepository.findAllUsers(search, order, skip, take);
+    }
+    async count(search) {
+        return this.usersRepository.countUsers(search);
     }
     async findOne(id) {
         return this.usersRepository.findUserById(id);

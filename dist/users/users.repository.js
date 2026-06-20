@@ -37,8 +37,22 @@ let UsersRepository = class UsersRepository {
             }
         });
     }
-    findAllUsers() {
+    findAllUsers(search, order, skip, take) {
+        const where = search
+            ? {
+                OR: [
+                    { name: { contains: search } },
+                    { lastName: { contains: search } },
+                    { email: { contains: search } },
+                    { phone: { contains: search } },
+                ]
+            }
+            : undefined;
         return this.prismaService.user.findMany({
+            where,
+            orderBy: { createdAt: order || 'desc' },
+            skip,
+            take,
             include: {
                 cart: {
                     include: {
@@ -52,9 +66,23 @@ let UsersRepository = class UsersRepository {
                             }
                         }
                     }
-                }
+                },
+                orders: true
             }
         });
+    }
+    countUsers(search) {
+        const where = search
+            ? {
+                OR: [
+                    { name: { contains: search } },
+                    { lastName: { contains: search } },
+                    { email: { contains: search } },
+                    { phone: { contains: search } },
+                ]
+            }
+            : undefined;
+        return this.prismaService.user.count({ where });
     }
     async createUser(data) {
         return await this.prismaService.user.create({ data: data });
@@ -74,6 +102,11 @@ let UsersRepository = class UsersRepository {
                                 }, promotions: { include: { promotion: true } }
                             }
                         }
+                    }
+                },
+                orders: {
+                    include: {
+                        products: true
                     }
                 }
             }
