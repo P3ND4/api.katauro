@@ -31,7 +31,7 @@ let BlogService = class BlogService {
         return await this.blogsRepository.createBlogWithContent(createBlogDto);
     }
     async findAll(options) {
-        const blogs = await this.blogsRepository.findAllBlogs(options);
+        const blogs = await this.blogsRepository.findAllBlogs({ ...options, publishedOnly: !options?.includeDrafts });
         const total = blogs.length;
         if (options?.page) {
             const paginatedBlogs = blogs.slice((options.page - 1) * 9, (options.page - 1) * 9 + 9);
@@ -41,11 +41,11 @@ let BlogService = class BlogService {
         return { blogs: paginatedBlogs, total };
     }
     async getPages(options) {
-        const blogs = await this.blogsRepository.findAllBlogs(options);
+        const blogs = await this.blogsRepository.findAllBlogs({ ...options, publishedOnly: !options?.includeDrafts });
         return blogs.length / 9 > 0 ? Math.ceil(blogs.length / 9) : 1;
     }
-    async findOne(id) {
-        return await this.blogsRepository.findBlogById(id);
+    async findOne(id, includeDrafts) {
+        return await this.blogsRepository.findBlogById(id, true, includeDrafts);
     }
     async update(id, updateBlogDto) {
         return await this.blogsRepository.updateBlog(id, updateBlogDto);

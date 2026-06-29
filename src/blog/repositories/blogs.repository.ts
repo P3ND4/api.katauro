@@ -71,8 +71,9 @@ export class BlogsRepository {
      * Obtener todos los blogs con opciones de filtro
      * @param options Opciones de filtrado: sortBy ('asc'|'desc'), tags (IDs separados por comas) y search (búsqueda por título)
      */
-    async findAllBlogs(options?: { sortBy?: string; tags?: string; search?: string }): Promise<Blog[]> {
+    async findAllBlogs(options?: { sortBy?: string; tags?: string; search?: string; publishedOnly?: boolean; includeDrafts?: boolean }): Promise<Blog[]> {
         const tagIds = options?.tags ? options.tags.split(',').filter(t => t.trim()) : [];
+        const shouldFilterPublished = options?.publishedOnly && !options?.includeDrafts;
         
         const blogs = await this.prisma.blog.findMany({
             include: {
@@ -82,6 +83,13 @@ export class BlogsRepository {
                 BlogTags: { include: { tag: true } }
             },
             where: {
+                ...(shouldFilterPublished ? {
+                    draft: false,
+                    OR: [
+                        { publishedDate: { lte: new Date() } },
+                        { publishedDate: null },
+                    ],
+                } : {}),
                 ...(tagIds.length > 0 && {
                     BlogTags: {
                         some: {
@@ -108,7 +116,7 @@ export class BlogsRepository {
     /**
      * Obtener un blog por ID con todo su contenido
      */
-    async findBlogById(id: string): Promise<Blog | null> {
+    async findBlogById(id: string, publishedOnly?: boolean, includeDrafts?: boolean): Promise<Blog | null> {
         const blog = await this.prisma.blog.findUnique({
             where: { id },
             include: {
@@ -123,7 +131,14 @@ export class BlogsRepository {
             },
         });
 
-        return blog ? this.mapToBlogEntity(blog) : null;
+        if (!blog) return null;
+
+        if (publishedOnly && !includeDrafts) {
+            if (blog.draft) return null;
+            if (blog.publishedDate && new Date(blog.publishedDate) > new Date()) return null;
+        }
+
+        return this.mapToBlogEntity(blog);
     }
 
     /**

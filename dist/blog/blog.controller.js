@@ -28,11 +28,11 @@ let BlogController = class BlogController {
     create(createBlogDto) {
         return this.blogService.create(createBlogDto);
     }
-    findAll(sortBy, tags, search, page) {
-        return this.blogService.findAll({ sortBy, tags, search, page: page ? +page : undefined });
+    findAll(sortBy, tags, search, page, includeDrafts) {
+        return this.blogService.findAll({ sortBy, tags, search, page: page ? +page : undefined, includeDrafts: includeDrafts === 'true' });
     }
-    findPages(tags, search) {
-        return this.blogService.getPages({ tags, search });
+    findPages(tags, search, includeDrafts) {
+        return this.blogService.getPages({ tags, search, includeDrafts: includeDrafts === 'true' });
     }
     getStatsOverview() {
         return this.blogService.getStatsOverview();
@@ -43,8 +43,8 @@ let BlogController = class BlogController {
     getStatsArticles() {
         return this.blogService.getStatsArticles();
     }
-    findOne(id) {
-        return this.blogService.findOne(id);
+    findOne(id, includeDrafts) {
+        return this.blogService.findOne(id, includeDrafts === 'true');
     }
     update(id, updateBlogDto) {
         return this.blogService.update(id, updateBlogDto);
@@ -118,16 +118,18 @@ __decorate([
     __param(1, (0, common_1.Query)('tags')),
     __param(2, (0, common_1.Query)('search')),
     __param(3, (0, common_1.Query)('page')),
+    __param(4, (0, common_1.Query)('includeDrafts')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, String, String, String]),
+    __metadata("design:paramtypes", [String, String, String, String, String]),
     __metadata("design:returntype", void 0)
 ], BlogController.prototype, "findAll", null);
 __decorate([
     (0, common_1.Get)('pages/total'),
     __param(0, (0, common_1.Query)('tags')),
     __param(1, (0, common_1.Query)('search')),
+    __param(2, (0, common_1.Query)('includeDrafts')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, String]),
+    __metadata("design:paramtypes", [String, String, String]),
     __metadata("design:returntype", void 0)
 ], BlogController.prototype, "findPages", null);
 __decorate([
@@ -152,8 +154,9 @@ __decorate([
 __decorate([
     (0, common_1.Get)(':id'),
     __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Query)('includeDrafts')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
+    __metadata("design:paramtypes", [String, String]),
     __metadata("design:returntype", void 0)
 ], BlogController.prototype, "findOne", null);
 __decorate([

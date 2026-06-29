@@ -62,6 +62,7 @@ let BlogsRepository = class BlogsRepository {
     }
     async findAllBlogs(options) {
         const tagIds = options?.tags ? options.tags.split(',').filter(t => t.trim()) : [];
+        const shouldFilterPublished = options?.publishedOnly && !options?.includeDrafts;
         const blogs = await this.prisma.blog.findMany({
             include: {
                 images: true,
@@ -70,6 +71,13 @@ let BlogsRepository = class BlogsRepository {
                 BlogTags: { include: { tag: true } }
             },
             where: {
+                ...(shouldFilterPublished ? {
+                    draft: false,
+                    OR: [
+                        { publishedDate: { lte: new Date() } },
+                        { publishedDate: null },
+                    ],
+                } : {}),
                 ...(tagIds.length > 0 && {
                     BlogTags: {
                         some: {
@@ -91,7 +99,7 @@ let BlogsRepository = class BlogsRepository {
         });
         return blogs.map((blog) => this.mapToBlogEntity(blog));
     }
-    async findBlogById(id) {
+    async findBlogById(id, publishedOnly, includeDrafts) {
         const blog = await this.prisma.blog.findUnique({
             where: { id },
             include: {
@@ -105,7 +113,15 @@ let BlogsRepository = class BlogsRepository {
                 },
             },
         });
-        return blog ? this.mapToBlogEntity(blog) : null;
+        if (!blog)
+            return null;
+        if (publishedOnly && !includeDrafts) {
+            if (blog.draft)
+                return null;
+            if (blog.publishedDate && new Date(blog.publishedDate) > new Date())
+                return null;
+        }
+        return this.mapToBlogEntity(blog);
     }
     async updateBlog(id, updateBlogDto) {
         const blog = await this.prisma.blog.update({

@@ -16,8 +16,10 @@ export declare class BlogsRepository {
         sortBy?: string;
         tags?: string;
         search?: string;
+        publishedOnly?: boolean;
+        includeDrafts?: boolean;
     }): Promise<Blog[]>;
-    findBlogById(id: string): Promise<Blog | null>;
+    findBlogById(id: string, publishedOnly?: boolean, includeDrafts?: boolean): Promise<Blog | null>;
     updateBlog(id: string, updateBlogDto: UpdateBlogDto): Promise<Blog>;
     deleteBlog(id: string): Promise<boolean>;
     createBlogContent(blogId: string, createContentDto: CreateBlogContentDto): Promise<BlogContent>;

@@ -7,11 +7,11 @@ export declare class BlogController {
     private readonly blogService;
     constructor(blogService: BlogService);
     create(createBlogDto: CreateBlogDto): Promise<import("./entities").Blog>;
-    findAll(sortBy?: string, tags?: string, search?: string, page?: string): Promise<{
+    findAll(sortBy?: string, tags?: string, search?: string, page?: string, includeDrafts?: string): Promise<{
         blogs: import("./entities").Blog[];
         total: number;
     }>;
-    findPages(tags?: string, search?: string): Promise<number>;
+    findPages(tags?: string, search?: string, includeDrafts?: string): Promise<number>;
     getStatsOverview(): Promise<{
         totalVisits: number;
         uniqueUsers: number;
@@ -37,7 +37,7 @@ export declare class BlogController {
         avgTimeSeconds: number;
         engagementRate: number;
     }[]>;
-    findOne(id: string): Promise<import("./entities").Blog | null>;
+    findOne(id: string, includeDrafts?: string): Promise<import("./entities").Blog | null>;
     update(id: string, updateBlogDto: UpdateBlogDto): Promise<import("./entities").Blog>;
     remove(id: string): Promise<boolean>;
     createContent(blogId: string, createContentDto: CreateBlogContentDto): Promise<import("./entities").BlogContent>;

@@ -14,6 +14,7 @@ export declare class BlogService {
         tags?: string;
         search?: string;
         page?: number;
+        includeDrafts?: boolean;
     }): Promise<{
         blogs: Blog[];
         total: number;
@@ -21,8 +22,9 @@ export declare class BlogService {
     getPages(options?: {
         tags?: string;
         search?: string;
+        includeDrafts?: boolean;
     }): Promise<number>;
-    findOne(id: string): Promise<Blog | null>;
+    findOne(id: string, includeDrafts?: boolean): Promise<Blog | null>;
     update(id: string, updateBlogDto: UpdateBlogDto): Promise<Blog>;
     remove(id: string): Promise<boolean>;
     createBlogContent(blogId: string, createContentDto: CreateBlogContentDto): Promise<BlogContent>;

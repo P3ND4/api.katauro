@@ -41,8 +41,8 @@ export class BlogService {
   /**
    * Obtener todos los blogs con opciones de filtro y paginación
    */
-  async findAll(options?: { sortBy?: string; tags?: string; search?: string; page?: number }): Promise<{ blogs: Blog[]; total: number }> {
-    const blogs = await this.blogsRepository.findAllBlogs(options);
+  async findAll(options?: { sortBy?: string; tags?: string; search?: string; page?: number; includeDrafts?: boolean }): Promise<{ blogs: Blog[]; total: number }> {
+    const blogs = await this.blogsRepository.findAllBlogs({ ...options, publishedOnly: !options?.includeDrafts });
     const total = blogs.length;
 
     if (options?.page) {
@@ -57,16 +57,16 @@ export class BlogService {
   /**
    * Obtener el número total de páginas
    */
-  async getPages(options?: { tags?: string; search?: string }): Promise<number> {
-    const blogs = await this.blogsRepository.findAllBlogs(options);
+  async getPages(options?: { tags?: string; search?: string; includeDrafts?: boolean }): Promise<number> {
+    const blogs = await this.blogsRepository.findAllBlogs({ ...options, publishedOnly: !options?.includeDrafts });
     return blogs.length / 9 > 0 ? Math.ceil(blogs.length / 9) : 1;
   }
 
   /**
    * Obtener un blog por ID
    */
-  async findOne(id: string): Promise<Blog | null> {
-    return await this.blogsRepository.findBlogById(id);
+  async findOne(id: string, includeDrafts?: boolean): Promise<Blog | null> {
+    return await this.blogsRepository.findBlogById(id, true, includeDrafts);
   }
 
   /**

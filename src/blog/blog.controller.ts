@@ -48,16 +48,16 @@ export class BlogController {
    * @param page Número de página para paginación (9 blogs por página)
    */
   @Get()
-  findAll(@Query('sortBy') sortBy?: string, @Query('tags') tags?: string, @Query('search') search?: string, @Query('page') page?: string) {
-    return this.blogService.findAll({ sortBy, tags, search, page: page ? +page : undefined });
+  findAll(@Query('sortBy') sortBy?: string, @Query('tags') tags?: string, @Query('search') search?: string, @Query('page') page?: string, @Query('includeDrafts') includeDrafts?: string) {
+    return this.blogService.findAll({ sortBy, tags, search, page: page ? +page : undefined, includeDrafts: includeDrafts === 'true' });
   }
 
   /**
    * Obtener el número total de páginas
    */
   @Get('pages/total')
-  findPages(@Query('tags') tags?: string, @Query('search') search?: string) {
-    return this.blogService.getPages({ tags, search });
+  findPages(@Query('tags') tags?: string, @Query('search') search?: string, @Query('includeDrafts') includeDrafts?: string) {
+    return this.blogService.getPages({ tags, search, includeDrafts: includeDrafts === 'true' });
   }
 
   @Get('stats/overview')
@@ -79,8 +79,8 @@ export class BlogController {
    * Obtener un blog por ID
    */
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.blogService.findOne(id);
+  findOne(@Param('id') id: string, @Query('includeDrafts') includeDrafts?: string) {
+    return this.blogService.findOne(id, includeDrafts === 'true');
   }
 
   /**
