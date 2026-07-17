@@ -347,6 +347,7 @@ let BlogsRepository = class BlogsRepository {
             data: {
                 name: updateTagDto.name,
                 color: updateTagDto.color,
+                BgColor: updateTagDto.bgColor,
             },
         });
         return this.mapToTagsEntity(tag);
